@@ -1,0 +1,35 @@
+﻿@*<div class="widget widget-collapsible pl-3">
+        <h3 class="widget-title">
+            <a data-toggle="collapse" href="#widget-5" role="button" aria-expanded="true"
+               aria-controls="widget-5">
+                قیمت
+            </a>
+        </h3>
+
+        <div class="collapse show" id="widget-5">
+            <div class="widget-body">
+
+                <div class="filter-price">
+                    <div class="filter-price-text">
+                        محدوده قیمت :
+                        <span id="filter-price-range" id="amount" name="amount"></span>
+                    </div>
+                    <div id="price-slider"></div>
+                </div>
+
+                <button type="button" class="btn btn-sm btn-info text-white btn-block mt-2" onclick="priceFilter()">اعمال فیلتر</button>
+            </div>
+        </div>
+    </div>*@
+
+<div class="collection-collapse-block border-0 open">
+    <h3 class="collapse-block-title">قیمت</h3>
+    <div class="collection-collapse-block-content">
+        <div class="filter-slide" >
+            <input class="js-range-slider" type="text" name="my_range" value="" data-type="double" id="filter-price-range" />
+        </div>
+        <button type="button" class="btn btn-sm btn-info text-white btn-block mt-2" onclick="priceFilter(@ViewBag.ProductGroupId)">اعمال فیلتر</button>
+    </div>
+</div>
+
+ 

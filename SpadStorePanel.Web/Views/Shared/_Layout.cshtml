@@ -1,0 +1,173 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> باتری </title>
+    <!-- favicon -->
+    @*<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">*@
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="/Content/Client/assets/css/bootstrap.min.css">
+    <!-- icofont -->
+    <link rel="stylesheet" href="/Content/Client/assets/css/fontawesome.min.css">
+    <!-- select 2  -->
+    <link rel="stylesheet" href="/Content/Client/assets/css/select2.min.css">
+    <!-- animate.css -->
+    <link rel="stylesheet" href="/Content/Client/assets/css/animate.css">
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="/Content/Client/assets/css/owl.carousel.min.css">
+    <!-- magnific popup -->
+    <link rel="stylesheet" href="/Content/Client/assets/css/magnific-popup.css">
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="/Content/Client/assets/css/style.css">
+    <!-- responsive -->
+    <link rel="stylesheet" href="/Content/Client/assets/css/responsive.css">
+
+
+</head>
+
+<body>
+
+
+    @Html.Action("navbar", "home")
+
+    @RenderBody()
+
+    <!-- footer area one start -->
+    @Html.Action("footer", "home")
+    <!-- footer area one end -->
+    <!-- back to top start -->
+    <div class="back-to-top bg-orange">
+        <i class="fas fa-rocket"></i>
+    </div>
+    <!-- back to top end -->
+    <!-- preloader area start -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="sk-fading-circle">
+                <div class="sk-circle1 sk-circle"></div>
+                <div class="sk-circle2 sk-circle"></div>
+                <div class="sk-circle3 sk-circle"></div>
+                <div class="sk-circle4 sk-circle"></div>
+                <div class="sk-circle5 sk-circle"></div>
+                <div class="sk-circle6 sk-circle"></div>
+                <div class="sk-circle7 sk-circle"></div>
+                <div class="sk-circle8 sk-circle"></div>
+                <div class="sk-circle9 sk-circle"></div>
+                <div class="sk-circle10 sk-circle"></div>
+                <div class="sk-circle11 sk-circle"></div>
+                <div class="sk-circle12 sk-circle"></div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader area end -->
+
+    <!-- jquery -->
+    <script src="/Content/Client/assets/js/jquery.js"></script>
+    <!-- popper -->
+    <script src="/Content/Client/assets/js/popper.min.js"></script>
+    <!-- bootstrap -->
+    <script src="/Content/Client/assets/js/bootstrap.min.js"></script>
+    <!-- way poin js-->
+    <script src="/Content/Client/assets/js/waypoints.min.js"></script>
+    <!-- owl carousel -->
+    <script src="/Content/Client/assets/js/owl.carousel.min.js"></script>
+    <!-- magnific popup -->
+    <script src="/Content/Client/assets/js/jquery.magnific-popup.js"></script>
+    <!-- wow js-->
+    <script src="/Content/Client/assets/js/wow.min.js"></script>
+    <!-- counterup js-->
+    <script src="/Content/Client/assets/js/jquery.counterup.min.js"></script>
+    <!-- select 2 -->
+    <script src="/Content/Client/assets/js/select2.min.js"></script>
+    <!-- main -->
+    <script src="/Content/Client/assets/js/main.js"></script>
+
+    <script>
+
+        var owl = $('.owl-carousel');
+        owl.owlCarousel({
+            loop: true,
+            margin: 30,
+            autoplay: true,
+            autoplayTimeout: 1000,
+            autoplayHoverPause: true,
+            responsiveClass: true,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                600: {
+                    items: 3,
+                    nav: false
+                },
+                1000: {
+                    items: 5,
+                    nav: false,
+                }
+            }
+        });
+
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("#ButtonEmail").click(function (e) {
+                //if ($("#usernameInput").val() == "")
+                //    alert("Username cannot be empty");
+                //else if ($("#passwordInput").val() == "")
+                //    alert("Password cannot be empty");
+                //else {
+                $.ajax({
+                    type: "POST",
+                    url: "/Home/RegisterEmail",
+                    contentType: "application/json; charset=utf-8",
+                    data: '{"email":"' + $("#emailSub").val() + '","Name":"' + "کاربری که با ایمیل ثبت شده" + '","Message":"' + "کاربری که با ایمیل ثبت شده" + '","Phone":"' + "0" + '"}',
+
+                    success: function (data) {
+                        if (data == 'success') {
+                            $("#ButtonEmail").text("با موفقیت ثبت شد")
+                            $("#ButtonEmail").css("background-color", "green");
+                            $("#emailSub").val("")
+                        }
+                        if (data == 'fail') {
+
+                            //$("#text").val("صحیح نیست")
+                            $("#ButtonEmail").text("صحیح نیست")
+                            $("#ButtonEmail").css("background-color", "red");
+                            $("#emailSub").val("")
+
+                        };
+                        if (data == 'faill') {
+                            $("#ButtonEmail").text("کاربر دیگری با همین ایمیل در سیستم ثبت شده")
+                            $("#ButtonEmail").css("background-color", "red");
+                            $("#emailSub").val("")
+
+                        };
+
+                        e.preventDefault()
+                    },
+                    error: function () {
+                        alert('error');
+                    }
+
+
+                });
+                //}
+                return false;
+            });
+        });
+    </script>
+
+    @RenderSection("scripts", required: false)
+
+</body>
+
+
+</html>
+
+

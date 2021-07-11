@@ -1,0 +1,268 @@
+﻿@model SpadStorePanel.Web.ViewModels.WishListModel
+@{
+    Layout = "~/Views/Shared/_LayoutD.cshtml";
+}
+
+<div class="preloader">
+    <div class="spinner">
+        <div class="dot1"></div>
+        <div class="dot2"></div>
+    </div>
+</div>
+
+<!-- Start Navbar Area -->
+@Html.Action("HeaderSection", "Home")
+<!-- End Navbar Area -->
+<!-- Inner Banner Area -->
+<div class="inner-banner-area">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="inner-banner-content">
+                    <h2>علاقه مندی ها</h2>
+                    <ul>
+                        <li><a href="/Home/store">خانه</a></li>
+                        <li><i class='bx bx-chevron-left'></i></li>
+                        <li><a href="#" class="active">علاقه مندی ها</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="inner-banner-img">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Inner Banner Area End -->
+<!-- Start Cart Area -->
+<section class="cart-wraps-area ptb-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <form>
+                    <div class="cart-wraps">
+                        <div class="cart-table table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">محصول</th>
+                                        <th scope="col">نام</th>
+                                        @*<th scope="col">قیمت واحد</th>*@
+                                        @*<th scope="col">سبد خرید</th>*@
+                                        @*<th scope="col">کل</th>*@
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @if (Model.WishListItems != null)
+                                    {
+                                        foreach (var item in Model.WishListItems)
+                                        {
+                                    <tr>
+                                        <td class="product-thumbnail">
+                                            <a href="/Shop/Detail/@item.Id">
+                                                <img src="~/Files/ProductImages/Image/@item.Image" alt="Image">
+                                            </a>
+                                        </td>
+
+                                        <td class="product-name">
+                                            <a href="/Shop/Detail/@item.Id">@item.ProductName</a>
+                                        </td>
+
+                                        @*<td class="product-price">
+                                            <span class="unit-amount">12000 تومان</span>
+                                        </td>*@
+
+                                        @*<td class="product-quantity">
+            <a href="#" class="default-btn btn-bg-three">افزودن به سبد خرید</a>
+        </td>*@
+
+                                        <td class="product-subtotal">
+                                            <a href="#" class="remove" id="reload" name="reload" onclick="removeFromWishList(@item.Id);">
+                                                <i class='bx bx-x-circle'></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Cart Area -->
+<!-- Footer Area -->
+<footer class="footer-area footer-bg">
+    <div class="container">
+        <div class="footer-newsletter ptb-100">
+            <div class="newsletter-max-width">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="newsletter-title">
+                            <h2>پیوستن به خبرنامه</h2>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-8">
+                        <div class="newsletter-area">
+                            <form class="newsletter-form" data-toggle="validator" method="POST">
+                                <input type="email" class="form-control" placeholder="ایمیل خود را وارد کنید"
+                                       name="EMAIL" required autocomplete="off">
+                                <button class="subscribe-btn" type="submit">
+                                    اشتراک
+                                </button>
+                                <div id="validator-newsletter" class="form-result"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-top pb-70">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="footer-widget">
+                        <div class="footer-logo">
+                            <a href="/Home/store">
+                                <img src="assets/images/logos/logo-1.png" alt="Images">
+                            </a>
+                        </div>
+                        <p>
+                            کلسیم موبایل یکی از بهترین ها در زمینه فروش موبایل است ،
+                            کلسیم موبایل یکی از بهترین ها در زمینه فروش موبایل است ،
+                            کلسیم موبایل یکی از بهترین ها در زمینه فروش موبایل است ،
+                        </p>
+                        <ul class="footer-list-contact">
+                            <li>
+                                <i class='flaticon-placeholder'></i>
+                                <a href="#">تهران ، میدان آزادی</a>
+                            </li>
+                            <li>
+                                <i class='flaticon-smartphone'></i>
+                                <a href="tel:021-1234567">021-1234567</a>
+                            </li>
+                            <li>
+                                <i class='flaticon-messenger'></i>
+                                <a href="mailto:hello@olex.com">info@gmail.com</a>
+                            </li>
+                        </ul>
+
+                        <ul class="social-link">
+                            <li>
+                                <a href="#" target="_blank"><i class='bx bxl-facebook'></i></a>
+                            </li>
+                            <li>
+                                <a href="#" target="_blank"><i class='bx bxl-twitter'></i></a>
+                            </li>
+                            <li>
+                                <a href="#" target="_blank"><i class='bx bxl-instagram'></i></a>
+                            </li>
+                            <li>
+                                <a href="#" target="_blank"><i class='bx bxl-pinterest-alt'></i></a>
+                            </li>
+                            <li>
+                                <a href="#" target="_blank"><i class='bx bxl-youtube'></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-widget">
+                        <h3>لینک‌های مفید</h3>
+                        <ul class="footer-list">
+                            <li>
+                                <a href="/Home/store" target="_blank">
+                                    خانه
+                                </a>
+                            </li>
+                            <li>
+                                <a href="blog.html" target="_blank">
+                                    بلاگ
+                                </a>
+                            </li>
+                            <li>
+                                <a href="shop.html" target="_blank">
+                                    محصول
+                                </a>
+                            </li>
+                            <li>
+                                <a href="faq.html" target="_blank">
+                                    سوالات متداول
+                                </a>
+                            </li>
+                            <li>
+                                <a href="about.html" target="_blank">
+                                    درباره ما
+                                </a>
+                            </li>
+                            <li>
+                                <a href="contact.html" target="_blank">
+                                    تماس با ما
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-widget">
+                        <h3>ساعت کاری</h3>
+                        <p>
+                            کلسیم موبایل یکی از بهترین ها در زمینه فروش موبایل است ،
+                            کلسیم موبایل یکی از بهترین ها در زمینه فروش موبایل است ،
+                        </p>
+                        <ul class="footer-work-hour-list">
+                            <li>
+                                <span>شنبه-پنجشنبه:</span> 8:30 قبل‌ازظهر - 5:30 بعدازظهر
+                            </li>
+
+                            <li>
+                                <span>جمعه:</span> بسته
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="copy-right-area">
+            <div class="copy-right-text">
+                <p>
+                    طراحی شده توسط
+                    <a href="https://www.spad.co/" target="_blank">اسپاد</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer Area End -->
+
+
+
+
+
+
+
+
+
+@section script{
+    <script src="~/Content/client/assets/js/jquery-ui.min.js"></script>
+    <script>
+        function reload() {
+            window.location.href = "/Cookie/WishListTable";
+        }
+                //document.getElementById('reload').addEventListener('change', function () {
+                //    window.location.href = "/Cookie/WishListTable";
+
+                //});
+    </script>
+
+}
+

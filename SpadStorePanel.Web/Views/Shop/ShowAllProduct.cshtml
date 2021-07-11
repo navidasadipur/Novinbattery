@@ -1,0 +1,76 @@
+﻿@model IEnumerable<SpadStorePanel.Infrastructure.Dtos.Product.ProductWithPriceDto>
+
+<div class="container">
+    <div class="heading heading-center mb-3">
+        <h2 class="title text-center">پرفروش ترین محصولات</h2><!-- End .title -->
+
+        <ul class="nav nav-pills nav-border-anim justify-content-center" role="tablist">
+            <ul class="nav nav-pills nav-border-anim justify-content-center" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="top-all-link" data-toggle="tab" href="#top-all-tab"
+                       role="tab" aria-controls="top-all-tab" aria-selected="true">همه</a>
+                </li>
+                @foreach (var item in ViewBag.allCategory)
+                {
+
+                    <li class="nav-item">
+                        <a class="nav-link" id="top-id-@item.Id" data-toggle="tab" href="#id-@item.Id" role="tab"
+                           aria-controls="id-@item.Id" aria-selected="false">@item.Title</a>
+                    </li>
+                }
+            </ul>
+        </ul>
+    </div><!-- End .heading -->
+
+    <div class="tab-content">
+        @foreach (var item in Model)
+        {
+
+            <div class="tab-pane p-0 fade active show" id="id-@item.Id" role="tabpanel" aria-labelledby="top-id-@item.ProductGroupId">
+                <div class="products">
+                    <div class="row justify-content-center">
+
+                        @foreach (var item2 in Model.Where(a=>a.ProductGroupId==item.ProductGroupId))
+                        {
+
+                            <div class="col-6 col-md-4 col-lg-3 col-xl-5col">
+                                <div class="product product-11 text-center">
+                                    <figure class="product-media">
+                                        <a href="product.html">
+                                            <img src="/Files/ProductImages/Image/@item2.Image" alt="@item2.ShortTitle" class="product-image">
+                                            <!-- <img src="~/Content/Client/assets/images/demos/demo-2/products/product-7-2.jpg"
+                                            alt="تصویر محصول" class="product-image-hover"> -->
+                                        </a>
+
+                                        <div class="product-action-vertical">
+
+                                        </div><!-- End .product-action-vertical -->
+                                    </figure><!-- End .product-media -->
+
+                                    <div class="product-body">
+                                        <div class="product-cat text-center">
+                                            <a href="#">@item2.ProductGroupName</a>
+                                        </div><!-- End .product-cat -->
+                                        <h3 class="product-title text-center">
+                                            <a href="product.html">
+                                                @item2.ShortTitle
+                                            </a>
+                                        </h3>
+                                        <!-- End .product-title -->
+                                        <div class="product-price">
+                                            401,000 تومان
+                                        </div><!-- End .product-price -->
+                                    </div><!-- End .product-body -->
+                                    <div class="product-action">
+                                        <a href="#" class="btn-product btn-cart"><span>افزودن به سبد خرید</span></a>
+                                    </div><!-- End .product-action -->
+                                </div><!-- End .product -->
+                            </div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
+                        }
+
+                    </div><!-- End .row -->
+                </div><!-- End .products -->
+            </div><!-- .End .tab-pane -->
+        }
+    </div><!-- End .tab-content -->
+</div>

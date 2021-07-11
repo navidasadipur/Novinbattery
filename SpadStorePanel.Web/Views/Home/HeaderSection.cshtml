@@ -1,0 +1,124 @@
+﻿@model SpadStorePanel.Web.ViewModels.WishListModel
+<div class="navbar-area">
+    <!-- Menu For Mobile Device -->
+    <div class="mobile-nav">
+        <a href="/Home/store" class="logo">
+            <img src="~/Content/client/assets/images/logos/Hnet.com-image (5).png" alt="Logo">
+        </a>
+    </div>
+
+    <!-- Menu For Desktop Device -->
+    <div class="main-nav nav-three">
+        <div class="container">
+            <nav style="padding:0;" class="navbar navbar-expand-md navbar-light ">
+                <a class="navbar-brand" href="/Home/store">
+                    <img style="
+    width: 153px;
+    height: 60px;" src="~/Content/client/assets/images/logos/Hnet.com-image (5).png" alt="Logo">
+                </a>
+
+                <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
+                    <ul class="navbar-nav m-auto">
+                        <li class="nav-item">
+                            @Html.ActionLink("خانه", "store", "Home", null, new { @class = "nav-link" })
+                        </li>
+
+                    
+                        @Html.Action("ProductGroupMobile", "Home")
+
+
+                        <li class="nav-item">
+                            @Html.ActionLink("بلاگ", "Index", "Blog", null, new { @class = "nav-link" })
+                        </li>
+                        <li class="nav-item">
+                            <a href="faq.html" class="nav-link">
+
+                            </a>
+                            @Html.ActionLink("سوالات متداول", "Faq", "Home", null, new { @class = "nav-link" })
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="about.html" class="nav-link">
+
+                            </a>
+                            @Html.ActionLink("درباره ما", "Index", "AboutUs", null, new { @class = "nav-link" })
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="contact.html" class="nav-link">
+
+                            </a>
+                            @Html.ActionLink("تماس با ما", "Index", "CantactForm", null, new { @class = "nav-link" })
+                        </li>
+
+
+                    </ul>
+
+                    @Html.Action("CartSection", "Cookie")
+                    @Html.Action("CountWishListTable", "Cookie")
+
+
+                    @if (Request.IsAuthenticated)
+                    {
+                        <div class="nav-btn nav-other-btn">
+                            <a href="/Account/LogOff2" class="default-btn btn-dark">خروج</a>
+                        </div>
+
+
+                        <div class="nav-btn nav-other-btn">
+                            <a href="/Admin/Dashboard" class="default-btn btn-dark">ورود به پنل</a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="nav-btn nav-other-btn">
+                            <a href="/Account/Login" class="default-btn btn-bg-three">وارد شوید</a>
+                        </div>
+                    }
+
+
+
+
+
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <div class="side-nav-responsive">
+        <div class="container">
+            <div class="dot-menu">
+                <div class="circle-inner">
+                    <div class="circle circle-one"></div>
+                    <div class="circle circle-two"></div>
+                    <div class="circle circle-three"></div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="side-nav-inner">
+                    <div class="side-nav justify-content-center align-items-center">
+                        <div class="side-item">
+                            <div class="nav-other-item">
+                                <div class="cart-btn-area">
+                                    <a href="/Cookie/CardShow" class="cart-btn"><i class='bx bx-cart'></i></a>
+                                    @*<span>1</span>*@
+                                    @*@Html.Action("CartSection", "Cookie")*@
+                                </div>
+                            </div>
+
+                            <div class="nav-other-item">
+                                <div class="option-btn">
+                                    <a href="/Account/Login" class="default-btn">وارد شوید</a>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

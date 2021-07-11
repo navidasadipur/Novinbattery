@@ -1,0 +1,19 @@
+﻿@model IEnumerable<SpadStorePanel.Core.Models.ArticleCategory>
+
+<div class="side-bar-widget">
+    <h3 class="title">همه دسته‌بندی‌ها</h3>
+    <div class="side-bar-categories">
+        <ul>
+            @if (Model.Count() != 0)
+            {
+                foreach (var item in Model)
+                {
+                    <li>
+                        @*<a href="/Blog/CategoryBlogs/@item.Id">@item.Title</a>*@
+                        @Html.ActionLink(@item.Title, "CategoryBlogs", "Blog",new { @BlogCategoryId= @item.Id },null)
+                    </li>
+                }
+            }
+                </ul>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+﻿@model SpadStorePanel.Core.Models.StaticContentDetail
+@{ 
+   var Image1 = ViewBag.Image1;
+   var Image2 = ViewBag.Image2;
+}
+<div class="other-product-area pt-100 pb-70">
+    <div class="container">
+        <div class="row">
+            @if (Image1 != null)
+            {
+                <div class="col-lg-6">
+                    <div class="other-product-card">
+                        <img src="~/Files/StaticContentImages/Image/@Image1.Image" width="60%" alt="Images">
+                        <div class="content">
+                            <h3>@Image1.Title</h3>
+                        </div>
+
+                        <div class="price-title">
+                            <h2><sup>از <sup class="sup-text">99</sup></sup> 877 تومان</h2>
+                        </div>
+                    </div>
+                </div>
+            }
+            @if (Image2 != null)
+            {
+                <div class="col-lg-6">
+                    <div class="row">
+
+
+                        <div class="col-lg-12">
+                            <div class="other-product-card">
+                                <img src="~/Files/StaticContentImages/Image/@Image2.Image" width="60%" alt="Images">
+                                <div class="content">
+                                    <h3>@Image2.Title</h3>
+                                </div>
+
+                                <div class="price-title">
+                                    <h2><sup>از <sup class="sup-text">99</sup></sup> 877 تومان</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            </div>
+    </div>
+</div>

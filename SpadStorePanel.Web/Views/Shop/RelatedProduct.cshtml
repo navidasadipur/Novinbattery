@@ -1,0 +1,93 @@
+﻿@model IEnumerable<SpadStorePanel.Infrastructure.Dtos.Product.ProductWithPriceDto>
+
+
+
+@if (Model.Count() != 0)
+{
+
+
+    <div class="container">
+        <h2 class="title text-center mb-4">محصولاتی که شاید بپسندید</h2><!-- End .title text-center -->
+
+        <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow owl-rtl owl-loaded owl-drag" data-toggle="owl" data-owl-options="{
+                                    &quot;nav&quot;: false,
+                                    &quot;dots&quot;: true,
+                                    &quot;margin&quot;: 20,
+                                    &quot;loop&quot;: false,
+                                    &quot;rtl&quot;: true,
+                                &quot;responsive&quot;: {
+                                        &quot;0&quot;: {
+                                            &quot;items&quot;:1
+                                        },
+                                        &quot;480&quot;: {
+                                            &quot;items&quot;:2
+                                        },
+                                        &quot;768&quot;: {
+                                            &quot;items&quot;:3
+                                        },
+                                        &quot;992&quot;: {
+                                            &quot;items&quot;:4
+                                        },
+                                        &quot;1200&quot;: {
+                                            &quot;items&quot;:4,
+                                            &quot;nav&quot;: true,
+                                            &quot;dots&quot;: false
+                                        }
+                                    }
+                                }">
+            <!-- End .product -->
+            <!-- End .product -->
+            <!-- End .product -->
+            <!-- End .product -->
+            <!-- End .product -->
+            <div class="owl-stage-outer">
+                <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 1485px;">
+
+                    @foreach (var item in Model)
+                    {
+
+                        <div class="owl-item active" style="width: 277px; margin-left: 20px;">
+                            <div class="product product-7 text-center">
+                                <figure class="product-media">
+
+                                    <a href="/Shop/Detail/@item.Id">
+                                        <img src="~/Files/ProductImages/Image/@item.Image" alt="@item.ShortTitle" class="product-image">
+                                    </a>
+
+
+
+                                    <div class="product-action">
+                                        <a href="/Shop/Detail/@item.Id" class="btn-product btn-cart"><span>دیدن محصول</span></a>
+                                    </div><!-- End .product-action -->
+                                </figure><!-- End .product-media -->
+
+                                <div class="product-body">
+                                    <div class="product-cat text-center">
+                                        <a href="#">@item.ProductGroupName</a>
+                                    </div><!-- End .product-cat -->
+                                    <h3 class="product-title text-center">
+                                        <a href="/Shop/Detail/@item.Id">@item.ShortTitle</a>
+                                    </h3>
+                                    <!-- End .product-title -->
+                                    <div class="product-price">
+                                        @item.Price.ToString("##,###")
+                                        تومان
+                                    </div><!-- End .product-price -->
+                                    <div class="ratings-container">
+                                        <div class="ratings">
+                                            <div class="ratings-val" style="width: @(item.Rate/1)%;"></div><!-- End .ratings-val -->
+                                        </div><!-- End .ratings -->
+                                        <span class="ratings-text">( @item.Rate )</span>
+                                    </div><!-- End .rating-container -->
+
+
+                                </div><!-- End .product-body -->
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div><div class="owl-nav"><button type="button" role="presentation" class="owl-prev disabled"><i class="icon-angle-left"></i></button><button type="button" role="presentation" class="owl-next"><i class="icon-angle-right"></i></button></div><div class="owl-dots disabled"></div>
+        </div><!-- End .owl-carousel -->
+    </div><!-- End .container -->
+}

@@ -1,0 +1,384 @@
+﻿@model IEnumerable<SpadStorePanel.Web.ViewModels.ArticleListViewModel>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var productgroupid = ViewBag.ProductGroupId;
+
+}
+
+
+<!-- breadcrumb area start -->
+<section class="breadcrumb-area breadcrumb-bg extra">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-inner">
+                    <!-- breadcrumb inner -->
+                    <div class="left-content-area">
+                        <!-- left content area -->
+                        <h1 class="title">وبلاگ</h1>
+                    </div><!-- //. left content area -->
+                    <div class="right-content-area">
+                        <ul>
+                            <li><a href="/">خانه</a></li>
+                            <li>وبلاگ</li>
+                        </ul>
+                    </div>
+                </div><!-- //. breadcrumb inner -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- breadcrumb area end -->
+<div class="body-overlay" id="body-overlay"></div>
+<div class="search-popup" id="search-popup">
+    <form action="#" class="search-popup-form">
+        <div class="form-element">
+            <input type="text" class="input-field" placeholder="جستجو.....">
+        </div>
+        <button type="submit" class="submit-btn"><i class="fas fa-search"></i></button>
+    </form>
+</div>
+
+<!-- cart sidebar area start -->
+<div class="cart-sidebar-area home-3" id="cart-sidebar-area">
+    <div class="top-content">
+        <!-- top content -->
+        <a href="#" class="logo">
+            <h3 class="text-white">آقای باتری</h3>
+        </a>
+        <span class="side-sidebar-close-btn"><i class="fas fa-times"></i></span>
+    </div><!-- //. top content -->
+    <div class="bottom-content">
+        <!-- bottom content -->
+        <div class="cart-products">
+            <!-- cart product -->
+            <h4 class="title">سبد خرید</h4>
+            <h4 class="text-white">چیزی وجود ندارد</h4>
+            <div class="btn-wrapper">
+                <a href="cart.html" class="boxed-btn">بررسی و پرداخت</a>
+            </div>
+        </div> <!-- //. cart product -->
+    </div><!-- //. bottom content -->
+</div>
+<!-- cart sidebar area end -->
+<!-- blog page content area start -->
+<section class="blog-page-content-area">
+    <div class="container">
+        <div class="row">
+
+
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4 col-md-6">
+                    <div onclick=" window.location = '/Blog/BlogDetail/@item.Id' " style="cursor: pointer;"
+                         class="single-our-story-item">
+                        <!-- single our story item -->
+                        <div class="thumb">
+                            <img style="width:350px !important;height:350px !important;" src="~/Files/ArticleImages/Image/@item.Image" alt="our story">
+                        </div>
+                        <div class="conent">
+                            <span class="time">تاریخ پست</span>
+                            <a href="/Blog/BlogDetail/@item.Id">
+                                <h4 class="title">@item.Title</h4>
+                            </a>
+                            <p>
+                                @item.ShortDescription
+                            </p>
+                        </div>
+                    </div><!-- //.single our story item -->
+                </div>
+            }
+            <nav style="
+    margin: auto;
+    padding: 58px 0 0px 0;" aria-label="Page navigation">
+                <div class="d-flex justify-content-center">
+                    <ul class="pagination">
+
+                        @if (ViewBag.PageCount > 1)
+
+                        {
+                            if ((int)ViewBag.PageID > 1)
+                            {
+                                if (ViewBag.searchVal != null)
+                                {
+                                    @* Previous *@
+
+
+                                    <li class="page-item ">
+                                        <a class="page-link page-link-prev" href="?txtsearch=@ViewBag.searchVal&page=@((int)ViewBag.PageID-1)" aria-label="Previous"
+                                           tabindex="-1" aria-disabled="true">
+                                            <span aria-hidden="true">
+                                                <i class="icon-long-arrow-right"></i>
+                                            </span>قبلی
+                                        </a>
+                                    </li>
+
+                                }
+
+                                else if (ViewBag.min != null && ViewBag.max != null)
+                                {
+                                    @* Previous *@
+
+
+                                    <li class="page-item ">
+                                        <a class="page-link page-link-prev" href="?ProductGroupId=@productgroupid&max=@ViewBag.max&min=@ViewBag.min&page=@((int)ViewBag.PageID-1)" aria-label="Previous"
+                                           tabindex="-1" aria-disabled="true">
+                                            <span aria-hidden="true">
+                                                <i class="icon-long-arrow-right"></i>
+                                            </span>قبلی
+                                        </a>
+                                    </li>
+                                }
+
+                                else if (ViewBag.BrandId != null)
+                                {
+                                    @* Previous *@
+
+
+                                    <li class="page-item ">
+                                        <a class="page-link page-link-prev" href="?BrandId=@ViewBag.BrandId&ProductGroupId=@productgroupid&page=@((int)ViewBag.PageID-1)" aria-label="Previous"
+                                           tabindex="-1" aria-disabled="true">
+                                            <span aria-hidden="true">
+                                                <i class="icon-long-arrow-right"></i>
+                                            </span>قبلی
+                                        </a>
+                                    </li>
+                                }
+                                else if (ViewBag.SizeId != null)
+                                {
+                                    @* Previous *@
+
+                                    <li class="page-item ">
+                                        <a class="page-link page-link-prev" href="?SizeId=@ViewBag.SizeId&ProductGroupId=@productgroupid&page=@((int)ViewBag.PageID-1)" aria-label="Previous"
+                                           tabindex="-1" aria-disabled="true">
+                                            <span aria-hidden="true">
+                                                <i class="icon-long-arrow-right"></i>
+                                            </span>قبلی
+                                        </a>
+                                    </li>
+
+                                }
+                                else if (ViewBag.ProductGroupId != null)
+                                { @* Previous *@
+
+
+
+
+                                <li class="page-item ">
+                                    <a class="page-link page-link-prev" href="?ProductGroupId=@productgroupid&page=@((int)ViewBag.PageID-1)" aria-label="Previous"
+                                       tabindex="-1" aria-disabled="true">
+                                        <span aria-hidden="true">
+                                            <i class="icon-long-arrow-right"></i>
+                                        </span>قبلی
+                                    </a>
+                                </li>
+
+
+                            }
+                            else
+                            {
+                                @* Previous *@
+
+
+
+                                <li class="page-item ">
+                                    <a class="page-link page-link-prev" href="?page=@((int)ViewBag.PageID-1)" aria-label="Previous"
+                                       tabindex="-1" aria-disabled="true">
+                                        <span aria-hidden="true">
+                                            <i class="icon-long-arrow-right"></i>
+                                        </span>قبلی
+                                    </a>
+                                </li>
+                            }
+
+
+                        }
+
+                        for (int i = 1; i <= (ViewBag.PageCount); i++)
+                        {
+
+                            @*<span class="@(((int)ViewBag.PageID==i)?" current":"") page-numbers " aria-current="page">@i</span>*@
+                            if (ViewBag.searchVal != null)
+                            {
+
+                                <li class="page-item @(ViewBag.PageID==i?"active":"")" aria-current="page">
+                                    <a class="page-link"
+                                       href="?txtsearch=@ViewBag.searchVal&page=@i">
+                                        @i
+                                    </a>
+                                </li>
+
+                            }
+                            else if (ViewBag.min != null && ViewBag.max != null)
+                            {
+
+                                <li class="page-item @(ViewBag.PageID==i?"active":"")" aria-current="page">
+                                    <a class="page-link"
+                                       href="?ProductGroupId=@productgroupid&max=@ViewBag.max&min=@ViewBag.min&page=@i">
+                                        @i
+                                    </a>
+                                </li>
+
+                            }
+                            else if (ViewBag.BrandId != null)
+                            {
+
+
+                                <li class="page-item @(ViewBag.PageID==i?"active":"")" aria-current="page">
+                                    <a class="page-link"
+                                       href="?BrandId=@ViewBag.BrandId&ProductGroupId=@productgroupid&page=@i">
+                                        @i
+                                    </a>
+                                </li>
+                            }
+                            else if (ViewBag.SizeId != null)
+                            {
+
+
+
+                                <li class="page-item @(ViewBag.PageID==i?"active":"")" aria-current="page">
+                                    <a class="page-link"
+                                       href="?SizeId=@ViewBag.SizeId&ProductGroupId=@productgroupid&page=@i">
+                                        @i
+                                    </a>
+                                </li>
+                            }
+                            else if (ViewBag.ProductGroupId != null)
+                            {
+
+
+                                <li class="page-item @(ViewBag.PageID==i?"active":"")" aria-current="page">
+                                    <a class="page-link"
+                                       href="?ProductGroupId=@productgroupid&page=@i">
+                                        @i
+                                    </a>
+                                </li>
+
+                            }
+                            else
+                            {
+
+                                <li class="page-item @(ViewBag.PageID==i?"active":"")" aria-current="page">
+                                    <a class="page-link"
+                                       href="?page=@i">
+                                        @i
+                                    </a>
+                                </li>
+                            }
+
+
+
+                        }
+
+
+                        if ((int)ViewBag.PageID <= (int)ViewBag.PageCount - 1)
+
+                        {
+                            if (ViewBag.searchVal != null)
+                            {
+                                @* Next *@
+
+
+                                <li class="page-item">
+                                    <a class="page-link page-link-next" href="?txtsearch=@ViewBag.searchVal&page=@((int)ViewBag.PageID+1)" aria-label="Next">
+                                        بعدی <span aria-hidden="true">
+                                            <i class="icon-long-arrow-left"></i>
+                                        </span>
+                                    </a>
+                                </li>
+
+                            }
+
+                            else if (ViewBag.min != null && ViewBag.max != null)
+                            {@* Next *@
+
+
+
+                            <li class="page-item">
+                                <a class="page-link page-link-next" href="?ProductGroupId=@productgroupid&max=@ViewBag.max&min=@ViewBag.min&page=@((int)ViewBag.PageID+1)" aria-label="Next">
+                                    بعدی <span aria-hidden="true">
+                                        <i class="icon-long-arrow-left"></i>
+                                    </span>
+                                </a>
+                            </li>
+
+                        }
+                        else if (ViewBag.BrandId != null)
+                        {
+
+                            @* Next *@
+
+
+                            <li class="page-item">
+                                <a class="page-link page-link-next" href="?BrandId=@ViewBag.BrandId&ProductGroupId=@productgroupid&page=@((int)ViewBag.PageID+1)" aria-label="Next">
+                                    بعدی <span aria-hidden="true">
+                                        <i class="icon-long-arrow-left"></i>
+                                    </span>
+                                </a>
+                            </li>
+
+                        }
+
+                        else if (ViewBag.SizeId != null)
+                        {
+
+                            @* Next *@
+
+
+                            <li class="page-item">
+                                <a class="page-link page-link-next" href="?SizeId=@ViewBag.SizeId&ProductGroupId=@productgroupid&page=@((int)ViewBag.PageID+1)" aria-label="Next">
+                                    بعدی <span aria-hidden="true">
+                                        <i class="icon-long-arrow-left"></i>
+                                    </span>
+                                </a>
+                            </li>
+
+                        }
+                        else if (ViewBag.ProductGroupId != null)
+                        {
+                            @* Next *@
+
+
+
+
+                            <li class="page-item">
+                                <a class="page-link page-link-next" href="?ProductGroupId=@productgroupid&page=@((int)ViewBag.PageID+1)" aria-label="Next">
+                                    بعدی <span aria-hidden="true">
+                                        <i class="icon-long-arrow-left"></i>
+                                    </span>
+                                </a>
+                            </li>
+
+                        }
+                        else
+                        {
+                            @* Next *@
+
+
+
+                            <li class="page-item">
+                                <a class="page-link page-link-next" href="?page=@((int)ViewBag.PageID+1)" aria-label="Next">
+                                    بعدی <span aria-hidden="true">
+                                        <i class="icon-long-arrow-left"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        }
+
+
+                    }
+
+
+                }
+
+
+                    </ul>
+                </div>
+            </nav>
+
+
+
+        </div>
+    </div>
+</section>
+<!-- blog page content area end -->

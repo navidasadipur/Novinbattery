@@ -1,0 +1,23 @@
+﻿
+@model SpadStorePanel.Web.ViewModels.WishListModel
+@{
+    int i = 0;
+
+    if (Model?.WishListItems != null && Model.WishListItems.Any())
+    {
+        foreach (var item in Model.WishListItems)
+        {
+            i++;
+        }
+    }
+}
+<div class="nav-other">
+    <div class="nav-other-item">
+        <div class="cart-btn-area">
+            <a href="/Cookie/WishListTable" class="cart-btn">
+                <i class="bx bx-heart"></i>
+                <span>@i</span>
+            </a>
+        </div>
+    </div>
+</div>

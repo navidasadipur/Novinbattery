@@ -1,0 +1,32 @@
+﻿@model SpadStorePanel.Core.Models.StaticContentDetail
+@if (Model != null)
+{
+    <div class="banner-area">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-lg-4">
+                    <div class="banner-content-area">
+                        <div class="banner-content">
+                            <span>@Model.Title</span>
+                            <h1> بالاترین کیفیت با کمترین قیمت </h1>
+                            <p>@Model.ShortDescription</p>
+                            <a href="/Shop" class="default-btn btn-bg-three border-radius-5">خرید</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-8">
+                    <div class="banner-img-area">
+                        <div class="banner-img">
+                            <img src="~/Files/StaticContentImages/Image/@Model.Image" alt="Images">
+                            <div class="banner-offer-tag">
+                                <h3>60%</h3>
+                                <span>پیشنهاد</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

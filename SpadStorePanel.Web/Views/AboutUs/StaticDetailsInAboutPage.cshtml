@@ -1,0 +1,30 @@
+﻿@model List<SpadStorePanel.Core.Models.StaticContentDetail>
+
+
+<section class="about-bottom-content-area">
+    <div class="container">
+        <div class="row">
+
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-6">
+                    <div class="single-about-bottom-item">
+                        <!-- single about bottom item -->
+                        <div class="thumb">
+                            <img width="100%" height="100%" src="~/Files/StaticContentImages/Thumb/@item.Image" alt="about bottom image">
+                        </div>
+                        <div class="content">
+                            <h4 class="title">@item.Title</h4>
+                            <p>
+                                @item.ShortDescription
+                            </p>
+                        </div>
+                    </div><!-- //.single about bottom item -->
+                </div>
+
+            }
+
+        </div>
+    </div>
+</section>
+

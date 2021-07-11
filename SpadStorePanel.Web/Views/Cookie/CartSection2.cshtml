@@ -1,0 +1,27 @@
+﻿@model SpadStorePanel.Web.ViewModels.CartModel
+
+
+    <div class="dropdown cart-dropdown">
+
+
+        @{
+            int i = 0;
+
+            if (Model?.CartItems != null && Model.CartItems.Any())
+            {
+                foreach (var item in Model.CartItems)
+                {
+                    i += @item.Quantity;
+                }
+            }
+        }
+
+
+        <a href="/Cookie/CardShow" class="dropdown-toggle" role="button" data-toggle="dropdow"
+           aria-haspopup="true" aria-expanded="false" data-display="static">
+            <i class="icon-shopping-cart"></i>
+            <span class="cart-count">@i</span>
+        </a>
+
+    </div><!-- End .cart-dropdown -->
+

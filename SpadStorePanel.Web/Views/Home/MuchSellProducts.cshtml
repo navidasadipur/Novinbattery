@@ -1,0 +1,60 @@
+﻿@model IEnumerable<SpadStorePanel.Infrastructure.Dtos.Product.ProductWithPriceDto>
+
+
+
+
+<div class="container">
+    <div class="heading heading-center mb-3">
+
+        <h2 class="title text-center">پرفروش ترین محصولات</h2><!-- End .title -->
+
+    </div><!-- End .heading -->
+
+    <div class="tab-content">
+        <div class="products">
+            <div class="row justify-content-center">
+
+                @foreach (var item in Model)
+                {
+                    <div class="col-6 col-md-4 col-lg-3 col-xl-5col">
+                        <div class="product product-11 text-center">
+                            <figure class="product-media">
+                                <a href="/Shop/Detail/@item.Id">
+                                    <img src="/Files/ProductImages/Image/@item.Image" alt="@item.ShortTitle" class="product-image">
+                                    <!-- <img src="assets/images/demos/demo-2/products/product-7-2.jpg"
+                                    alt="تصویر محصول" class="product-image-hover"> -->
+                                </a>
+
+                                <div class="product-action-vertical">
+
+                                </div><!-- End .product-action-vertical -->
+                            </figure><!-- End .product-media -->
+
+                            <div class="product-body">
+                                <div class="product-cat text-center">
+                                    <a href="#">@item.ProductGroupName</a>
+                                </div><!-- End .product-cat -->
+                                <h3 class="product-title text-center">
+                                    <a href="/Shop/Detail/@item.Id">
+                                        @item.ShortTitle
+                                    </a>
+                                </h3>
+                                <!-- End .product-title -->
+                                <div class="product-price">
+                                    @item.Price.ToString("##,###")
+                                    تومان
+                                </div><!-- End .product-price -->
+                            </div><!-- End .product-body -->
+                            <div class="product-action">
+                                <a href="/Shop/Detail/@item.Id" class="btn-product btn-cart"><span>دیدن محصول</span></a>
+                            </div><!-- End .product-action -->
+                        </div><!-- End .product -->
+                    </div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
+
+                }
+
+            </div><!-- End .row -->
+        </div><!-- End .products -->
+
+    </div><!-- End .tab-content -->
+</div>

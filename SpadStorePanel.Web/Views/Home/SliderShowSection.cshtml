@@ -1,0 +1,33 @@
+﻿@model IEnumerable<SpadStorePanel.Core.Models.StaticContentDetail>
+
+
+@if (Model.Count() != 0)
+{
+
+    <div class="intro-slider-container">
+        <div class="owl-carousel owl-simple owl-light owl-nav-inside" data-toggle="owl"
+             data-owl-options='{"nav": false, "rtl": true}'>
+
+            @foreach (var item in Model)
+            {
+
+
+            <div class="intro-slide" style="background-image: url('/Files/StaticContentImages/Image/@item.Image');">
+                <div class="container intro-content">
+                    <h3 class="intro-subtitle">@item.Title</h3><!-- End .h3 intro-subtitle -->
+                    <h1 class="intro-title">@item.ShortDescription <br>@Html.Raw(item.Description)</h1><!-- End .intro-title -->
+
+                    <a href="category-market.html" class="btn btn-primary">
+                        <span>خرید</span>
+                        <i class="icon-long-arrow-left"></i>
+                    </a>
+                </div><!-- End .container intro-content -->
+            </div><!-- End .intro-slide -->
+            }
+
+        </div><!-- End .owl-carousel owl-simple -->
+
+        <span class="slider-loader text-white"></span><!-- End .slider-loader -->
+    </div><!-- End .intro-slider-container -->
+  
+}

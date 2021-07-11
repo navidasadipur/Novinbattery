@@ -1,0 +1,22 @@
+﻿@model IEnumerable<SpadStorePanel.Core.Models.ProductGroup>
+
+
+
+  
+
+    <ul class="mobile-cats-menu">
+        @if (Model.Count() != 0)
+        {
+            foreach (var item in Model.Where(a => a.ParentId == null))
+            {
+                foreach (var item2 in Model.Where(a => a.ParentId == item.Id))
+                {
+
+                    <li><a href="/Shop?ProductGroupId=@item2.Id">@item2.Title</a></li>
+
+                }
+
+            }
+        }
+
+    </ul><!-- End .mobile-cats-menu -->

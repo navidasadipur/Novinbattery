@@ -1,0 +1,33 @@
+﻿@model SpadStorePanel.Core.Models.StaticContentDetail
+
+
+
+
+
+
+<section class="about-content-area">
+    <div class="video-btn">
+        <a href="javascript:void(0)" class="video-play-btn">
+            <i style="font-size: 30px;position: absolute; bottom: 16px;left: 18px; " class="fas fa-heart"></i>
+        </a>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 remove-col-padding">
+                <div style="background-image:url('/Files/StaticContentImages/Image/@Model.Image')" class="left-content-area left-content-bg"></div>
+            </div>
+            <div class="col-lg-6 remove-col-padding">
+                <div class="right-content-area rubik gray-bg">
+                    <span class="subtitle">درباره ما</span>
+                    <h2 class="title rubik">@Model.Title</h2>
+                    <p dir="rtl" style="text-align: justify;">
+                        @Model.ShortDescription
+                    </p>
+                    <div class="btn-wrapper">
+                        <a href="/shop/" class="boxed-btn">هم اکنون سفارش دهید</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

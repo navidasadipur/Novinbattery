@@ -1,0 +1,51 @@
+﻿@model IEnumerable<SpadStorePanel.Core.Models.Faq>
+@{
+    ViewBag.Title = "Faq";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main class="main">
+    <div class="page-header text-center" style="        background-image: url('/Content/Client/assets/images/page-header-bg.jpg')">
+        <div class="container">
+            <h1 class="page-title">سوالات متداول<span>خانه</span></h1>
+        </div><!-- End .container -->
+    </div><!-- End .page-header -->
+    <nav aria-label="breadcrumb" class="breadcrumb-nav">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">خانه</a></li>
+                <li class="breadcrumb-item active" aria-current="page">سوالات متداول</li>
+            </ol>
+        </div><!-- End .container -->
+    </nav><!-- End .breadcrumb-nav -->
+
+    <div class="page-content " style="padding: 0 0 70px 0;">
+        <div dir="rtl" style="        text-align: right" class="container">
+
+            <div id="accordion">
+                @foreach (var item in Model)
+                {
+
+                    <div class="card">
+                        <div class="card-header" id="heading-@item.Id">
+                            <h5 class="mb-0">
+                                <button style="        font-size: 22px;
+        color: #000;" class="btn btn-link" data-toggle="collapse" data-target="#collapse-@item.Id" aria-expanded="true" aria-controls="collapse-@item.Id">
+                                    @item.Question
+                                </button>
+                            </h5>
+                        </div>
+
+                        <div style="        font-size: 16px;
+        color: #818181;" id="collapse-@item.Id" class="collapse " aria-labelledby="heading-@item.Id" data-parent="#accordion">
+                            <div class="card-body">
+                                @item.Answer
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+        </div>
+    </div><!-- End .page-content -->
+</main>

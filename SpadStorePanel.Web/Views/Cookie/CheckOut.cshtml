@@ -1,0 +1,127 @@
+﻿@using Microsoft.AspNet.Identity
+@using SpadStorePanel.Infrastructure.Helpers
+@model SpadStorePanel.Web.ViewModels.AddCustomerInvoceViewModel
+@{
+    SpadStorePanel.Infrastructure.Helpers.CheckPermission.CheckUserPermission();
+    ViewBag.Title = "CheckOut";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+
+}
+
+
+
+<main class="main">
+    <div class="page-header text-center" style="background-image: url('/Content/Client/assets/images/page-header-bg.jpg')">
+        <div class="container">
+            <h1 class="page-title">پرداخت<span>فروشگاه</span></h1>
+        </div><!-- End .container -->
+    </div><!-- End .page-header -->
+    <nav aria-label="breadcrumb" class="breadcrumb-nav">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">خانه</a></li>
+                <li class="breadcrumb-item active" aria-current="page">پرداخت</li>
+            </ol>
+        </div><!-- End .container -->
+    </nav><!-- End .breadcrumb-nav -->
+
+    <div class="page-content">
+        <div class="checkout">
+            <div class="container">
+                <div class="checkout-discount">
+                    @*<form action="#">
+                            <input type="text" class="form-control" required id="checkout-discount-input">
+                            <label for="checkout-discount-input" class="text-truncate">
+                                کد تخفیف دارید؟ <span>
+                                    برای
+                                    وارد کردن کد تخفیف خود اینجا کلیک کنید
+                                </span>
+                            </label>
+                        </form>*@
+                </div><!-- End .checkout-discount -->
+                @using (Html.BeginForm("Payment", "Cookie", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+
+
+                    <div class="row">
+                        <div class="col-lg-9">
+                            <h2 class="checkout-title">جزئیات صورت حساب</h2><!-- End .checkout-title -->
+                            <div class="row">
+                                <div class="col-sm-6">
+
+
+                                    @Html.LabelFor(model => model.FirstName, new { })
+                                    @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control " } })
+                                    @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "form-text text-danger" })
+
+                                </div><!-- End .col-sm-6 -->
+
+                                <div class="col-sm-6">
+
+                                    @Html.LabelFor(model => model.LastName, new { })
+                                    @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control " } })
+                                    @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "form-text text-danger" })
+
+                                </div><!-- End .col-sm-6 -->
+                            </div><!-- End .row -->
+
+
+
+
+                            <div class="row">
+                                <div class="col-sm-6">
+
+                                    @Html.LabelFor(model => model.PhoneNumber, new { })
+                                    @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control " } })
+                                    @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "form-text text-danger" })
+
+
+                                </div><!-- End .col-sm-6 -->
+
+                                <div class="col-sm-6">
+                                    @Html.LabelFor(model => model.GeoDivisionId, "محل سکونت", new { })
+                                    @Html.DropDownList("GeoDivisionId", null, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.GeoDivisionId, "", new { @class = "form-text text-danger" })
+
+                                </div><!-- End .col-sm-6 -->
+                            </div><!-- End .row -->
+                            <div class="row">
+                                <div class="col-sm-12">
+
+                                    @Html.LabelFor(model => model.Address, new { })
+                                    @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control " } })
+                                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "form-text text-danger" })
+
+
+                                </div><!-- End .col-sm-12 -->
+
+                            </div><!-- End .row -->
+
+                            <div class="row">
+                                <div class="col-sm-12">
+
+                                    @Html.LabelFor(model => model.PostalCode, new { })
+                                    @Html.EditorFor(model => model.PostalCode, new { htmlAttributes = new { @class = "form-control " } })
+                                    @Html.ValidationMessageFor(model => model.PostalCode, "", new { @class = "form-text text-danger" })
+
+                                </div><!-- End .col-sm-6 -->
+
+                            </div><!-- End .row -->
+
+
+
+                        </div><!-- End .col-lg-9 -->
+
+
+                        @Html.Action("ShowInvoce", "Cookie")
+
+
+                    </div><!-- End .row -->
+                }
+
+
+            </div><!-- End .container -->
+        </div><!-- End .checkout -->
+    </div><!-- End .page-content -->
+</main><!-- End .main -->

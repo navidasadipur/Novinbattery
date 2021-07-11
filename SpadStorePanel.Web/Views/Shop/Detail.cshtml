@@ -1,0 +1,658 @@
+﻿@model SpadStorePanel.Web.ViewModels.ProductDetailViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutProductDetail.cshtml";
+}
+
+
+
+<!-- breadcrumb area start -->
+<section class="breadcrumb-area breadcrumb-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-inner">
+                    <!-- breadcrumb inner -->
+                    <div class="left-content-area">
+                        <!-- left content area -->
+                        <h1 class="title">جزئیات محصول</h1>
+                    </div><!-- //. left content area -->
+                    <div class="right-content-area">
+                        <ul>
+                            <li><a href="/">خانه</a></li>
+                            <li>جزئیات محصول</li>
+                        </ul>
+                    </div>
+                </div><!-- //. breadcrumb inner -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- breadcrumb area end -->
+<!-- product details content area  start -->
+<div class="product-details-content-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-sm-12 ">
+
+                <!-- <div class="left-content-area"> -->
+                <!-- Swiper -->
+                <div class="swiper-container gallery-top">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="/Content/Client/pic/b1.jpg" width="100%" alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="/Content/Client/pic/b2.jpg" width="100%" alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="/Content/Client/pic/b3.jpg" width="100%" alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="/Content/Client/pic/b4.jpg" width="100%" alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="/Content/Client/pic/b5.jpg" width="100%" alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="/Content/Client/pic/b6.jpg" width="100%" alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="/Content/Client/pic/b7.jpg" width="100%" alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="/Content/Client/pic/b8.jpg" width="100%" alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="/Content/Client/pic/b9.jpg" width="100%" alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="/Content/Client/pic/b10.jpg" width="100%" alt="">
+                        </div>
+                    </div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next swiper-button-white"></div>
+                    <div class="swiper-button-prev swiper-button-white"></div>
+                </div>
+                <div class="swiper-container gallery-thumbs">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="/Content/Client/pic/b1.jpg" width="100%" alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="/Content/Client/pic/b2.jpg" width="100%" alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="/Content/Client/pic/b3.jpg" width="100%" alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="/Content/Client/pic/b4.jpg" width="100%" alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="/Content/Client/pic/b5.jpg" width="100%" alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="/Content/Client/pic/b6.jpg" width="100%" alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="/Content/Client/pic/b7.jpg" width="100%" alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="/Content/Client/pic/b8.jpg" width="100%" alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="/Content/Client/pic/b9.jpg" width="100%" alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="/Content/Client/pic/b10.jpg" width="100%" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Swiper JS -->
+                <!-- </div> -->
+            </div>
+            <div class="col-lg-6 col-sm-12">
+                <div class="right-content-area">
+                    <!-- right content area -->
+                    <div class="top-content startopProducts">
+                        <ul class="review">
+                            <li><i class="fas fa-star"></i></li>
+                            <li><i class="fas fa-star"></i></li>
+                            <li><i class="fas fa-star"></i></li>
+                            <li><i style="transform: scaleX(-1);" class="fas fa-star-half-alt"></i></li>
+                            <li><i class="far fa-star"></i></li>
+                            <li class="reviewes">23 <small>بازدید</small> </li>
+                        </ul>
+                        <span class="orders">سفارش (200+)</span>
+                    </div>
+                    <div class="bottom-content">
+                        <h3 class="title">باتری ماشین</h3>
+                        <div class="price-area">
+                            <div class="left">
+                                <span class="sprice">460 تومان</span>
+                                <span class="dprice"><del>689 تومان</del></span>
+                            </div>
+
+                        </div>
+                        <ul class="product-spec">
+                            <li>برند: <span class="right">باتری ماشین </span></li>
+                            <li>کد محصول: <span class="right">d12</span></li>
+                            <li>ولت: <span class="right">120 </span></li>
+                            <li>موجود: <span class="right base-color">موجود است </span></li>
+                        </ul>
+                        <div class="pdescription">
+                            <h4 class="title">توضیح</h4>
+                            <p>
+                                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                گرافیک است.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
+                                طراحان گرافیک است.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+                                استفاده از طراحان گرافیک است...
+                            </p>
+
+                        </div>
+                        <div class="paction">
+                            <div class="qty">
+                                <ul>
+                                    <li><span class="qtminus"><i class="fas fa-minus"></i></span></li>
+                                    <li><span class="qttotal">1</span></li>
+                                    <li><span class="qtplus"><i class="fas fa-plus"></i></span></li>
+                                </ul>
+                            </div>
+                            <ul class="activities">
+                                <li><a href="#"><i class="fas fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fas fa-hourglass"></i></a></li>
+                                <li><a href="#"><i class="fas fa-share-square"></i></a></li>
+                            </ul>
+                            <div class="btn-wrapper">
+                                <a onclick=" buyingInShop() " href="javascript:void(0);" class="boxed-btn">
+                                    افزودن به
+                                    سبد
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- //. right content area -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="product-details-area">
+                    <div class="product-details-tab-nav">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="item-review-tab" data-toggle="tab"
+                                   href="#item_review" role="tab" aria-controls="item_review"
+                                   aria-selected="true">بررسی</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="descr-tab" data-toggle="tab" href="#descr" role="tab"
+                                   aria-controls="descr" aria-selected="false">توضیحات</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="method-tab" data-toggle="tab" href="#method" role="tab"
+                                   aria-controls="method" aria-selected="false">ویژگی ها</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="item_review" role="tabpanel"
+                             aria-labelledby="item-review-tab">
+                            <div class="item_review_content">
+                                <h4 class="title">مشخصات فنی</h4>
+                                <ul class="product-specification">
+                                    <!-- product specification -->
+                                    <li>
+                                        <div class="single-spec">
+                                            <!-- single specification -->
+                                            <span class="heading">برند</span>
+                                            <span class="details">صبا باتری</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="single-spec">
+                                            <!-- single specification -->
+                                            <span class="heading">ارتفاع مورد</span>
+                                            <span class="details">30 سانتی متر</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="single-spec">
+                                            <!-- single specification -->
+                                            <span class="heading">عرض مورد</span>
+                                            <span class="details">30 سانتی متر</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="single-spec">
+                                            <!-- single specification -->
+                                            <span class="heading">وزن مورد</span>
+                                            <span class="details">20 کیلوگرم</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="single-spec">
+                                            <!-- single specification -->
+                                            <span class="heading">کد مدل مورد</span>
+                                            <span class="details">MF841HN/A</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="single-spec">
+                                            <!-- single specification -->
+                                            <span class="heading">کشور سازنده</span>
+                                            <span class="details">ایران</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="single-spec">
+                                            <!-- single specification -->
+                                            <span class="heading">مناسب برای خودرو های</span>
+                                            <span class="details">ایرانی ، کره ای</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="single-spec">
+                                            <!-- single specification -->
+                                            <span class="heading">ولتاژ</span>
+                                            <span class="details">120 ولت</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="single-spec">
+                                            <!-- single specification -->
+                                            <span class="heading">طول عمر</span>
+                                            <span class="details">9 ماه</span>
+                                        </div>
+                                    </li>
+                                </ul><!-- //.product specification -->
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="descr" role="tabpanel" aria-labelledby="descr-tab">
+                            <div class="descr-tab-content">
+                                <h4 class="title">توضیحات محصول</h4>
+                                <p>
+                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                    گرافیک است.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+                                    استفاده از طراحان گرافیک است.
+                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                    گرافیک است.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+                                    استفاده از طراحان گرافیک است.
+                                </p>
+                                <p>
+                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                    گرافیک است.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+                                    استفاده از طراحان گرافیک است.
+                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                    گرافیک است.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+                                    استفاده از طراحان گرافیک است.
+                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                    گرافیک است.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+                                    استفاده از طراحان گرافیک است.
+                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                    گرافیک است.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+                                    استفاده از طراحان گرافیک است.
+                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                    گرافیک است...
+                                </p>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="method" role="tabpanel" aria-labelledby="method-tab">
+                            <div class="more-feature-content">
+                                <h4 class="title">دیگر ویژگی ها</h4>
+                                <div class="feature-list-wrapper">
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-6">
+                                            <ul class="features-list">
+                                                <li><i class="fas fa-check"></i> 24/7 پشتیبانی آنلاین</li>
+                                                <li><i class="fas fa-check"></i> 24/7 پشتیبانی آنلاین</li>
+                                                <li><i class="fas fa-check"></i> 24/7 پشتیبانی آنلاین</li>
+                                                <li><i class="fas fa-check"></i> 24/7 پشتیبانی آنلاین</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-lg-3 col-md-6">
+                                            <ul class="features-list">
+                                                <li><i class="fas fa-check"></i> ارسال رایگان</li>
+                                                <li><i class="fas fa-check"></i> ارسال رایگان</li>
+                                                <li><i class="fas fa-check"></i> ارسال رایگان</li>
+                                                <li><i class="fas fa-check"></i> ارسال رایگان</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-lg-3 col-md-6">
+                                            <ul class="features-list">
+                                                <li><i class="fas fa-check"></i> کیفیت عالی</li>
+                                                <li><i class="fas fa-check"></i> کیفیت عالی</li>
+                                                <li><i class="fas fa-check"></i> کیفیت عالی</li>
+                                                <li><i class="fas fa-check"></i> کیفیت عالی</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-lg-3 col-md-6">
+                                            <ul class="features-list">
+                                                <li><i class="fas fa-check"></i> نصب ساده و آسان</li>
+                                                <li><i class="fas fa-check"></i> نصب ساده و آسان</li>
+                                                <li><i class="fas fa-check"></i> نصب ساده و آسان</li>
+                                                <li><i class="fas fa-check"></i> نصب ساده و آسان</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p>
+                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                    گرافیک است.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+                                    استفاده از طراحان گرافیک است.
+                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                    گرافیک است.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+                                    استفاده از طراحان گرافیک است.
+                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                    گرافیک است.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+                                    استفاده از طراحان گرافیک است.
+                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                    گرافیک است.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+                                    استفاده از طراحان گرافیک است...
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- product details content area end -->
+<!-- recently added start -->
+<div class="recently-added-area product-details">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="recently-added-nav-menu">
+                    <!-- recently added nav menu -->
+                    <ul>
+                        <li>به تازگی اضافه شده</li>
+                    </ul>
+                </div><!-- //.recently added nav menu -->
+            </div>
+            <div class="col-lg-12">
+                <div class="recently-added-carousel" id="recently-added-carousel">
+                    <!-- recently added carousel -->
+                    <div onclick=" window.location = 'product-details.html' " style="cursor: pointer;"
+                         class="single-new-collection-item">
+                        <div class="thumb">
+                            <img src="/Content/Client/pic/b1.jpg" alt="product image">
+                            <div class="hover">
+                                <a href="product-details.html" class="addtocart">دیدن محصول</a>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <h4 class="title">باتری ماشین</h4>
+                            <div dir="rtl" class="price mt-3">
+                                <span class="sprice">10.00 تومان</span> <del class="dprice">
+                                    47.00
+                                    تومان
+                                </del>
+                            </div>
+                        </div>
+                    </div>
+                    <div onclick=" window.location = 'product-details.html' " style="cursor: pointer;"
+                         class="single-new-collection-item">
+                        <div class="thumb">
+                            <img src="/Content/Client/pic/b2.jpg" alt="product image">
+                            <div class="hover">
+                                <a href="product-details.html" class="addtocart">دیدن محصول</a>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <h4 class="title">باتری ماشین</h4>
+                            <div dir="rtl" class="price mt-3">
+                                <span class="sprice">30.00 تومان</span> <del class="dprice">
+                                    45.00
+                                    تومان
+                                </del>
+                            </div>
+                        </div>
+                    </div>
+                    <div onclick=" window.location = 'product-details.html' " style="cursor: pointer;"
+                         class="single-new-collection-item">
+                        <div class="thumb">
+                            <img src="/Content/Client/pic/b3.jpg" alt="product image">
+                            <div class="hover">
+                                <a href="product-details.html" class="addtocart">دیدن محصول</a>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <h4 class="title">باتری ماشین</h4>
+                            <div dir="rtl" class="price mt-3">
+                                <span class="sprice">70.00 تومان</span> <del class="dprice">
+                                    120.00
+                                    تومان
+                                </del>
+                            </div>
+                        </div>
+                    </div>
+                    <div onclick=" window.location = 'product-details.html' " style="cursor: pointer;"
+                         class="single-new-collection-item">
+                        <div class="thumb">
+                            <img src="/Content/Client/pic/b4.jpg" alt="product image">
+                            <div class="hover">
+                                <a href="product-details.html" class="addtocart">دیدن محصول</a>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <h4 class="title">باتری ماشین</h4>
+                            <div dir="rtl" class="price mt-3">
+                                <span class="sprice">89.00 تومان</span> <del class="dprice">
+                                    156.00
+                                    تومان
+                                </del>
+                            </div>
+                        </div>
+                    </div>
+                    <div onclick=" window.location = 'product-details.html' " style="cursor: pointer;"
+                         class="single-new-collection-item">
+                        <div class="thumb">
+                            <img src="/Content/Client/pic/b5.jpg" alt="product image">
+                            <div class="hover">
+                                <a href="product-details.html" class="addtocart">دیدن محصول</a>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <h4 class="title">باتری ماشین</h4>
+                            <div dir="rtl" class="price mt-3">
+                                <span class="sprice">70.00 تومان</span> <del class="dprice">
+                                    90.00
+                                    تومان
+                                </del>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- //. recently added carousel -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- recently added end -->
+<div class="body-overlay" id="body-overlay"></div>
+<div class="search-popup" id="search-popup">
+    <form action="#" class="search-popup-form">
+        <div class="form-element">
+            <input type="text" class="input-field" placeholder="جستجو.....">
+        </div>
+        <button type="submit" class="submit-btn"><i class="fas fa-search"></i></button>
+    </form>
+</div>
+
+<!-- cart sidebar area start -->
+<div class="cart-sidebar-area home-3" id="cart-sidebar-area">
+    <div class="top-content">
+        <!-- top content -->
+        <a href="#" class="logo">
+            <h3 class="text-white">آقای باتری</h3>
+        </a>
+        <span class="side-sidebar-close-btn"><i class="fas fa-times"></i></span>
+    </div><!-- //. top content -->
+    <div class="bottom-content">
+        <!-- bottom content -->
+        <div class="cart-products">
+            <!-- cart product -->
+            <h4 class="title">سبد خرید</h4>
+            <div class="single-product-item" style="display: none;" id="shopProducts1">
+                <!-- single product item -->
+                <div class="thumb">
+                    <img src="/Content/Client/pic/b1.jpg" width="80px" height="80px" alt="recent review">
+                </div>
+                <div class="content">
+                    <h4 class="title">باتری ماشین</h4>
+                    <div class="price">
+                        <span class="pprice text-white">350.00 تومان</span> <del class="dprice"
+                                                                                 style="color: #c25f5f;">
+                            500.00
+                            تومان
+                        </del>
+                    </div>
+                    <a href="#" class="remove-cart" onclick=" deleteINShop() ">حذف</a>
+                </div>
+            </div><!-- //. single product item -->
+
+            <div class="single-product-item" style="display: none;" id="shopProducts2">
+                <!-- single product item -->
+                <div class="thumb">
+                    <img src="/Content/Client/pic/b2.jpg" width="80px" height="80px" alt="recent review">
+                </div>
+                <div class="content">
+                    <h4 class="title">باتری ماشین</h4>
+                    <div class="price">
+                        <span class="pprice text-white">350.00 تومان</span> <del class="dprice"
+                                                                                 style="color: #c25f5f;">
+                            500.00
+                            تومان
+                        </del>
+                    </div>
+                    <a href="#" class="remove-cart" onclick=" deleteINShop() ">حذف</a>
+                </div>
+            </div><!-- //. single product item -->
+
+            <div class="single-product-item" style="display: none;" id="shopProducts3">
+                <!-- single product item -->
+                <div class="thumb">
+                    <img src="/Content/Client/pic/b3.jpg" width="80px" height="80px" alt="recent review">
+                </div>
+                <div class="content">
+                    <h4 class="title">باتری ماشین</h4>
+                    <div class="price">
+                        <span class="pprice text-white">350.00 تومان</span> <del class="dprice"
+                                                                                 style="color: #c25f5f;">
+                            500.00
+                            تومان
+                        </del>
+                    </div>
+                    <a href="#" class="remove-cart" onclick=" deleteINShop() ">حذف</a>
+                </div>
+            </div><!-- //. single product item -->
+            <div class="btn-wrapper">
+                <a href="cart.html" class="boxed-btn">بررسی و پرداخت</a>
+            </div>
+        </div> <!-- //. cart product -->
+    </div><!-- //. bottom content -->
+</div>
+<!-- cart sidebar area end -->
+
+@section scripts{
+    <script>
+        function AddToCartD(id, mainFeature) {
+            $("#preloader").show();
+            var mainFeatureId = null;
+            if (mainFeature != null) {
+                mainFeatureId = mainFeature;
+            }
+            if (mainFeatureId === null) {
+                $.ajax({
+                    type: 'POST',
+                    url: '/Cookie/AddToCart?productId=' + id,
+                    success: function (data) {
+                        window.location.href = "/Shop/Detail?id=" + id;
+
+                    },
+                    error: function (data) {
+                        console.log("error");
+                        console.log(data);
+                    },
+                    complete: function () {
+                        $("#preloader").fadeOut(1000);
+                    }
+                });
+            } else {
+                $.ajax({
+                    type: 'POST',
+                    url: '/Cookie/AddToCart?productId=' + id + '&mainFeatureId=' + mainFeatureId,
+                    success: function (data) {
+                        GetCart();
+                    },
+                    error: function (data) {
+                        console.log("error");
+                        console.log(data);
+                    },
+                    complete: function () {
+                        $("#preloader").fadeOut(1000);
+                    }
+                });
+            }
+        }
+    </script>
+
+    <script>
+        function AddToWishListD(id) {
+            $("#loading").show();
+            $.ajax({
+                type: 'POST',
+                url: '/Cookie/AddToWishList?productId=' + id,
+                success: function (data) {
+                    //   var t = ".product_" + id;
+                    //$(t).css("color", "red");
+                    //relod();
+                    window.location.href = "/Cookie/WishListTable";
+                },
+                error: function (data) {
+                    console.log("error");
+                    console.log(data);
+                },
+                complete: function () {
+                    $("#loading").fadeOut(1000);
+                }
+            });
+        }
+    </script>
+
+    <script>
+        function submitFormpr() {
+            // Initiate Variables With Form Content
+
+            var email = $("#emailpr").val();
+            var name = $("#namepr").val();
+            var message = $("#messagepr").val();
+            var ProductId = $("#ProductId").val();
+            var Rate = $("#ratepr").val() * 10;
+
+            $.ajax({
+                type: "POST",
+                url: "/Shop/RegisterCommentProduct",
+                data: "Email=" + email + "&Name=" + name + "&Message=" + message + "&ProductId=" + ProductId + "&Rate=" + Rate,
+                success: function (text) {
+                    if (text == "success") {
+
+                        $("#submitButtonpr").css("background-color", "green");
+                        $("#submitButtonpr").text("ثبت شد");
+                        $("#emailpr").val("");
+                        $("#namepr").val("");
+                        $("#messagepr").val("");
+                        $("#Rate").val("");
+                        location.reload(true);
+
+                    } else {
+                        $("#submitButtonpr").css("background-color", "red");
+                        $("#submitButtonpr").text("خطا");
+                    }
+                }
+            });
+        }
+
+    </script>
+}

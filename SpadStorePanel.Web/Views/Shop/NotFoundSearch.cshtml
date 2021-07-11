@@ -1,0 +1,61 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutD.cshtml";
+
+}
+
+
+<div class="preloader">
+    <div class="spinner">
+        <div class="dot1"></div>
+        <div class="dot2"></div>
+    </div>
+</div>
+
+<!-- Start Navbar Area -->
+@Html.Action("HeaderSection", "Home")
+<!-- End Navbar Area -->
+<!-- Inner Banner Area -->
+<div class="inner-banner-area">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="inner-banner-content">
+                    <h2>صفحه 404</h2>
+                    <ul>
+                        <li><a href="/Home/store">خانه</a></li>
+                        <li><i class='bx bx-chevron-left'></i></li>
+                        <li><a href="#" class="active">404</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="inner-banner-img">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Inner Banner Area End -->
+<!-- Start 404 Error -->
+<div class="error-area">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="container">
+                <div class="error-content">
+                    <img src="~/Content/client/assets/images/404-error.jpg" alt="Image">
+                    <h3>اوه، این صفحه پیدا نشد</h3>
+                    <p>
+                        صفحه ای که به دنبال آن هستید ممکن است در صورت تغییر نام آن حذف شده باشد یا به طور موقت در
+                        دسترس نباشد.
+                    </p>
+                    <a href="/Home/store" class="default-btn btn-bg-three">
+                        برگشت به صفحه خانه
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End 404 Error -->

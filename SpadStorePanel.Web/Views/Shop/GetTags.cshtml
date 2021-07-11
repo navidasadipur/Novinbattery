@@ -1,0 +1,32 @@
+﻿@model IEnumerable<SpadStorePanel.Core.Models.ArticleTag>
+
+
+<div class="widget">
+    <h3 class="widget-title">
+        <a class="collapsed" data-toggle="collapse" href="#widget-6" role="button"
+           aria-expanded="false" aria-controls="widget-6">
+            برچسب ها
+        </a>
+    </h3>
+
+    <div class="widget-body collapse" id="widget-6">
+        <div class="filter-items row">
+
+            @if (Model.Count() != 0)
+            {
+                foreach (var item in Model)
+                {
+
+                    <div class="filter-item col-6">
+                        <div class="custom-control custom-checkbox">
+
+                            <span class="">@item.Title</span>
+                        </div><!-- End .custom-checkbox -->
+                    </div>
+                }
+            }
+
+
+        </div><!-- End .filter-items -->
+    </div><!-- End .widget-body -->
+</div><!-- End .widget -->

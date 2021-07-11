@@ -1,0 +1,17 @@
+﻿@model IEnumerable<SpadStorePanel.Core.Models.Product>
+    @{ int j = 1;}
+@foreach (var item in Model)
+{
+    <div class="sub-menu" data-item="@ViewBag.i">
+
+        <div class="accessories-sub-item" data-item="@j">
+            <a href="/Shop/Detail/@item.Id">
+                <img src="~/Files/ProductImages/Thumb/@item.Image" class="accessories-img" alt="">
+            </a>
+        </div>
+
+    </div>
+    j++;
+}
+
+

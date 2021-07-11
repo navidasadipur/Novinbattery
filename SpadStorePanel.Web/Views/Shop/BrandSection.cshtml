@@ -1,0 +1,33 @@
+﻿@model IEnumerable<SpadStorePanel.Core.Models.Brand>
+
+
+<div class="widget">
+    <h3 class="widget-title">
+        <a class="collapsed" data-toggle="collapse" href="#widget-4" role="button"
+           aria-expanded="true" aria-controls="widget-4">
+            برند
+        </a>
+    </h3><!-- End .widget-title -->
+
+    <div class="collapse " id="widget-4">
+        <div class="widget-body">
+            <div class="filter-items row">
+
+                @foreach (var item in Model)
+                {
+
+                    <div class="filter-item col-6">
+                        <div class="custom-control custom-checkbox">
+                            <input onclick=" window.location.href = '/Shop/GetByBrand?BrandId=@item.Id&ProductGroupId=@ViewBag.ProductGroupId' " type="checkbox" class="custom-control-input"
+                                   id="brand-@item.Id">
+                            <label class="custom-control-label" for="brand-@item.Id">@item.Name</label>
+                        </div><!-- End .custom-checkbox -->
+                    </div><!-- End .filter-item -->
+
+                }
+
+
+            </div><!-- End .filter-items -->
+        </div><!-- End .widget-body -->
+    </div><!-- End .collapse -->
+</div><!-- End .widget -->

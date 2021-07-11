@@ -1,0 +1,64 @@
+﻿@model SpadStorePanel.Web.ViewModels.CartModel
+@{
+    long defaultquantity = 1;
+}
+
+
+<aside class="col-lg-3">
+    <div class="summary">
+        <h3 class="summary-title">سفارش شما</h3><!-- End .summary-title -->
+
+        <table class="table table-summary">
+            <thead>
+                <tr>
+                    <th>نام</th>
+                    <th class="text-left">قیمت</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+
+                @if (Model?.CartItems != null && Model.CartItems.Any())
+                {
+                    foreach (var item in Model.CartItems)
+                    {
+
+                        defaultquantity = @item.Price * @item.Quantity;
+
+
+                        <tr>
+                            <td>
+                                @item.ProductName
+                            </td>
+                            <td class="text-left">
+                                @defaultquantity.ToString("##,###")
+                            </td>
+                        </tr>
+                    }
+                }
+
+
+                <tr>
+                    <td>
+                        جمع سبد خرید
+                    </td>
+                    <td class="text-left">
+                        @Model.TotalPrice.ToString("##,###")
+                    </td>
+                </tr>
+
+            </tbody>
+        </table><!-- End .table table-summary -->
+
+
+        <div class="accordion-summary " style="border-top: .1rem solid #ebebeb;" id="accordion-payment">
+           
+
+            <button type="submit" class="btn btn-outline-primary-2 btn-order btn-block mt-3">
+                <span class="btn-text">ثبت</span>
+                <span class="btn-hover-text">پرداخت</span>
+            </button>
+
+        </div><!-- End .summary -->
+</aside><!-- End .col-lg-3 -->

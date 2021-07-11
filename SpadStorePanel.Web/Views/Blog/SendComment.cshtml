@@ -1,0 +1,50 @@
+﻿
+<div class="comments-form">
+    <h3 class="title">نظر بدهید</h3>
+    <div class="contact-form">
+        <form id="contactForm">
+            <input type="hidden" id="ArticleId" name="ArticleId" value="@ViewBag.ArticleId">
+            <input type="hidden" id="ParentId" name="ParentId" value="">
+            <div class="row">
+                <div class="col-lg-6 col-sm-6">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" class="form-control" required
+                               data-error="لطفا نام خود را وارد نمایید" placeholder="نام">
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-sm-6">
+                    <div class="form-group">
+                        <input type="email" id="email3" name="email3" class="form-control"
+                               required data-error="لطفا ایمیل خود را وارد کنید"
+                               placeholder="ایمیل">
+                    </div>
+                </div>
+
+                @*<div class="col-lg-12 col-sm-12">
+                <div class="form-group">
+                    <input type="text" name="websit" class="form-control" required
+                           data-error="وب سایت شما" placeholder="وب سایت شما">
+                </div>
+            </div>*@
+
+                <div class="col-lg-12 col-md-12">
+                    <div class="form-group">
+                        <textarea  class="form-control" id="message" name="message" cols="30"
+                                  rows="8" required data-error="پیام خود را بنویسید"
+                                  placeholder="پیام شما"></textarea>
+                    </div>
+                </div>
+
+
+
+                <div class="col-lg-12 col-md-12">
+                    <button type="button" class="default-btn btn-bg-three" id="submitButton" onclick="submitForm()">
+                        نظر دادن
+                    </button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>

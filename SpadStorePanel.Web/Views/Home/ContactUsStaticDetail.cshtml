@@ -1,0 +1,29 @@
+﻿
+@model List<SpadStorePanel.Core.Models.StaticContentDetail>
+
+
+<div class="left-content-area">
+    <div class="inner-section-title">
+        <span class="subtitle">تماس با ما</span>
+        <h2 class="title">با ما در ارتباط باشید</h2>
+    </div>
+    <ul>
+
+        @foreach (var item in Model)
+        {
+            <li>
+                <div class="single-contact-info-item">
+                    <!-- single contact info item -->
+                    <div class="icon">
+                        <i class="fas @item.Image"></i>
+                    </div>
+                    <div class="content">
+                        <span class="subtitle">@item.Title</span>
+                        <span class="title"> @item.ShortDescription</span>
+                    </div>
+                </div><!-- //.single contact info item -->
+            </li>
+        }
+
+    </ul>
+</div>

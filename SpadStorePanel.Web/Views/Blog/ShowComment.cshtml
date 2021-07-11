@@ -1,0 +1,33 @@
+﻿@model IEnumerable<SpadStorePanel.Core.Models.ArticleComment>
+@{
+    int i = 1;
+}
+
+
+
+
+<div class="comments-area">
+    <!-- comments area satart -->
+    <h3 class="title">نظرات</h3>
+
+    @foreach (var item in Model)
+    {
+
+        <div class="single-comment-item margin-bottom-40">
+            <!-- single comment item -->
+            <div class="thumb">
+                <img width="80px" height="70px" src="~/Content/client/pic/vectors/user.png"
+                     alt="commente avatar">
+            </div>
+            <div class="content">
+                <span class="meta-date">@item.AddedDate</span>
+                <h4 class="author-name">@item.Name</h4>
+                <p>
+                    @item.Message
+                </p>
+            </div>
+
+        </div><!-- //. single comment item -->
+    }
+
+</div><!-- //. comments area end -->

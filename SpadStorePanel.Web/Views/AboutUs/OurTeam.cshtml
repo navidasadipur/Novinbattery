@@ -1,0 +1,47 @@
+﻿@model IEnumerable<SpadStorePanel.Core.Models.OurTeam>
+
+
+
+
+
+<section class="team-member-area half-bg">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="section-title-two rubik white">
+                    <!-- section title two -->
+                    <h2 class="title">تیم ما</h2>
+                </div><!-- //. section title two -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="team-carousel" id="team-carousel">
+                    <!-- team member carusel -->
+
+                  @foreach(var item in Model)
+                  {
+                        <div class="sinlge-team-member">
+                        <!-- single team member -->
+                        <div class="thumb">
+                            <img style="height:500px !important;" src="~/Files/OurTeamImages/@item.Image" alt="@item.Title">
+                            <div class="hover">
+                                <ul class="social-share">
+                                    <li><a href="@item.FaceBook"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="@item.Twiter"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="@item.Instagram"><i class="fab fa-instagram"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <h4 class="title">@item.Title </h4>
+                            <span class="post">@item.Role</span>
+                        </div>
+                    </div>
+                  }
+
+                </div><!-- //.team member carusel -->
+            </div>
+        </div>
+    </div>
+</section>

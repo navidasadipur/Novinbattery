@@ -1,0 +1,75 @@
+﻿
+@model IEnumerable<SpadStorePanel.Infrastructure.Dtos.Product.ProductWithPriceDto>
+
+
+<h2 class="title title-border">محصولات جدید</h2><!-- End .title -->
+
+<div class="owl-carousel owl-simple owl-nav-top carousel-equal-height carousel-with-shadow"
+     data-toggle="owl" data-owl-options='{
+                                    "nav": true,
+                                    "dots": false,
+                                    "margin": 20,
+                                    "loop": false,
+                                    "rtl": true,
+                            "responsive": {
+                                        "0": {
+                                            "items":2
+                                        },
+                                        "480": {
+                                            "items":2
+                                        },
+                                        "768": {
+                                            "items":3
+                                        },
+                                        "1200": {
+                                            "items":4
+                                        }
+                                    }
+                                }'>
+
+    @foreach (var item in Model)
+    {
+
+        <div class="product">
+            <figure class="product-media">
+
+                <a href="/Shop/Detail/@item.Id">
+                    <img src="/Files/ProductImages/Image/@item.Image" alt="@item.ShortTitle" class="product-image">
+                </a>
+
+
+                <div class="product-action">
+                    <a href="/Shop/Detail/@item.Id" class="btn-product btn-cart"
+                       title="دیدن محصول">
+                        <span>
+                            دیدن محصول
+                        </span>
+                    </a>
+                </div><!-- End .product-action -->
+            </figure><!-- End .product-media -->
+
+            <div class="product-body">
+                <div class="product-cat">
+                    <a href="#">@item.ProductGroupName</a>
+                </div><!-- End .product-cat -->
+                <h3 class="product-title">
+                    <a href="/Shop/Detail/@item.Id">
+                        @item.ShortTitle
+                    </a>
+                </h3><!-- End .product-title -->
+                <div class="product-price">
+                    @item.Price.ToString("##,###")
+                    تومان
+                </div><!-- End .product-price -->
+                <div class="ratings-container">
+                    <div class="ratings">
+                        <div class="ratings-val" style="width: @(item.Rate/1)%"></div>
+                        <!-- End .ratings-val -->
+                    </div><!-- End .ratings -->
+                    <span class="ratings-text">( @item.Rate )</span>
+                </div><!-- End .rating-container -->
+            </div><!-- End .product-body -->
+        </div><!-- End .product -->
+    }
+
+</div><!-- End .owl-carousel -->

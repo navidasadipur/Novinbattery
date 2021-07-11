@@ -1,0 +1,31 @@
+﻿@model IEnumerable<SpadStorePanel.Core.Models.ProductComment>
+@foreach (var item in Model)
+{
+
+
+    <div class="review">
+        <div class="row no-gutters">
+            <div class="col-auto">
+                <h4><a href="#">@item.Name</a></h4>
+                <div class="ratings-container">
+                    <div class="ratings">
+                        <div class="ratings-val" style="width: @(item.Rate/1)%;"></div>
+                        <!-- End .ratings-val -->
+                    </div><!-- End .ratings -->
+                </div><!-- End .rating-container -->
+                <span class="review-date">@item.AddedDate</span>
+            </div><!-- End .col -->
+            <div class="col-12">
+                @*<h4>خیلی عالی</h4>*@
+
+                <div class="review-content">
+                    <p>
+                        @item.Message
+                    </p>
+                </div><!-- End .review-content -->
+
+            </div><!-- End .col-auto -->
+        </div><!-- End .row -->
+    </div><!-- End .review -->
+
+}

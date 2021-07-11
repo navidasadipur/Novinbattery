@@ -1,0 +1,94 @@
+﻿@model SpadStorePanel.Web.ViewModels.RegisterViewModel
+
+
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+
+    <div class="form-group">
+
+        @Html.LabelFor(m => m.Email)
+        @Html.TextBoxFor(m => m.Email, new
+   {
+
+       @class = "form-control",
+       @id = "register-email-2",
+       @name = "register-email",
+       placeholder = "ایمیل خود را وارد کنید"
+   })
+    </div><!-- End .form-group -->
+
+    <div class="form-group">
+
+        @Html.LabelFor(m => m.Password)
+        @Html.PasswordFor(m => m.Password, new
+        {
+            @class = "form-control",
+            @id = "register-password-2",
+            @name = "register-password",
+            type = "Password",
+            placeholder = "رمز عبور خود را وارد کنید"
+        })
+
+        <div style="display:flex;margin-top:8px;">
+            <p>
+                <span style="color:red">
+                    *
+                </span>
+                رمز عبور باید دارای 
+                <span style="color:#e34d4d;">یک حرف بزرگ انگلیسی</span>
+                و 
+                <span style="color:#e34d4d;">یک کاراکتر خاص مانند (@@)</span>
+                باشد
+            </p>
+        </div>
+    </div><!-- End .form-group -->
+
+    <div class="form-footer">
+        <button type="submit" class="btn btn-outline-primary-2">
+            <span>ثبت نام</span>
+            <i class="icon-long-arrow-left"></i>
+        </button>
+
+    </div><!-- End .form-footer -->
+
+
+}
+
+
+@*<form action="#">
+        <div class="form-group">
+            <label for="register-email">آدرس ایمیل شما *</label>
+            <input type="email" class="form-control" id="register-email"
+                   name="register-email" required>
+        </div><!-- End .form-group -->
+
+        <div class="form-group">
+            <label for="register-password">رمز عبور *</label>
+            <input type="password" class="form-control" id="register-password"
+                   name="register-password" required>
+        </div><!-- End .form-group -->
+
+        <div class="form-footer">
+            <button type="submit" class="btn btn-outline-primary-2">
+                <span>ثبت نام</span>
+                <i class="icon-long-arrow-left"></i>
+            </button>
+
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="register-policy"
+                       required>
+                <label class="custom-control-label" for="register-policy">
+                    با
+                    <a href="single-fullwidth.html">قوانین و مقررات </a>موافقم *
+                </label>
+            </div><!-- End .custom-checkbox -->
+        </div><!-- End .form-footer -->
+    </form>*@
+
+@section script {
+    @Scripts.Render("~/bundles/jqueryval")
+}
