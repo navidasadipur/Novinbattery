@@ -8,24 +8,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> باتری </title>
     <!-- favicon -->
-    @*<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">*@
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <!-- bootstrap -->
     <link rel="stylesheet" href="/Content/Client/assets/css/bootstrap.min.css">
     <!-- icofont -->
     <link rel="stylesheet" href="/Content/Client/assets/css/fontawesome.min.css">
-    <!-- select 2  -->
-    <link rel="stylesheet" href="/Content/Client/assets/css/select2.min.css">
     <!-- animate.css -->
     <link rel="stylesheet" href="/Content/Client/assets/css/animate.css">
+    <!-- select 2  -->
+    <link rel="stylesheet" href="/Content/Client/assets/css/select2.min.css">
     <!-- Owl Carousel -->
     <link rel="stylesheet" href="/Content/Client/assets/css/owl.carousel.min.css">
     <!-- magnific popup -->
     <link rel="stylesheet" href="/Content/Client/assets/css/magnific-popup.css">
+    <!-- flaticon -->
+    <link rel="stylesheet" href="/Content/Client/assets/css/flaticon.css">
     <!-- stylesheet -->
     <link rel="stylesheet" href="/Content/Client/assets/css/style.css">
     <!-- responsive -->
     <link rel="stylesheet" href="/Content/Client/assets/css/responsive.css">
+    <!-- Demo styles -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <style>
+        .swiper-container {
+            width: 100%;
+            height: 300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
+        .swiper-slide {
+            background-size: cover;
+            background-position: center;
+        }
+
+        .gallery-top {
+            height: 80%;
+            width: 100%;
+        }
+
+        .gallery-thumbs {
+            height: 20%;
+            box-sizing: border-box;
+            padding: 10px 0;
+        }
+
+            .gallery-thumbs .swiper-slide {
+                height: 100%;
+                opacity: 0.4;
+            }
+
+            .gallery-thumbs .swiper-slide-thumb-active {
+                opacity: 1;
+            }
+    </style>
 
 </head>
 
@@ -64,7 +100,11 @@
         </div>
     </div>
     <!-- preloader area end -->
-
+    <!-- back to top start -->
+    <div class="back-to-top">
+        <i class="fas fa-rocket"></i>
+    </div>
+    <!-- back to top end -->
     <!-- jquery -->
     <script src="/Content/Client/assets/js/jquery.js"></script>
     <!-- popper -->
@@ -81,10 +121,46 @@
     <script src="/Content/Client/assets/js/wow.min.js"></script>
     <!-- counterup js-->
     <script src="/Content/Client/assets/js/jquery.counterup.min.js"></script>
+    <!-- imageloaded -->
+    <script src="/Content/Client/assets/js/imagesloaded.pkgd.min.js"></script>
+    <!-- Isotope -->
+    <script src="/Content/Client/assets/js/isotope.pkgd.min.js"></script>
+    <!-- countdown -->
+    <script src="/Content/Client/assets/js/countdown.js"></script>
     <!-- select 2 -->
     <script src="/Content/Client/assets/js/select2.min.js"></script>
+    <!-- owl carousel2 thumb -->
+    <script src="/Content/Client/assets/js/owl.carousel2.thumbs.js"></script>
     <!-- main -->
     <script src="/Content/Client/assets/js/main.js"></script>
+
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        var galleryThumbs = new Swiper('.gallery-thumbs', {
+            spaceBetween: 10,
+            slidesPerView: 4,
+            loop: true,
+            freeMode: true,
+            loopedSlides: 5, //looped slides should be the same
+            watchSlidesVisibility: true,
+            watchSlidesProgress: true,
+        });
+        var galleryTop = new Swiper('.gallery-top', {
+            spaceBetween: 10,
+            loop: true,
+            loopedSlides: 5, //looped slides should be the same
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            thumbs: {
+                swiper: galleryThumbs,
+            },
+        });
+    </script>
 
     <script>
 
