@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<SpadStorePanel.Infrastructure.Dtos.Product.ProductWithPriceDto>
 @{
+    ViewBag.Title = "فروشگاه";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var productgroupid = ViewBag.ProductGroupId;
 
@@ -16,12 +17,12 @@
                     <!-- breadcrumb inner -->
                     <div class="left-content-area">
                         <!-- left content area -->
-                        <h1 class="title">فروشگاه</h1>
+                        <h1 class="title">@ViewBag.Title</h1>
                     </div><!-- //. left content area -->
                     <div class="right-content-area">
                         <ul>
                             <li><a href="/">خانه</a></li>
-                            <li>فروشگاه</li>
+                            <li>@ViewBag.Title</li>
                         </ul>
                     </div>
                 </div><!-- //. breadcrumb inner -->
@@ -118,8 +119,9 @@
                                                 <h4 class="title">@item.ShortTitle</h4>
                                             </a>
                                             <div class="price mt-3">
-                                                <span class="sprice">@item.Price.ToString("##,###")
-                                                تومان
+                                                <span class="sprice">
+                                                    @item.Price.ToString("##,###")
+                                                    تومان
                                                 </span>
                                             </div>
                                         </div>
@@ -137,7 +139,361 @@
 <!-- category content area end -->
 <!-- our story area start -->
 <!-- our story area end -->
+
+<!-- breadcrumb area start -->
+<section class="breadcrumb-area breadcrumb-bg extra">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-inner">
+                    <!-- breadcrumb inner -->
+                    <div class="left-content-area">
+                        <!-- left content area -->
+                        <h1 class="title">فروشگاه</h1>
+                    </div><!-- //. left content area -->
+                    <div class="right-content-area">
+                        <ul>
+                            <li><a href="index.html">خانه</a></li>
+                            <li>فروشگاه</li>
+                        </ul>
+                    </div>
+                </div><!-- //. breadcrumb inner -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- breadcrumb area end -->
+
+<!-- category content area start -->
+<div class="category-content-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="category-sidebar">
+                    <!-- category sidebar -->
+                    <div class="category-filter-widget">
+                        <!-- category-filter-widget -->
+                        <h4 class="title">فیلتر بر اساس</h4>
+                        <div class="accordion accordion-flush" id="accordionFlushExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-headingOne">
+                                    <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
+                                            aria-expanded="false" aria-controls="flush-collapseOne">
+                                        ولتاژ
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseOne" class="accordion-collapse collapse"
+                                     aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+                                        <ul>
+                                            <li>
+                                                <a class="liitem" href="#">220 ولت</a>
+                                            </li>
+                                            <li>
+                                                <a class="liitem" href="#">230 ویلت</a>
+                                            </li>
+
+                                            <li>
+                                                <a class="liitem" href="#">130 ویلت</a>
+                                            </li>
+
+                                            <li>
+                                                <a class="liitem" href="#">120 ویلت</a>
+                                            </li>
+
+                                            <li>
+                                                <a class="liitem" href="#">180 ویلت</a>
+                                            </li>
+
+                                            <li>
+                                                <a class="liitem" href="#">170 ویلت</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-headingTwo">
+                                    <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo"
+                                            aria-expanded="false" aria-controls="flush-collapseTwo">
+                                        برند
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                                     aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+                                        <ul>
+                                            <li>
+                                                <a class="liitem" href="#">صبا باتری</a>
+                                            </li>
+                                            <li>
+                                                <a class="liitem" href="#">سپاهان باتری</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-headingThree">
+                                    <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseThree"
+                                            aria-expanded="false" aria-controls="flush-collapseThree">
+                                        مدل خودرو
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseThree" class="accordion-collapse collapse"
+                                     aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+                                        <ul>
+                                            <li>
+                                                <a class="liitem" href="#">ایرانی</a>
+                                            </li>
+                                            <li>
+                                                <a class="liitem" href="#">کره ای</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- //.category-filter-widget -->
+                </div><!-- //. category sidebar -->
+
+            </div>
+            <div class="col-lg-9">
+                <div class="right-content-area">
+                    <!-- right content area -->
+                    <div class="top-content">
+                        <!-- top content -->
+                        <div class="left-conent">
+                            <span class="cat">باتری ماشین</span>
+                        </div>
+                        <div class="right-content">
+                            <ul>
+                                <li>
+                                    <div class="form-element has-icon">
+                                        <select class="selectpicker input-field select">
+                                            <option value="0">نمایش</option>
+                                            <option value="2">مخفی</option>
+                                            <option value="1">نمایش</option>
+                                        </select>
+                                        <div class="the-icon">
+                                            <i class="fas fa-angle-down"></i>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="form-element has-icon">
+                                        <select class="selectpicker input-field select">
+                                            <option value="0">فیلتر بر اساس</option>
+                                            <option value="2">قیمت</option>
+                                            <option value="1">رتبه بندی</option>
+                                        </select>
+                                        <div class="the-icon">
+                                            <i class="fas fa-angle-down"></i>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div><!-- //. top content -->
+                    <div class="bottom-content">
+                        <!-- top content -->
+                        <div class="row">
+                            <div class="col-lg-4 col-md-6">
+                                <div onclick=" window.location = 'product-details.html' " style="cursor: pointer;"
+                                     class="single-new-collection-item">
+                                    <!-- single new collections -->
+                                    <div class="thumb">
+                                        <img src="/Content/client/pic/b23.jpg" alt="new collcetion image">
+                                        <div class="hover">
+                                            <a href="product-details.html" class="addtocart">دیدن محصول</a>
+                                        </div>
+                                    </div>
+                                    <div class="content">
+                                        <a href="product-details.html">
+                                            <h4 class="title">باتری ماشین</h4>
+                                        </a>
+                                        <div class="price mt-3">
+                                            <span class="sprice">53.00 تومان</span> <del class="dprice">95.00 تومان</del>
+                                        </div>
+                                    </div>
+                                </div><!-- //. single new collections  -->
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div onclick=" window.location = 'product-details.html' " style="cursor: pointer;"
+                                     class="single-new-collection-item">
+                                    <!-- single new collections -->
+                                    <div class="thumb">
+                                        <img src="/Content/client/pic/b22.jpg" alt="new collcetion image">
+                                        <div class="hover">
+                                            <a href="product-details.html" class="addtocart">دیدن محصول</a>
+                                        </div>
+                                    </div>
+                                    <div class="content">
+                                        <a href="product-details.html">
+                                            <h4 class="title">باتری ماشین</h4>
+                                        </a>
+                                        <div class="price mt-3">
+                                            <span class="sprice">35.00 تومان</span> <del class="dprice">50.00 تومان</del>
+                                        </div>
+                                    </div>
+                                </div><!-- //. single new collections  -->
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div onclick=" window.location = 'product-details.html' " style="cursor: pointer;"
+                                     class="single-new-collection-item">
+                                    <!-- single new collections -->
+                                    <div class="thumb">
+                                        <img src="/Content/client/pic/b3.jpg" alt="new collcetion image">
+                                        <div class="hover">
+                                            <a href="product-details.html" class="addtocart">دیدن محصول</a>
+                                        </div>
+                                    </div>
+                                    <div class="content">
+                                        <a href="product-details.html">
+                                            <h4 class="title">باتری ماشین</h4>
+                                        </a>
+                                        <div class="price mt-3">
+                                            <span class="sprice">23.00 تومان</span> <del class="dprice">35.00 تومان</del>
+                                        </div>
+                                    </div>
+                                </div><!-- //. single new collections  -->
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div onclick=" window.location = 'product-details.html' " style="cursor: pointer;"
+                                     class="single-new-collection-item">
+                                    <!-- single new collections -->
+                                    <div class="thumb">
+                                        <img src="/Content/client/pic/b4.jpg" alt="new collcetion image">
+                                        <div class="hover">
+                                            <a href="product-details.html" class="addtocart">دیدن محصول</a>
+                                        </div>
+                                    </div>
+                                    <div class="content">
+                                        <a href="product-details.html">
+                                            <h4 class="title">باتری ماشین</h4>
+                                        </a>
+                                        <div class="price mt-3">
+                                            <span class="sprice">52.00 تومان</span> <del class="dprice">95.00 تومان</del>
+                                        </div>
+                                    </div>
+                                </div><!-- //. single new collections  -->
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div onclick=" window.location = 'product-details.html' " style="cursor: pointer;"
+                                     class="single-new-collection-item">
+                                    <!-- single new collections -->
+                                    <div class="thumb">
+                                        <img src="/Content/client/pic/b5.jpg" alt="new collcetion image">
+                                        <div class="hover">
+                                            <a href="product-details.html" class="addtocart">دیدن محصول</a>
+                                        </div>
+                                    </div>
+                                    <div class="content">
+                                        <a href="product-details.html">
+                                            <h4 class="title">باتری ماشین</h4>
+                                        </a>
+                                        <div class="price mt-3">
+                                            <span class="sprice">503.00 تومان</span> <del class="dprice">905.00 تومان</del>
+                                        </div>
+                                    </div>
+                                </div><!-- //. single new collections  -->
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div onclick=" window.location = 'product-details.html' " style="cursor: pointer;"
+                                     class="single-new-collection-item">
+                                    <!-- single new collections -->
+                                    <div class="thumb">
+                                        <img src="/Content/client/pic/b6.jpg" alt="new collcetion image">
+                                        <div class="hover">
+                                            <a href="product-details.html" class="addtocart">دیدن محصول</a>
+                                        </div>
+                                    </div>
+                                    <div class="content">
+                                        <a href="product-details.html">
+                                            <h4 class="title">باتری ماشین</h4>
+                                        </a>
+                                        <div class="price mt-3">
+                                            <span class="sprice">35.00 تومان</span> <del class="dprice">95.00 تومان</del>
+                                        </div>
+                                    </div>
+                                </div><!-- //. single new collections  -->
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div onclick=" window.location = 'product-details.html' " style="cursor: pointer;"
+                                     class="single-new-collection-item">
+                                    <!-- single new collections -->
+                                    <div class="thumb">
+                                        <img src="/Content/client/pic/b7.jpg" alt="new collcetion image">
+                                        <div class="hover">
+                                            <a href="product-details.html" class="addtocart">دیدن محصول</a>
+                                        </div>
+                                    </div>
+                                    <div class="content">
+                                        <a href="product-details.html">
+                                            <h4 class="title">باتری ماشین</h4>
+                                        </a>
+                                        <div class="price mt-3">
+                                            <span class="sprice">25.00 تومان</span> <del class="dprice">85.00 تومان</del>
+                                        </div>
+                                    </div>
+                                </div><!-- //. single new collections  -->
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div onclick=" window.location = 'product-details.html' " style="cursor: pointer;"
+                                     class="single-new-collection-item">
+                                    <!-- single new collections -->
+                                    <div class="thumb">
+                                        <img src="/Content/client/pic/b8.jpg" alt="new collcetion image">
+                                        <div class="hover">
+                                            <a href="product-details.html" class="addtocart">دیدن محصول</a>
+                                        </div>
+                                    </div>
+                                    <div class="content">
+                                        <a href="product-details.html">
+                                            <h4 class="title">باتری ماشین</h4>
+                                        </a>
+                                        <div class="price mt-3">
+                                            <span class="sprice">53.00 تومان</span> <del class="dprice">95.00 تومان</del>
+                                        </div>
+                                    </div>
+                                </div><!-- //. single new collections  -->
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div onclick=" window.location = 'product-details.html' " style="cursor: pointer;"
+                                     class="single-new-collection-item">
+                                    <!-- single new collections -->
+                                    <div class="thumb">
+                                        <img src="/Content/client/pic/b9.jpg" alt="new collcetion image">
+                                        <div class="hover">
+                                            <a href="product-details.html" class="addtocart">دیدن محصول</a>
+                                        </div>
+                                    </div>
+                                    <div class="content">
+                                        <a href="product-details.html">
+                                            <h4 class="title">باتری ماشین</h4>
+                                        </a>
+                                        <div class="price mt-3">
+                                            <span class="sprice">553.00 تومان</span> <del class="dprice">955.0 تومان</del>
+                                        </div>
+                                    </div>
+                                </div><!-- //. single new collections  -->
+                            </div>
+                        </div>
+                    </div><!-- //.top content -->
+                </div><!-- //. right content area -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- category content area end -->
+
 @Html.Action("NewBlog", "blog")
+
 
 
 @section scripts{
