@@ -11,6 +11,9 @@ namespace SpadStorePanel.Core.Models
     public class Product : IBaseEntity
     {
         public int Id { get; set; }
+        [Display(Name = "عنوان مختصر محصول")]
+        [MaxLength(300, ErrorMessage = "{0} باید کمتر از 300 کارکتر باشد")]
+        public string ShortTitle { get; set; }
         [Display(Name = "عنوان محصول")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [MaxLength(600, ErrorMessage = "{0} باید کمتر از 600 کارکتر باشد")]

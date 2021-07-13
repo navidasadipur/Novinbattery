@@ -86,6 +86,7 @@
     <Compile Include="Models\ContactForm.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Discount.cs" />
+    <Compile Include="Models\DiscountCode.cs" />
     <Compile Include="Models\EPayment.cs" />
     <Compile Include="Models\EPaymentLog.cs" />
     <Compile Include="Models\Faq.cs" />
@@ -108,9 +109,11 @@
     <Compile Include="Models\ProductMainFeature.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\RolePermission.cs" />
+    <Compile Include="Models\SimilarProduct.cs" />
     <Compile Include="Models\StaticContentDetail.cs" />
     <Compile Include="Models\StaticContentType.cs" />
     <Compile Include="Models\SubFeature.cs" />
+    <Compile Include="Models\Testimonial.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

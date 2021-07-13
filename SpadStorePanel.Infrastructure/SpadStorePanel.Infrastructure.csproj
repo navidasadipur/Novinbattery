@@ -85,6 +85,14 @@
     <Compile Include="Migrations\202107131048522_UnCommentInvoiceIdInInvoiceItems.Designer.cs">
       <DependentUpon>202107131048522_UnCommentInvoiceIdInInvoiceItems.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107131058581_CommentShortTitleAndTechnicalSpecifications.cs" />
+    <Compile Include="Migrations\202107131058581_CommentShortTitleAndTechnicalSpecifications.Designer.cs">
+      <DependentUpon>202107131058581_CommentShortTitleAndTechnicalSpecifications.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107131112575_UnCommentShortTitleAndTechnicalSpecification.cs" />
+    <Compile Include="Migrations\202107131112575_UnCommentShortTitleAndTechnicalSpecification.Designer.cs">
+      <DependentUpon>202107131112575_UnCommentShortTitleAndTechnicalSpecification.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MyDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -143,6 +151,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107131048522_UnCommentInvoiceIdInInvoiceItems.resx">
       <DependentUpon>202107131048522_UnCommentInvoiceIdInInvoiceItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107131058581_CommentShortTitleAndTechnicalSpecifications.resx">
+      <DependentUpon>202107131058581_CommentShortTitleAndTechnicalSpecifications.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107131112575_UnCommentShortTitleAndTechnicalSpecification.resx">
+      <DependentUpon>202107131112575_UnCommentShortTitleAndTechnicalSpecification.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

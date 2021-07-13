@@ -11,6 +11,13 @@ namespace SpadStorePanel.Core.Models
     public class Invoice : IBaseEntity
     {
         public int Id { get; set; }
+
+        [DisplayName("میزان تخفیف")]
+        public long DiscountAmount { get; set; }
+
+        [DisplayName("قیمت بدون تخفیف")]
+        public long TotalPriceBeforeDiscount { get; set; }
+
         [DisplayName("قیمت")]
         public long TotalPrice { get; set; }
         [DisplayName("تاریخ ثبت")]
@@ -20,7 +27,7 @@ namespace SpadStorePanel.Core.Models
         public int? CustomerId { get; set; }
         public Customer Customer { get; set; }
         [DisplayName("نام مشتری")]
-        [MaxLength(500,ErrorMessage = "نام وارد شده باید از 500 کارکتر کمتر باشد")]
+        [MaxLength(500, ErrorMessage = "نام وارد شده باید از 500 کارکتر کمتر باشد")]
         public string CustomerName { get; set; }
         public ICollection<InvoiceItem> InvoiceItems { get; set; }
         public int? GeoDivisionId { get; set; }
@@ -34,6 +41,26 @@ namespace SpadStorePanel.Core.Models
         [DisplayName("پرداخت شده")]
         public bool IsPayed { get; set; }
         public ICollection<EPayment> EPayments { get; set; }
+
+        [DisplayName("نام شرکت")]
+        public string CompanyName { get; set; }
+        [DisplayName("کشور")]
+        public string Country { get; set; }
+        [DisplayName("شهر")]
+        public string City { get; set; }
+
+        [MaxLength(50, ErrorMessage = "کد پستی وارد شده باید از 50 کارکتر کمتر باشد")]
+        [DisplayName("کد پستی")]
+        public string PostalCode { get; set; }
+        [DisplayName("ایمیل")]
+        [EmailAddress(ErrorMessage = "ایمیل نا معتبر")]
+        public string Email { get; set; }
+        [DisplayName("توضیحات")]
+        public string Description { get; set; }
+        [DisplayName("پرداخت شده")]
+
+        public int? DiscountCodeId { get; set; }
+        public DiscountCode DiscountCode { get; set; }
 
         public string InsertUser { get; set; }
         public DateTime? InsertDate { get; set; }
