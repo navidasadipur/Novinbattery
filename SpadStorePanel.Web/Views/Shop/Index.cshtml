@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SpadStorePanel.Infrastructure.Dtos.Product.ProductWithPriceDto>
+﻿@model SpadStorePanel.Web.ViewModels.ProductListViewModel
 @{
     ViewBag.Title = "فروشگاه";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -102,7 +102,7 @@
                     <div class="bottom-content">
                         <!-- top content -->
                         <div class="row">
-                            @foreach (var item in Model)
+                            @foreach (var item in Model.ProductGroups)
                             {
                                 <div class="col-lg-4 col-md-6">
                                     <div onclick=" window.location = '/Shop/Detail/@item.Id' " style="cursor: pointer;"

@@ -19,7 +19,7 @@ namespace SpadStorePanel.Web.Areas.Admin.Controllers
         private readonly GeoDivisionsRepository _GeoRepo;
         private readonly CustomersRepository _customersRepository;
         private readonly MyDbContext _context;
-        public InvoicesCustomerController(MyDbContext context,CustomersRepository customersRepository,InvoicesRepository repo, GeoDivisionsRepository geoRepo)
+        public InvoicesCustomerController(MyDbContext context, CustomersRepository customersRepository, InvoicesRepository repo, GeoDivisionsRepository geoRepo)
         {
             _repo = repo;
             _GeoRepo = geoRepo;
@@ -30,7 +30,7 @@ namespace SpadStorePanel.Web.Areas.Admin.Controllers
         // GET: Admin/InvoicesCustomer
         public ActionResult Index()
         {
-           var userid= CheckPermission.GetCurrentUserId();
+            var userid = CheckPermission.GetCurrentUserId();
             var Customer = _customersRepository.GetInvoicesCustomer(userid);
             if (Customer != null)
             {
@@ -60,7 +60,7 @@ namespace SpadStorePanel.Web.Areas.Admin.Controllers
             //}
             //return View(vm);
         }
-    
+
 
         public ActionResult ViewInvoice(int invoiceId)
         {
@@ -71,7 +71,7 @@ namespace SpadStorePanel.Web.Areas.Admin.Controllers
             vm.PersianDate = new PersianDateTime(invoice.AddedDate).ToString();
             vm.InvoiceItems = new List<InvoiceItemWithMainFeatureViewModel>();
             // Getting Invoice Item SubFeatures
-            var InvoiceItems =_repo.GetInvoiceItems(invoiceId);
+            var InvoiceItems = _repo.GetInvoiceItems(invoiceId);
             foreach (var invoiceItem in InvoiceItems)
             {
                 var invoiceItemWithMainFeature = new InvoiceItemWithMainFeatureViewModel
@@ -89,9 +89,9 @@ namespace SpadStorePanel.Web.Areas.Admin.Controllers
             }
             return View(vm);
         }
-  
 
- 
+
+
 
     }
 }

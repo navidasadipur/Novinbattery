@@ -42,7 +42,7 @@ namespace SpadStorePanel.Web.Controllers
         }
         public ActionResult Index()
         {
-             
+
             ////return Redirect("/Admin/Dashboard");
             var productGroups = _productGroupsRepository.GetAll().Where(a => a.ParentId == 37 & a.IsDeleted == false).Skip(0).Take(6).ToList();
             return View(productGroups);
@@ -78,23 +78,23 @@ namespace SpadStorePanel.Web.Controllers
         {
             SocialViewModel socialViewModel = new SocialViewModel();
 
-            FooterViewModel model = new FooterViewModel(socialViewModel);
+            FooterViewModel model = new FooterViewModel();
 
-            model._SocialLinks.Facebook = _staticContentDetailsRepository.Get(5).Link;
+            model.Facebook = _staticContentDetailsRepository.Get(5);
 
-            model._SocialLinks.Linkdin = _staticContentDetailsRepository.Get(6).Link;
+            model.Linkdin = _staticContentDetailsRepository.Get(6);
 
-            model._SocialLinks.GooglePlus = _staticContentDetailsRepository.Get(41).Link;
+            model.GooglePlus = _staticContentDetailsRepository.Get(41);
 
-            model._SocialLinks.Pintrest = _staticContentDetailsRepository.Get(42).Link;
+            model.Pintrest = _staticContentDetailsRepository.Get(42);
 
-            model._SocialLinks.twitter = _staticContentDetailsRepository.Get(12).Link;
+            model.Twitter = _staticContentDetailsRepository.Get(12);
 
-            model.Phone = _staticContentDetailsRepository.Get(9).ShortDescription;
+            model.Phone = _staticContentDetailsRepository.Get(9);
 
-            model.Email = _staticContentDetailsRepository.Get(8).ShortDescription;
+            model.Email = _staticContentDetailsRepository.Get(8);
 
-            model.Address = _staticContentDetailsRepository.Get(7).Description;
+            model.Address = _staticContentDetailsRepository.Get(7);
 
             return View(model);
         }
@@ -103,23 +103,24 @@ namespace SpadStorePanel.Web.Controllers
         {
             SocialViewModel socialViewModel = new SocialViewModel();
 
-            FooterViewModel model = new FooterViewModel(socialViewModel);
+            FooterViewModel model = new FooterViewModel();
 
-            model._SocialLinks.Facebook = _staticContentDetailsRepository.Get(5).Link;
+            model.Facebook = _staticContentDetailsRepository.Get(5);
 
-            model._SocialLinks.Linkdin = _staticContentDetailsRepository.Get(6).Link;
+            model.Linkdin = _staticContentDetailsRepository.Get(6);
 
-            model._SocialLinks.GooglePlus = _staticContentDetailsRepository.Get(41).Link;
+            model.GooglePlus = _staticContentDetailsRepository.Get(41);
 
-            model._SocialLinks.Pintrest = _staticContentDetailsRepository.Get(42).Link;
+            model.Pintrest = _staticContentDetailsRepository.Get(42);
 
-            model._SocialLinks.twitter = _staticContentDetailsRepository.Get(12).Link;
+            model.Twitter = _staticContentDetailsRepository.Get(12);
 
-            model.Phone = _staticContentDetailsRepository.Get(9).Description;
+            model.Phone = _staticContentDetailsRepository.Get(9);
 
-            model.Email = _staticContentDetailsRepository.Get(8).Description;
+            model.Email = _staticContentDetailsRepository.Get(8);
 
-            model.Address = _staticContentDetailsRepository.Get(7).Description;
+            model.Address = _staticContentDetailsRepository.Get(7);
+
             return View(model);
         }
         public ActionResult Faq()
@@ -278,33 +279,31 @@ namespace SpadStorePanel.Web.Controllers
             var model = _productService.GetTopSoldProductsWithPrice(10).Take(15);
             return View(model);
         }
-        public ActionResult PopularProducts()
+        public ActionResult PopularProducts(int take)
         {
-            var model = _productService.GetProductsWithPrice().OrderByDescending(x => x.Rate).Skip(0).Take(10).ToList();
+            var model = _productService.GetHighRatedProductsWithPrice(take);
             return View(model);
         }
-        public ActionResult NewProducts()
+        public ActionResult NewProducts(int take)
         {
-            var model = _productService.GetProductsWithPrice().OrderByDescending(x => x.DateTime).Skip(0).Take(6).ToList();
+            var model = _productService.GetLatestProductsWithPrice(take);
             return View(model);
         }
-        public ActionResult HomeNewProducts()
+        public ActionResult HomeNewProducts(int take)
         {
-            var model = _productService.GetProductsWithPrice().OrderByDescending(x => x.DateTime).Skip(0).Take(6).ToList();
+            var model = _productService.GetLatestProductsWithPrice(take);
             return View(model);
         }
-        public ActionResult SpecialProducts()
+        public ActionResult SpecialProducts(int take)
         {
-            var model = _productService.GetProductsWithPrice().OrderByDescending(x => x.DateTime).Skip(0).Take(6).ToList();
+            var model = _productService.GetTopSoldProductsWithPrice(take);
             return View(model);
         }
-        public ActionResult BestsellersProducts()
+        public ActionResult BestsellersProducts(int take)
         {
-            var model = _productService.GetProductsWithPrice().OrderByDescending(x => x.DateTime).Skip(0).Take(10).ToList();
+            var model = _productService.GetTopSoldProductsWithPrice(take);
             return View(model);
         }
-
-
 
         public ActionResult bannerad()
         {
@@ -341,8 +340,6 @@ namespace SpadStorePanel.Web.Controllers
 
         }
 
-
-
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -352,7 +349,6 @@ namespace SpadStorePanel.Web.Controllers
 
         public ActionResult Contact()
         {
-
             return View();
         }
 
@@ -410,26 +406,25 @@ namespace SpadStorePanel.Web.Controllers
         }
         public ActionResult Footer()
         {
-
             SocialViewModel socialViewModel = new SocialViewModel();
 
-            FooterViewModel model = new FooterViewModel(socialViewModel);
+            FooterViewModel model = new FooterViewModel();
 
-            model._SocialLinks.Facebook = _staticContentDetailsRepository.Get(5).Link;
+            model.Facebook = _staticContentDetailsRepository.Get(5);
 
-            model._SocialLinks.Linkdin = _staticContentDetailsRepository.Get(6).Link;
+            model.Linkdin = _staticContentDetailsRepository.Get(6);
 
-            model._SocialLinks.GooglePlus = _staticContentDetailsRepository.Get(41).Link;
+            model.GooglePlus = _staticContentDetailsRepository.Get(41);
 
-            model._SocialLinks.Pintrest = _staticContentDetailsRepository.Get(42).Link;
+            model.Pintrest = _staticContentDetailsRepository.Get(42);
 
-            model._SocialLinks.twitter = _staticContentDetailsRepository.Get(12).Link;
+            model.Twitter = _staticContentDetailsRepository.Get(12);
 
-            model.Phone = _staticContentDetailsRepository.Get(9).Description;
+            model.Phone = _staticContentDetailsRepository.Get(9);
 
-            model.Email = _staticContentDetailsRepository.Get(8).Description;
+            model.Email = _staticContentDetailsRepository.Get(8);
 
-            model.Address = _staticContentDetailsRepository.Get(7).Description;
+            model.Address = _staticContentDetailsRepository.Get(7);
 
             ViewBag.AboutUs = _staticContentDetailsRepository.GetStaticContentDetail(16).ShortDescription;
 
@@ -441,26 +436,25 @@ namespace SpadStorePanel.Web.Controllers
         }
         public ActionResult Footer2()
         {
-
             SocialViewModel socialViewModel = new SocialViewModel();
 
-            FooterViewModel model = new FooterViewModel(socialViewModel);
+            FooterViewModel model = new FooterViewModel();
 
-            model._SocialLinks.Facebook = _staticContentDetailsRepository.Get(5).Link;
+            model.Facebook = _staticContentDetailsRepository.Get(5);
 
-            model._SocialLinks.Linkdin = _staticContentDetailsRepository.Get(6).Link;
+            model.Linkdin = _staticContentDetailsRepository.Get(6);
 
-            model._SocialLinks.GooglePlus = _staticContentDetailsRepository.Get(41).Link;
+            model.GooglePlus = _staticContentDetailsRepository.Get(41);
 
-            model._SocialLinks.Pintrest = _staticContentDetailsRepository.Get(42).Link;
+            model.Pintrest = _staticContentDetailsRepository.Get(42);
 
-            model._SocialLinks.twitter = _staticContentDetailsRepository.Get(12).Link;
+            model.Twitter = _staticContentDetailsRepository.Get(12);
 
-            model.Phone = _staticContentDetailsRepository.Get(9).Description;
+            model.Phone = _staticContentDetailsRepository.Get(9);
 
-            model.Email = _staticContentDetailsRepository.Get(8).Description;
+            model.Email = _staticContentDetailsRepository.Get(8);
 
-            model.Address = _staticContentDetailsRepository.Get(7).Description;
+            model.Address = _staticContentDetailsRepository.Get(7);
 
             ViewBag.AboutUs = _staticContentDetailsRepository.GetStaticContentDetail(16).ShortDescription;
 

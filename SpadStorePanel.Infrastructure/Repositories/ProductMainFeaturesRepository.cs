@@ -26,6 +26,7 @@ namespace SpadStorePanel.Infrastructure.Repositories
         {
             return _context.ProductMainFeatures.FirstOrDefault(f => f.IsDeleted == false && f.ProductId == productId && f.Id == mainFeatureId);
         }
+
         public ProductMainFeature GetProductMainFeature(int productId)
         {
             return _context.ProductMainFeatures.Include(f => f.Feature).Include(f => f.SubFeature).Where(f => f.IsDeleted == false && f.ProductId == productId).FirstOrDefault();
@@ -45,6 +46,18 @@ namespace SpadStorePanel.Infrastructure.Repositories
            var productsubfeature= _context.ProductMainFeatures.Where(a => a.SubFeatureId == SubFeatuerId).Include(a=>a.Product).ToList();
             var qq = productsubfeature.Where(a => a.Product.ProductGroupId == ProductGroupId).ToList();
             return qq;
+        }
+
+        public List<ProductMainFeature> GetProductMainFeatures(int productId)
+        {
+            return _context.ProductMainFeatures.Include(f => f.Feature).Include(f => f.SubFeature).Where(f => f.IsDeleted == false && f.ProductId == productId).ToList();
+        }
+
+        public ProductMainFeature GetLastActiveMainFeature(int productId, int mainFeatureId)
+        {
+            var mainFeature = _context.ProductMainFeatures.FirstOrDefault(f => f.ProductId == productId && f.IsDeleted == false && f.Id == mainFeatureId);
+
+            return mainFeature;
         }
     }
 }

@@ -46,5 +46,17 @@ namespace SpadStorePanel.Infrastructure.Repositories
             return _context.Discounts.FirstOrDefault(d => d.IsDeleted == false && d.BrandId == brandId);
         }
 
+        public List<Discount> GetProductsWithDiscount(int take = 15)
+        {
+            var result = _context.Discounts.Where(d => d.ProductId != null && d.IsDeleted == false).Include(d => d.Product).ToList();
+
+            return result;
+        }
+
+        public List<Discount> GetAllOfferDiscountsByOfferId(int offerId)
+        {
+            return _context.Discounts.Where(d => d.IsDeleted == false && d.OfferId == offerId).ToList();
+        }
+
     }
 }

@@ -69,9 +69,21 @@
     <Compile Include="Helpers\ImageResizer.cs" />
     <Compile Include="Helpers\PasswordHelper.cs" />
     <Compile Include="Helpers\PersianCulture.cs" />
-    <Compile Include="Migrations\202106140551113_mig1.cs" />
-    <Compile Include="Migrations\202106140551113_mig1.Designer.cs">
-      <DependentUpon>202106140551113_mig1.cs</DependentUpon>
+    <Compile Include="Migrations\202107130844431_Initial.cs" />
+    <Compile Include="Migrations\202107130844431_Initial.Designer.cs">
+      <DependentUpon>202107130844431_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107131028240_commentInvoiceModel.cs" />
+    <Compile Include="Migrations\202107131028240_commentInvoiceModel.Designer.cs">
+      <DependentUpon>202107131028240_commentInvoiceModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107131045488_UncommentInvoiceModelCommentInvoiceIdInInvoiceItems.cs" />
+    <Compile Include="Migrations\202107131045488_UncommentInvoiceModelCommentInvoiceIdInInvoiceItems.Designer.cs">
+      <DependentUpon>202107131045488_UncommentInvoiceModelCommentInvoiceIdInInvoiceItems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107131048522_UnCommentInvoiceIdInInvoiceItems.cs" />
+    <Compile Include="Migrations\202107131048522_UnCommentInvoiceIdInInvoiceItems.Designer.cs">
+      <DependentUpon>202107131048522_UnCommentInvoiceIdInInvoiceItems.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MyDbContext.cs" />
@@ -99,12 +111,15 @@
     <Compile Include="Repositories\ProductGroupsRepository.cs" />
     <Compile Include="Repositories\ProductMainFeaturesRepository.cs" />
     <Compile Include="Repositories\ProductsRepository.cs" />
+    <Compile Include="Repositories\ShoppingRepository.cs" />
     <Compile Include="Repositories\StaticContentDetailsRepository.cs" />
     <Compile Include="Repositories\StaticContentsRepository.cs" />
     <Compile Include="Repositories\StaticContentTypes.cs" />
     <Compile Include="Repositories\SubFeaturesRepository.cs" />
+    <Compile Include="Repositories\TestimonialsRepository.cs" />
     <Compile Include="Repositories\UsersRepository.cs" />
-    <Compile Include="Services\ProductServices.cs" />
+    <Compile Include="Services\ProductService.cs" />
+    <Compile Include="Services\ProductServices-old.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SpadStorePanel.Core\SpadStorePanel.Core.csproj">
@@ -117,8 +132,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202106140551113_mig1.resx">
-      <DependentUpon>202106140551113_mig1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202107130844431_Initial.resx">
+      <DependentUpon>202107130844431_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107131028240_commentInvoiceModel.resx">
+      <DependentUpon>202107131028240_commentInvoiceModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107131045488_UncommentInvoiceModelCommentInvoiceIdInInvoiceItems.resx">
+      <DependentUpon>202107131045488_UncommentInvoiceModelCommentInvoiceIdInInvoiceItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107131048522_UnCommentInvoiceIdInInvoiceItems.resx">
+      <DependentUpon>202107131048522_UnCommentInvoiceIdInInvoiceItems.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

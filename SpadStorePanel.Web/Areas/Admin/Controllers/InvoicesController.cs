@@ -29,7 +29,7 @@ namespace SpadStorePanel.Web.Areas.Admin.Controllers
             var vm = new List<InvoiceTableViewModel>();
             foreach (var invoice in invoices)
             {
-               vm.Add(new InvoiceTableViewModel(invoice)); 
+                vm.Add(new InvoiceTableViewModel(invoice));
             }
             return View(vm);
         }
@@ -72,11 +72,12 @@ namespace SpadStorePanel.Web.Areas.Admin.Controllers
             // Getting Invoice Item SubFeatures
             var InvoiceItems = _repo.GetInvoiceItems(invoiceId);
             foreach (var invoiceItem in InvoiceItems)
-                
+
             {
                 var invoiceItemWithMainFeature = new InvoiceItemWithMainFeatureViewModel
                 {
-                    InvoiceItem = invoiceItem, MainFeature = _repo.GetInvoiceItemsMainFeature(invoiceItem.Id)
+                    InvoiceItem = invoiceItem,
+                    MainFeature = _repo.GetInvoiceItemsMainFeature(invoiceItem.Id)
                 };
                 vm.InvoiceItems.Add(invoiceItemWithMainFeature);
 

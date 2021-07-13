@@ -297,8 +297,6 @@ namespace SpadStorePanel.Web.Controllers
             }
         }
 
-
-
         [HttpPost]
         public void RemoveFromWishList(int productId)
         {
@@ -375,7 +373,6 @@ namespace SpadStorePanel.Web.Controllers
                     cartModel = new CartModel(cartJsonStr);
                 }
                 return PartialView(cartModel);
-
             }
         }
 
@@ -406,8 +403,6 @@ namespace SpadStorePanel.Web.Controllers
                 Response.Cookies.Add(cartCookie);
             }
             return View(wishListModel);
-
-
         }
 
 
@@ -438,12 +433,7 @@ namespace SpadStorePanel.Web.Controllers
                 Response.Cookies.Add(cartCookie);
             }
             return View(wishListModel);
-
-
         }
-
-
-
 
         public ActionResult UserRoles(String userId)
         {
@@ -482,7 +472,6 @@ namespace SpadStorePanel.Web.Controllers
 
         public ActionResult ShowInvoce()
         {
-
             try
             {
                 var cartModel = new CartModel();
@@ -517,10 +506,7 @@ namespace SpadStorePanel.Web.Controllers
                     cartModel = new CartModel(cartJsonStr);
                 }
                 return View(cartModel);
-
             }
-
-
         }
 
 
@@ -545,9 +531,7 @@ namespace SpadStorePanel.Web.Controllers
 
                 _repo.UpdateUser(userModel);
 
-
                 var findcustomer = _context.Customers.Where(a => a.UserId == UserID).FirstOrDefault();
-
 
                 var customer = new Customer()
                 {
@@ -567,8 +551,6 @@ namespace SpadStorePanel.Web.Controllers
                 {
                     _customersRepository.Add(customer);
                 }
-
-
 
                 //عملیات روی سبد خرید
 
@@ -597,7 +579,6 @@ namespace SpadStorePanel.Web.Controllers
                         Address = customer.Address,
                         Phone = userModel.PhoneNumber,
                         IsPayed = true
-
                     };
                     _invoicesRepository.Add(invoice);
 
@@ -623,7 +604,6 @@ namespace SpadStorePanel.Web.Controllers
                     }
                     ViewBag.Message = "sucsess";
                     return View();
-
                 }
                 catch (Exception e)
                 {
@@ -645,14 +625,11 @@ namespace SpadStorePanel.Web.Controllers
                     }
                     ViewBag.Message = "fail";
                     return View();
-
                 }
-
             }
             ViewBag.Message = null;
             ViewBag.GeoDivisionId = new SelectList(_geoDivisonsRepo.GetGeoDivisionsByType((int)GeoDivisionType.State), "Id", "Title", form.GeoDivisionId);
             return View("CheckOut", form);
-
         }
     }
 }

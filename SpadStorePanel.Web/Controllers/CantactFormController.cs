@@ -26,29 +26,23 @@ namespace SpadStorePanel.Web.Controllers
         public ActionResult Index()
         {
             SocialViewModel socialViewModel = new SocialViewModel();
-            FooterViewModel footerViewModel = new FooterViewModel(socialViewModel);
-            if (_staticContentDetailsRepository.Get(5) != null) { footerViewModel._SocialLinks.Facebook = _staticContentDetailsRepository.Get(5).Link; }
-            else { footerViewModel._SocialLinks.Facebook = "#"; }
-            if (_staticContentDetailsRepository.Get(6) != null) { footerViewModel._SocialLinks.Linkdin = _staticContentDetailsRepository.Get(6).Link; }
-            else { footerViewModel._SocialLinks.Linkdin = "#"; }
+            FooterViewModel footerViewModel = new FooterViewModel();
 
-            if (_staticContentDetailsRepository.Get(12) != null) { footerViewModel._SocialLinks.twitter = _staticContentDetailsRepository.Get(12).Link; }
-            else { footerViewModel._SocialLinks.twitter = "#"; }
+            footerViewModel.Facebook = _staticContentDetailsRepository.Get(5);
 
-            if (_staticContentDetailsRepository.Get(7) != null) { footerViewModel.Address = _staticContentDetailsRepository.Get(7).Description; }
-            else { footerViewModel.Address = ""; }
+            footerViewModel.Linkdin = _staticContentDetailsRepository.Get(6);
 
-            if (_staticContentDetailsRepository.Get(8) != null) { footerViewModel.Email = _staticContentDetailsRepository.Get(8).ShortDescription; }
-            else { footerViewModel.Email = ""; }
+            footerViewModel.GooglePlus = _staticContentDetailsRepository.Get(41);
 
-            if (_staticContentDetailsRepository.Get(9) != null) { footerViewModel.Phone = _staticContentDetailsRepository.Get(9).ShortDescription; }
-            else { footerViewModel.Phone = ""; }
+            footerViewModel.Pintrest = _staticContentDetailsRepository.Get(42);
 
-            if (_staticContentDetailsRepository.Get(10) != null) { footerViewModel.AccountNumber = _staticContentDetailsRepository.Get(10).Description; }
-            else { footerViewModel.AccountNumber = ""; }
+            footerViewModel.Twitter = _staticContentDetailsRepository.Get(12);
 
-            if (_staticContentDetailsRepository.Get(11) != null) { footerViewModel.Map = _staticContentDetailsRepository.Get(11).Description; }
-            else { footerViewModel.Map = ""; }
+            footerViewModel.Phone = _staticContentDetailsRepository.Get(9);
+
+            footerViewModel.Email = _staticContentDetailsRepository.Get(8);
+
+            footerViewModel.Address = _staticContentDetailsRepository.Get(7);
 
             return View(footerViewModel);
         }

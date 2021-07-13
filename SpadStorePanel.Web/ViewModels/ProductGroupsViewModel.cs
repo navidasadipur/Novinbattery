@@ -13,6 +13,7 @@ namespace SpadStorePanel.Web.ViewModels
         public int ParentGroupId { get; set; }
         public List<int> ProductGroupFeatureIds { get; set; }
     }
+
     public class UpdateProductGroupViewModel
     {
         public int Id { get; set; }
@@ -36,5 +37,15 @@ namespace SpadStorePanel.Web.ViewModels
     {
         public int Id { get; set; }
         public string Value { get; set; }
+    }
+
+    public class ProductListViewModel
+    {
+        public int? SelectedGroupId { get; set; }
+        public int ProductCount { get; set; }
+        public List<ProductGroup> ProductGroups { get; set; }
+        public List<Feature> Features { get; set; }
+        public List<Brand> Brands { get; set; }
+
     }
 }

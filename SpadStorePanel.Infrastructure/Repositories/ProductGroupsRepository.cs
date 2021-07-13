@@ -34,6 +34,7 @@ namespace SpadStorePanel.Infrastructure.Repositories
             pg.ProductGroupFeatures = pg.ProductGroupFeatures.Where(b => b.IsDeleted == false).ToList();
             return pg;
         }
+
         public List<Feature> GetFeatures()
         {
             return _context.Features.Where(f => f.IsDeleted == false).ToList();
@@ -58,6 +59,7 @@ namespace SpadStorePanel.Infrastructure.Repositories
         {
             return _context.ProductGroups.Where(f => f.IsDeleted == false).Include(p => p.Children).OrderByDescending(p=>p.InsertDate).ToList();
         }
+
         public ProductGroup AddNewProductGroup(int parentId, string title, List<int> brandIds, List<int> featureIds)
         {
             var productGroup = new ProductGroup();
@@ -100,6 +102,7 @@ namespace SpadStorePanel.Infrastructure.Repositories
             #endregion
             return productGroup;
         }
+
         public ProductGroup UpdateProductGroup(int parentId,int productGroupId, string title, List<int> brandIds, List<int> featureIds)
         {
             var productGroup = Get(productGroupId);
@@ -160,6 +163,32 @@ namespace SpadStorePanel.Infrastructure.Repositories
             _context.SaveChanges();
             #endregion
             return productGroup;
+        }
+
+        public List<ProductGroup> GetChildrenProductGroups(int? parentId = null)
+        {
+            var groups = new List<ProductGroup>();
+            if (parentId == null)
+                groups = _context.ProductGroups.Where(p => p.IsDeleted == false && p.ParentId == null).Include(p => p.Children).ToList();
+            else
+                groups = _context.ProductGroups.Where(p => p.IsDeleted == false && p.ParentId == parentId).Include(p => p.Children).ToList();
+            return groups;
+        }
+
+        public List<ProductGroup> GetMainProductGroups()
+        {
+            var groups = new List<ProductGroup>();
+
+            groups = _context.ProductGroups.Where(p => p.IsDeleted == false && p.ParentId == null).Include(p => p.Children).ToList();
+
+            return groups;
+        }
+
+        public ProductGroup GetGroupByProductId(int productId)
+        {
+            var ProductGroupId = _context.Products.Where(p => p.IsDeleted == false && p.Id == productId).Select(p => p.ProductGroupId).FirstOrDefault();
+
+            return GetProductGroup(ProductGroupId.Value);
         }
     }
 }

@@ -27,6 +27,7 @@ namespace SpadStorePanel.Infrastructure
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Discount> Discounts { get; set; }
+        public DbSet<DiscountCode> DiscountCodes { get; set; }
         public DbSet<Feature> Features { get; set; }
         public DbSet<Invoice> Invoices { get; set; }
         public DbSet<InvoiceItem> InvoiceItems { get; set; }
@@ -44,7 +45,9 @@ namespace SpadStorePanel.Infrastructure
         public DbSet<PaymentAccount> PaymentAccounts { get; set; }
         public DbSet<EPaymentLog> EPaymentLogs { get; set; }
         public DbSet<GeoDivision> GeoDivisions { get; set; }
-  public DbSet<OurTeam> OurTeams { get; set; }
+        public DbSet<OurTeam> OurTeams { get; set; }
+        public DbSet<SimilarProduct> SimilarProducts { get; set; }
+        public DbSet<Testimonial> Testimonials { get; set; }
 
     }
 }
