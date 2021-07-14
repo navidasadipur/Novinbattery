@@ -158,11 +158,11 @@ namespace SpadStorePanel.Web.Areas.Admin.Controllers
                 var newFileName = Guid.NewGuid() + Path.GetExtension(File.FileName);
                 File.SaveAs(Server.MapPath("/Files/ProductImages/Temp/" + newFileName));
                 // Resize Image
-                ImageResizer image = new ImageResizer(260, 220, true);
+                ImageResizer image = new ImageResizer(1500, 1500, true);
                 image.Resize(Server.MapPath("/Files/ProductImages/Temp/" + newFileName),
                     Server.MapPath("/Files/ProductImages/Image/" + newFileName));
 
-                ImageResizer thumb = new ImageResizer(72, 72, true);
+                ImageResizer thumb = new ImageResizer(260, 260, true);
                 thumb.Resize(Server.MapPath("/Files/ProductImages/Temp/" + newFileName),
                     Server.MapPath("/Files/ProductImages/Thumb/" + newFileName));
 

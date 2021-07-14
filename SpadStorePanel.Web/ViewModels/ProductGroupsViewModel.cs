@@ -41,6 +41,13 @@ namespace SpadStorePanel.Web.ViewModels
 
     public class ProductListViewModel
     {
+        public ProductListViewModel()
+        {
+            ProductGroups = new List<ProductGroup>();
+            Features = new List<Feature>();
+            Brands = new List<Brand>();
+        }
+
         public int? SelectedGroupId { get; set; }
         public int ProductCount { get; set; }
         public List<ProductGroup> ProductGroups { get; set; }
