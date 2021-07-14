@@ -615,13 +615,13 @@ body {
     .has-icon .the-icon {
         font-size: 14px;
         position: absolute;
-        left: 30px;
+        left: 185px;
         top: 50%;
         -ms-transform: translateY(-50%);
         /* IE 9 */
         -webkit-transform: translateY(-50%);
         /* Chrome, Safari, Opera */
-        transform: translateY(-50%);
+        transform: translateY(-40%);
         color: #7c7c90;
     }
 
@@ -6827,7 +6827,7 @@ li
                 li
                 .form-element {
                     display: inline-block;
-                    width: 160px;
+                    width: 200px;
                 }
 
                     .category-content-area
