@@ -8,7 +8,7 @@
 
 
 
-<!-- breadcrumb area start -->
+@*<!-- breadcrumb area start -->
 <section class="breadcrumb-area breadcrumb-bg extra">
     <div class="container">
         <div class="row">
@@ -70,7 +70,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-3">
-                @*@Html.Action("ProductGroupSection", "shop")*@
+                @Html.Action("ProductGroupSection", "shop")
             </div>
             <div class="col-lg-9">
                 <div class="right-content-area">
@@ -120,7 +120,7 @@
                                             </a>
                                             <div class="price mt-3">
                                                 <span class="sprice">
-                                                    @*@item.Price.ToString("##,###")*@
+                                                    @item.Price.ToString("##,###")
                                                     تومان
                                                 </span>
                                             </div>
@@ -135,7 +135,7 @@
         </div>
     </div>
 </div>
-<!-- category content area end -->
+<!-- category content area end -->*@
 
 
 
@@ -231,7 +231,7 @@
                                                 @foreach (var item in Model.Brands)
                                                 {
                                                     <li>
-                                                        <a class="liitem" href="#">@item.Name</a>
+                                                        <a class="liitem" href="#" id="b_@item.Id" value="@item.Id">@item.Name</a>
                                                     </li>
                                                 }
                                             </ul>
@@ -257,7 +257,7 @@
                                                 @foreach (var item in Model.ProductGroups)
                                                 {
                                                     <li>
-                                                        <a class="liitem" href="#">@item.Title</a>
+                                                        <a class="liitem" href="javascript:void(0)" onclick="GetGrid(null, @item.Id)">@item.Title</a>
                                                     </li>
                                                 }
                                             </ul>
