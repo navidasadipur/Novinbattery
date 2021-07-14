@@ -11734,3 +11734,13 @@ a {
             font-size: 18px;
         }
 }
+
+nav .pagination li.active a {
+    color: white !important;
+    background-color: #ff8641 !important;
+    border-color: black !important;
+}
+
+nav .pagination li a {
+    color: #ff8641 !important;
+}

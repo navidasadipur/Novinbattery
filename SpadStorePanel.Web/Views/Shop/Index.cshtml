@@ -70,7 +70,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-3">
-                @Html.Action("ProductGroupSection", "shop")
+                @*@Html.Action("ProductGroupSection", "shop")*@
             </div>
             <div class="col-lg-9">
                 <div class="right-content-area">
@@ -116,18 +116,17 @@
                                         </div>
                                         <div class="content">
                                             <a href="/Shop/Detail/@item.Id">
-                                                <h4 class="title">@item.ShortTitle</h4>
+                                                <h4 class="title">@item.Title</h4>
                                             </a>
                                             <div class="price mt-3">
                                                 <span class="sprice">
-                                                    @item.Price.ToString("##,###")
+                                                    @*@item.Price.ToString("##,###")*@
                                                     تومان
                                                 </span>
                                             </div>
                                         </div>
                                     </div><!-- //. single new collections  -->
                                 </div>
-
                             }
                         </div>
                     </div><!-- //.top content -->
@@ -139,7 +138,6 @@
 <!-- category content area end -->
 <!-- our story area start -->
 <!-- our story area end -->
-
 <!-- breadcrumb area start -->
 <section class="breadcrumb-area breadcrumb-bg extra">
     <div class="container">
@@ -149,12 +147,12 @@
                     <!-- breadcrumb inner -->
                     <div class="left-content-area">
                         <!-- left content area -->
-                        <h1 class="title">فروشگاه</h1>
+                        <h1 class="title">@ViewBag.Title</h1>
                     </div><!-- //. left content area -->
                     <div class="right-content-area">
                         <ul>
-                            <li><a href="index.html">خانه</a></li>
-                            <li>فروشگاه</li>
+                            <li><a href="/">خانه</a></li>
+                            <li>@ViewBag.Title</li>
                         </ul>
                     </div>
                 </div><!-- //. breadcrumb inner -->
@@ -163,7 +161,6 @@
     </div>
 </section>
 <!-- breadcrumb area end -->
-
 <!-- category content area start -->
 <div class="category-content-area">
     <div class="container">
@@ -175,88 +172,98 @@
                         <!-- category-filter-widget -->
                         <h4 class="title">فیلتر بر اساس</h4>
                         <div class="accordion accordion-flush" id="accordionFlushExample">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="flush-headingOne">
-                                    <button class="accordion-button collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
-                                            aria-expanded="false" aria-controls="flush-collapseOne">
-                                        ولتاژ
-                                    </button>
-                                </h2>
-                                <div id="flush-collapseOne" class="accordion-collapse collapse"
-                                     aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body">
-                                        <ul>
-                                            <li>
-                                                <a class="liitem" href="#">220 ولت</a>
-                                            </li>
-                                            <li>
-                                                <a class="liitem" href="#">230 ویلت</a>
-                                            </li>
+                            @if (Model.Features.Count() > 0)
+                            {
+                                foreach (var feature in Model.Features)
+                                {
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingOne">
+                                            <button class="accordion-button collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapse-@feature.Id"
+                                                    aria-expanded="false" aria-controls="flush-collapseOne">
+                                                @feature.Title
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapse-@feature.Id" class="accordion-collapse collapse"
+                                             aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body">
+                                                <ul>
+                                                    @if (feature.SubFeatures != null)
+                                                    {
+                                                        foreach (var item in feature.SubFeatures)
+                                                        {
+                                                            <li>
+                                                                <a class="liitem" href="#">@item.Value</a>
+                                                            </li>
+                                                        }
+                                                    }
+                                                    else if (feature.ProductFeatureValues != null)
+                                                    {
+                                                        foreach (var item in feature.ProductFeatureValues)
+                                                        {
+                                                            <li>
+                                                                <a class="liitem" href="#">@item.Value</a>
+                                                            </li>
+                                                        }
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
 
-                                            <li>
-                                                <a class="liitem" href="#">130 ویلت</a>
-                                            </li>
-
-                                            <li>
-                                                <a class="liitem" href="#">120 ویلت</a>
-                                            </li>
-
-                                            <li>
-                                                <a class="liitem" href="#">180 ویلت</a>
-                                            </li>
-
-                                            <li>
-                                                <a class="liitem" href="#">170 ویلت</a>
-                                            </li>
-                                        </ul>
+                            @if (Model.Brands.Count() > 0)
+                            {
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-headingTwo">
+                                        <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo"
+                                                aria-expanded="false" aria-controls="flush-collapseTwo">
+                                            برند
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                                         aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body">
+                                            <ul>
+                                                @foreach (var item in Model.Brands)
+                                                {
+                                                    <li>
+                                                        <a class="liitem" href="#">@item.Name</a>
+                                                    </li>
+                                                }
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="flush-headingTwo">
-                                    <button class="accordion-button collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo"
-                                            aria-expanded="false" aria-controls="flush-collapseTwo">
-                                        برند
-                                    </button>
-                                </h2>
-                                <div id="flush-collapseTwo" class="accordion-collapse collapse"
-                                     aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body">
-                                        <ul>
-                                            <li>
-                                                <a class="liitem" href="#">صبا باتری</a>
-                                            </li>
-                                            <li>
-                                                <a class="liitem" href="#">سپاهان باتری</a>
-                                            </li>
-                                        </ul>
+                            }
+
+                            @if (Model.ProductGroups.Count() > 0)
+                            {
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-headingThree">
+                                        <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#flush-collapseThree"
+                                                aria-expanded="false" aria-controls="flush-collapseThree">
+                                            مدل خودرو
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseThree" class="accordion-collapse collapse"
+                                         aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body">
+                                            <ul>
+                                                @foreach (var item in Model.ProductGroups)
+                                                {
+                                                    <li>
+                                                        <a class="liitem" href="#">@item.Title</a>
+                                                    </li>
+                                                }
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="flush-headingThree">
-                                    <button class="accordion-button collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseThree"
-                                            aria-expanded="false" aria-controls="flush-collapseThree">
-                                        مدل خودرو
-                                    </button>
-                                </h2>
-                                <div id="flush-collapseThree" class="accordion-collapse collapse"
-                                     aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body">
-                                        <ul>
-                                            <li>
-                                                <a class="liitem" href="#">ایرانی</a>
-                                            </li>
-                                            <li>
-                                                <a class="liitem" href="#">کره ای</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+                            }
                         </div>
                     </div><!-- //.category-filter-widget -->
                 </div><!-- //. category sidebar -->
@@ -268,24 +275,32 @@
                     <div class="top-content">
                         <!-- top content -->
                         <div class="left-conent">
-                            <span class="cat">باتری ماشین</span>
+                            <span class="cat">نوین باطری</span>
                         </div>
                         <div class="right-content">
                             <ul>
                                 <li>
                                     <div class="form-element has-icon">
-                                        <select class="selectpicker input-field select">
+                                        @*<select class="selectpicker input-field select">
                                             <option value="0">نمایش</option>
                                             <option value="2">مخفی</option>
                                             <option value="1">نمایش</option>
                                         </select>
                                         <div class="the-icon">
                                             <i class="fas fa-angle-down"></i>
+                                        </div>*@
+                                            <select onchange="GetGrid()" name="take" id="take" class="selectpicker input-field select">
+                                                <option value="27" selected="selected">نمایش 27 محصول</option>
+                                                <option value="15">نمایش 15 محصول</option>
+                                                <option value="9">نمایش 9 محصول</option>
+                                            </select>
+                                        <div class="the-icon">
+                                            <i class="fas fa-angle-down"> </i>
                                         </div>
                                     </div>
                                 </li>
                                 <li>
-                                    <div class="form-element has-icon">
+                                    @*<div class="form-element has-icon">
                                         <select class="selectpicker input-field select">
                                             <option value="0">فیلتر بر اساس</option>
                                             <option value="2">قیمت</option>
@@ -294,247 +309,209 @@
                                         <div class="the-icon">
                                             <i class="fas fa-angle-down"></i>
                                         </div>
-                                    </div>
+                                    </div>*@
+                                    <div class="form-element has-icon">
+                                            <select onchange="GetGrid()" name="sort" id="sort" class="selectpicker input-field select">
+                                                <option value="date" selected="selected">نمایش بر اساس تاریخ ثبت</option>
+                                                <option value="name">نمایش بر اساس اسم محصول</option>
+                                                <option value="price-high-to-low">نمایش بر اساس قیمت از زیاد به کم </option>
+                                                <option value="price-low-to-high">نمایش بر اساس قیمت از کم به زیاد</option>
+                                                <option value="sale">نمایش بر اساس پر فروش ها</option>
+                                            </select>
+                                    </div><!-- End .toolbox-sort -->
                                 </li>
 
                             </ul>
                         </div>
                     </div><!-- //. top content -->
-                    <div class="bottom-content">
-                        <!-- top content -->
-                        <div class="row">
-                            <div class="col-lg-4 col-md-6">
-                                <div onclick=" window.location = 'product-details.html' " style="cursor: pointer;"
-                                     class="single-new-collection-item">
-                                    <!-- single new collections -->
-                                    <div class="thumb">
-                                        <img src="/Content/client/pic/b23.jpg" alt="new collcetion image">
-                                        <div class="hover">
-                                            <a href="product-details.html" class="addtocart">دیدن محصول</a>
-                                        </div>
-                                    </div>
-                                    <div class="content">
-                                        <a href="product-details.html">
-                                            <h4 class="title">باتری ماشین</h4>
-                                        </a>
-                                        <div class="price mt-3">
-                                            <span class="sprice">53.00 تومان</span> <del class="dprice">95.00 تومان</del>
-                                        </div>
-                                    </div>
-                                </div><!-- //. single new collections  -->
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <div onclick=" window.location = 'product-details.html' " style="cursor: pointer;"
-                                     class="single-new-collection-item">
-                                    <!-- single new collections -->
-                                    <div class="thumb">
-                                        <img src="/Content/client/pic/b22.jpg" alt="new collcetion image">
-                                        <div class="hover">
-                                            <a href="product-details.html" class="addtocart">دیدن محصول</a>
-                                        </div>
-                                    </div>
-                                    <div class="content">
-                                        <a href="product-details.html">
-                                            <h4 class="title">باتری ماشین</h4>
-                                        </a>
-                                        <div class="price mt-3">
-                                            <span class="sprice">35.00 تومان</span> <del class="dprice">50.00 تومان</del>
-                                        </div>
-                                    </div>
-                                </div><!-- //. single new collections  -->
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <div onclick=" window.location = 'product-details.html' " style="cursor: pointer;"
-                                     class="single-new-collection-item">
-                                    <!-- single new collections -->
-                                    <div class="thumb">
-                                        <img src="/Content/client/pic/b3.jpg" alt="new collcetion image">
-                                        <div class="hover">
-                                            <a href="product-details.html" class="addtocart">دیدن محصول</a>
-                                        </div>
-                                    </div>
-                                    <div class="content">
-                                        <a href="product-details.html">
-                                            <h4 class="title">باتری ماشین</h4>
-                                        </a>
-                                        <div class="price mt-3">
-                                            <span class="sprice">23.00 تومان</span> <del class="dprice">35.00 تومان</del>
-                                        </div>
-                                    </div>
-                                </div><!-- //. single new collections  -->
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <div onclick=" window.location = 'product-details.html' " style="cursor: pointer;"
-                                     class="single-new-collection-item">
-                                    <!-- single new collections -->
-                                    <div class="thumb">
-                                        <img src="/Content/client/pic/b4.jpg" alt="new collcetion image">
-                                        <div class="hover">
-                                            <a href="product-details.html" class="addtocart">دیدن محصول</a>
-                                        </div>
-                                    </div>
-                                    <div class="content">
-                                        <a href="product-details.html">
-                                            <h4 class="title">باتری ماشین</h4>
-                                        </a>
-                                        <div class="price mt-3">
-                                            <span class="sprice">52.00 تومان</span> <del class="dprice">95.00 تومان</del>
-                                        </div>
-                                    </div>
-                                </div><!-- //. single new collections  -->
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <div onclick=" window.location = 'product-details.html' " style="cursor: pointer;"
-                                     class="single-new-collection-item">
-                                    <!-- single new collections -->
-                                    <div class="thumb">
-                                        <img src="/Content/client/pic/b5.jpg" alt="new collcetion image">
-                                        <div class="hover">
-                                            <a href="product-details.html" class="addtocart">دیدن محصول</a>
-                                        </div>
-                                    </div>
-                                    <div class="content">
-                                        <a href="product-details.html">
-                                            <h4 class="title">باتری ماشین</h4>
-                                        </a>
-                                        <div class="price mt-3">
-                                            <span class="sprice">503.00 تومان</span> <del class="dprice">905.00 تومان</del>
-                                        </div>
-                                    </div>
-                                </div><!-- //. single new collections  -->
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <div onclick=" window.location = 'product-details.html' " style="cursor: pointer;"
-                                     class="single-new-collection-item">
-                                    <!-- single new collections -->
-                                    <div class="thumb">
-                                        <img src="/Content/client/pic/b6.jpg" alt="new collcetion image">
-                                        <div class="hover">
-                                            <a href="product-details.html" class="addtocart">دیدن محصول</a>
-                                        </div>
-                                    </div>
-                                    <div class="content">
-                                        <a href="product-details.html">
-                                            <h4 class="title">باتری ماشین</h4>
-                                        </a>
-                                        <div class="price mt-3">
-                                            <span class="sprice">35.00 تومان</span> <del class="dprice">95.00 تومان</del>
-                                        </div>
-                                    </div>
-                                </div><!-- //. single new collections  -->
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <div onclick=" window.location = 'product-details.html' " style="cursor: pointer;"
-                                     class="single-new-collection-item">
-                                    <!-- single new collections -->
-                                    <div class="thumb">
-                                        <img src="/Content/client/pic/b7.jpg" alt="new collcetion image">
-                                        <div class="hover">
-                                            <a href="product-details.html" class="addtocart">دیدن محصول</a>
-                                        </div>
-                                    </div>
-                                    <div class="content">
-                                        <a href="product-details.html">
-                                            <h4 class="title">باتری ماشین</h4>
-                                        </a>
-                                        <div class="price mt-3">
-                                            <span class="sprice">25.00 تومان</span> <del class="dprice">85.00 تومان</del>
-                                        </div>
-                                    </div>
-                                </div><!-- //. single new collections  -->
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <div onclick=" window.location = 'product-details.html' " style="cursor: pointer;"
-                                     class="single-new-collection-item">
-                                    <!-- single new collections -->
-                                    <div class="thumb">
-                                        <img src="/Content/client/pic/b8.jpg" alt="new collcetion image">
-                                        <div class="hover">
-                                            <a href="product-details.html" class="addtocart">دیدن محصول</a>
-                                        </div>
-                                    </div>
-                                    <div class="content">
-                                        <a href="product-details.html">
-                                            <h4 class="title">باتری ماشین</h4>
-                                        </a>
-                                        <div class="price mt-3">
-                                            <span class="sprice">53.00 تومان</span> <del class="dprice">95.00 تومان</del>
-                                        </div>
-                                    </div>
-                                </div><!-- //. single new collections  -->
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <div onclick=" window.location = 'product-details.html' " style="cursor: pointer;"
-                                     class="single-new-collection-item">
-                                    <!-- single new collections -->
-                                    <div class="thumb">
-                                        <img src="/Content/client/pic/b9.jpg" alt="new collcetion image">
-                                        <div class="hover">
-                                            <a href="product-details.html" class="addtocart">دیدن محصول</a>
-                                        </div>
-                                    </div>
-                                    <div class="content">
-                                        <a href="product-details.html">
-                                            <h4 class="title">باتری ماشین</h4>
-                                        </a>
-                                        <div class="price mt-3">
-                                            <span class="sprice">553.00 تومان</span> <del class="dprice">955.0 تومان</del>
-                                        </div>
-                                    </div>
-                                </div><!-- //. single new collections  -->
-                            </div>
-                        </div>
+                    <div class="bottom-content" id="grid">
+
                     </div><!-- //.top content -->
                 </div><!-- //. right content area -->
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!-- category content area end -->
+    <!-- category content area end -->
 
-@Html.Action("NewBlog", "blog")
-
-
-
-@section scripts{
+    @Html.Action("NewBlog", "blog")
 
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
-            crossorigin="anonymous"></script>
+    @section scripts{
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"
-            integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc"
-            crossorigin="anonymous"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+                crossorigin="anonymous"></script>
 
 
-    <script>
-        document.getElementById('sortby').addEventListener('change', function () {
-            val = $("#sortby").val();
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"
+                integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc"
+                crossorigin="anonymous"></script>
 
-            console.log(val)
-            //if (val === 'popularity') {
-            //    window.open('popularity', '_blank');
-            //}
 
-            if (val === 'Price') {
-                //window.open('/Price', '_blank');
-                ProductGroupId = $("#ProductGroupId").text();
-                //alert(ProductGroupId);
-                window.location.href = "/Shop/Price?ProductGroupId=" + ProductGroupId;
+        <script>
+            document.getElementById('sortby').addEventListener('change', function () {
+                val = $("#sortby").val();
 
+                console.log(val)
+                //if (val === 'popularity') {
+                //    window.open('popularity', '_blank');
+                //}
+
+                if (val === 'Price') {
+                    //window.open('/Price', '_blank');
+                    ProductGroupId = $("#ProductGroupId").text();
+                    //alert(ProductGroupId);
+                    window.location.href = "/Shop/Price?ProductGroupId=" + ProductGroupId;
+
+                }
+                if (val === 'Name') {
+                    //window.open('rating', '_blank');
+                    ProductGroupId = $("#ProductGroupId").text();
+                    window.location.href = "/Shop/Name?ProductGroupId=" + ProductGroupId;
+
+                }
+            });
+
+        </script>
+        <script>
+            var brandIds = null;
+            var groupIds = null;
+            var productIds = null;
+        </script>
+
+        @if (ViewBag.brandIds != null)
+        {
+            <script>
+            brandIds = "@ViewBag.BrandIds";
+            </script>
+        }
+        @if (ViewBag.groupIds != null)
+        {
+            <script>
+            groupIds = "@ViewBag.GroupIds";
+            </script>
+        }
+        @if (ViewBag.productIds != null)
+        {
+            <script>
+            productIds = "@ViewBag.ProductIds";
+            </script>
+        }
+        <script>
+        var selectedGroupId = @Model.SelectedGroupId;
+
+        function GetGrid(page, groupId) {
+            $("#preloader").show();
+            var pageNumber = 1;
+            if (page != null) {
+                pageNumber = page;
             }
-            if (val === 'Name') {
-                //window.open('rating', '_blank');
-                ProductGroupId = $("#ProductGroupId").text();
-                window.location.href = "/Shop/Name?ProductGroupId=" + ProductGroupId;
-
+            var sort = $("#sort").find(":selected").val();
+            var take = $("#take").find(":selected").val();
+            var categoryId = groupId !== undefined ? groupId : null;
+            categoryId = categoryId === null ? selectedGroupId : categoryId;
+            var searchString =  '@ViewBag.SearchString';
+            var brands = [];
+            var priceFrom = null;
+            var priceTo = null;
+            var selectedPriceRange = $("span#filter-price-range").text().replaceAll("تومان", "");
+            if (selectedPriceRange != undefined) {
+                var priceRangeArr = selectedPriceRange.split('-');
+                 console.log(priceRangeArr);
+                if (parseInt(priceRangeArr[0]) > 0) {
+                    priceFrom = parseInt(priceRangeArr[0]);
+                    console.log(priceFrom);
+                }
+                if (parseInt(priceRangeArr[1]) > 0) {
+                    priceTo = parseInt(priceRangeArr[1]);
+                    console.log(priceTo);
+                }
             }
+
+            $("input[name='brands']").map(function() {
+                if ($(this).prop("checked") === true) {
+                    brands.push(parseInt($(this).val()));
+                }
+            });
+            var subFeatures = [];
+            $("[name='subFeatures']").map(function() {
+                if ($(this).prop("checked") === true) {
+                    subFeatures.push(parseInt($(this).val()));
+                }
+            });
+            var grid = {
+                categoryId: categoryId,
+                searchString: searchString,
+                priceFrom: priceFrom,
+                priceTo: priceTo,
+                brands: brands.join('-'),
+                subFeatures: subFeatures.join('-'),
+                pageNumber: pageNumber,
+                take: take,
+                sort: sort,
+                BrandIds: brandIds,
+                GroupIds: groupIds,
+                ProductIds: productIds,
+            }
+            $.ajax({
+                type: 'GET',
+                url: '/Shop/ProductsGrid',
+                data: grid,
+                success: function(data) {
+                    $("#grid").html(data);
+                },
+                error: function(data) {
+                    console.log("error");
+                    console.log(data);
+                },
+                complete: function() {
+                    $("#preloader").hide();
+                }
+            });
+        }
+
+        $(document).ready(function() {
+            GetGrid();
+
+            //$("#filter-price-range").on('DOMSubtreeModified', function () {
+            //    alert("Span HTML is now " + $(this).html());
+            //    GetGrid();
+            //});
+
+            // Update Price Range
+            $('#price-slider').mouseup(function () {
+                GetGrid();
+            });
+
+            document.getElementById("reload").onclick = function() {reload()};
+
+
         });
+                function reload() {
+                window.location = window.location.href.split("?")[0];
+            }
 
-    </script>
+                    function CheckPriceUpdated() {
+        var newMintxt = $('.from').text();
+        var newMaxtxt = $('.to').text();
 
+        var newMin = newMintxt.substring(1);
+        var newMax = newMaxtxt.substring(1);
 
-}
+        if (newMin != minPrice || newMax != maxPrice) {
+            minPrice = newMin;
+            maxPrice = newMax;
+
+            searchString = "";
+            $('.search-field').val(searchString);
+
+            submitForm();
+        }
+    }
+        </script>
+
+    }

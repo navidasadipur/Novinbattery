@@ -151,7 +151,6 @@ namespace SpadStorePanel.Web.Controllers
             return View(vm);
         }
 
-        [Route("ProductsGrid")]
         public ActionResult ProductsGrid(GridViewModel grid)
         {
             var products = new List<Product>();
