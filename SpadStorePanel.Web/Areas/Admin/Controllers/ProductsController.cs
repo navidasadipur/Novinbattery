@@ -50,6 +50,7 @@ namespace SpadStorePanel.Web.Areas.Admin.Controllers
             prod.ProductGroupId = product.ProductGroup;
             prod.Rate = product.Rate;
             prod.ShortDescription = product.ShortDescription;
+            prod.ShortTitle = product.ShortTitle;
             prod.TechnicalSpecifications = product.TechnicalSpecifications;
             var addProduct = _repo.Add(prod);
             #region Adding Product Features
@@ -98,6 +99,7 @@ namespace SpadStorePanel.Web.Areas.Admin.Controllers
             prod.BrandId = product.Brand;
             prod.ProductGroupId = product.ProductGroup;
             prod.Rate = product.Rate;
+            prod.ShortTitle = product.ShortTitle;
             prod.TechnicalSpecifications = product.TechnicalSpecifications;
             var updateProduct = _repo.Update(prod);
             #region Removing Previous Product Features
