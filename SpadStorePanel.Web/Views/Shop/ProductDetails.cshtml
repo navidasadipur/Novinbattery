@@ -2,12 +2,13 @@
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = $"جزئیات محصول {Model.Product.ShortTitle}";
 }
 
 
 <style>
-    .product-nav-thumbs a.active {
-        background-color: burlywood;
+    .activities a.active {
+        background-color: #ff8641;
     }
 </style>
 
@@ -102,7 +103,7 @@
                             </p>
                         </div><!-- End .product-content -->
 
-                        <div class="details-filter-row details-row-size">
+                        @*<div class="details-filter-row details-row-size">
                             @{
                                 var featureName = Model.ProductMainFeatures.FirstOrDefault().Feature.Title;
 
@@ -128,7 +129,7 @@
                                 </div><!-- End .product-nav -->
                             }
                         </div><!-- End .details-filter-row -->
-                        <input type="hidden" name="mainFeatureId" id="mainFeatureId" value="@Model.ProductMainFeatures.FirstOrDefault().Id" />
+                        <input type="hidden" name="mainFeatureId" id="mainFeatureId" value="@Model.ProductMainFeatures.FirstOrDefault().Id" />*@
                         @if (Model.Price > 0)
                         {
                             <div class="details-filter-row details-row-size">
@@ -219,9 +220,9 @@
             <div class="tab-content">
                 @*@Html.Action("ProductDetailsDescrioptinSection", "Shop", new { productId = Model.Product.Id })
 
-                @Html.Action("ProductFeaturesSection", "Shop", new { productId = Model.Product.Id })
+                    @Html.Action("ProductFeaturesSection", "Shop", new { productId = Model.Product.Id })
 
-                @Html.Action("ProductDetailsBrandSection", "Shop", new { productId = Model.Product.Id })*@
+                    @Html.Action("ProductDetailsBrandSection", "Shop", new { productId = Model.Product.Id })*@
                 <div class="tab-pane fade" id="product-review-tab" role="tabpanel"
                      aria-labelledby="product-review-link">
                     <div class="reviews">
@@ -257,7 +258,6 @@
                 </div><!-- .End .tab-pane -->
             </div><!-- End .tab-content -->
         </div><!-- End .product-details-tab -->
-
         @*@Html.Action("RelatedProductsSection", "Shop", new { productId = Model.Product.Id, take = 6 })*@
         <!--Comments-->
         <div class="reply">
@@ -270,27 +270,27 @@
             </div><!-- End .heading -->
             @*@using (Html.BeginForm("PostComment", "Shop", FormMethod.Post, new { id = "commentform" }))*@
             {
-                <input type="hidden" id="ProductId" name="ProductId" value="@Model.Product.Id">
-                <div class="row">
-                    <label for="Message" class="sr-only">دیدگاه</label>
-                    <textarea name="Message" id="Message" cols="30" rows="4" class="form-control" required="" placeholder="دیدگاه شما *"></textarea>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <label for="Name" class="sr-only">نام</label>
-                        <input type="text" class="form-control" id="Name" name="Name" required="" placeholder="نام شما *">
-                    </div><!-- End .col-md-6 -->
+            <input type="hidden" id="ProductId" name="ProductId" value="@Model.Product.Id">
+            <div class="row">
+                <label for="Message" class="sr-only">دیدگاه</label>
+                <textarea name="Message" id="Message" cols="30" rows="4" class="form-control" required="" placeholder="دیدگاه شما *"></textarea>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="Name" class="sr-only">نام</label>
+                    <input type="text" class="form-control" id="Name" name="Name" required="" placeholder="نام شما *">
+                </div><!-- End .col-md-6 -->
 
-                    <div class="col-md-6">
-                        <label for="reply-email" class="sr-only">ایمیل</label>
-                        <input type="email" class="form-control" id="Email" name="Email" required="" placeholder="ایمیل شما *">
-                    </div><!-- End .col-md-6 -->
-                </div><!-- End .row -->
+                <div class="col-md-6">
+                    <label for="reply-email" class="sr-only">ایمیل</label>
+                    <input type="email" class="form-control" id="Email" name="Email" required="" placeholder="ایمیل شما *">
+                </div><!-- End .col-md-6 -->
+            </div><!-- End .row -->
 
-                <button type="submit" class="btn btn-outline-primary-2 float-right">
-                    <span>ارسال دیدگاه</span>
-                    <i class="icon-long-arrow-left"></i>
-                </button>
+            <button type="submit" class="btn btn-outline-primary-2 float-right">
+                <span>ارسال دیدگاه</span>
+                <i class="icon-long-arrow-left"></i>
+            </button>
             }
         </div>
         <!--End Comments-->
@@ -299,7 +299,11 @@
 
 
 
-
+<style>
+    .product-nav-thumbs a.selected {
+        background-color: #ff8641;
+    }
+</style>
 <!-- breadcrumb area start -->
 <section class="breadcrumb-area breadcrumb-bg">
     <div class="container">
@@ -309,12 +313,12 @@
                     <!-- breadcrumb inner -->
                     <div class="left-content-area">
                         <!-- left content area -->
-                        <h1 class="title">جزئیات محصول</h1>
+                        <h1 class="title">@ViewBag.Title</h1>
                     </div><!-- //. left content area -->
                     <div class="right-content-area">
                         <ul>
-                            <li><a href="index.html">خانه</a></li>
-                            <li>جزئیات محصول</li>
+                            <li><a href="/">خانه</a></li>
+                            <li>@ViewBag.Title</li>
                         </ul>
                     </div>
                 </div><!-- //. breadcrumb inner -->
@@ -421,13 +425,19 @@
                         <span class="orders">سفارش (200+)</span>
                     </div>
                     <div class="bottom-content">
-                        <h3 class="title">باتری ماشین</h3>
+                        <h3 class="title">@Model.Product.Title</h3>
                         <div class="price-area">
                             <div class="left">
-                                <span class="sprice">460 تومان</span>
-                                <span class="dprice"><del>689 تومان</del></span>
+                                @if (Model.PriceAfterDiscount < Model.Price)
+                                {
+                                    <span class="sprice">@Model.PriceAfterDiscount.ToString("##,###") تومان</span>
+                                    <span class="dprice"><del>@Model.Price.ToString("##,###") تومان</del></span>
+                                }
+                                else if (Model.Price != 0)
+                                {
+                                    <span class="sprice">@Model.Price.ToString("##,###") تومان</span>
+                                }
                             </div>
-
                         </div>
                         <ul class="product-spec">
                             <li>برند: <span class="right">باتری ماشین </span></li>
@@ -438,10 +448,7 @@
                         <div class="pdescription">
                             <h4 class="title">توضیح</h4>
                             <p>
-                                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                                گرافیک است.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
-                                طراحان گرافیک است.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                                استفاده از طراحان گرافیک است...
+                                @Model.Product.ShortDescription
                             </p>
 
                         </div>
@@ -449,17 +456,50 @@
                             <div class="qty">
                                 <ul>
                                     <li><span class="qtminus"><i class="fas fa-minus"></i></span></li>
-                                    <li><span class="qttotal">1</span></li>
+                                    <li><span class="qttotal" id="txtProductCount">1</span></li>
                                     <li><span class="qtplus"><i class="fas fa-plus"></i></span></li>
                                 </ul>
                             </div>
-                            <ul class="activities">
-                                <li><a href="#"><i class="fas fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fas fa-hourglass"></i></a></li>
-                                <li><a href="#"><i class="fas fa-share-square"></i></a></li>
-                            </ul>
+                            @*<ul class="activities">
+                                    <li><a href="#"><i class="fas fa-heart"></i></a></li>
+                                    <li><a href="#"><i class="fas fa-hourglass"></i></a></li>
+                                    <li><a href="#"><i class="fas fa-share-square"></i></a></li>
+                                </ul>*@
+                            <div class="details-filter-row details-row-size">
+                                @{
+                                    var featureName = Model.ProductMainFeatures.FirstOrDefault().Feature.Title;
+
+                                    var i = 0;
+
+                                    <label>@featureName : </label>
+                                    <ul class="activities">
+                                        @foreach (var item in Model.ProductMainFeatures)
+                                        {
+                                            var className = "";
+                                            i++;
+
+                                            if (i == 1)
+                                            {
+                                                className = "selected";
+                                            }
+                                            <a href="javascript:void(0)" onclick="UpdateProductPrice(@item.ProductId,@item.Id, this)" class="test1 b @className">
+                                                @(item.SubFeature != null ? item.SubFeature.Value : item.Value)
+                                            </a>
+                                            <li>
+                                                <a href="javascript:void(0)" onclick="UpdateProductPrice(@item.ProductId,@item.Id, this)" class="test1 b @className">
+                                                    <i class="">
+                                                        @(item.SubFeature != null ? item.SubFeature.Value : item.Value)
+                                                    </i>
+                                                </a>
+                                            </li>
+                                        }
+                                    </ul>
+                                }
+                            </div><!-- End .details-filter-row -->
+                            <input type="hidden" name="mainFeatureId" id="mainFeatureId" value="@Model.ProductMainFeatures.FirstOrDefault().Id" />
+
                             <div class="btn-wrapper">
-                                <a onclick=" buyingInShop() " href="javascript:void(0);" class="boxed-btn">
+                                <a href="javascript:void(0)" onclick="AddToCart(@Model.Product.Id,$('#mainFeatureId').val(), $('#txtProductCount').val())" class="boxed-btn">
                                     افزودن به
                                     سبد
                                 </a>
@@ -566,28 +606,10 @@
                             <div class="descr-tab-content">
                                 <h4 class="title">توضیحات محصول</h4>
                                 <p>
-                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                                    گرافیک است.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                                    استفاده از طراحان گرافیک است.
-                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                                    گرافیک است.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                                    استفاده از طراحان گرافیک است.
+                                    @Model.Product.ShortDescription
                                 </p>
                                 <p>
-                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                                    گرافیک است.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                                    استفاده از طراحان گرافیک است.
-                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                                    گرافیک است.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                                    استفاده از طراحان گرافیک است.
-                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                                    گرافیک است.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                                    استفاده از طراحان گرافیک است.
-                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                                    گرافیک است.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                                    استفاده از طراحان گرافیک است.
-                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                                    گرافیک است...
+                                    @Model.Product.Description
                                 </p>
                             </div>
                         </div>
@@ -665,101 +687,9 @@
                     </ul>
                 </div><!-- //.recently added nav menu -->
             </div>
-            <div class="col-lg-12">
-                <div class="recently-added-carousel" id="recently-added-carousel">
-                    <!-- recently added carousel -->
-                    <div onclick=" window.location = 'product-details.html' " style="cursor: pointer;"
-                         class="single-new-collection-item">
-                        <div class="thumb">
-                            <img src="/Content/client/pic/b1.jpg" alt="product image">
-                            <div class="hover">
-                                <a href="product-details.html" class="addtocart">دیدن محصول</a>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <h4 class="title">باتری ماشین</h4>
-                            <div dir="rtl" class="price mt-3">
-                                <span class="sprice">10.00 تومان</span> <del class="dprice">
-                                    47.00
-                                    تومان
-                                </del>
-                            </div>
-                        </div>
-                    </div>
-                    <div onclick=" window.location = 'product-details.html' " style="cursor: pointer;"
-                         class="single-new-collection-item">
-                        <div class="thumb">
-                            <img src="/Content/client/pic/b2.jpg" alt="product image">
-                            <div class="hover">
-                                <a href="product-details.html" class="addtocart">دیدن محصول</a>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <h4 class="title">باتری ماشین</h4>
-                            <div dir="rtl" class="price mt-3">
-                                <span class="sprice">30.00 تومان</span> <del class="dprice">
-                                    45.00
-                                    تومان
-                                </del>
-                            </div>
-                        </div>
-                    </div>
-                    <div onclick=" window.location = 'product-details.html' " style="cursor: pointer;"
-                         class="single-new-collection-item">
-                        <div class="thumb">
-                            <img src="/Content/client/pic/b3.jpg" alt="product image">
-                            <div class="hover">
-                                <a href="product-details.html" class="addtocart">دیدن محصول</a>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <h4 class="title">باتری ماشین</h4>
-                            <div dir="rtl" class="price mt-3">
-                                <span class="sprice">70.00 تومان</span> <del class="dprice">
-                                    120.00
-                                    تومان
-                                </del>
-                            </div>
-                        </div>
-                    </div>
-                    <div onclick=" window.location = 'product-details.html' " style="cursor: pointer;"
-                         class="single-new-collection-item">
-                        <div class="thumb">
-                            <img src="/Content/client/pic/b4.jpg" alt="product image">
-                            <div class="hover">
-                                <a href="product-details.html" class="addtocart">دیدن محصول</a>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <h4 class="title">باتری ماشین</h4>
-                            <div dir="rtl" class="price mt-3">
-                                <span class="sprice">89.00 تومان</span> <del class="dprice">
-                                    156.00
-                                    تومان
-                                </del>
-                            </div>
-                        </div>
-                    </div>
-                    <div onclick=" window.location = 'product-details.html' " style="cursor: pointer;"
-                         class="single-new-collection-item">
-                        <div class="thumb">
-                            <img src="/Content/client/pic/b5.jpg" alt="product image">
-                            <div class="hover">
-                                <a href="product-details.html" class="addtocart">دیدن محصول</a>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <h4 class="title">باتری ماشین</h4>
-                            <div dir="rtl" class="price mt-3">
-                                <span class="sprice">70.00 تومان</span> <del class="dprice">
-                                    90.00
-                                    تومان
-                                </del>
-                            </div>
-                        </div>
-                    </div>
-                </div><!-- //. recently added carousel -->
-            </div>
+            @Html.Action("LatestProductsSection", "Shop", new { take = 5 })
+            
+
         </div>
     </div>
 </div>
