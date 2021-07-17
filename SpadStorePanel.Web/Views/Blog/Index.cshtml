@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<SpadStorePanel.Web.ViewModels.ArticleListViewModel>
 @{
+    ViewBag.Title = "وبلاگ";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var productgroupid = ViewBag.ProductGroupId;
 
@@ -15,12 +16,12 @@
                     <!-- breadcrumb inner -->
                     <div class="left-content-area">
                         <!-- left content area -->
-                        <h1 class="title">وبلاگ</h1>
+                        <h1 class="title">@ViewBag.Title</h1>
                     </div><!-- //. left content area -->
                     <div class="right-content-area">
                         <ul>
                             <li><a href="/">خانه</a></li>
-                            <li>وبلاگ</li>
+                            <li>@ViewBag.Title</li>
                         </ul>
                     </div>
                 </div><!-- //. breadcrumb inner -->
@@ -65,8 +66,6 @@
 <section class="blog-page-content-area">
     <div class="container">
         <div class="row">
-
-
             @foreach (var item in Model)
             {
                 <div class="col-lg-4 col-md-6">
@@ -74,10 +73,10 @@
                          class="single-our-story-item">
                         <!-- single our story item -->
                         <div class="thumb">
-                            <img style="width:350px !important;height:350px !important;" src="~/Files/ArticleImages/Image/@item.Image" alt="our story">
+                            <img src="~/Files/ArticleImages/Thumb/@item.Image" alt="our story">
                         </div>
                         <div class="conent">
-                            <span class="time">تاریخ پست</span>
+                            <span class="time">@item.PersianDate</span>
                             <a href="/Blog/BlogDetail/@item.Id">
                                 <h4 class="title">@item.Title</h4>
                             </a>

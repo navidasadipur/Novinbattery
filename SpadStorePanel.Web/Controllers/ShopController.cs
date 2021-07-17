@@ -494,6 +494,27 @@ namespace SpadStorePanel.Web.Controllers
             return jsonStr;
         }
 
+        public ActionResult LatestProductsSection(int take)
+        {
+            var products = _productService.GetLatestProductsWithPrice(take);
+            var vm = new List<ProductWithPriceViewModel>();
+            foreach (var product in products)
+            {
+                var tempVm = new ProductWithPriceViewModel(product);
+
+                var group = _productGroupRepo.GetGroupByProductId(product.Id);
+
+                tempVm.ProductGroupId = group.Id;
+
+                tempVm.ProductGroupTitle = group.Title;
+
+                vm.Add(tempVm);
+            }
+
+
+            return PartialView(vm);
+        }
+
         [HttpPost]
         public string AddToCart(int productId, int? mainFeatureId, int count = 1)
         {

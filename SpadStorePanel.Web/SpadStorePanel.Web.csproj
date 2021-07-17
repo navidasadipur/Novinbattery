@@ -5153,6 +5153,7 @@
     <Content Include="Views\AboutUs\ShowTopComments.cshtml" />
     <Content Include="Views\AboutUs\StaticDetailsInAboutPage.cshtml" />
     <Content Include="Views\Shop\ProductsGrid.cshtml" />
+    <Content Include="Views\Shop\LatestProductsSection.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
