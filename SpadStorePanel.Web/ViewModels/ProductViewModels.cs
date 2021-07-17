@@ -100,20 +100,23 @@ namespace SpadStorePanel.Web.ViewModels
 
     public class GridViewModel
     {
-        public int? categoryId { get; set; }
-        public string searchString { get; set; }
-        public long? priceFrom { get; set; }
-        public long? priceTo { get; set; }
-        public string brands { get; set; }
-        public string subFeatures { get; set; }
-        public int pageNumber { get; set; }
-        public int take { get; set; }
-        public string sort { get; set; }
+        public int? CategoryId { get; set; }
+        public int? BrandId { get; set; }
+        public int? SubFeatureId { get; set; }
+        public string SearchString { get; set; }
+        public long? PriceFrom { get; set; }
+        public long? PriceTo { get; set; }
+        public string Brands { get; set; }
+        public string SubFeatures { get; set; }
+        public int PageNumber { get; set; }
+        public int Take { get; set; }
+        public string Sort { get; set; }
 
         public string BrandIds { get; set; }
         public string GroupIds { get; set; }
         public string ProductIds { get; set; }
     }
+
     public class ProductCommentViewModel
     {
         public ProductCommentViewModel()

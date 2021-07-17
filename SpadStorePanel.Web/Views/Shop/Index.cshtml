@@ -194,19 +194,19 @@
                                                         foreach (var item in feature.SubFeatures)
                                                         {
                                                             <li>
-                                                                <a class="liitem" href="#">@item.Value</a>
+                                                                <a class="liitem" href="javascript:void(0)" onclick="GetGrid(null, null, null, @item.Id)">@item.Value</a>
                                                             </li>
                                                         }
                                                     }
-                                                    else if (feature.ProductFeatureValues != null)
+                                                    @*else if (feature.ProductFeatureValues != null)
                                                     {
                                                         foreach (var item in feature.ProductFeatureValues)
                                                         {
                                                             <li>
-                                                                <a class="liitem" href="#">@item.Value</a>
+                                                                <a class="liitem" href="javascript:void(0)" onclick="GetGrid(null, null, null, @item.Id)">@item.Value</a>
                                                             </li>
                                                         }
-                                                    }
+                                                    }*@
                                                 </ul>
                                             </div>
                                         </div>
@@ -231,7 +231,7 @@
                                                 @foreach (var item in Model.Brands)
                                                 {
                                                     <li>
-                                                        <a class="liitem" href="#" id="b_@item.Id" value="@item.Id">@item.Name</a>
+                                                        <a class="liitem" href="javascript:void(0)" onclick="GetGrid(null, null, @item.Id)" id="b_@item.Id" value="@item.Id">@item.Name</a>
                                                     </li>
                                                 }
                                             </ul>
@@ -408,7 +408,7 @@
         <script>
         var selectedGroupId = @Model.SelectedGroupId;
 
-        function GetGrid(page, groupId) {
+        function GetGrid(page, groupId, brandId, subFearueId) {
             $("#preloader").show();
             var pageNumber = 1;
             if (page != null) {
@@ -418,8 +418,10 @@
             var take = $("#take").find(":selected").val();
             var categoryId = groupId !== undefined ? groupId : null;
             categoryId = categoryId === null ? selectedGroupId : categoryId;
+            brandId = brandId !== undefined ? brandId : null;
+            subFearueId = subFearueId !== undefined ? subFearueId : null;
             var searchString =  '@ViewBag.SearchString';
-            var brands = [];
+
             var priceFrom = null;
             var priceTo = null;
             var selectedPriceRange = $("span#filter-price-range").text().replaceAll("تومان", "");
@@ -436,27 +438,35 @@
                 }
             }
 
-            $("input[name='brands']").map(function() {
-                if ($(this).prop("checked") === true) {
-                    brands.push(parseInt($(this).val()));
-                }
-            });
+            var brands = [];
+            brands.push(brandId);
+            //$("input[name='brands']").map(function() {
+            //    if ($(this).prop("checked") === true) {
+            //        brands.push(parseInt($(this).val()));
+            //    }
+            //});
+
             var subFeatures = [];
-            $("[name='subFeatures']").map(function() {
-                if ($(this).prop("checked") === true) {
-                    subFeatures.push(parseInt($(this).val()));
-                }
-            });
+            subFeatures.push(subFearueId);
+            //subFeatures.push(subFearueId);
+            //$("[name='subFeatures']").map(function() {
+            //    if ($(this).prop("checked") === true) {
+            //        subFeatures.push(parseInt($(this).val()));
+            //    }
+            //});
+
             var grid = {
-                categoryId: categoryId,
-                searchString: searchString,
-                priceFrom: priceFrom,
-                priceTo: priceTo,
-                brands: brands.join('-'),
-                subFeatures: subFeatures.join('-'),
-                pageNumber: pageNumber,
-                take: take,
-                sort: sort,
+                CategoryId: categoryId,
+                BrandId: brandId,
+                SubFeatureId: subFearueId,
+                SearchString: searchString,
+                PriceFrom: priceFrom,
+                PriceTo: priceTo,
+                Brands: brands.join('-'),
+                SubFeatures: subFeatures.join('-'),
+                PageNumber: pageNumber,
+                Take: take,
+                Sort: sort,
                 BrandIds: brandIds,
                 GroupIds: groupIds,
                 ProductIds: productIds,

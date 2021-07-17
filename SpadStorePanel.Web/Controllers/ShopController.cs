@@ -157,20 +157,20 @@ namespace SpadStorePanel.Web.Controllers
 
             var brandsIntArr = new List<int>();
 
-            if (string.IsNullOrEmpty(grid.brands) == false)
+            if (string.IsNullOrEmpty(grid.Brands) == false)
             {
-                var brandsArr = grid.brands.Split('-').ToList();
+                var brandsArr = grid.Brands.Split('-').ToList();
                 brandsArr.ForEach(b => brandsIntArr.Add(Convert.ToInt32(b)));
             }
 
             var subFeaturesIntArr = new List<int>();
-            if (string.IsNullOrEmpty(grid.subFeatures) == false)
+            if (string.IsNullOrEmpty(grid.SubFeatures) == false)
             {
-                var subFeaturesArr = grid.subFeatures.Split('-').ToList();
+                var subFeaturesArr = grid.SubFeatures.Split('-').ToList();
                 subFeaturesArr.ForEach(b => subFeaturesIntArr.Add(Convert.ToInt32(b)));
             }
 
-            products = _productService.GetProductsGrid(grid.categoryId, brandsIntArr, subFeaturesIntArr, grid.priceFrom, grid.priceTo, grid.searchString);
+            products = _productService.GetProductsGrid(grid.CategoryId, brandsIntArr, subFeaturesIntArr, grid.PriceFrom, grid.PriceTo, grid.SearchString);
 
             #region Get Products Base on Group, Brand and Products of "offer"
 
@@ -267,9 +267,9 @@ namespace SpadStorePanel.Web.Controllers
 
             #region Sorting
 
-            if (grid.sort != "date")
+            if (grid.Sort != "date")
             {
-                switch (grid.sort)
+                switch (grid.Sort)
                 {
                     case "name":
                         products = products.OrderBy(p => p.Title).ToList();
@@ -287,15 +287,13 @@ namespace SpadStorePanel.Web.Controllers
             }
             #endregion
 
-
-
             var count = products.Count;
-            var skip = grid.pageNumber * grid.take - grid.take;
-            int pageCount = (int)Math.Ceiling((double)count / grid.take);
+            var skip = grid.PageNumber * grid.Take - grid.Take;
+            int pageCount = (int)Math.Ceiling((double)count / grid.Take);
             ViewBag.PageCount = pageCount;
-            ViewBag.CurrentPage = grid.pageNumber;
+            ViewBag.CurrentPage = grid.PageNumber;
 
-            products = products.Skip(skip).Take(grid.take).ToList();
+            products = products.Skip(skip).Take(grid.Take).ToList();
 
             var vm = new List<ProductWithPriceDto>();
             foreach (var product in products)
