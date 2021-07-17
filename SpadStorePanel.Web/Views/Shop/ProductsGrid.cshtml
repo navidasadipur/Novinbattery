@@ -276,20 +276,21 @@
                             i++;
                             var discountTypeStr = ((int)item.DiscountType) == 1 ? "درصد" : "تومان";
                             <div class="col-lg-4 col-md-6">
-                                <a href="/Shop/Product/@item.Id">
-                                    <div style="cursor: pointer;"
-                                         class="single-new-collection-item">
-                                        <!-- single new collections -->
-                                        <div class="thumb">
+                                <div style="cursor: pointer;"
+                                     class="single-new-collection-item">
+                                    <!-- single new collections -->
+                                    <div class="thumb">
+                                        <a href="/Shop/Product/@item.Id">
                                             <img src="/Files/ProductImages/Thumb/@item.Image" alt="@item.ShortTitle-image">
-                                            <div class="hover">
-                                                <a href="product-details.html" class="addtocart">دیدن محصول</a>
-                                            </div>
+                                        </a>
+                                        <div class="hover">
+                                            <a href="product-details.html" class="addtocart">افزودن به سبد خرید</a>
                                         </div>
+                                    </div>
+                                    <a href="/Shop/Detail/@item.Id">
                                         <div class="content">
-                                            <a href="/Shop/Product/@item.Id">
-                                                <h4 class="title">@item.ShortTitle</h4>
-                                            </a>
+                                            <h4 class="title">@item.ShortTitle</h4>
+
                                             <div class="price mt-3">
                                                 @*<span class="sprice">53.00 تومان</span> <del class="dprice">95.00 تومان</del>*@
                                                 @if (item.Price == 0)
@@ -307,8 +308,8 @@
                                                 }
                                             </div>
                                         </div>
-                                    </div><!-- //. single new collections  -->
-                                </a>
+                                    </a>
+                                </div><!-- //. single new collections  -->
                             </div>
                         }
                         @*<div class="col-lg-4 col-md-6">
