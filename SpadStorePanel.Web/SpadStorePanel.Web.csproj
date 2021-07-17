@@ -244,7 +244,6 @@
     <Compile Include="ViewModels\IdentityModels.cs" />
     <Compile Include="ViewModels\InvoiceViewModels.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
-    <Compile Include="ViewModels\ProductDetailViewModel.cs" />
     <Compile Include="ViewModels\ProductGroupsViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModels.cs" />
     <Compile Include="ViewModels\StatictisModel.cs" />
@@ -5084,7 +5083,7 @@
     <Content Include="Views\CantactForm\FormCantact.cshtml" />
     <Content Include="Views\Home\Gallery.cshtml" />
     <Content Include="Views\Home\Faq.cshtml" />
-    <Content Include="Views\Shop\Detail.cshtml" />
+    <Content Include="Views\Shop\ProductDetails.cshtml" />
     <Content Include="Views\Home\SocialNetwork.cshtml" />
     <Content Include="Views\Shop\Favorit.cshtml" />
     <Content Include="Views\Cookie\CardShow.cshtml" />
