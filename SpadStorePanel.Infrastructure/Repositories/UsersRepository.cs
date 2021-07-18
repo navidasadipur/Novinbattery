@@ -44,6 +44,7 @@ namespace SpadStorePanel.Infrastructure.Repositories
             var user = _context.Users.Find(id);
             return user;
         }
+
         public Tuple<User,bool> UpdateUser(User model, string newPassword = null)
         {
             var succeeded = true;
@@ -72,6 +73,7 @@ namespace SpadStorePanel.Infrastructure.Repositories
             var updateModel = new Tuple<User, bool>(model, succeeded);
             return updateModel;
         }
+
         public User CreateUser(User model, string Password)
         {
             model.SecurityStamp = Guid.NewGuid().ToString();
@@ -79,14 +81,17 @@ namespace SpadStorePanel.Infrastructure.Repositories
 
             return model;
         }
+
         public List<Role> GetRoles()
         {
             return _context.Role.ToList();
         }
+
         public bool UserHasRole(string userId, string roleId)
         {
             return _context.UserRoles.Any(a => a.UserId == userId && a.RoleId == roleId);
         }
+
         public UserRole AddUserRole(string userId, string roleId)
         {
             UserRole uRole = new UserRole()
@@ -98,18 +103,22 @@ namespace SpadStorePanel.Infrastructure.Repositories
             _context.SaveChanges();
             return uRole;
         }
+
         public List<UserRole> GetUserRoles(string userId)
         {
             return _context.UserRoles.Where(ur => ur.UserId == userId).ToList();
         }
+
         public Role GetRole(string roleId)
         {
             return _context.Role.FirstOrDefault(r => r.Id == roleId);
         }
+
         public UserRole GetUserRole(string userId,string roleId)
         {
             return _context.UserRoles.FirstOrDefault(ur => ur.UserId == userId && ur.RoleId == roleId);
         }
+
         public User DeleteUser(string userId)
         {
             var user = _context.Users.Find(userId);
@@ -149,6 +158,7 @@ namespace SpadStorePanel.Infrastructure.Repositories
 
             return false;
         }
+
         public bool PhoneNumberExists(string phoneNumber, string id = null)
         {
             var user = _context.Users.FirstOrDefault(u=>u.PhoneNumber == phoneNumber);
@@ -167,11 +177,13 @@ namespace SpadStorePanel.Infrastructure.Repositories
         {
             return await _userManager.PasswordValidator.ValidateAsync(password);
         }
+
         public async Task<IdentityResult> SetNewPassword(string userId,string oldPassword,string newPassword)
         {
             var result = await _userManager.ChangePasswordAsync(userId, oldPassword, newPassword);
             return result;
         }
+
         public async Task<IdentityResult> ResetPasswordToDefault(string userId)
         {
             var appSettings = ConfigurationManager.AppSettings;
@@ -179,6 +191,7 @@ namespace SpadStorePanel.Infrastructure.Repositories
             var result = await _userManager.AddPasswordAsync(userId, appSettings["UserDefaultPassword"]);
             return result;
         }
+
         public bool EmailExists(string email, string id = null)
         {
             var user = _userManager.FindByEmail(email);
@@ -192,6 +205,7 @@ namespace SpadStorePanel.Infrastructure.Repositories
 
             return false;
         }
+
         protected void Dispose(bool disposing)
         {
             _context.Dispose();
@@ -204,6 +218,39 @@ namespace SpadStorePanel.Infrastructure.Repositories
             _roleManager?.Dispose();
             _userStore?.Dispose();
             _userManager?.Dispose();
+        }
+
+        //public bool CheckVerificationCode(User model)
+        //{
+        //    var count = _context.Users.Where(u => u.PhoneNumber == model.PhoneNumber && u.VerificationCode == model.VerificationCode && u.IsDeleted == false).ToList().Count;
+        //    if (count > 0)
+        //        return true;
+        //    return false;
+        //}
+
+        public User GetUserByPhoneNumber(string phoneNumber)
+        {
+            return _context.Users.FirstOrDefault(u => u.PhoneNumber == phoneNumber && u.IsDeleted == false);
+        }
+
+        //public void UpdateVerificationCode(User model, string code)
+        //{
+        //    var user = _context.Users.FirstOrDefault(u => u.PhoneNumber == model.PhoneNumber);
+        //    user.VerificationCode = code;
+
+        //    _context.Entry(user).State = EntityState.Modified;
+        //    _context.SaveChanges();
+        //}
+
+        public Customer GetCustomerByUserId(string userId)
+        {
+            return _context.Customers.FirstOrDefault(c => c.UserId == userId);
+        }
+        public Customer AddCustomer(Customer model)
+        {
+            _context.Customers.Add(model);
+            _context.SaveChanges();
+            return model;
         }
     }
 }
