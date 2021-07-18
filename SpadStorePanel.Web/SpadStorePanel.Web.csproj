@@ -5109,7 +5109,7 @@
     <Content Include="Views\Home\SliderConstSection.cshtml" />
     <Content Include="Views\Home\NewProducts.cshtml" />
     <Content Include="Views\Home\SpecialProducts.cshtml" />
-    <Content Include="Views\Home\BestsellersProducts.cshtml" />
+    <Content Include="Views\Home\HomeEndBestSellersProducts.cshtml" />
     <Content Include="Views\Cookie\ShowInvoce.cshtml" />
     <Content Include="Views\Cookie\Payment.cshtml" />
     <Content Include="Views\Home\HeaderMobile.cshtml" />
