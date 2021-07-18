@@ -132,6 +132,9 @@
     <!-- main -->
     <script src="/Content/Client/assets/js/main.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous"></script>
+
+
     <!-- Swiper JS -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
@@ -248,6 +251,224 @@
                 return false;
             });
         });
+    </script>
+    <script>
+        var addCount = 1;
+        function IncreaseProductCount() {
+            addCount += 1;
+            $("#txtProductCount").html(addCount);
+        }
+
+        function DecreaseProductCount() {
+            if (addCount > 1)
+                addCount -= 1;
+            $("#txtProductCount").html(addCount);
+        }
+
+        function AddToCart(id, mainFeature) {
+
+            addCount = addCount <= 0 ? 1 : addCount
+
+            var mainFeatureId = null;
+            if (mainFeature != null) {
+                mainFeatureId = mainFeature;
+            }
+            if (mainFeatureId === null) {
+                $.ajax({
+                    type: 'POST',
+                    url: '/Shop/AddToCart?productId=' + id + '&count=' + addCount,
+                    success: function (data) {
+                        data = JSON.parse(data);
+
+                        if (data.Message.toLowerCase() == "finished" && addCount > 1) {
+                            toastr.info("این تعداد از محصول در انبار موجود نیست");
+                        }
+                        else if (data.Message.toLowerCase() == "finished") {
+                            toastr.info("محصول در انبار موجود نیست");
+                        }
+                        else if (data.Message.toLowerCase() == "success") {
+                            toastr.success("محصول به سبد اضافه گردید");
+                        }
+
+                        GetCart();
+                    },
+                    error: function (data) {
+                        console.log("error");
+                        console.log(data);
+                    },
+                    complete: function () {
+                    }
+                });
+            } else {
+                $.ajax({
+                    type: 'POST',
+                    url: '/Shop/AddToCart?productId=' + id + '&mainFeatureId=' + mainFeatureId + '&count=' + addCount,
+                    success: function (data) {
+                        data = JSON.parse(data);
+
+                        if (data.Message.toLowerCase() == "finished" && addCount > 1) {
+                            toastr.info("این تعداد از محصول در انبار موجود نیست");
+                        }
+                        else if (data.Message.toLowerCase() == "finished") {
+                            toastr.info("محصول در انبار موجود نیست");
+                        }
+                        else if (data.Message.toLowerCase() == "success") {
+                            toastr.success("محصول به سبد اضافه گردید");
+                        }
+
+                        GetCart();
+                    },
+                    error: function (data) {
+                        console.log("error");
+                        console.log(data);
+                    },
+                    complete: function () {
+                    }
+                });
+            }
+        }
+        function RemoveFromCart(id, mainFeatureId, complete) {
+            $.ajax({
+                type: 'POST',
+                url: '/Shop/RemoveFromCart?productId=' + id + '&mainFeatureId=' + mainFeatureId + '&complete=' + complete,
+                success: function (data) {
+                    data = JSON.parse(data);
+
+                    if (data.Message.toLowerCase() == "success") {
+                        toastr.info("محصول از سبد حذف گردید");
+                    }
+
+                    GetCart();
+                },
+                error: function (data) {
+                    console.log("error");
+                    console.log(data);
+                },
+                complete: function () {
+                }
+            });
+        }
+        function GetCart() {
+            $.ajax({
+                type: 'GET',
+                url: '/Home/CartSection',
+                success: function (data) {
+                    $("#cartSection").html(data);
+                },
+                error: function (data) {
+                    console.log("error");
+                    console.log(data);
+                },
+                complete: function () {
+                }
+            });
+            if ($("#CartTable") !== undefined) {
+                $.ajax({
+                    type: 'GET',
+                    url: '/Shop/CartTable',
+                    success: function (data) {
+                        $("#CartTable").html(data);
+                    },
+                    error: function (data) {
+                        console.log("error");
+                        console.log(data);
+                    },
+                    complete: function () {
+                    }
+                });
+            }
+        }
+    </script>
+    <script>
+    function AddToWishList(id) {
+        var userIsLoggedIn = '@(User.Identity.IsAuthenticated)';
+        if (userIsLoggedIn === 'False') {
+            location.href = "/Customer/Auth/Login";
+        } else {
+            $.ajax({
+                type: 'POST',
+                url: '/Shop/AddToWishList?productId=' + id,
+                success: function (data) {
+                    toastr.success("محصول مورد نظر به لیست علاقه مندی های شما افزوده شد");
+                    GetWishList();
+                },
+                error: function (data) {
+                    console.log("error");
+                    console.log(data);
+                },
+                complete: function () {
+                }
+            });
+        }
+    }
+    function removeFromWishList(id) {
+        $.ajax({
+                type: 'POST',
+                url: '/Shop/RemoveFromWishList?productId=' + id,
+            success: function (data) {
+                toastr.info("محصول از لیست علاقه مندی های شما حذف گردید");
+                GetWishList();
+            },
+                error: function (data) {
+                    console.log("error");
+                    console.log(data);
+                },
+                complete: function () {
+                }
+            });
+    }
+        function GetWishList() {
+            $.ajax({
+                type: 'GET',
+                url: '/Home/WishListSection',
+                success: function (data) {
+                    $("#wishListSection").html(data);
+                },
+                error: function (data) {
+                    console.log("error");
+                    console.log(data);
+                },
+                complete: function () {
+                }
+            });
+            if ($("#CartTable") !== undefined) {
+                $.ajax({
+                    type: 'GET',
+                    url: '/Shop/WishListTable',
+                    success: function (data) {
+                        $("#WishListTable").html(data);
+                    },
+                    error: function (data) {
+                        console.log("error");
+                        console.log(data);
+                    },
+                    complete: function () {
+                    }
+                });
+            }
+    }
+    </script>
+    <script>
+        $(".search-form").submit(function (e) {
+            e.preventDefault();
+            var searchString = $(this).children(".searchString").val();
+            location.href = '/Shop/ProductList/Search/' + searchString;
+        });
+
+        function search(e) {
+            e.preventDefault();
+            var searchString = $("#searchString").val();
+            location.href = '/Shop/ProductList/Search/' + searchString;
+        }
+
+        $(".expandable").click(function (e) {
+            var target = e.target;
+            console.log(target);
+            $(target).toggleClass("edeactive");
+            $(target).toggleClass("eactive");
+            $(target).next().slideToggle();
+        })
+
     </script>
 
     @RenderSection("scripts", required: false)
