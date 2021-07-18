@@ -43,8 +43,9 @@ namespace SpadStorePanel.Web.Areas.Admin.Controllers
                     // Saving Temp Image
                     var newFileName = Guid.NewGuid() + Path.GetExtension(Image.FileName);
                     Image.SaveAs(Server.MapPath("/Files/ProductImages/Temp/" + newFileName));
+
                     // Resize Image
-                    ImageResizer image = new ImageResizer(457, 457, true);
+                    ImageResizer image = new ImageResizer(700, 700, true);
                     image.Resize(Server.MapPath("/Files/ProductImages/Temp/" + newFileName),
                         Server.MapPath("//Files/ProductImages/ProductGallery/" + newFileName));
 
@@ -90,7 +91,7 @@ namespace SpadStorePanel.Web.Areas.Admin.Controllers
                     var newFileName = Guid.NewGuid() + Path.GetExtension(Image.FileName);
                     Image.SaveAs(Server.MapPath("/Files/ProductImages/Temp/" + newFileName));
                     // Resize Image
-                    ImageResizer image = new ImageResizer(457, 457, true);
+                    ImageResizer image = new ImageResizer(700, 700, true);
                     image.Resize(Server.MapPath("/Files/ProductImages/Temp/" + newFileName),
                         Server.MapPath("//Files/ProductImages/ProductGallery/" + newFileName));
 

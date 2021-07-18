@@ -40,7 +40,7 @@
                         @<text>
                             <a class='btn btn-sm btn-clean btn-icon mr-2' href="/Admin/Products/Edit/@item.Id"><i class='far fa-edit text-primary'></i></a>
                             <a class='btn btn-sm btn-clean btn-icon' onclick="@(CheckPermission.Check("productsdelete") ? $"btnDelete({item.Id})" : "accessDenied()")"><i class='far fa-trash-alt text-danger'></i></a>
-                    @Html.ActionLink("گالری (باید4عکس انتخاب شود)", "Index", "ProductGalleries", new { productId = @item.Id }, new { @class = "btn btn-primary btn-sm ml-2" })
+                    @Html.ActionLink("گالری", "Index", "ProductGalleries", new { productId = @item.Id }, new { @class = "btn btn-primary btn-sm ml-2" })
                     @Html.ActionLink("کامنت ها", "Index", "ProductComments", new { productId = @item.Id }, new { @class = "btn btn-primary btn-sm ml-2" })
 
                         </text>

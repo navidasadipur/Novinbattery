@@ -160,7 +160,7 @@ namespace SpadStorePanel.Web.Areas.Admin.Controllers
                 var newFileName = Guid.NewGuid() + Path.GetExtension(File.FileName);
                 File.SaveAs(Server.MapPath("/Files/ProductImages/Temp/" + newFileName));
                 // Resize Image
-                ImageResizer image = new ImageResizer(1500, 1500, true);
+                ImageResizer image = new ImageResizer(700, 700, true);
                 image.Resize(Server.MapPath("/Files/ProductImages/Temp/" + newFileName),
                     Server.MapPath("/Files/ProductImages/Image/" + newFileName));
 
@@ -168,9 +168,9 @@ namespace SpadStorePanel.Web.Areas.Admin.Controllers
                 thumb.Resize(Server.MapPath("/Files/ProductImages/Temp/" + newFileName),
                     Server.MapPath("/Files/ProductImages/Thumb/" + newFileName));
 
-                ImageResizer resizer= new ImageResizer(457, 457, true);
-                thumb.Resize(Server.MapPath("/Files/ProductImages/Temp/" + newFileName),
-                    Server.MapPath("/Files/ProductImages/Detail/" + newFileName));
+                //ImageResizer resizer= new ImageResizer(700, 700, true);
+                //thumb.Resize(Server.MapPath("/Files/ProductImages/Temp/" + newFileName),
+                //    Server.MapPath("/Files/ProductImages/Detail/" + newFileName));
 
                 // Deleting Temp Image
                 System.IO.File.Delete(Server.MapPath("/Files/ProductImages/Temp/" + newFileName));
