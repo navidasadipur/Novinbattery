@@ -18,6 +18,7 @@ namespace SpadStorePanel.Web.Controllers
     {
         private readonly StaticContentDetailsRepository _contentRepo;
         private readonly StaticContentDetailsRepository _staticContentDetailsRepository;
+        private readonly DiscountsRepository _discountsRepository;
         private readonly FaqRepository _faqRepository;
         private readonly UsersRepository _repo;
         private readonly MyDbContext _context;
@@ -40,10 +41,12 @@ namespace SpadStorePanel.Web.Controllers
             , MyDbContext context, UsersRepository repo
             , FaqRepository faqRepository
             , StaticContentDetailsRepository staticContentDetailsRepository
+            , DiscountsRepository discountsRepository
             )
         {
             _contentRepo = contentRepo;
             _staticContentDetailsRepository = staticContentDetailsRepository;
+            _discountsRepository = discountsRepository;
             _faqRepository = faqRepository;
             _repo = repo;
             _context = context;
@@ -314,7 +317,7 @@ namespace SpadStorePanel.Web.Controllers
             return View();
         }
 
-        public ActionResult BestSellerProducts(int take)
+        public ActionResult BestSellerProductsSection(int take)
         {
             var products = _productService.GetTopSoldProductsWithPrice(take);
             var vm = new List<ProductWithPriceViewModel>();
@@ -330,23 +333,91 @@ namespace SpadStorePanel.Web.Controllers
 
                 vm.Add(tempVm);
             }
-            return View(vm);
+            return PartialView(vm);
         }
 
-        public ActionResult PopularProducts(int take)
+        public ActionResult PopularProductsSection(int take)
         {
             var products = _productService.GetHighRatedProductsWithPrice(take);
             var vm = new List<ProductWithPriceViewModel>();
             foreach (var product in products)
                 vm.Add(new ProductWithPriceViewModel(product));
 
+            return PartialView(vm);
+        }
+
+        public ActionResult DiscountProductsSection()
+        {
+            var discountItems = _discountsRepository.GetProductsWithDiscount();
+            var products = new List<DiscountProductViewModel>();
+            foreach (var item in discountItems)
+            {
+                var product = new DiscountProductViewModel();
+                product.Price = _productService.GetProductPrice(item.Product);
+                product.PriceAfterDiscount = _productService.GetProductPriceAfterDiscount(item.Product);
+                product.ProductId = item.ProductId.Value;
+                product.Image = item.Product.Image;
+                product.DiscountType = item.DiscountType;
+                product.Amount = item.Amount;
+                product.Title = item.Title;
+                product.ShortTitle = item.Product.ShortTitle;
+                product.DeadLine = item.DeadLine;
+
+                products.Add(product);
+            }
+
+            return PartialView(products);
+        }
+        public ActionResult SecondPopularProductsSection(int take)
+        {
+            var products = _productService.GetHighRatedProductsWithPrice(take);
+            var vm = new List<ProductWithPriceViewModel>();
+            foreach (var product in products)
+                vm.Add(new ProductWithPriceViewModel(product));
+
+            return PartialView(vm);
+        }
+        
+
+        public ActionResult NewProductsSection(int take)
+        {
+            var products = _productService.GetLatestProductsWithPrice(take);
+            var vm = new List<ProductWithPriceViewModel>();
+            foreach (var product in products)
+            {
+                var tempVm = new ProductWithPriceViewModel(product);
+
+                var group = _productGroupsRepository.GetGroupByProductId(product.Id);
+
+                tempVm.ProductGroupId = group.Id;
+
+                tempVm.ProductGroupTitle = group.Title;
+
+                vm.Add(tempVm);
+            }
+
             return View(vm);
         }
-        public ActionResult NewProducts(int take)
+
+        public ActionResult HomeEndBestSellerProductsSection(int take)
         {
-            var model = _productService.GetLatestProductsWithPrice(take);
-            return View(model);
+            var products = _productService.GetTopSoldProductsWithPrice(take);
+            var vm = new List<ProductWithPriceViewModel>();
+            foreach (var product in products)
+            {
+                var tempVm = new ProductWithPriceViewModel(product);
+
+                var group = _productGroupsRepository.GetGroupByProductId(product.Id);
+
+                tempVm.ProductGroupId = group.Id;
+
+                tempVm.ProductGroupTitle = group.Title;
+
+                vm.Add(tempVm);
+            }
+            return PartialView(vm);
         }
+
         public ActionResult HomeNewProducts(int take)
         {
             var model = _productService.GetLatestProductsWithPrice(take);

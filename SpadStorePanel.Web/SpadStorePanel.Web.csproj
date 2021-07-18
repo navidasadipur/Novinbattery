@@ -5072,7 +5072,7 @@
     <Content Include="Views\Home\SubscribeInNews.cshtml" />
     <Content Include="Views\Home\Service.cshtml" />
     <Content Include="Views\Home\TwoImage.cshtml" />
-    <Content Include="Views\Home\PopularProducts.cshtml" />
+    <Content Include="Views\Home\PopularProductsSection.cshtml" />
     <Content Include="Views\Home\bannerad.cshtml" />
     <Content Include="Views\Home\NewArticle.cshtml" />
     <Content Include="Views\Shop\SizeSection.cshtml" />
@@ -5107,9 +5107,9 @@
     <Content Include="Views\Blog\ShowComment.cshtml" />
     <Content Include="Views\Blog\SendComment.cshtml" />
     <Content Include="Views\Home\SliderConstSection.cshtml" />
-    <Content Include="Views\Home\NewProducts.cshtml" />
+    <Content Include="Views\Home\NewProductsSection.cshtml" />
     <Content Include="Views\Home\SpecialProducts.cshtml" />
-    <Content Include="Views\Home\HomeEndBestSellersProducts.cshtml" />
+    <Content Include="Views\Home\HomeEndBestSellerProductsSection.cshtml" />
     <Content Include="Views\Cookie\ShowInvoce.cshtml" />
     <Content Include="Views\Cookie\Payment.cshtml" />
     <Content Include="Views\Home\HeaderMobile.cshtml" />
@@ -5143,7 +5143,7 @@
     <Content Include="Views\Cookie\CartSection2.cshtml" />
     <Content Include="Views\Home\MobileNav.cshtml" />
     <Content Include="Views\Home\CategoryGroupMobile.cshtml" />
-    <Content Include="Views\Home\BestSellerProducts.cshtml" />
+    <Content Include="Views\Home\BestSellerProductsSection.cshtml" />
     <Content Include="Views\Shop\ShowAllProduct.cshtml" />
     <Content Include="Views\Home\OurHonorInFooter.cshtml" />
     <Content Include="Views\Home\BannerSectionBig.cshtml" />
@@ -5156,6 +5156,8 @@
     <Content Include="Views\Shop\LatestProductsSection.cshtml" />
     <Content Include="Views\Home\BuyingStepsSection.cshtml" />
     <Content Include="Views\Home\HomeMiddleBannerSection.cshtml" />
+    <Content Include="Views\Home\SecondPopularProductsSection.cshtml" />
+    <Content Include="Views\Home\DiscountProductsSection.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

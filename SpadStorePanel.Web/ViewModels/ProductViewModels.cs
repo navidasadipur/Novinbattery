@@ -210,5 +210,4 @@ namespace SpadStorePanel.Web.ViewModels
         public DateTime DeadLine { get; set; }
 
     }
-
 }

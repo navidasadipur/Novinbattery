@@ -74,61 +74,86 @@
     </div><!-- .End .tab-pane -->*@
 
 
-
-
-<div class="tab-pane fade" id="popular" role="tabpanel" aria-labelledby="bestseller-tab">
+<div class="tab-pane fade show active" id="popular_2" role="tabpanel"
+     aria-labelledby="popular-tab_2">
     <div class="row">
         @foreach (var item in Model)
         {
-            <div class="col-lg-3 col-md-6 ">
-                <!-- single product item two -->
-                <div style="cursor: pointer;"
-                     class="single-product-item-two">
-                    <div class="img-wrapper">
-                        <img src="/Files/ProductImages/Image/@item.Image" alt="product image">
-                        <!-- <div class="hover">
-                        <a href="/shop/" class="addtocart">افزودن به سبد</a>
-                    </div> -->
-                    </div>
-                    <div class="content">
-                        <a href="/shop/" class="title">@item.ShortTitle</a>
-                        <div class="price">
-                            @if (item.Price == 0)
-                            {
-                                <span class="sprice">-</span>
-                            }
-                            else if (item.PriceAfterDiscount < item.Price)
-                            {
-                                <span class="sprice">@item.Price.ToString("##,###") تومان</span>
-                                <del class="dprice">@item.PriceAfterDiscount.ToString("##,###") تومان</del>
-                            }
-                            else
-                            {
-                                <span class="sprice">@item.Price.ToString("##,###") تومان</span>
-                            }
+            <div class="col-lg-4 col-md-6">
+                <a href="/Shop/ProductDetails/@item.Id">
+                    <div style="cursor: pointer;"
+                         class="single-rated-box-two">
+                        <!-- single rated box two -->
+                        <div class="thumb my-auto">
+                            <img src="/Files/ProductImages/Thumb/@item.Image" width="135px" alt="product small image">
                         </div>
-                    </div>
-                </div>
-            </div><!-- //.single product item two -->
+                        <div class="content">
+                            @{
+                                var rate = (item.Rate < 6 ? item.Rate : 5);
+                                rate = rate > 0 ? rate : 0;
+                                var rateInt = Math.Abs(rate);
+                                var lostRateInt = 5 - rateInt;
+                            }
+                            <ul class="ratings">
+                                @for (int i = 0; i < rateInt; i++)
+                                {
+                                    <li><i class="fas fa-star"></i></li>
+                                }
+                                @for (int i = 0; i < lostRateInt; i++)
+                                {
+                                    <li><i class="far fa-star"></i></li>
+                                }
+                                @*<li><i class="fas fa-star-half-alt ninedeq"></i></li>*@
+                            </ul>
+                            <p class="title">
+                                @item.ShortTitle
+                            </p>
+
+                            <div class="price">
+                                @if (item.Price == 0)
+                                {
+                                    <span class="sprice">-</span>
+                                }
+                                else if (item.PriceAfterDiscount < item.Price)
+                                {
+                                    <span class="sprice">@item.Price.ToString("##,###") تومان</span>
+                                    <del class="dprice">@item.PriceAfterDiscount.ToString("##,###") تومان</del>
+                                }
+                                else
+                                {
+                                    <span class="sprice">@item.Price.ToString("##,###") تومان</span>
+                                }
+                            </div>
+                        </div>
+
+                    </div><!-- //.single rated box two -->
+                </a>
+            </div>
         }
 
-        @*<div class="col-lg-3 col-md-6">
-            <!-- single product item two -->
+        @*<div class="col-lg-4 col-md-6">
             <div onclick=" window.location = '/shop/' " style="cursor: pointer;"
-                 class="single-product-item-two">
-                <div class="img-wrapper">
-                    <img src="~/Content/client/pic/b9.jpg" alt="product image">
-                    <!-- <div class="hover">
-                    <a href="/shop/" class="addtocart">افزودن به سبد</a>
-                </div> -->
+                 class="single-rated-box-two">
+                <!-- single rated box two -->
+                <div class="thumb my-auto">
+                    <img src="~/Content/client/pic/b2.jpg" width="135px" alt="product small image">
                 </div>
                 <div class="content">
-                    <a href="/shop/" class="title">باتری ماشین</a>
+                    <ul class="ratings">
+                        <li><i class="fas fa-star"></i></li>
+                        <li><i class="fas fa-star"></i></li>
+                        <li><i class="fas fa-star"></i></li>
+                        <li><i class="fas fa-star-half-alt ninedeq"></i></li>
+                        <li><i class="far fa-star"></i></li>
+                    </ul>
+                    <a href="#">
+                        <a href="/shop/" class="title">باتری ماشین</a>
+                    </a>
                     <div class="price">
-                        <span class="sprice">65.00 تومان</span> <del class="dprice">85.00 تومان</del>
+                        <span class="sprice">83.00 تومان</span> <del class="dprice">120.00 تومان</del>
                     </div>
                 </div>
-            </div>
-        </div><!-- //.single product item two -->*@
+            </div><!-- //.single rated box two -->
+        </div>*@
     </div>
 </div>
