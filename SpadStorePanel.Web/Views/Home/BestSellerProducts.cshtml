@@ -1,0 +1,122 @@
+﻿@model List<SpadStorePanel.Web.ViewModels.ProductWithPriceViewModel>
+
+
+
+
+@*<div class="container">
+    <div class="heading heading-center mb-3">
+
+        <h2 class="title text-center">پرفروش ترین محصولات</h2><!-- End .title -->
+
+    </div><!-- End .heading -->
+
+    <div class="tab-content">
+        <div class="products">
+            <div class="row justify-content-center">
+
+                @foreach (var item in Model)
+                {
+                    <div class="col-6 col-md-4 col-lg-3 col-xl-5col">
+                        <div class="product product-11 text-center">
+                            <figure class="product-media">
+                                <a href="/Shop/Detail/@item.Id">
+                                    <img src="/Files/ProductImages/Image/@item.Image" alt="@item.ShortTitle" class="product-image">
+                                    <!-- <img src="assets/images/demos/demo-2/products/product-7-2.jpg"
+                                    alt="تصویر محصول" class="product-image-hover"> -->
+                                </a>
+
+                                <div class="product-action-vertical">
+
+                                </div><!-- End .product-action-vertical -->
+                            </figure><!-- End .product-media -->
+
+                            <div class="product-body">
+                                <div class="product-cat text-center">
+                                    <a href="#">@item.ProductGroupName</a>
+                                </div><!-- End .product-cat -->
+                                <h3 class="product-title text-center">
+                                    <a href="/Shop/Detail/@item.Id">
+                                        @item.ShortTitle
+                                    </a>
+                                </h3>
+                                <!-- End .product-title -->
+                                <div class="product-price">
+                                    @item.Price.ToString("##,###")
+                                    تومان
+                                </div><!-- End .product-price -->
+                            </div><!-- End .product-body -->
+                            <div class="product-action">
+                                <a href="/Shop/Detail/@item.Id" class="btn-product btn-cart"><span>دیدن محصول</span></a>
+                            </div><!-- End .product-action -->
+                        </div><!-- End .product -->
+                    </div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
+
+                }
+
+            </div><!-- End .row -->
+        </div><!-- End .products -->
+
+    </div><!-- End .tab-content -->
+</div>*@
+
+
+
+
+<div class="tab-pane fade show active" id="bestseller" role="tabpanel"
+     aria-labelledby="popular-tab">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-3 col-md-6 ">
+                <!-- single product item two -->
+                <div style="cursor: pointer;"
+                     class="single-product-item-two">
+                    <div class="img-wrapper">
+                        <img src="/Files/ProductImages/Image/@item.Image" alt="product image">
+                        <!-- <div class="hover">
+                        <a href="/shop/" class="addtocart">افزودن به سبد</a>
+                    </div> -->
+                    </div>
+                    <div class="content">
+                        <a href="/Shop/ProductDetails/@item.Id" class="title">@item.ShortTitle</a>
+
+                        <div class="price">
+                            @if (item.Price == 0)
+                            {
+                                <span class="sprice">-</span>
+                            }
+                            else if (item.PriceAfterDiscount < item.Price)
+                            {
+                                <span class="sprice">@item.Price.ToString("##,###") تومان</span>
+                                <del class="dprice">@item.PriceAfterDiscount.ToString("##,###") تومان</del>
+                            }
+                            else
+                            {
+                                <span class="sprice">@item.Price.ToString("##,###") تومان</span>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div><!-- //.single product item two -->
+        }
+
+        @*<div class="col-lg-3 col-md-6">
+            <!-- single product item two -->
+            <div onclick=" window.location = '/shop/' " style="cursor: pointer;"
+                 class="single-product-item-two">
+                <div class="img-wrapper">
+                    <img src="~/Content/client/pic/b23.jpg" alt="product image">
+                    <!-- <div class="hover">
+                    <a href="/shop/" class="addtocart">افزودن به سبد</a>
+                </div> -->
+                </div>
+                <div class="content">
+                    <a href="/shop/" class="title">باتری ماشین</a>
+                    <div class="price">
+                        <span class="sprice">65.00 تومان</span> <del class="dprice">85.00 تومان</del>
+                    </div>
+                </div>
+            </div>
+        </div><!-- //.single product item two -->*@
+    </div>
+</div>

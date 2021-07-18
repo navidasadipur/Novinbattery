@@ -313,15 +313,34 @@ namespace SpadStorePanel.Web.Controllers
                 ViewBag.Image2 = _staticContentDetailsRepository.GetAll().Where(a => a.Id == 33 && a.IsDeleted == false).FirstOrDefault();
             return View();
         }
-        public ActionResult MuchSellProducts()
+
+        public ActionResult BestSellerProducts(int take)
         {
-            var model = _productService.GetTopSoldProductsWithPrice(10).Take(15);
-            return View(model);
+            var products = _productService.GetTopSoldProductsWithPrice(take);
+            var vm = new List<ProductWithPriceViewModel>();
+            foreach (var product in products)
+            {
+                var tempVm = new ProductWithPriceViewModel(product);
+
+                var group = _productGroupsRepository.GetGroupByProductId(product.Id);
+
+                tempVm.ProductGroupId = group.Id;
+
+                tempVm.ProductGroupTitle = group.Title;
+
+                vm.Add(tempVm);
+            }
+            return View(vm);
         }
+
         public ActionResult PopularProducts(int take)
         {
-            var model = _productService.GetHighRatedProductsWithPrice(take);
-            return View(model);
+            var products = _productService.GetHighRatedProductsWithPrice(take);
+            var vm = new List<ProductWithPriceViewModel>();
+            foreach (var product in products)
+                vm.Add(new ProductWithPriceViewModel(product));
+
+            return View(vm);
         }
         public ActionResult NewProducts(int take)
         {
@@ -334,11 +353,6 @@ namespace SpadStorePanel.Web.Controllers
             return View(model);
         }
         public ActionResult SpecialProducts(int take)
-        {
-            var model = _productService.GetTopSoldProductsWithPrice(take);
-            return View(model);
-        }
-        public ActionResult BestsellersProducts(int take)
         {
             var model = _productService.GetTopSoldProductsWithPrice(take);
             return View(model);

@@ -5143,7 +5143,7 @@
     <Content Include="Views\Cookie\CartSection2.cshtml" />
     <Content Include="Views\Home\MobileNav.cshtml" />
     <Content Include="Views\Home\CategoryGroupMobile.cshtml" />
-    <Content Include="Views\Home\MuchSellProducts.cshtml" />
+    <Content Include="Views\Home\BestSellerProducts.cshtml" />
     <Content Include="Views\Shop\ShowAllProduct.cshtml" />
     <Content Include="Views\Home\OurHonorInFooter.cshtml" />
     <Content Include="Views\Home\BannerSectionBig.cshtml" />
