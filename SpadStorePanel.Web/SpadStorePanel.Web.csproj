@@ -5174,6 +5174,7 @@
     <Content Include="Views\Home\HomeMiddleBannerSection.cshtml" />
     <Content Include="Views\Home\SecondPopularProductsSection.cshtml" />
     <Content Include="Views\Home\DiscountProductsSection.cshtml" />
+    <Content Include="Views\Home\CartSection.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
