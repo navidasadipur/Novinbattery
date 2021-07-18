@@ -93,6 +93,10 @@
     <Compile Include="Migrations\202107131112575_UnCommentShortTitleAndTechnicalSpecification.Designer.cs">
       <DependentUpon>202107131112575_UnCommentShortTitleAndTechnicalSpecification.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107180554163_addDeadLineToDiscountModel.cs" />
+    <Compile Include="Migrations\202107180554163_addDeadLineToDiscountModel.Designer.cs">
+      <DependentUpon>202107180554163_addDeadLineToDiscountModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MyDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -157,6 +161,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107131112575_UnCommentShortTitleAndTechnicalSpecification.resx">
       <DependentUpon>202107131112575_UnCommentShortTitleAndTechnicalSpecification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107180554163_addDeadLineToDiscountModel.resx">
+      <DependentUpon>202107180554163_addDeadLineToDiscountModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

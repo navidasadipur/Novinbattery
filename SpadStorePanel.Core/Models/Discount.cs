@@ -28,6 +28,10 @@ namespace SpadStorePanel.Core.Models
         [Display(Name = "برند")]
         public Brand Brand { get; set; }
 
+        [Display(Name = "تاریخ پایان")]
+        public DateTime DeadLine { get; set; }
+
+
         public string InsertUser { get; set; }
         public DateTime? InsertDate { get; set; }
         public string UpdateUser { get; set; }
