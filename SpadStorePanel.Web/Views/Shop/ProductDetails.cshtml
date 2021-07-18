@@ -6,302 +6,270 @@
 }
 
 
-<style>
-    .activities a.active {
-        background-color: #ff8641;
-    }
-</style>
+@*<style>
+        .activities a.active {
+            background-color: #ff8641;
+        }
+    </style>
 
-<div class="page-content">
-    <div class="container">
-        <div class="product-details-top">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="product-gallery product-gallery-vertical">
-                        <div class="row">
-                            <figure class="product-main-image">
-                                <img id="product-zoom" src="/Files/ProductImages/Image/@Model.Product.Image" data-zoom-image="/Files/ProductImages/Image/@Model.Product.Image"
-                                     alt="@Model.Product.ShortTitle">
+    <div class="page-content">
+        <div class="container">
+            <div class="product-details-top">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="product-gallery product-gallery-vertical">
+                            <div class="row">
+                                <figure class="product-main-image">
+                                    <img id="product-zoom" src="/Files/ProductImages/Image/@Model.Product.Image" data-zoom-image="/Files/ProductImages/Image/@Model.Product.Image"
+                                         alt="@Model.Product.ShortTitle">
 
-                                <a href="#" id="btn-product-gallery" class="btn-product-gallery">
-                                    <i class="icon-arrows"></i>
-                                </a>
-                            </figure><!-- End .product-main-image -->
-
-                            <div id="product-zoom-gallery" class="product-image-gallery">
-                                <a class="product-gallery-item active" href="#" data-image="/Files/ProductImages/Image/@Model.Product.Image"
-                                   data-zoom-image="/Files/ProductImages/Image/@Model.Product.Image">
-                                    <img src="/Files/ProductImages/Image/@Model.Product.Image" alt="@Model.Product.ShortTitle">
-                                </a>
-                                @foreach (var item in Model.ProductGalleries)
-                                {
-                                    <a class="product-gallery-item active" href="#" data-image="/Files/ProductImages/ProductGallery/@item.Image"
-                                       data-zoom-image="/Files/ProductImages/ProductGallery/@item.Image">
-                                        <img src="/Files/ProductImages/ProductGallery/@item.Image" alt="">
+                                    <a href="#" id="btn-product-gallery" class="btn-product-gallery">
+                                        <i class="icon-arrows"></i>
                                     </a>
-                                }
+                                </figure><!-- End .product-main-image -->
 
-                            </div><!-- End .product-image-gallery -->
-                        </div><!-- End .row -->
-                    </div><!-- End .product-gallery -->
-                </div><!-- End .col-md-6 -->
-
-                <div class="col-md-6">
-                    <div class="product-details">
-                        <h1 class="product-title">@Model.Product.Title</h1>
-                        <!-- End .product-title -->
-
-                        <div class="ratings-container">
-                            @{
-                                var rate = (Model.Product.Rate < 6 ? Model.Product.Rate : 5);
-                                rate = (rate > 0 ? rate : 0);
-                                var ratingPercentage = Model.Product.Rate * 100 / 5;
-                                <div class="ratings">
-                                    <div class="ratings-val" style="width: @ratingPercentage%;"></div><!-- End .ratings-val -->
-                                </div><!-- End .ratings -->
-                            }
-
-                            <a class="ratings-text" href="#product-review-link" id="review-link">
-                                ( @Model.ProductComments.Count نظر
-                                )
-                            </a>
-                        </div><!-- End .rating-container -->
-                        <div class="ratings-container">
-                            @if (Model.PriceAfterDiscount < Model.Price)
-                            {
-                                <div class="col-md-4">
-                                    <span class="product-price"><span id="productPriceAfterDiscount">@Model.PriceAfterDiscount.ToString("##,###")&nbsp;</span>تومان</span>
-                                </div>
-                                <div class="col-md-8 rtl">
-                                    <del class="price"><span id="productPrice">@Model.Price.ToString("##,###")</span> </del>
-                                </div><!-- End .ratings -->
-                            }
-                            else if (Model.Price != 0)
-                            {
-                                <span class="product-price"><span id="productPrice">@Model.Price.ToString("##,###") &nbsp;</span> تومان</span>
-                            }
-                        </div>
-                        <div class="product-content">
-                            <p>
-                                @{
-                                    var descParts = new List<string>();
-
-                                    if (Model.Product.ShortDescription != null)
+                                <div id="product-zoom-gallery" class="product-image-gallery">
+                                    <a class="product-gallery-item active" href="#" data-image="/Files/ProductImages/Image/@Model.Product.Image"
+                                       data-zoom-image="/Files/ProductImages/Image/@Model.Product.Image">
+                                        <img src="/Files/ProductImages/Image/@Model.Product.Image" alt="@Model.Product.ShortTitle">
+                                    </a>
+                                    @foreach (var item in Model.ProductGalleries)
                                     {
-                                        descParts = Model.Product.ShortDescription.Split('\n').ToList();
-                                    }
-                                }
-                                <ul class="product-desc-content rtl">
-                                    @foreach (var desc in descParts)
-                                    {
-                                        if (!string.IsNullOrWhiteSpace(desc))
-                                        {
-                                            <li>@desc</li>
-                                        }
-                                    }
-                                </ul>
-                            </p>
-                        </div><!-- End .product-content -->
-
-                        @*<div class="details-filter-row details-row-size">
-                            @{
-                                var featureName = Model.ProductMainFeatures.FirstOrDefault().Feature.Title;
-
-                                var i = 0;
-
-                                <label>@featureName : </label>
-
-                                <div class="product-nav product-nav-thumbs" id="product-main-btn">
-                                    @foreach (var item in Model.ProductMainFeatures)
-                                    {
-                                        var className = "";
-                                        i++;
-
-                                        if (i == 1)
-                                        {
-                                            className = "active";
-                                        }
-                                        <a href="javascript:void(0)" onclick="UpdateProductPrice(@item.ProductId,@item.Id, this)" class="test1 b @className">
-                                            @(item.SubFeature != null ? item.SubFeature.Value : item.Value)
+                                        <a class="product-gallery-item active" href="#" data-image="/Files/ProductImages/ProductGallery/@item.Image"
+                                           data-zoom-image="/Files/ProductImages/ProductGallery/@item.Image">
+                                            <img src="/Files/ProductImages/ProductGallery/@item.Image" alt="">
                                         </a>
                                     }
 
-                                </div><!-- End .product-nav -->
-                            }
-                        </div><!-- End .details-filter-row -->
-                        <input type="hidden" name="mainFeatureId" id="mainFeatureId" value="@Model.ProductMainFeatures.FirstOrDefault().Id" />*@
-                        @if (Model.Price > 0)
-                        {
-                            <div class="details-filter-row details-row-size">
-                                <label for="qty">تعداد : </label>
-                                <div class="product-details-quantity">
-                                    <div class="input-group  input-spinner">
-                                        <div class="input-group-append"><button class="btn btn-decrement btn-spinner" onclick="IncreaseProductCount()" style="min-width: 26px"><i class="icon-plus"></i></button></div>
-                                        <div class="form-control"><span readonly="readonly" id="txtProductCount">1</span></div>
-                                        <div class="input-group-prepend"><button class="btn btn-decrement btn-spinner" onclick="DecreaseProductCount()" style="min-width: 26px"><i class="icon-minus"></i></button></div>
-                                    </div>
-                                </div><!-- End .product-details-quantity -->
-                            </div><!-- End .details-filter-row -->
+                                </div><!-- End .product-image-gallery -->
+                            </div><!-- End .row -->
+                        </div><!-- End .product-gallery -->
+                    </div><!-- End .col-md-6 -->
 
-                            <div class="product-details-action">
-                                <a href="javascript:void(0)" onclick="AddToCart(@Model.Product.Id,$('#mainFeatureId').val(), $('#txtProductCount').val())" class="btn-product btn-cart"><span>افزودن به سبد خرید</span></a>
+                    <div class="col-md-6">
+                        <div class="product-details">
+                            <h1 class="product-title">@Model.Product.Title</h1>
+                            <!-- End .product-title -->
 
-                                <div class="details-action-wrapper">
-                                    <a href="javascript:void(0)" onclick="AddToWishList(@Model.Product.Id)" class="btn-product btn-wishlist"
-                                       title="لیست علاقه مندی">
-                                        <span>
-                                            افزودن
-                                            به
-                                            علاقه مندی
-                                        </span>
-                                    </a>
-
-                                </div><!-- End .details-action-wrapper -->
-                            </div><!-- End .product-details-action -->
-                        }
-                        else
-                        {
-                            <div class="product-details-action">
-                                <a href="tel:@ViewBag.CallForProductNumber.Title" class="btn-product btn-cart"><span>برای سفارش محصول تماس بگیرید</span></a>
-
-                                <div class="details-action-wrapper">
-                                    <a href="javascript:void(0)" onclick="AddToWishList(@Model.Product.Id)" class="btn-product btn-wishlist"
-                                       title="لیست علاقه مندی">
-                                        <span>
-                                            افزودن
-                                            به
-                                            علاقه مندی
-                                        </span>
-                                    </a>
-
-                                </div><!-- End .details-action-wrapper -->
-                            </div><!-- End .product-details-action -->
-                        }
-
-                        <div class="product-details-footer">
-                            <div class="product-cat text-center">
-                                <span>دسته بندی : </span>
-                                @if (Model.Group != null)
-                                {
-                                    <a href="/Shop/ProductList/@Model.Group.Id">@Model.Group.Title</a>
+                            <div class="ratings-container">
+                                @{
+                                    var rate = (Model.Product.Rate < 6 ? Model.Product.Rate : 5);
+                                    rate = (rate > 0 ? rate : 0);
+                                    var ratingPercentage = Model.Product.Rate * 100 / 5;
+                                    <div class="ratings">
+                                        <div class="ratings-val" style="width: @ratingPercentage%;"></div><!-- End .ratings-val -->
+                                    </div><!-- End .ratings -->
                                 }
 
-                            </div><!-- End .product-cat -->
+                                <a class="ratings-text" href="#product-review-link" id="review-link">
+                                    ( @Model.ProductComments.Count نظر
+                                    )
+                                </a>
+                            </div><!-- End .rating-container -->
+                            <div class="ratings-container">
+                                @if (Model.PriceAfterDiscount < Model.Price)
+                                {
+                                    <div class="col-md-4">
+                                        <span class="product-price"><span id="productPriceAfterDiscount">@Model.PriceAfterDiscount.ToString("##,###")&nbsp;</span>تومان</span>
+                                    </div>
+                                    <div class="col-md-8 rtl">
+                                        <del class="price"><span id="productPrice">@Model.Price.ToString("##,###")</span> </del>
+                                    </div><!-- End .ratings -->
+                                }
+                                else if (Model.Price != 0)
+                                {
+                                    <span class="product-price"><span id="productPrice">@Model.Price.ToString("##,###") &nbsp;</span> تومان</span>
+                                }
+                            </div>
+                            <div class="product-content">
+                                <p>
+                                    @{
+                                        var descParts = new List<string>();
 
+                                        if (Model.Product.ShortDescription != null)
+                                        {
+                                            descParts = Model.Product.ShortDescription.Split('\n').ToList();
+                                        }
+                                    }
+                                    <ul class="product-desc-content rtl">
+                                        @foreach (var desc in descParts)
+                                        {
+                                            if (!string.IsNullOrWhiteSpace(desc))
+                                            {
+                                                <li>@desc</li>
+                                            }
+                                        }
+                                    </ul>
+                                </p>
+                            </div><!-- End .product-content -->
 
-                        </div><!-- End .product-details-footer -->
-                    </div><!-- End .product-details -->
-                </div><!-- End .col-md-6 -->
-            </div><!-- End .row -->
-        </div><!-- End .product-details-top -->
-
-        <div class="product-details-tab">
-            <ul class="nav nav-pills justify-content-center" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" id="product-desc-link" data-toggle="tab"
-                       href="#product-desc-tab" role="tab" aria-controls="product-desc-tab"
-                       aria-selected="true">توضیحات</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="product-info-link" data-toggle="tab" href="#product-info-tab"
-                       role="tab" aria-controls="product-info-tab" aria-selected="false">اطلاعات بیشتر</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="#brand" data-toggle="tab"
-                       href="#brand" role="#tab" aria-controls="brand"
-                       aria-selected="false">درباره برند</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="product-review-link" data-toggle="tab"
-                       href="#product-review-tab" role="tab" aria-controls="product-review-tab"
-                       aria-selected="false">نظرات (@Model.ProductComments.Count)</a>
-                </li>
-            </ul>
-            <div class="tab-content">
-                @*@Html.Action("ProductDetailsDescrioptinSection", "Shop", new { productId = Model.Product.Id })
-
-                    @Html.Action("ProductFeaturesSection", "Shop", new { productId = Model.Product.Id })
-
-                    @Html.Action("ProductDetailsBrandSection", "Shop", new { productId = Model.Product.Id })*@
-                <div class="tab-pane fade" id="product-review-tab" role="tabpanel"
-                     aria-labelledby="product-review-link">
-                    <div class="reviews">
-                        <h3>نظر (@Model.ProductComments.Count)</h3>
-                        @if (Model.ProductComments.Count() != 0)
-                        {
-                            var todayDate = new DateTime();
-                            foreach (var comment in Model.ProductComments)
+                            @if (Model.Price > 0)
                             {
-                                <div class="review">
-                                    <div class="row no-gutters">
-                                        <div class="col-auto">
-                                            <h4><a class="text-dark" href="#">نام: @comment.Name</a></h4>
-                                            <div class="ratings-container">
-                                            </div><!-- End .rating-container -->
-                                            <span class="review-date">@comment.AddedDate</span>
-                                        </div><!-- End .col -->
-                                        <div class="col-12">
-                                            <div class="review-content">
-                                                <p>
-                                                    @comment.Message
-                                                </p>
-                                            </div><!-- End .review-content -->
+                                <div class="details-filter-row details-row-size">
+                                    <label for="qty">تعداد : </label>
+                                    <div class="product-details-quantity">
+                                        <div class="input-group  input-spinner">
+                                            <div class="input-group-append"><button class="btn btn-decrement btn-spinner" onclick="IncreaseProductCount()" style="min-width: 26px"><i class="icon-plus"></i></button></div>
+                                            <div class="form-control"><span readonly="readonly" id="txtProductCount">1</span></div>
+                                            <div class="input-group-prepend"><button class="btn btn-decrement btn-spinner" onclick="DecreaseProductCount()" style="min-width: 26px"><i class="icon-minus"></i></button></div>
+                                        </div>
+                                    </div><!-- End .product-details-quantity -->
+                                </div><!-- End .details-filter-row -->
 
+                                <div class="product-details-action">
+                                    <a href="javascript:void(0)" onclick="AddToCart(@Model.Product.Id,$('#mainFeatureId').val(), $('#txtProductCount').val())" class="btn-product btn-cart"><span>افزودن به سبد خرید</span></a>
 
-                                        </div><!-- End .col-auto -->
-                                    </div><!-- End .row -->
-                                </div><!-- End .review -->
+                                    <div class="details-action-wrapper">
+                                        <a href="javascript:void(0)" onclick="AddToWishList(@Model.Product.Id)" class="btn-product btn-wishlist"
+                                           title="لیست علاقه مندی">
+                                            <span>
+                                                افزودن
+                                                به
+                                                علاقه مندی
+                                            </span>
+                                        </a>
+
+                                    </div><!-- End .details-action-wrapper -->
+                                </div><!-- End .product-details-action -->
                             }
-                        }
+                            else
+                            {
+                                <div class="product-details-action">
+                                    <a href="tel:@ViewBag.CallForProductNumber.Title" class="btn-product btn-cart"><span>برای سفارش محصول تماس بگیرید</span></a>
 
-                    </div><!-- End .نظر -->
-                </div><!-- .End .tab-pane -->
-            </div><!-- End .tab-content -->
-        </div><!-- End .product-details-tab -->
-        @*@Html.Action("RelatedProductsSection", "Shop", new { productId = Model.Product.Id, take = 6 })*@
-        <!--Comments-->
-        <div class="reply">
-            <div class="heading">
-                <h3 class="title">ارسال یک دیدگاه</h3><!-- End .title -->
-                <p class="title-desc">
-                    ایمیل شما منتشر نخواهد شد، فیلد های اجباری با علامت * مشخص
-                    شده اند.
-                </p>
-            </div><!-- End .heading -->
-            @*@using (Html.BeginForm("PostComment", "Shop", FormMethod.Post, new { id = "commentform" }))*@
-            {
-            <input type="hidden" id="ProductId" name="ProductId" value="@Model.Product.Id">
-            <div class="row">
-                <label for="Message" class="sr-only">دیدگاه</label>
-                <textarea name="Message" id="Message" cols="30" rows="4" class="form-control" required="" placeholder="دیدگاه شما *"></textarea>
+                                    <div class="details-action-wrapper">
+                                        <a href="javascript:void(0)" onclick="AddToWishList(@Model.Product.Id)" class="btn-product btn-wishlist"
+                                           title="لیست علاقه مندی">
+                                            <span>
+                                                افزودن
+                                                به
+                                                علاقه مندی
+                                            </span>
+                                        </a>
+
+                                    </div><!-- End .details-action-wrapper -->
+                                </div><!-- End .product-details-action -->
+                            }
+
+                            <div class="product-details-footer">
+                                <div class="product-cat text-center">
+                                    <span>دسته بندی : </span>
+                                    @if (Model.Group != null)
+                                    {
+                                        <a href="/Shop/ProductList/@Model.Group.Id">@Model.Group.Title</a>
+                                    }
+
+                                </div><!-- End .product-cat -->
+
+
+                            </div><!-- End .product-details-footer -->
+                        </div><!-- End .product-details -->
+                    </div><!-- End .col-md-6 -->
+                </div><!-- End .row -->
+            </div><!-- End .product-details-top -->
+
+            <div class="product-details-tab">
+                <ul class="nav nav-pills justify-content-center" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="product-desc-link" data-toggle="tab"
+                           href="#product-desc-tab" role="tab" aria-controls="product-desc-tab"
+                           aria-selected="true">توضیحات</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="product-info-link" data-toggle="tab" href="#product-info-tab"
+                           role="tab" aria-controls="product-info-tab" aria-selected="false">اطلاعات بیشتر</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="#brand" data-toggle="tab"
+                           href="#brand" role="#tab" aria-controls="brand"
+                           aria-selected="false">درباره برند</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="product-review-link" data-toggle="tab"
+                           href="#product-review-tab" role="tab" aria-controls="product-review-tab"
+                           aria-selected="false">نظرات (@Model.ProductComments.Count)</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+
+                    <div class="tab-pane fade" id="product-review-tab" role="tabpanel"
+                         aria-labelledby="product-review-link">
+                        <div class="reviews">
+                            <h3>نظر (@Model.ProductComments.Count)</h3>
+                            @if (Model.ProductComments.Count() != 0)
+                            {
+                                var todayDate = new DateTime();
+                                foreach (var comment in Model.ProductComments)
+                                {
+                                    <div class="review">
+                                        <div class="row no-gutters">
+                                            <div class="col-auto">
+                                                <h4><a class="text-dark" href="#">نام: @comment.Name</a></h4>
+                                                <div class="ratings-container">
+                                                </div><!-- End .rating-container -->
+                                                <span class="review-date">@comment.AddedDate</span>
+                                            </div><!-- End .col -->
+                                            <div class="col-12">
+                                                <div class="review-content">
+                                                    <p>
+                                                        @comment.Message
+                                                    </p>
+                                                </div><!-- End .review-content -->
+
+
+                                            </div><!-- End .col-auto -->
+                                        </div><!-- End .row -->
+                                    </div><!-- End .review -->
+                                }
+                            }
+
+                        </div><!-- End .نظر -->
+                    </div><!-- .End .tab-pane -->
+                </div><!-- End .tab-content -->
+            </div><!-- End .product-details-tab -->
+            <!--Comments-->
+            <div class="reply">
+                <div class="heading">
+                    <h3 class="title">ارسال یک دیدگاه</h3><!-- End .title -->
+                    <p class="title-desc">
+                        ایمیل شما منتشر نخواهد شد، فیلد های اجباری با علامت * مشخص
+                        شده اند.
+                    </p>
+                </div><!-- End .heading -->
+                {
+                <input type="hidden" id="ProductId" name="ProductId" value="@Model.Product.Id">
+                <div class="row">
+                    <label for="Message" class="sr-only">دیدگاه</label>
+                    <textarea name="Message" id="Message" cols="30" rows="4" class="form-control" required="" placeholder="دیدگاه شما *"></textarea>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="Name" class="sr-only">نام</label>
+                        <input type="text" class="form-control" id="Name" name="Name" required="" placeholder="نام شما *">
+                    </div><!-- End .col-md-6 -->
+
+                    <div class="col-md-6">
+                        <label for="reply-email" class="sr-only">ایمیل</label>
+                        <input type="email" class="form-control" id="Email" name="Email" required="" placeholder="ایمیل شما *">
+                    </div><!-- End .col-md-6 -->
+                </div><!-- End .row -->
+
+                <button type="submit" class="btn btn-outline-primary-2 float-right">
+                    <span>ارسال دیدگاه</span>
+                    <i class="icon-long-arrow-left"></i>
+                </button>
+                }
             </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <label for="Name" class="sr-only">نام</label>
-                    <input type="text" class="form-control" id="Name" name="Name" required="" placeholder="نام شما *">
-                </div><!-- End .col-md-6 -->
-
-                <div class="col-md-6">
-                    <label for="reply-email" class="sr-only">ایمیل</label>
-                    <input type="email" class="form-control" id="Email" name="Email" required="" placeholder="ایمیل شما *">
-                </div><!-- End .col-md-6 -->
-            </div><!-- End .row -->
-
-            <button type="submit" class="btn btn-outline-primary-2 float-right">
-                <span>ارسال دیدگاه</span>
-                <i class="icon-long-arrow-left"></i>
-            </button>
-            }
-        </div>
-        <!--End Comments-->
-    </div><!-- End .container -->
-</div><!-- End .page-content -->
+            <!--End Comments-->
+        </div><!-- End .container -->
+    </div><!-- End .page-content -->*@
 
 
 
 <style>
-    .product-nav-thumbs a.selected {
-        background-color: #ff8641;
+    li a.selected {
+        background-color: #ff8641 !important;
+        color: white !important;
     }
 </style>
 <!-- breadcrumb area start -->
@@ -430,12 +398,12 @@
                             <div class="left">
                                 @if (Model.PriceAfterDiscount < Model.Price)
                                 {
-                                    <span class="sprice">@Model.PriceAfterDiscount.ToString("##,###") تومان</span>
-                                    <span class="dprice"><del>@Model.Price.ToString("##,###") تومان</del></span>
+                                    <span class="sprice" id="productPriceAfterDiscount">@Model.PriceAfterDiscount.ToString("##,###")</span><span class="sprice">&nbsp; تومان</span>
+                                    <span class="dprice"><del id="productPrice">@Model.Price.ToString("##,###") </del>تومان</span>
                                 }
                                 else if (Model.Price != 0)
                                 {
-                                    <span class="sprice">@Model.Price.ToString("##,###") تومان</span>
+                                    <span class="sprice" id="productPrice">@Model.Price.ToString("##,###") </span><span class="sprice">&nbsp; تومان</span>
                                 }
                             </div>
                         </div>
@@ -465,7 +433,7 @@
                                     <li><a href="#"><i class="fas fa-hourglass"></i></a></li>
                                     <li><a href="#"><i class="fas fa-share-square"></i></a></li>
                                 </ul>*@
-                            <div class="details-filter-row details-row-size">
+                            <div class="details-filter-row details-row-size" id="product-main-btn">
                                 @{
                                     var featureName = Model.ProductMainFeatures.FirstOrDefault().Feature.Title;
 
@@ -482,9 +450,9 @@
                                             {
                                                 className = "selected";
                                             }
-                                            <a href="javascript:void(0)" onclick="UpdateProductPrice(@item.ProductId,@item.Id, this)" class="test1 b @className">
-                                                @(item.SubFeature != null ? item.SubFeature.Value : item.Value)
-                                            </a>
+                                            @*<a href="javascript:void(0)" onclick="UpdateProductPrice(@item.ProductId,@item.Id, this)" class="test1 b @className">
+                                                    @(item.SubFeature != null ? item.SubFeature.Value : item.Value)
+                                                </a>*@
                                             <li>
                                                 <a href="javascript:void(0)" onclick="UpdateProductPrice(@item.ProductId,@item.Id, this)" class="test1 b @className">
                                                     <i class="">
@@ -688,7 +656,7 @@
                 </div><!-- //.recently added nav menu -->
             </div>
             @Html.Action("LatestProductsSection", "Shop", new { take = 5 })
-            
+
 
         </div>
     </div>
@@ -700,6 +668,63 @@
 
 @section scripts{
     <script>
+        $(document).ready(function () {
+            //$('#glasscase').glassCase({
+            //    'thumbsPosition': 'bottom',
+            //    'widthDisplayPerc': 100,
+            //    isDownloadEnabled: false,
+            //    zoomPosition: 'left'
+            //});
+
+            // Get the container element
+            var btnContainer = document.getElementById("product-main-btn");
+
+            // Get all buttons with class="btn" inside the container
+            var btns = btnContainer.getElementsByClassName("test1");
+
+            // Loop through the buttons and add the active class to the current/clicked button
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].addEventListener("click", function () {
+                    var current = document.getElementsByClassName("b selected");
+                    console.log(current)
+                    current[0].className = current[0].className.replace(" b selected", "");
+                    this.className += " b selected";
+                });
+            }
+
+        });
+
+        function UpdateProductPrice(productId, mainFeatureId, target) {
+
+            $.ajax({
+                type: 'GET',
+                url: '/Shop/GetProductPrice?productId=' + productId + '&mainFeatureId=' + mainFeatureId,
+                success: function (data) {
+                    var obj = JSON.parse(data);
+                    $("#productPrice").html(obj.price);
+                    //$("#stiky-productPrice").html(obj.price);
+                    $("#mainFeatureId").val(mainFeatureId);
+                    $("#productPriceAfterDiscount").html(obj.priceAfterDiscount);
+                    //$("#stiky-productPriceAfterDiscount").html(obj.priceAfterDiscount);
+
+                    //$(".active-color").removeClass("active-color");
+                    //var selected = target.getElementsByClassName("spn-product-code")[0];
+                    //console.log(selected);
+                    //selected.classList.add("active-color");
+
+                    //$(".product-side-price-box").LoadingOverlay("hide");
+                },
+                error: function (data) {
+                    console.log("error");
+                    console.log(data);
+                },
+                complete: function () {
+                }
+            });
+        }
+    </script>
+
+    @*<script>
         function AddToCartD(id, mainFeature) {
             $("#preloader").show();
             var mainFeatureId = null;
@@ -739,7 +764,7 @@
                 });
             }
         }
-    </script>
+    </script>*@
 
     <script>
         function AddToWishListD(id) {
