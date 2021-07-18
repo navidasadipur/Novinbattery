@@ -1,0 +1,43 @@
+﻿@model List<SpadStorePanel.Core.Models.StaticContentDetail>
+
+
+
+@*<div class="col-md-6 col-lg-3">
+        <div class="banner banner-overlay">
+            <a href="/shop/">
+                <img src="~/Files/StaticContentImages/Thumb/@Model.Image" alt="بنر">
+            </a>
+
+            <div class="banner-content banner-content-bottom">
+                <h4 class="banner-subtitle text-grey">@Model.Title</h4><!-- End .banner-subtitle -->
+                <h3 class="banner-title text-white">@Model.ShortDescription</h3>
+                <!-- End .banner-title -->
+                <a href="/shop/" class="btn btn-outline-white banner-link">
+                    مشاهده<i class="icon-long-arrow-left"></i>
+                </a>
+            </div><!-- End .banner-content -->
+        </div><!-- End .banner -->
+    </div><!-- End .col-lg-3 -->*@
+<!-- speakers area start -->
+
+@foreach (var item in Model)
+{
+    <div class="speakers-area speakder-bg" style="background-image: url(/Files/StaticContentImages/Thumb/@item.Image);">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="section-title rubik-font home-3 myspeakers-area my-auto">
+                        <!--  -->
+                        <span class="subtitle myspeakersub">@item.ShortDescription</span>
+                        <h2 class="title myspeakertitle">@item.Title</h2>
+                        <p class="myspeakerpara">
+                            @item.Description
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- speakers area end -->

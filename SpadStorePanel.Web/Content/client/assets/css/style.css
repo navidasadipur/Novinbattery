@@ -2203,7 +2203,7 @@ ul {
 }
 
     .header-area-three.header-bg-three {
-        background-image: url(../../pic/bg18.jpg);
+        /*background-image: url(../../pic/bg18.jpg);*/
         background-size: cover;
         background-position: center;
     }
@@ -5133,7 +5133,7 @@ li
         background-size: cover;
         background-position: center;
         height: 60vh;
-        background-image: url(../../pic/bgmainpage2.jpg);
+        /*background-image: url(../../pic/bgmainpage2.jpg);*/
     }
 
 /*----------------------------

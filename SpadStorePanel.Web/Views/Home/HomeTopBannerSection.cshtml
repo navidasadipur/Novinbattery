@@ -1,0 +1,44 @@
+﻿@model List<SpadStorePanel.Core.Models.StaticContentDetail>
+
+
+
+@*<div class="col-md-6 col-lg-3">
+        <div class="banner banner-overlay">
+            <a href="/shop/">
+                <img src="~/Files/StaticContentImages/Thumb/@Model.Image" alt="بنر">
+            </a>
+
+            <div class="banner-content banner-content-bottom">
+                <h4 class="banner-subtitle text-grey">@Model.Title</h4><!-- End .banner-subtitle -->
+                <h3 class="banner-title text-white">@Model.ShortDescription</h3>
+                <!-- End .banner-title -->
+                <a href="/shop/" class="btn btn-outline-white banner-link">
+                    مشاهده<i class="icon-long-arrow-left"></i>
+                </a>
+            </div><!-- End .banner-content -->
+        </div><!-- End .banner -->
+    </div><!-- End .col-lg-3 -->*@
+
+@foreach (var item in Model)
+{
+    <div class="header-area-three header-bg-three" style="background-image: url(/Files/StaticContentImages/Thumb/@item.Image);">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="header-inner myinner">
+                        <!-- header inner -->
+                        <span class="subtitle ">@item.Title</span>
+                        <h4 class="title "> @item.ShortDescription</h4>
+                        <p class="wow fadeInDown">
+                            @Html.Raw(item.Description)
+                        </p>
+                        <div class="btn-wrapper wow fadeInDown">
+                            <a href="/shop" class="boxed-btn">مشاهده محصولات</a>
+                            <a href="/aboutus" class="boxed-btn blank">درباره ما</a>
+                        </div>
+                    </div><!-- //. header inner -->
+                </div>
+            </div>
+        </div>
+    </div>
+}

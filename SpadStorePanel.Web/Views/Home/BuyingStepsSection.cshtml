@@ -1,0 +1,58 @@
+﻿@model IEnumerable<SpadStorePanel.Core.Models.StaticContentDetail>
+
+
+<!-- process area start -->
+<div class="process-area">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4 col-md-6 remove-col-padding">
+                    <div class="single-process-item-one border-left-none border-right-none">
+                        <!-- single process item one -->
+
+                        <img src="~/Files/StaticContentImages/Image/@item.Image" width="30%" height="30%" alt="" />
+                        <h4 class="tiel mt-2">@item.Title</h4>
+                        <span class="details">
+                            @item.ShortDescription
+                        </span>
+                    </div><!-- //.single process item one -->
+                </div>
+            }
+            @*<div class="col-lg-4 col-md-6 remove-col-padding">
+                <div class="single-process-item-one border-left-none border-right-none">
+                    <!-- single process item one -->
+
+                    <img src="~/Content/client/pic/logo/shopping-cart.png" width="30%" height="30%" alt="rayegan" />
+                    <h4 class="tiel mt-2">جستجو و انتخاب باتری ماشین</h4>
+                    <span class="details">
+                        باتری مناسب خودروی خود را با توجه به برند، مشخصات فنی و قیمت آن انتخاب
+                        نمایید.
+                    </span>
+                </div><!-- //.single process item one -->
+            </div>
+            <div class="col-lg-4 col-md-6 remove-col-padding">
+                <div class="single-process-item-one">
+                    <!-- single process item one -->
+                    <img src="~/Content/client/pic/logo/customer-service.png" width="30%" height="30%" alt="rayegan" />
+                    <h4 class="tiel mt-2">ثبت سفارش خرید باتری </h4>
+                    <span class="details">
+                        سفارش خود را به صورت تلفنی و یا آنلاین به صورت شبانه روزی و در تمام ایام سال ثبت نمایید.
+                    </span>
+                </div><!-- //.single process item one -->
+            </div>
+            <div class="col-lg-4 col-md-6 remove-col-padding">
+                <div class="single-process-item-one">
+                    <!-- single process item one -->
+                    <img src="~/Content/client/pic/logo/free-shipping (1).png" width="30%" height="30%" alt="rayegan" />
+                    <h4 class="tiel mt-2">ارسال رایگان باتری ماشین</h4>
+                    <span class="details">
+                        باطری مناسب خودرو در سریع ترین زمان ممکن حمل و تحئیل داده
+                        خواهد شد.
+                    </span>
+                </div><!-- //.single process item one -->
+            </div>*@
+        </div>
+    </div>
+</div>
+<!-- process area end -->

@@ -1,4 +1,5 @@
 ﻿using SpadStorePanel.Core.Models;
+using SpadStorePanel.Core.Utility;
 using SpadStorePanel.Infrastructure;
 using SpadStorePanel.Infrastructure.Repositories;
 using SpadStorePanel.Infrastructure.Services;
@@ -26,7 +27,20 @@ namespace SpadStorePanel.Web.Controllers
         private readonly ArticlesRepository _articlesRepo;
         private readonly ProductService _productService;
         private readonly ProductsRepository _productsRepository;
-        public HomeController(StaticContentDetailsRepository contentRepo, ProductsRepository productsRepository, ProductService productService, ContactFormsRepository contactFormRepo, ArticlesRepository articlesRepo, ContactFormsRepository contactFormsRepository, ProductGroupsRepository productGroupsRepository, MyDbContext context, UsersRepository repo, FaqRepository faqRepository, StaticContentDetailsRepository staticContentDetailsRepository)
+
+        public HomeController
+            (
+            StaticContentDetailsRepository contentRepo
+            , ProductsRepository productsRepository
+            , ProductService productService
+            , ContactFormsRepository contactFormRepo
+            , ArticlesRepository articlesRepo
+            , ContactFormsRepository contactFormsRepository
+            , ProductGroupsRepository productGroupsRepository
+            , MyDbContext context, UsersRepository repo
+            , FaqRepository faqRepository
+            , StaticContentDetailsRepository staticContentDetailsRepository
+            )
         {
             _contentRepo = contentRepo;
             _staticContentDetailsRepository = staticContentDetailsRepository;
@@ -42,12 +56,36 @@ namespace SpadStorePanel.Web.Controllers
         }
         public ActionResult Index()
         {
-
             ////return Redirect("/Admin/Dashboard");
             var productGroups = _productGroupsRepository.GetAll().Where(a => a.ParentId == 37 & a.IsDeleted == false).Skip(0).Take(6).ToList();
+
             return View(productGroups);
         }
 
+        public ActionResult HomeTopBannerSection()
+        {
+            var staticContentsList = new List<StaticContentDetail>();
+
+            staticContentsList.Add(_staticContentDetailsRepository.GetStaticContentDetail((int)StaticContents.HomeTopBaner));
+
+            return PartialView(staticContentsList);
+        }
+
+        public ActionResult BuyingStepsSection()
+        {
+            var model = _staticContentDetailsRepository.GetContentByTypeId((int)StaticContentTypes.BuyingStepsSection);
+
+            return PartialView(model);
+        }
+
+        public ActionResult HomeMiddleBannerSection()
+        {
+            var staticContentsList = new List<StaticContentDetail>();
+
+            staticContentsList.Add(_staticContentDetailsRepository.GetStaticContentDetail((int)StaticContents.HomeMidleBaner));
+
+            return PartialView(staticContentsList);
+        }
 
         public ActionResult SubMenu(int I, int ProductId)
         {
@@ -74,6 +112,7 @@ namespace SpadStorePanel.Web.Controllers
         {
             return View();
         }
+
         public ActionResult FooterSection()
         {
             SocialViewModel socialViewModel = new SocialViewModel();

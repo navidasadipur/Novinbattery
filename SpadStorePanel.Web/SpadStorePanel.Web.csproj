@@ -5147,13 +5147,15 @@
     <Content Include="Views\Shop\ShowAllProduct.cshtml" />
     <Content Include="Views\Home\OurHonorInFooter.cshtml" />
     <Content Include="Views\Home\BannerSectionBig.cshtml" />
-    <Content Include="Views\Home\BannerSectionMd.cshtml" />
+    <Content Include="Views\Home\HomeTopBannerSection.cshtml" />
     <Content Include="Views\Home\BannerSectionSm1.cshtml" />
     <Content Include="Views\Home\BannerSectionSm2.cshtml" />
     <Content Include="Views\AboutUs\ShowTopComments.cshtml" />
     <Content Include="Views\AboutUs\StaticDetailsInAboutPage.cshtml" />
     <Content Include="Views\Shop\ProductsGrid.cshtml" />
     <Content Include="Views\Shop\LatestProductsSection.cshtml" />
+    <Content Include="Views\Home\BuyingStepsSection.cshtml" />
+    <Content Include="Views\Home\HomeMiddleBannerSection.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

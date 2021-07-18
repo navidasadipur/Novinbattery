@@ -1,75 +1,17 @@
 ﻿@model IEnumerable<SpadStorePanel.Core.Models.ProductGroup>
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "خانه";
 }
 
 
 <!-- header area start -->
-<div class="header-area-three header-bg-three">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-7">
-                <div class="header-inner myinner">
-                    <!-- header inner -->
-                    <span class="subtitle ">خدمات شبانه روزی</span>
-                    <h4 class="title "> آقای باتری فروش باتری ماشین</h4>
-                    <p class="wow fadeInDown">
-                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
-                    </p>
-                    <div class="btn-wrapper wow fadeInDown">
-                        <a href="/shop/" class="boxed-btn">مشاهده مجموعه ها</a>
-                        <a href="/aboutus/" class="boxed-btn blank">بیشتر بدانید</a>
-                    </div>
-                </div><!-- //. header inner -->
-            </div>
-        </div>
-    </div>
-</div>
+
+@Html.Action("HomeTopBannerSection", "Home")
 <!-- header area end -->
-<!-- process area start -->
-<div class="process-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4 col-md-6 remove-col-padding">
-                <div class="single-process-item-one border-left-none border-right-none">
-                    <!-- single process item one -->
 
-                    <img src="~/Content/client/pic/logo/shopping-cart.png" width="30%" height="30%" alt="rayegan" />
-                    <h4 class="tiel mt-2">جستجو و انتخاب باتری ماشین</h4>
-                    <span class="details">
-                        باتری مناسب خودروی خود را با توجه به برند، مشخصات فنی و قیمت آن انتخاب
-                        نمایید.
-                    </span>
-                </div><!-- //.single process item one -->
-            </div>
-            <div class="col-lg-4 col-md-6 remove-col-padding">
-                <div class="single-process-item-one">
-                    <!-- single process item one -->
-                    <img src="~/Content/client/pic/logo/customer-service.png" width="30%" height="30%" alt="rayegan" />
-                    <h4 class="tiel mt-2">ثبت سفارش خرید باتری </h4>
-                    <span class="details">
-                        سفارش خود را به صورت تلفنی و یا آنلاین به صورت شبانه روزی و در تمام ایام سال ثبت نمایید.
-                    </span>
-                </div><!-- //.single process item one -->
-            </div>
-            <div class="col-lg-4 col-md-6 remove-col-padding">
-                <div class="single-process-item-one">
-                    <!-- single process item one -->
-                    <img src="~/Content/client/pic/logo/free-shipping (1).png" width="30%" height="30%" alt="rayegan" />
-                    <h4 class="tiel mt-2">ارسال رایگان باتری ماشین</h4>
-                    <span class="details">
-                        باطری مناسب خودرو در سریع ترین زمان ممکن حمل و تحئیل داده
-                        خواهد شد.
-                    </span>
-                </div><!-- //.single process item one -->
-            </div>
-        </div>
+@Html.Action("BuyingStepsSection", "Home")
 
-
-
-    </div>
-</div>
-<!-- process area end -->
 <!-- best seller area two start -->
 <div class="best-seller-area-two">
     <div class="container">
@@ -557,24 +499,7 @@
     </div>
 </div>
 <!-- best seller area two end -->
-<!-- speakers area start -->
-<div class="speakers-area speakder-bg">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <div class="section-title rubik-font home-3 myspeakers-area my-auto">
-                    <!--  -->
-                    <span class="subtitle myspeakersub">تجربه ای متفاوت</span>
-                    <h2 class="title myspeakertitle">لذت رانندگی</h2>
-                    <p class="myspeakerpara">
-                        با محصولات آریاباتری بدون نگرانی و استرس رانندگی کنید
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- speakers area end -->
+@Html.Action("HomeMiddleBannerSection", "Home")
 <!-- best seller area four start -->
 <div class="best-seller-area-four pb-5">
     <div class="container">

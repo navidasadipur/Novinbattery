@@ -29,6 +29,39 @@ namespace SpadStorePanel.Core.Utility
         Pinterest = 1012,
         Facebook = 1010,
         BlogImage = 1013,
-        ContactInfo = 1014
+        ContactInfo = 1014,
+
+        HomeTopBaner = 1060,
+        HomeMidleBaner = 47,
+    }
+
+    public enum StaticContentTypes
+    {
+        HeaderFooter = 9,
+        About = 13,
+        AboutProperties,
+
+        HomeTopSlider = 17,
+        Contact = 2,
+
+        Guide = 9,
+        Popup = 11,
+        PageBanner = 12,
+        OurServices = 3,
+
+        BuyingStepsSection = 6,
+    }
+
+    public enum PaymentStatus
+    {
+        Unprocessed = 1,
+        Failed = 2,
+        Succeed = 3,
+        Expired = 4
+    }
+
+    public enum AditionalFeatureType
+    {
+        Volume = 1
     }
 }
