@@ -5156,7 +5156,6 @@
     <Content Include="Views\Home\Map.cshtml" />
     <Content Include="Views\Shared\_LayoutShop.cshtml" />
     <Content Include="Views\Shared\_LayoutProductDetail.cshtml" />
-    <Content Include="Views\Cookie\CartSection2.cshtml" />
     <Content Include="Views\Home\MobileNav.cshtml" />
     <Content Include="Views\Home\CategoryGroupMobile.cshtml" />
     <Content Include="Views\Home\BestSellerProductsSection.cshtml" />
@@ -5175,6 +5174,11 @@
     <Content Include="Views\Home\SecondPopularProductsSection.cshtml" />
     <Content Include="Views\Home\DiscountProductsSection.cshtml" />
     <Content Include="Views\Home\CartSection.cshtml" />
+    <Content Include="Views\Shop\Cart.cshtml" />
+    <Content Include="Views\Shop\CartTable.cshtml" />
+    <Content Include="Views\Shop\Checkout.cshtml" />
+    <Content Include="Views\Shop\CheckoutForm.cshtml" />
+    <Content Include="Views\Shop\ConfirmOrder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

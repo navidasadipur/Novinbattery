@@ -104,10 +104,24 @@ namespace SpadStorePanel.Web.Controllers
             ////return Redirect("/Admin/Dashboard");
             return View();
         }
-        public ActionResult HeaderMobile()
+        //public ActionResult HeaderMobile()
+        //{
+        //    ////return Redirect("/Admin/Dashboard");
+        //    return View();
+        //}
+
+        public ActionResult CartSection()
         {
-            ////return Redirect("/Admin/Dashboard");
-            return View();
+            var cartModel = new CartModel();
+
+            HttpCookie cartCookie = Request.Cookies["cart"] ?? new HttpCookie("cart");
+
+            if (!string.IsNullOrEmpty(cartCookie.Values["cart"]))
+            {
+                string cartJsonStr = cartCookie.Values["cart"];
+                cartModel = new CartModel(cartJsonStr);
+            }
+            return PartialView(cartModel);
         }
 
 
@@ -177,8 +191,8 @@ namespace SpadStorePanel.Web.Controllers
 
         }
 
-        public ActionResult HeaderSection()
-        {
+        //public ActionResult HeaderSection()
+        //{
             //{
             //    var wishListModel = new WishListModel();
 
@@ -205,8 +219,8 @@ namespace SpadStorePanel.Web.Controllers
             //        Response.Cookies.Add(cartCookie);
             //    }
             //    return View(wishListModel);
-            return View();
-        }
+        //    return View();
+        //}
 
         public ActionResult Gallery()
         {
