@@ -88,20 +88,18 @@
         -----------------------------*/
         $(document).on('click', '.qtminus', function () {
             var el = $(this);
-            var $tselector = el.parent().find('.qttotal').selector;
-            var total = $($tselector).text();
+            var total = el.parent().parent().find('.qttotal').text();
             if (total >= 1) {
                 total--;
             }
-            $($tselector).text(total);
+            el.parent().parent().find('.qttotal').text(total);
         });
         $(document).on('click', '.qtplus', function () {
             var el = $(this);
-            var $tselector = el.parent().find('.qttotal').selector;
-            var total = $($tselector).text();
+            var total = el.parent().parent().find('.qttotal').text();
             total++;
 
-            $($tselector).text(total);
+            el.parent().parent().find('.qttotal').text(total);
         });
         /*-------------------------------
             Remove Item From Cart table
