@@ -91,83 +91,6 @@
     }
 }
 
-@*<div class="right-btn-wrapper">
-        <ul>
-
-            <li class="right-menu"> <a class="fas fa-user usericon" href="Customer/Auth/login"></a> </li>
-            <li class="cart" id="cart">
-                <i class="fas fa-shopping-basket"></i>
-                <span class="badge" id="CartItemCount">@count</span>
-
-            </li>
-        </ul>
-    </div>
-
-
-        </div>
-    </nav>
-    <!-- navbar area end -->
-
-
-    <div class="body-overlay" id="body-overlay"></div>
-    <div class="search-popup home-3" id="search-popup">
-        <form action="#" class="search-popup-form">
-            <div class="form-element">
-                <input type="text" class="input-field" placeholder="جستجو.....">
-            </div>
-            <button type="submit" class="submit-btn"><i class="fas fa-search"></i></button>
-        </form>
-    </div>
-
-    <!-- cart sidebar area start -->
-    <div class="cart-sidebar-area home-3" id="cart-sidebar-area">
-        <div class="top-content">
-            <!-- top content -->
-            <a href="#" class="logo">
-                <h3 class="text-white">آقای باتری</h3>
-            </a>
-            <span class="side-sidebar-close-btn"><i class="fas fa-times"></i></span>
-        </div><!-- //. top content -->
-        <div class="bottom-content">
-            <!-- bottom content -->
-            <div class="cart-products">
-                <!-- cart product -->
-                <h4 class="title">سبد خرید</h4>
-                @if (Model.CartItems != null && Model.CartItems.Any())
-                {
-                    foreach (var item in Model.CartItems)
-                    {
-                        <div class="single-product-item" id="shopProducts1">
-                            <!-- single product item -->
-                            <div class="thumb">
-                                <a href="/Shop/Product/@item.Id">
-                                    <img src="~/Files/ProductImages/Thumb/@item.Image" width="80px" height="80px" alt="recent review">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <h4 class="title">@item.ProductName</h4>
-                                <div class="price">
-                                    <span class="pprice text-white">@item.Price.ToString("##,###") تومان</span>
-                                </div>
-                                <a href="#" class="remove-cart" onclick="RemoveFromCart(@item.Id,@item.MainFeatureId, 'true'); ">حذف</a>
-                            </div>
-                        </div><!-- //. single product item -->
-
-                    }
-                    <div class="btn-wrapper">
-                        <a href="/Shop/Cart/" class="boxed-btn">بررسی و پرداخت</a>
-                    </div>
-                }
-                else
-                {
-                    <h4 class=" text-white">سبد خرید</h4>
-                }
-            </div> <!-- //. cart product -->
-        </div><!-- //. bottom content -->
-    </div>
-    <!-- cart sidebar area end -->*@
-
-
 <div class="cart-products">
     <!-- cart product -->
     <h4 class="title">سبد خرید</h4>
@@ -175,7 +98,7 @@
     {
         foreach (var item in Model.CartItems)
         {
-            <div class="single-product-item" @*style="display: none;"*@ id="shopProducts1">
+            <div class="single-product-item" id="shopProducts1">
                 <!-- single product item -->
                 <div class="thumb">
                     <a href="/Shop/Product/@item.Id">
@@ -183,7 +106,7 @@
                     </a>
                 </div>
                 <div class="content">
-                    <h4 class="title">@item.ProductName</h4>
+                    <h4 class="title">@item.ProductName (@item.Quantity)</h4>
                     <div class="price">
                         <span class="pprice text-white">@item.Price.ToString("##,###") تومان</span>
                         @*<del class="dprice" style="color: #c25f5f;">
@@ -194,7 +117,6 @@
                     <a href="#" class="remove-cart" onclick="RemoveFromCart(@item.Id,@item.MainFeatureId, 'true'); ">حذف</a>
                 </div>
             </div><!-- //. single product item -->
-
         }
         <div class="btn-wrapper">
             <a href="/Shop/Cart/" class="boxed-btn">بررسی و پرداخت</a>
