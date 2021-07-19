@@ -188,6 +188,48 @@
             </button>
         </div>
         <!-- navbar collapse end -->
-        <div id="cartSection">
+        <div class="right-btn-wrapper">
+            <ul>
+
+                <li class="right-menu"> <a class="fas fa-user usericon" href="Customer/Auth/login"></a> </li>
+                <li class="cart" id="cart">
+                    <i class="fas fa-shopping-basket"></i>
+                    <span class="badge" id="CartItemCount"></span>
+
+                </li>
+            </ul>
+        </div>
+
+
+    </div>
+</nav>
+<!-- navbar area end -->
+
+
+<div class="body-overlay" id="body-overlay"></div>
+<div class="search-popup home-3" id="search-popup">
+    <form action="#" class="search-popup-form">
+        <div class="form-element">
+            <input type="text" class="input-field" placeholder="جستجو.....">
+        </div>
+        <button type="submit" class="submit-btn"><i class="fas fa-search"></i></button>
+    </form>
+</div>
+
+<!-- cart sidebar area start -->
+<div class="cart-sidebar-area home-3" id="cart-sidebar-area">
+    <div class="top-content">
+        <!-- top content -->
+        <a href="#" class="logo">
+            <h3 class="text-white">آقای باتری</h3>
+        </a>
+        <span class="side-sidebar-close-btn"><i class="fas fa-times"></i></span>
+    </div><!-- //. top content -->
+    <div class="bottom-content" id="cartSection">
+        <!-- bottom content -->
         @Html.Action("CartSection", "Home")
-            </div>
+    </div><!-- //. bottom content -->
+</div>
+<!-- cart sidebar area end -->
+
+

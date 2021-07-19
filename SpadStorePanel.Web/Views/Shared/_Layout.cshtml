@@ -206,6 +206,9 @@
 
     <script>
         $(document).ready(function () {
+
+            GetCartItemsCount();
+
             $("#ButtonEmail").click(function (e) {
                 //if ($("#usernameInput").val() == "")
                 //    alert("Username cannot be empty");
@@ -291,6 +294,7 @@
                         }
 
                         GetCart();
+                        
                     },
                     error: function (data) {
                         console.log("error");
@@ -354,6 +358,8 @@
                 url: '/Home/CartSection',
                 success: function (data) {
                     $("#cartSection").html(data);
+
+                    GetCartItemsCount()
                 },
                 error: function (data) {
                     console.log("error");
@@ -362,7 +368,8 @@
                 complete: function () {
                 }
             });
-            if ($("#CartTable") !== undefined) {
+            if ($("#CartTable").length !== 0) {
+                console.log($("#CartTable").length)
                 $.ajax({
                     type: 'GET',
                     url: '/Shop/CartTable',
@@ -377,6 +384,25 @@
                     }
                 });
             }
+        }
+
+        function GetCartItemsCount() {
+            $.ajax({
+                type: 'GET',
+                url: '/Shop/GetCartItemsCount',
+                success: function (data) {
+
+                    data = JSON.parse(data);
+
+                    $("#CartItemCount").html(data.CartItemCount);
+                },
+                error: function (data) {
+                    console.log("error");
+                    console.log(data);
+                },
+                complete: function () {
+                }
+            });
         }
     </script>
     <script>

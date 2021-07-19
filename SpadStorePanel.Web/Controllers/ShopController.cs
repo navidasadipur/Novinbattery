@@ -302,86 +302,86 @@ namespace SpadStorePanel.Web.Controllers
             return PartialView(vm);
         }
 
-        [Route("offer")]
-        public ActionResult Offer(int offerId = 0)
-        {
-            var allGroupIds = new List<int>();
-            var allProductIds = new List<int>();
-            var allBrandIds = new List<int>();
+        //[Route("offer")]
+        //public ActionResult Offer(int offerId = 0)
+        //{
+        //    var allGroupIds = new List<int>();
+        //    var allProductIds = new List<int>();
+        //    var allBrandIds = new List<int>();
 
-            if (offerId == 0)
-            {
-                return RedirectToAction("Index");
-            }
+        //    if (offerId == 0)
+        //    {
+        //        return RedirectToAction("Index");
+        //    }
 
-            var allOfferDiscounts = _discountsRepo.GetAllOfferDiscountsByOfferId(offerId);
+        //    var allOfferDiscounts = _discountsRepo.GetAllOfferDiscountsByOfferId(offerId);
 
-            foreach (var discount in allOfferDiscounts)
-            {
-                if (discount.ProductGroupId != null)
-                {
-                    allGroupIds.Add(discount.ProductGroupId.Value);
-                }
-                else if (discount.ProductId != null)
-                {
-                    var product = _productsRepo.GetProduct(discount.ProductId.Value);
+        //    foreach (var discount in allOfferDiscounts)
+        //    {
+        //        if (discount.ProductGroupId != null)
+        //        {
+        //            allGroupIds.Add(discount.ProductGroupId.Value);
+        //        }
+        //        else if (discount.ProductId != null)
+        //        {
+        //            var product = _productsRepo.GetProduct(discount.ProductId.Value);
 
-                    allProductIds.Add(product.Id);
-                }
-                else if (discount.BrandId != null)
-                {
-                    allBrandIds.Add(discount.BrandId.Value);
-                }
-            }
+        //            allProductIds.Add(product.Id);
+        //        }
+        //        else if (discount.BrandId != null)
+        //        {
+        //            allBrandIds.Add(discount.BrandId.Value);
+        //        }
+        //    }
 
-            //if (discount.ProductGroupId != null)
-            //{
-            //    groupId = discount.ProductGroupId.Value;
-            //}
-            //else if (discount.BrandId != null)
-            //{
-            //    brandId = discount.BrandId.Value.ToString();
+        //    //if (discount.ProductGroupId != null)
+        //    //{
+        //    //    groupId = discount.ProductGroupId.Value;
+        //    //}
+        //    //else if (discount.BrandId != null)
+        //    //{
+        //    //    brandId = discount.BrandId.Value.ToString();
 
-            //    //var allGroups = _productGroupsRepo.GetAllProductGroups();
+        //    //    //var allGroups = _productGroupsRepo.GetAllProductGroups();
 
-            //    //foreach (var group in allGroups)
-            //    //{
-            //    //    group.ProductGroupBrands = _productGroupsRepo.GetProductGroupBrands(group.Id);
+        //    //    //foreach (var group in allGroups)
+        //    //    //{
+        //    //    //    group.ProductGroupBrands = _productGroupsRepo.GetProductGroupBrands(group.Id);
 
-            //    //    var allGorupBrands = group.ProductGroupBrands.Where(gb => gb.IsDeleted == false && gb.BrandId == discount.BrandId).ToList();
+        //    //    //    var allGorupBrands = group.ProductGroupBrands.Where(gb => gb.IsDeleted == false && gb.BrandId == discount.BrandId).ToList();
 
-            //    //    if (allGorupBrands.Count() != 0)
-            //    //    {
-            //    //        groupId = allGorupBrands.Select(gb => gb.ProductGroupId).FirstOrDefault();
-            //    //    }
-            //    //}
-            //}
-            //else
-            //{
-            //    var allGroups = _productGroupsRepo.GetAllProductGroupsWithProducts();
+        //    //    //    if (allGorupBrands.Count() != 0)
+        //    //    //    {
+        //    //    //        groupId = allGorupBrands.Select(gb => gb.ProductGroupId).FirstOrDefault();
+        //    //    //    }
+        //    //    //}
+        //    //}
+        //    //else
+        //    //{
+        //    //    var allGroups = _productGroupsRepo.GetAllProductGroupsWithProducts();
 
-            //    foreach (var group in allGroups)
-            //    {
-            //        if (group.Products.Count() != 0)
-            //        {
-            //            allProducts = group.Products.Where(p => p.IsDeleted == false && p.Id == discount.ProductId).ToList();
-            //        }
+        //    //    foreach (var group in allGroups)
+        //    //    {
+        //    //        if (group.Products.Count() != 0)
+        //    //        {
+        //    //            allProducts = group.Products.Where(p => p.IsDeleted == false && p.Id == discount.ProductId).ToList();
+        //    //        }
 
-            //        if (allProducts.Count() != 0)
-            //        {
-            //            groupId = allProducts.Select(p => p.ProductGroupId).FirstOrDefault().Value;
-            //        }
-            //    }
-            //}
+        //    //        if (allProducts.Count() != 0)
+        //    //        {
+        //    //            groupId = allProducts.Select(p => p.ProductGroupId).FirstOrDefault().Value;
+        //    //        }
+        //    //    }
+        //    //}
 
-            var allGroupIdsStr = string.Join("-", allGroupIds);
+        //    var allGroupIdsStr = string.Join("-", allGroupIds);
 
-            var allProductIdsStr = string.Join("-", allProductIds);
+        //    var allProductIdsStr = string.Join("-", allProductIds);
 
-            var allBrandIdsStr = string.Join("-", allBrandIds);
+        //    var allBrandIdsStr = string.Join("-", allBrandIds);
 
-            return RedirectToAction("Index", new { groupIds = allGroupIdsStr, productIds = allProductIdsStr, brandIds = allBrandIdsStr });
-        }
+        //    return RedirectToAction("Index", new { groupIds = allGroupIdsStr, productIds = allProductIdsStr, brandIds = allBrandIdsStr });
+        //}
 
         [Route("Shop/Product/{id}/{title}")]
         [Route("Shop/Product/{id}")]
@@ -460,25 +460,25 @@ namespace SpadStorePanel.Web.Controllers
             return PartialView(products);
         }
 
-        [HttpPost]
-        public ActionResult PostComment(ProductCommentFormViewModel form)
-        {
-            if (ModelState.IsValid)
-            {
-                var comment = new ProductComment()
-                {
-                    ProductId = form.ProductId.Value,
-                    //ParentId = form.ParentId,
-                    Name = form.Name,
-                    Email = form.Email,
-                    Message = form.Message,
-                    AddedDate = DateTime.Now,
-                };
-                _productCommentsRepository.Add(comment);
-                return RedirectToAction("ContactUsSummary", "Home");
-            }
-            return RedirectToAction("ProductDetails", new { id = form.ProductId });
-        }
+        //[HttpPost]
+        //public ActionResult PostComment(ProductCommentFormViewModel form)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var comment = new ProductComment()
+        //        {
+        //            ProductId = form.ProductId.Value,
+        //            //ParentId = form.ParentId,
+        //            Name = form.Name,
+        //            Email = form.Email,
+        //            Message = form.Message,
+        //            AddedDate = DateTime.Now,
+        //        };
+        //        _productCommentsRepository.Add(comment);
+        //        return RedirectToAction("ContactUsSummary", "Home");
+        //    }
+        //    return RedirectToAction("ProductDetails", new { id = form.ProductId });
+        //}
 
         public string GetProductPrice(int productId, int mainFeatureId)
         {
@@ -515,12 +515,37 @@ namespace SpadStorePanel.Web.Controllers
             return PartialView(vm);
         }
 
+        public string GetCartItemsCount()
+        { 
+            CartResponse cartResponse = new CartResponse();
+            cartResponse.Message = "success";
+
+            var cartModel = new CartModel();
+            var cartItemsModel = new List<CartItemModel>();
+
+            #region Checking for cookie
+            HttpCookie cartCookie = Request.Cookies["cart"] ?? new HttpCookie("cart");
+
+            if (!string.IsNullOrEmpty(cartCookie.Values["cart"]))
+            {
+                string cartJsonStr = cartCookie.Values["cart"];
+                cartModel = new CartModel(cartJsonStr);
+                cartItemsModel = cartModel.CartItems;
+            }
+            #endregion
+
+            cartResponse.CartItemCount = cartModel.CartItems.Count;
+
+            return Newtonsoft.Json.JsonConvert.SerializeObject(cartResponse);
+        }
+
         [HttpPost]
         public string AddToCart(int productId, int? mainFeatureId, int count = 1)
         {
 
             CartResponse cartResponse = new CartResponse();
             cartResponse.Message = "success";
+            
 
             count = count <= 0 ? 1 : count;
             var cartModel = new CartModel();
@@ -586,6 +611,8 @@ namespace SpadStorePanel.Web.Controllers
 
                 cartCookie.Expires = DateTime.Now.AddHours(12);
                 cartCookie.SameSite = SameSiteMode.Lax;
+
+                cartResponse.CartItemCount = cartModel.CartItems.Count;
 
                 Response.Cookies.Add(cartCookie);
             }
