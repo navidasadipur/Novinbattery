@@ -6,111 +6,111 @@
 
 
 @*<!-- breadcrumb area start -->
-<section class="breadcrumb-area breadcrumb-bg extra">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="breadcrumb-inner">
-                    <!-- breadcrumb inner -->
-                    <div class="left-content-area">
-                        <!-- left content area -->
-                        <h1 class="title">ثبت نام</h1>
-                    </div><!-- //. left content area -->
-                    <div class="right-content-area">
-                        <ul>
-                            <li><a href="index.html">خانه</a></li>
-                            <li>ثبت نام</li>
-                        </ul>
-                    </div>
-                </div><!-- //. breadcrumb inner -->
-            </div>
-        </div>
-    </div>
-</section>
-<!-- breadcrumb area end -->
-
-
-@if (!string.IsNullOrEmpty(ViewBag.LoginError))
-{
-    <div class="container margin-top-50">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="alert alert-warning">
-                    <span class="text-danger">@ViewBag.LoginError</span>
+    <section class="breadcrumb-area breadcrumb-bg extra">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-inner">
+                        <!-- breadcrumb inner -->
+                        <div class="left-content-area">
+                            <!-- left content area -->
+                            <h1 class="title">ثبت نام</h1>
+                        </div><!-- //. left content area -->
+                        <div class="right-content-area">
+                            <ul>
+                                <li><a href="index.html">خانه</a></li>
+                                <li>ثبت نام</li>
+                            </ul>
+                        </div>
+                    </div><!-- //. breadcrumb inner -->
                 </div>
             </div>
         </div>
-    </div>
-}
-<div class="login-page-content-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="signup-page-wrapper">
-                    <!-- login page wrapper -->
-                    <div class="or">
-                        <span>یا</span>
+    </section>
+    <!-- breadcrumb area end -->
+
+
+    @if (!string.IsNullOrEmpty(ViewBag.LoginError))
+    {
+        <div class="container margin-top-50">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="alert alert-warning">
+                        <span class="text-danger">@ViewBag.LoginError</span>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-6 padding-right-0">
-                            <div class="left-content-area signup-bg">
-                                <div class="img-wrapper">
-                                    <a href="/Customer/Auth/Login" class="boxed-btn">ورود به حساب</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="right-contnet-area">
-                                <div class="top-content">
-                                    <h4 class="title"> ثبت نام کنید</h4>
-                                    <p>
-                                        شما میتوانید به راحتی در سایت اورجینال ثبت نام کنید
-                                    </p>
-                                </div>
-                                <div class="bottom-content">
-                                    @using (Html.BeginForm("Register", "Auth", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @id = "form", @class = "login-form", role = "form" }))
-                                    {
-                                        @Html.AntiForgeryToken()
-                                        <div class="form-element">
-                                            @Html.TextBoxFor(m => m.FirstName, new { @class = "input-field", placeholder = "نام خود را وارد کنید", autocomplete = "off" })
-                                            @Html.ValidationMessageFor(m => m.FirstName, "")
-                                        </div>
-                                        <div class="form-element">
-                                            @Html.TextBoxFor(m => m.LastName, new { @class = "input-field", @placeholder = "نام خانوادگی خود را وارد کنید", autocomplete = "off" })
-                                            @Html.ValidationMessageFor(m => m.LastName, "")
-                                        </div>
-                                        <div class="form-element">
-                                            @Html.TextBoxFor(m => m.UserName, new { @class = "input-field", @placeholder = "نام کاربری خود را وارد کنید", autocomplete = "off" })
-                                            @Html.ValidationMessageFor(m => m.UserName, "")
-                                        </div>
-                                        <div class="form-element">
-                                            @Html.TextBoxFor(m => m.Email, new { @class = "input-field", @placeholder = "ایمیل خود را وارد کنید", autocomplete = "off" })
-                                            @Html.ValidationMessageFor(m => m.Email, "")
-                                        </div>
-                                        <div class="form-element">
-                                            @Html.TextBoxFor(m => m.Password, new { @class = "input-field", @placeholder = "رمز عبور خود را وارد کنید", @type = "Password", autocomplete = "off" })
-                                            @Html.ValidationMessageFor(m => m.Password, "")
-                                        </div>
-                                        <div class="form-element">
-                                            @Html.TextBoxFor(m => m.ConfirmPassword, new { @class = "input-field", @placeholder = "تکرار رمز عبور خود را وارد کنید", @type = "Password", autocomplete = "off" })
-                                            @Html.ValidationMessageFor(m => m.ConfirmPassword, "")
-                                        </div>
-                                        <div class="btn-wrapper d-flex justify-content-center">
-                                            <button type="submit" class="submit-btn">ثبت نام</button>
-                                        </div>
-                                    }
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div><!-- //.login page wrapper -->
+                </div>
             </div>
         </div>
-    </div>
-</div>*@
+    }
+    <div class="login-page-content-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="signup-page-wrapper">
+                        <!-- login page wrapper -->
+                        <div class="or">
+                            <span>یا</span>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 padding-right-0">
+                                <div class="left-content-area signup-bg">
+                                    <div class="img-wrapper">
+                                        <a href="/Customer/Auth/Login" class="boxed-btn">ورود به حساب</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="right-contnet-area">
+                                    <div class="top-content">
+                                        <h4 class="title"> ثبت نام کنید</h4>
+                                        <p>
+                                            شما میتوانید به راحتی در سایت اورجینال ثبت نام کنید
+                                        </p>
+                                    </div>
+                                    <div class="bottom-content">
+                                        @using (Html.BeginForm("Register", "Auth", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @id = "form", @class = "login-form", role = "form" }))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            <div class="form-element">
+                                                @Html.TextBoxFor(m => m.FirstName, new { @class = "input-field", placeholder = "نام خود را وارد کنید", autocomplete = "off" })
+                                                @Html.ValidationMessageFor(m => m.FirstName, "")
+                                            </div>
+                                            <div class="form-element">
+                                                @Html.TextBoxFor(m => m.LastName, new { @class = "input-field", @placeholder = "نام خانوادگی خود را وارد کنید", autocomplete = "off" })
+                                                @Html.ValidationMessageFor(m => m.LastName, "")
+                                            </div>
+                                            <div class="form-element">
+                                                @Html.TextBoxFor(m => m.UserName, new { @class = "input-field", @placeholder = "نام کاربری خود را وارد کنید", autocomplete = "off" })
+                                                @Html.ValidationMessageFor(m => m.UserName, "")
+                                            </div>
+                                            <div class="form-element">
+                                                @Html.TextBoxFor(m => m.Email, new { @class = "input-field", @placeholder = "ایمیل خود را وارد کنید", autocomplete = "off" })
+                                                @Html.ValidationMessageFor(m => m.Email, "")
+                                            </div>
+                                            <div class="form-element">
+                                                @Html.TextBoxFor(m => m.Password, new { @class = "input-field", @placeholder = "رمز عبور خود را وارد کنید", @type = "Password", autocomplete = "off" })
+                                                @Html.ValidationMessageFor(m => m.Password, "")
+                                            </div>
+                                            <div class="form-element">
+                                                @Html.TextBoxFor(m => m.ConfirmPassword, new { @class = "input-field", @placeholder = "تکرار رمز عبور خود را وارد کنید", @type = "Password", autocomplete = "off" })
+                                                @Html.ValidationMessageFor(m => m.ConfirmPassword, "")
+                                            </div>
+                                            <div class="btn-wrapper d-flex justify-content-center">
+                                                <button type="submit" class="submit-btn">ثبت نام</button>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- //.login page wrapper -->
+                </div>
+            </div>
+        </div>
+    </div>*@
 
 
-<main class="main">
+@*<main class="main">
     <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
         <div class="container">
             <ol class="breadcrumb">
@@ -147,32 +147,24 @@
                             <label for="register-email-2">نام کاربری *</label>
                             @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "نام کاربری انتخابی خود را وارد کنید", autocomplete = "off" })
                             @Html.ValidationMessageFor(m => m.UserName, "")
-                            @*<input type="email" class="form-control" id="register-email-2"
-                name="register-email" required>*@
                         </div><!-- End .form-group -->
 
                         <div class="form-group">
                             <label for="register-email-2">آدرس ایمیل شما *</label>
                             @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "ایمیل خود را وارد کنید", autocomplete = "off", @type = "email" })
                             @Html.ValidationMessageFor(m => m.Email, "")
-                            @*<input type="email" class="form-control" id="register-email-2"
-                name="register-email" required>*@
                         </div><!-- End .form-group -->
 
                         <div class="form-group">
                             <label for="register-password-2">رمز عبور *</label>
                             @Html.TextBoxFor(m => m.Password, new { @class = "form-control", @placeholder = "رمز عبور خود را وارد کنید", @type = "Password", autocomplete = "off" })
                             @Html.ValidationMessageFor(m => m.Password, "")
-                            @*<input type="password" class="form-control" id="register-password-2"
-                name="register-password" required>*@
                         </div><!-- End .form-group -->
 
                         <div class="form-group">
                             <label for="register-password-2">تکرار رمز عبور *</label>
                             @Html.TextBoxFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "تکرار رمز عبور خود را وارد کنید", @type = "Password", autocomplete = "off" })
                             @Html.ValidationMessageFor(m => m.ConfirmPassword, "")
-                            @*<input type="password" class="form-control" id="register-password-2"
-                name="register-password" required>*@
                         </div><!-- End .form-group -->
 
                         <div class="form-footer">
@@ -202,8 +194,100 @@
             </div><!-- End .form-box -->
         </div><!-- End .container -->
     </div><!-- End .login-page section-bg -->
-</main><!-- End .main -->
+</main><!-- End .main -->*@
 
+
+
+<!-- breadcrumb area start -->
+<section class="breadcrumb-area breadcrumb-bg extra">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-inner">
+                    <!-- breadcrumb inner -->
+                    <div class="left-content-area">
+                        <!-- left content area -->
+                        <h1 class="title">@ViewBag.Title</h1>
+                    </div><!-- //. left content area -->
+                    <div class="right-content-area">
+                        <ul>
+                            <li><a href="/">خانه</a></li>
+                            <li>@ViewBag.Title</li>
+                        </ul>
+                    </div>
+                </div><!-- //. breadcrumb inner -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- breadcrumb area end -->
+<!-- login page content area start -->
+<div class="login-page-content-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="signup-page-wrapper">
+                    <!-- login page wrapper -->
+                    <div class="or">
+                        <span>یا</span>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 padding-right-0">
+                            <div class="left-content-area signup-bg">
+                                <div class="img-wrapper">
+                                    <a href="/Customer/Auth/login" class="boxed-btn">ورود به حساب</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="right-contnet-area">
+                                <div class="top-content">
+                                    <h4 class="title">ثبت نام</h4>
+                                    @*<p>
+                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
+                                        طراحان گرافیک است. .
+                                    </p>*@
+                                </div>
+                                <div class="bottom-content">
+                                    @*<form action="#" class="login-form">*@
+                                        @using (Html.BeginForm("Register", "Auth", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @id = "form", @class = "login-form", role = "form" }))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            <div class="form-element">
+                                                @*<input type="email" class="input-field"
+                placeholder="نام کاربری یا ایمیل خود را وارد کنید">*@
+                                                @Html.TextBoxFor(m => m.UserName, new { @class = "input-field", @placeholder = "نام کاربری خود را وارد کنید", autocomplete = "off" })
+                                                @Html.ValidationMessageFor(m => m.UserName, "")
+                                            </div>
+                                            <div class="form-element">
+                                                @Html.TextBoxFor(m => m.Email, new { @class = "input-field", @placeholder = "ایمیل خود را وارد کنید", autocomplete = "off", @type = "email" })
+                                                @Html.ValidationMessageFor(m => m.Email, "")
+                                            </div>
+                                            <div class="form-element">
+                                                @Html.TextBoxFor(m => m.Password, new { @class = "input-field", @placeholder = "رمز عبور", @type = "Password", autocomplete = "off" })
+                                                @Html.ValidationMessageFor(m => m.Password, "")
+                                            </div>
+                                            <div class="form-element">
+                                                @Html.TextBoxFor(m => m.ConfirmPassword, new { @class = "input-field", @placeholder = "تکرار رمز عبور", @type = "Password", autocomplete = "off" })
+                                                @Html.ValidationMessageFor(m => m.ConfirmPassword, "")
+                                            </div>
+
+                                            <div class="btn-wrapper text-center">
+                                                <button type="submit" class="submit-btn">ثبت نام</button>
+                                                @*<a href="#" type="submit" class="submit-btn">ثبت نام</a>*@
+                                            </div>
+                                        }
+                                        @*</form>*@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- //.login page wrapper -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- login page content area end -->
 
 
 <style>

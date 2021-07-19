@@ -11744,3 +11744,8 @@ nav .pagination li.active a {
 nav .pagination li a {
     color: #ff8641 !important;
 }
+
+form.login-form .form-element {
+    display: block;
+    margin-bottom: 1rem;
+}
