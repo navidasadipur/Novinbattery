@@ -60,138 +60,250 @@
                     <div class="">
                         @Html.LabelFor(model => model.GeoDivisionId, "استان", new { })
                         @*Html.DropDownList("GeoDivisionId", null, htmlAttributes: new { @class = "form-control" })*@@*
-                        @Html.DropDownListFor(model => model.GeoDivisionId, (IEnumerable<SelectListItem>)ViewBag.GeoDivisionIds, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.GeoDivisionId, "", new { @class = "form-text text-danger" })
+                            @Html.DropDownListFor(model => model.GeoDivisionId, (IEnumerable<SelectListItem>)ViewBag.GeoDivisionIds, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.GeoDivisionId, "", new { @class = "form-text text-danger" })
+                        </div>
                     </div>
+                    @Html.EditorFor(model => model.DiscountCode, new { htmlAttributes = new { @type = "hidden", @readonly = "readonly" } })
+                    @Html.EditorFor(model => model.InvoiceNumber, new { htmlAttributes = new { @type = "hidden", @readonly = "readonly" } })
                 </div>
-                @Html.EditorFor(model => model.DiscountCode, new { htmlAttributes = new { @type = "hidden", @readonly = "readonly" } })
-                @Html.EditorFor(model => model.InvoiceNumber, new { htmlAttributes = new { @type = "hidden", @readonly = "readonly" } })
             </div>
+            <button class="btn full btn-color">ثبت سفارش</button>
         </div>
-        <button class="btn full btn-color">ثبت سفارش</button>
-    </div>
-</div>*@
+    </div>*@
 
 
-<div class="col-lg-9">
-    <h2 class="checkout-title">جزئیات صورت حساب</h2><!-- End .checkout-title -->
-    <div class="row">
-        <div class="col-sm-12">
-            @Html.LabelFor(model => model.Name, new { })*
-            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control " } })
-            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "form-text text-danger" })
+                        @*<div class="col-lg-9">
+                            <h2 class="checkout-title">جزئیات صورت حساب</h2><!-- End .checkout-title -->
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    @Html.LabelFor(model => model.Name, new { })*
+                                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control " } })
+                                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "form-text text-danger" })
+                                </div>
+                            </div>
+                            <div class="row ">
+                                <div class="col-sm-6">
+                                    @Html.LabelFor(model => model.CompanyName, new { })*
+                                    @Html.EditorFor(model => model.CompanyName, new { htmlAttributes = new { @class = "form-control " } })
+                                    @Html.ValidationMessageFor(model => model.CompanyName, "", new { @class = "form-text text-danger" })
+                                </div>
+                                <div class="col-sm-6">
+                                    @Html.LabelFor(model => model.Country, new { })*
+                                    @Html.EditorFor(model => model.Country, new { htmlAttributes = new { @class = "form-control ", @Value = "ایران" } })
+                                    @Html.ValidationMessageFor(model => model.Country, "", new { @class = "form-text text-danger" })
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6 ">
+                                    @Html.LabelFor(model => model.GeoDivisionId, "استان", new { })
+                                    @Html.DropDownListFor(model => model.GeoDivisionId, (IEnumerable<SelectListItem>)ViewBag.GeoDivisionIds, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.GeoDivisionId, "", new { @class = "form-text text-danger" })
+                                </div>
+                                <div class="col-sm-6">
+                                    @Html.LabelFor(model => model.City, new { })*
+                                    @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control " } })
+                                    @Html.ValidationMessageFor(model => model.City, "", new { @class = "form-text text-danger" })
+
+                                </div><!-- End .col-sm-6 -->
+                            </div><!-- End .row -->
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    @Html.LabelFor(model => model.Address, new { })*
+                                    @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control ", @placeholder = "نام خیابان و پلاک" } })
+                                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "form-text text-danger" })
+
+                                </div><!-- End .col-sm-12 -->
+
+                            </div><!-- End .row -->
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    @Html.LabelFor(model => model.PostalCode, new { })*
+                                    @Html.EditorFor(model => model.PostalCode, new { htmlAttributes = new { @class = "form-control " } })
+                                    @Html.ValidationMessageFor(model => model.PostalCode, "", new { @class = "form-text text-danger" })
+                                </div><!-- End .col-sm-6 -->
+
+                                <div class="col-sm-6">
+                                    @Html.LabelFor(model => model.Phone, new { })*
+                                    @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control " } })
+                                    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "form-text text-danger" })
+                                </div><!-- End .col-sm-6 -->
+                            </div><!-- End .row -->
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <label>ایمیل *</label>
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control " } })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "form-text text-danger" })
+                                </div>
+                            </div>
+
+                            @Html.LabelFor(model => model.Message, new { })
+                            @Html.EditorFor(model => model.Message, new { htmlAttributes = new { @class = "form-control ", @placeholder = "شما میتوانید توضیحات اضافی خود را اینجا بنویسید" } })
+                            @Html.ValidationMessageFor(model => model.Message, "", new { @class = "form-text text-danger" })
+
+
+                            @Html.EditorFor(model => model.DiscountCode, new { htmlAttributes = new { @type = "hidden", @readonly = "readonly" } })
+                            @Html.EditorFor(model => model.InvoiceNumber, new { htmlAttributes = new { @type = "hidden", @readonly = "readonly" } })
+                        </div><!-- End .col-lg-9 -->*@
+
+
+
+
+
+
+
+                        @*<form action="#" class="checkout-form">*@
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-element">
+
+                                    @Html.LabelFor(model => model.Name, new { })<span style="color:#be1f27;">**</span>
+                                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "input-field", @placeholder = "نام شما...", @type = "text" } })
+                                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "form-text text-danger" })
+                                    @*<label>نام شما <span class="base-color">**</span></label>
+            <input type="text" class="input-field" placeholder="نام شما...">*@
+                                </div>
+
+                                <div class="form-element">
+                                    @Html.LabelFor(model => model.Country, new { })<span style="color:#be1f27;">**</span>
+                                    @Html.EditorFor(model => model.Country, new { htmlAttributes = new { @class = "input-field", @Value = "ایران", @type = "text" } })
+                                    @Html.ValidationMessageFor(model => model.Country, "", new { @class = "form-text text-danger" })
+                                    @*<label>کشور <span class="base-color">**</span></label>
+                                    <input type="text" class="input-field" placeholder="استان/شهر...">*@
+                                </div>
+
+                                <div class="form-element">
+                                    @Html.LabelFor(model => model.City, new { })<span style="color:#be1f27;">**</span>
+                                    @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "input-field ", @placeholder = "شهر ...", @type = "text" } })
+                                    @Html.ValidationMessageFor(model => model.City, "", new { @class = "form-text text-danger" })
+                                    @*<label>شهر <span class="base-color">**</span></label>
+                                    <input type="text" class="input-field" placeholder="استان/شهر...">*@
+                                </div>
+
+                                <div class="form-element">
+                                    @Html.LabelFor(model => model.Phone, new { })<span style="color:#be1f27;">**</span>
+                                    @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "input-field ", @placeholder = "تلفن ...", @type = "text" } })
+                                    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "form-text text-danger" })
+                                    @*<label>تلفن <span class="base-color">**</span></label>
+                                    <input type="text" class="input-field" placeholder="تلفن همراه ...">*@
+                                </div>
+
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-element">
+                                    @Html.LabelFor(model => model.CompanyName, new { })
+                                    @Html.EditorFor(model => model.CompanyName, new { htmlAttributes = new { @class = "input-field", @placeholder = "نام شرکت...", @type = "text" } })
+                                    @Html.ValidationMessageFor(model => model.CompanyName, "", new { @class = "form-text text-danger" })
+                                    @*<label>نام شرکت <span class="base-color">**</span></label>
+            <input type="text" class="input-field" placeholder="نام شرکت...">*@
+                                </div>
+                                <div class="form-element">
+                                    @Html.LabelFor(model => model.GeoDivisionId, "استان", new { })<span style="color:#be1f27;">**</span>
+                                    @*@Html.DropDownList("GeoDivisionId", null, htmlAttributes: new { @class = "form-control" })*@
+                                    @Html.DropDownListFor(model => model.GeoDivisionId, (IEnumerable<SelectListItem>)ViewBag.GeoDivisionIds, new { @class = "input-field" })
+                                    @Html.ValidationMessageFor(model => model.GeoDivisionId, "", new { @class = "form-text text-danger" })
+                                    @*<label>استان <span class="base-color">**</span></label>
+                                    <input type="text" class="input-field" placeholder="استان/شهر...">*@
+                                </div>
+
+                                <div class="form-element">
+                                    @Html.LabelFor(model => model.PostalCode, new { })<span style="color:#be1f27;">**</span>
+                                    @Html.EditorFor(model => model.PostalCode, new { htmlAttributes = new { @class = "input-field ", @placeholder = "کد پستی ...", @type = "text" } })
+                                    @Html.ValidationMessageFor(model => model.PostalCode, "", new { @class = "form-text text-danger" })
+                                    @*<label>کد پستی <span class="base-color">**</span></label>
+                                    <input type="text" class="input-field" placeholder="استان/شهر...">*@
+                                </div>
+
+                                <div class="form-element">
+                                    <label>آدرس ایمیل<span class="base-color">**</span></label>
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "input-field ", @placeholder = "آدرس ایمیل...", @type = "text" } })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "form-text text-danger" })
+                                    @*<label>آدرس ایمیل<span class="base-color">**</span></label>
+                                    <input type="email" class="input-field" placeholder="آدرس ایمیل...">*@
+                                </div>
+
+                                @*<div class="form-element select has-icon">
+                                    <label>کشور <span class="base-color">**</span></label>
+                                    <select class="input-field select ">
+                                        <option value="0">انتخاب کشور</option>
+                                        <option value="0">ایران</option>
+                                        <option value="0">هند</option>
+                                        <option value="0">ترکیه</option>
+                                        <option value="0">عراق</option>
+                                    </select>
+                                    <div class="the-icon">
+                                        <i class="fas fa-angle-down"></i>
+                                    </div>
+                                </div>
+                                <div class="form-element">
+                                    <label class="blank"></label>
+                                    <input type="text" class="input-field" placeholder="دیگر آدرس...">
+                                </div>
+                                <div class="form-element select has-icon">
+            <label>شهر <span class="base-color">**</span></label>
+            <select class="input-field select">
+                <option value="0">انتخاب شهر </option>
+                <option value="0">ارومیه</option>
+                <option value="0">دهلی</option>
+                <option value="0">استانبول</option>
+                <option value="0">سلیمانیه</option>
+            </select>
+            <div class="the-icon">
+                <i class="fas fa-angle-down"></i>
             </div>
-        </div>
-        <div class="row ">
-            <div class="col-sm-6">
-                @Html.LabelFor(model => model.CompanyName, new { })*
-                @Html.EditorFor(model => model.CompanyName, new { htmlAttributes = new { @class = "form-control " } })
-                @Html.ValidationMessageFor(model => model.CompanyName, "", new { @class = "form-text text-danger" })
-                @*<label>نام شرکت (اختیاری)</label>
-                <input type="text" class="form-control">*@
-            </div>
-            <div class="col-sm-6">
-                @Html.LabelFor(model => model.Country, new { })*
-                @Html.EditorFor(model => model.Country, new { htmlAttributes = new { @class = "form-control ", @Value = "ایران" } })
-                @Html.ValidationMessageFor(model => model.Country, "", new { @class = "form-text text-danger" })
-                @*<label>کشور *</label>
-                <input type="text" class="form-control" required>*@
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6 ">
-                @Html.LabelFor(model => model.GeoDivisionId, "استان", new { })
-                @*@Html.DropDownList("GeoDivisionId", null, htmlAttributes: new { @class = "form-control" })*@
-                @Html.DropDownListFor(model => model.GeoDivisionId, (IEnumerable<SelectListItem>)ViewBag.GeoDivisionIds, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.GeoDivisionId, "", new { @class = "form-text text-danger" })
-            </div>
-            <div class="col-sm-6">
-                @Html.LabelFor(model => model.City, new { })*
-                @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control " } })
-                @Html.ValidationMessageFor(model => model.City, "", new { @class = "form-text text-danger" })
-                @*<label>شهر *</label>
-                <input type="text" class="form-control" required>*@
-
-            </div><!-- End .col-sm-6 -->
-            @*<div class="col-sm-6">
-                <label>شهرستان *</label>
-                <input type="text" class="form-control" required>
-            </div> End .col-sm-6*@
-        </div><!-- End .row -->
-        <div class="row">
-            <div class="col-sm-12">
-                @Html.LabelFor(model => model.Address, new { })*
-                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control ", @placeholder = "نام خیابان و پلاک" } })
-                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "form-text text-danger" })
-                @*<label>خیابان *</label>
-                <input type="text" class="form-control" placeholder="نام خیابان و پلاک"
-                       required>*@
-
-            </div><!-- End .col-sm-12 -->
-
-        </div><!-- End .row -->
-
-        <div class="row">
-            <div class="col-sm-6">
-                @Html.LabelFor(model => model.PostalCode, new { })*
-                @Html.EditorFor(model => model.PostalCode, new { htmlAttributes = new { @class = "form-control " } })
-                @Html.ValidationMessageFor(model => model.PostalCode, "", new { @class = "form-text text-danger" })
-                @*<label>کد پستی *</label>
-                <input type="text" class="form-control" required>*@
-            </div><!-- End .col-sm-6 -->
-
-            <div class="col-sm-6">
-                @Html.LabelFor(model => model.Phone, new { })*
-                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control " } })
-                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "form-text text-danger" })
-                @*<label>تلفن *</label>
-                <input type="tel" class="form-control" required>*@
-            </div><!-- End .col-sm-6 -->
-        </div><!-- End .row -->
-        <div class="row">
-            <div class="col-sm-12">
-                <label>ایمیل *</label>
-                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control " } })
-                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "form-text text-danger" })
-                @*<label for="Email">آدرس ایمیل (اختیاری)</label>
-                <input type="email" class="form-control" required>*@
-            </div>
-        </div>
-        @*<div class="row">
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="checkout-create-acc">
-                <label class="custom-control-label" for="checkout-create-acc">
-                    ایجاد یک حساب
-                    کاربری؟
-                </label>
-            </div><!-- End .custom-checkbox -->
-        </div>
-        <div class="row">
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="checkout-diff-address">
-                <label class="custom-control-label" for="checkout-diff-address">
-                    ارسال به یک آدرس
-                    متفاوت؟
-                </label>
-            </div><!-- End .custom-checkbox -->
         </div>*@
-        @Html.LabelFor(model => model.Message, new { })
-        @Html.EditorFor(model => model.Message, new { htmlAttributes = new { @class = "form-control ", @placeholder = "شما میتوانید توضیحات اضافی خود را اینجا بنویسید" } })
-        @Html.ValidationMessageFor(model => model.Message, "", new { @class = "form-text text-danger" })
-        @*<label>توضیحات (اختیاری)</label>
-        <textarea class="form-control" cols="30" rows="4"
-                  placeholder="شما میتوانید توضیحات اضافی خود را اینجا بنویسید"></textarea>*@
+                            </div>
 
-        @Html.EditorFor(model => model.DiscountCode, new { htmlAttributes = new { @type = "hidden", @readonly = "readonly" } })
-        @Html.EditorFor(model => model.InvoiceNumber, new { htmlAttributes = new { @type = "hidden", @readonly = "readonly" } })
-    </div><!-- End .col-lg-9 -->
+                            <div class="col-lg-12">
+                                @*<div class="checkbox-element account">
+                                        <div class="checkbox-wrapper">
+                                            <label class="checkbox-inner">
+                                                میخواهید حساب کاربری ایجاد کنید؟
+                                                <input type="checkbox">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </div>
+                                    </div>*@
+                                <div class="shipping-details">
+                                    <!-- shipping details -->
+                                    @*<h3 class="title">جزئیات حمل و نقل</h3>
+        <div class="checkbox-element">
+            <div class="checkbox-wrapper">
+                <label class="checkbox-inner">
+                    به آدرس دیگری می فرستید؟
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+        </div>*@
+                                    <div class="form-element">
+                                        @Html.LabelFor(model => model.Address, new { })<span style="color:#be1f27;">**</span>
+                                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "input-field ", @placeholder = "آدرس خیابان...", @type = "text" } })
+                                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "form-text text-danger" })
+                                        @*<label>آدرس خیابان <span class="base-color">**</span></label>
+            <input type="text" class="input-field" placeholder="آدرس خیابان...">*@
+                                    </div>
+                                    <div class="form-element textarea">
+                                        @Html.LabelFor(model => model.Message, new { @Value = "یادداشت های سفارش"})
+                                        @Html.EditorFor(model => model.Message, new { htmlAttributes = new { @class = "input-field textarea ", @placeholder = "یادداشت های سفارش ", cols="30", rows="10" } })
+                                        @Html.ValidationMessageFor(model => model.Message, "", new { @class = "form-text text-danger" })
+                                        @*<label>یادداشت های سفارش</label>
+                                        <textarea class="input-field textarea" cols="30" rows="10"></textarea>*@
+                                    </div>
+
+                                    @Html.EditorFor(model => model.DiscountCode, new { htmlAttributes = new { @type = "hidden", @readonly = "readonly" } })
+                                    @Html.EditorFor(model => model.InvoiceNumber, new { htmlAttributes = new { @type = "hidden", @readonly = "readonly" } })
+                                </div><!-- //. shipping details -->
+                            </div>
+                        </div>
+                        @*</form>*@
 
 
 
 
-
-    <script>
-        $.validator.unobtrusive.parse("#form");
-    </script>
+                        <script>
+                            $.validator.unobtrusive.parse("#form");
+                        </script>
 
 
