@@ -294,7 +294,7 @@
                         }
 
                         GetCart();
-                        
+
                     },
                     error: function (data) {
                         console.log("error");
@@ -498,6 +498,7 @@
     </script>
 
     @RenderSection("scripts", required: false)
+    @RenderSection("LoadingOverlay", required: false)
 
 </body>
 
