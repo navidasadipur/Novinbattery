@@ -170,7 +170,19 @@
                 <div class="category-sidebar">
                     <!-- category sidebar -->
                     <div class="category-filter-widget">
-                        <!-- category-filter-widget -->
+                        <div class="btn-wrapper text-center">
+                            <!-- category-filter-widget -->
+                            @if (@Request.Url.AbsoluteUri.ToString().EndsWith("hop") || @Request.Url.AbsoluteUri.ToString().EndsWith("hop#"))
+                            {
+                                <a class="boxed-btn" onclick='location.reload(true); return false;' style="color: white">
+                                    پاک کردن فیلترها/مشاهده همه محصولات
+                                </a>
+                            }
+                            else
+                            {
+                                <a href="javascript:void(0)" class="boxed-btn" id="reload" style="color: white">پاک کردن فیلترها/مشاهده همه محصولات</a>
+                            }
+                        </div>
                         <h4 class="title">فیلتر بر اساس</h4>
                         <div class="accordion accordion-flush" id="accordionFlushExample">
                             @if (Model.Features.Count() > 0)
@@ -199,14 +211,14 @@
                                                         }
                                                     }
                                                     @*else if (feature.ProductFeatureValues != null)
-                                                    {
-                                                        foreach (var item in feature.ProductFeatureValues)
-                                                        {
-                                                            <li>
-                                                                <a class="liitem" href="javascript:void(0)" onclick="GetGrid(null, null, null, @item.Id)">@item.Value</a>
-                                                            </li>
-                                                        }
-                                                    }*@
+                                    {
+                                        foreach (var item in feature.ProductFeatureValues)
+                                        {
+                                            <li>
+                                                <a class="liitem" href="javascript:void(0)" onclick="GetGrid(null, null, null, @item.Id)">@item.Value</a>
+                                            </li>
+                                        }
+                                    }*@
                                                 </ul>
                                             </div>
                                         </div>
@@ -382,6 +394,9 @@
 
         </script>
         <script>
+
+
+
             var brandIds = null;
             var groupIds = null;
             var productIds = null;
@@ -491,6 +506,12 @@
         $(document).ready(function() {
             GetGrid();
 
+                                $(document).ready(function() {
+
+            $('#reload').on( "click", reload );
+
+        });
+
             //$("#filter-price-range").on('DOMSubtreeModified', function () {
             //    alert("Span HTML is now " + $(this).html());
             //    GetGrid();
@@ -505,9 +526,9 @@
 
 
         });
-                function reload() {
-                window.location = window.location.href.split("?")[0];
-            }
+            //    function reload() {
+            //    window.location = window.location.href.split("?")[0];
+            //}
 
                     function CheckPriceUpdated() {
         var newMintxt = $('.from').text();
@@ -526,6 +547,27 @@
             submitForm();
         }
     }
+        </script>
+        <script>
+                function reload() {
+        var pageHref = window.location.href;
+        if (pageHref.includes("?")) {
+            window.location = pageHref.split("?")[0];
+            console.log("?");
+        }
+        else {
+            var pageHrefArr = pageHref.split("/");
+
+            if (!pageHrefArr[pageHrefArr.length - 1].endsWith("shop") || !pageHrefArr[pageHrefArr.length - 1].endsWith("shop#")) {
+
+                pageHrefArr.pop();
+
+                var newAdress = pageHrefArr.join('/');
+
+                window.location = newAdress
+            }
+        }
+            }
         </script>
 
     }
