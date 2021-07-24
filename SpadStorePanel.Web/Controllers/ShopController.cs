@@ -390,6 +390,26 @@ namespace SpadStorePanel.Web.Controllers
         {
             var product = _productsRepo.GetProduct(id);
 
+            //get Technical Specificaiton and craete List of Specification View Model
+            var allSpecifictions = new List<SpecificationViewModel>();
+
+            if (!string.IsNullOrEmpty(product.TechnicalSpecifications))
+            {
+                string[] specifictionArr = product.TechnicalSpecifications.Trim().Split('-');
+
+                foreach (var spec in specifictionArr)
+                {
+                    var specArr = spec.Trim().Split(':');
+
+                    var svm = new SpecificationViewModel() {
+                        Key = specArr[0],
+                        Value = specArr[1]
+                    };
+
+                    allSpecifictions.Add(svm);
+                }
+            }
+
             var productGroup = new ProductGroup();
 
             if (product.ProductGroupId != null)
@@ -423,7 +443,8 @@ namespace SpadStorePanel.Web.Controllers
                 ProductFeatureValues = productFeatureValues,
                 Price = price,
                 PriceAfterDiscount = priceAfterDiscount,
-                ProductComments = productCommentsVm
+                ProductComments = productCommentsVm,
+                Specifications = allSpecifictions,
             };
 
             //ViewBag.StartNotes = _productsRepo.GetProductPerfumeNotes(product.Id).Where(n=>n.PerfumeNoteType == PerfumeNoteType.Beginning).ToList();
@@ -534,7 +555,11 @@ namespace SpadStorePanel.Web.Controllers
             }
             #endregion
 
-            cartResponse.CartItemCount = cartModel.CartItems.Count;
+            //add cartIemCount if there is atleest one CartItems
+            if (cartModel.CartItems != null)
+            {
+                cartResponse.CartItemCount = cartModel.CartItems.Count;
+            }
 
             return Newtonsoft.Json.JsonConvert.SerializeObject(cartResponse);
         }
@@ -656,7 +681,12 @@ namespace SpadStorePanel.Web.Controllers
 
             CartResponse cartResponse = new CartResponse();
             cartResponse.Message = "success";
-            cartResponse.CartItemCount = cartModel.CartItems.Count;
+
+            //add cartIemCount if there is atleest one CartItems
+            if (cartModel.CartItems != null)
+            {
+                cartResponse.CartItemCount = cartModel.CartItems.Count;
+            }
 
             return Newtonsoft.Json.JsonConvert.SerializeObject(cartResponse);
         }

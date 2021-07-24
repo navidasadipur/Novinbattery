@@ -74,6 +74,34 @@ namespace SpadStorePanel.Web.Controllers
             return PartialView(staticContentsList);
         }
 
+        public ActionResult NavBar()
+        {
+
+            var allGroups = _productGroupsRepository.GetProductGroups();
+
+            foreach (var group in allGroups)
+            {
+                group.Children = _productGroupsRepository.GetChildrenProductGroups(group.Id);
+            }
+
+            //var wishListModel = new WishListModel();
+
+            //HttpCookie cartCookie = Request.Cookies["wishList"] ?? new HttpCookie("wishList");
+
+            //if (!string.IsNullOrEmpty(cartCookie.Values["wishList"]))
+            //{
+            //    string cartJsonStr = cartCookie.Values["wishList"];
+            //    wishListModel = new WishListModel(cartJsonStr);
+            //}
+
+            //if (wishListModel.WishListItems != null)
+            //{
+            //    ViewBag.WishListCount = wishListModel.WishListItems.Count();
+            //}
+
+            return PartialView(allGroups);
+        }
+
         public ActionResult BuyingStepsSection()
         {
             var model = _staticContentDetailsRepository.GetContentByTypeId((int)StaticContentTypes.BuyingStepsSection);
@@ -537,11 +565,6 @@ namespace SpadStorePanel.Web.Controllers
             return Content(vOutput);
         }
 
-
-        public ActionResult Navbar()
-        {
-            return PartialView();
-        }
         public ActionResult Footer()
         {
             SocialViewModel socialViewModel = new SocialViewModel();
@@ -568,10 +591,7 @@ namespace SpadStorePanel.Web.Controllers
 
             return PartialView(model);
         }
-        public ActionResult Navbar2()
-        {
-            return PartialView();
-        }
+
         public ActionResult Footer2()
         {
             SocialViewModel socialViewModel = new SocialViewModel();
