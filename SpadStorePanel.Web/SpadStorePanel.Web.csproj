@@ -5139,7 +5139,6 @@
     <Content Include="Views\Shop\ProductGroupSection.cshtml" />
     <Content Include="Views\Cookie\CountWishListTable.cshtml" />
     <Content Include="Views\Shop\NewProducts.cshtml" />
-    <Content Include="Views\Home\test.cshtml" />
     <Content Include="Views\Home\store.cshtml" />
     <Content Include="Views\Shop\ShowCommentProduct.cshtml" />
     <Content Include="Views\Shop\SendCommentProduct.cshtml" />

@@ -39,25 +39,29 @@ namespace SpadStorePanel.Infrastructure.Repositories
         {
             return _context.Features.Where(f => f.IsDeleted == false).ToList();
         }
+
         public List<Feature> GetProductGroupFeatures(int id)
         {
             var pgFeatures = _context.ProductGroupFeatures.Where(f => f.IsDeleted == false && f.ProductGroupId == id)
                 .ToList();
             return pgFeatures.Select(item => _context.Features.Find(item.FeatureId)).ToList();
         }
+
         public List<Brand> GetProductGroupBrands(int id)
         {
             var pgBrands = _context.ProductGroupBrands.Where(f => f.IsDeleted == false && f.ProductGroupId == id)
                 .ToList();
             return pgBrands.Select(item => _context.Brands.Find(item.BrandId)).ToList();
         }
+
         public List<Brand> GetBrands()
         {
             return _context.Brands.Where(f => f.IsDeleted == false).ToList();
         }
+
         public List<ProductGroup> GetProductGroups()
         {
-            return _context.ProductGroups.Where(f => f.IsDeleted == false).Include(p => p.Children).OrderByDescending(p=>p.InsertDate).ToList();
+            return _context.ProductGroups.Where(f => f.IsDeleted == false).Include(p => p.Children).OrderByDescending(p=>p.Id).ToList();
         }
 
         public ProductGroup AddNewProductGroup(int parentId, string title, List<int> brandIds, List<int> featureIds)
@@ -189,6 +193,29 @@ namespace SpadStorePanel.Infrastructure.Repositories
             var ProductGroupId = _context.Products.Where(p => p.IsDeleted == false && p.Id == productId).Select(p => p.ProductGroupId).FirstOrDefault();
 
             return GetProductGroup(ProductGroupId.Value);
+        }
+
+        public List<ProductGroup> GetAllChildrensOfOneGroup(int? parentId = null)
+        {
+            var groups = _context.ProductGroups.Where(p => p.IsDeleted == false && p.ParentId == parentId).Include(p => p.Children).ToList();
+
+            foreach (var item in groups)
+            {
+                while (item.Children != null)
+                {
+                    foreach (var item2 in item.Children)
+                    {
+                        var childList = _context.ProductGroups.Where(p => p.IsDeleted == false && p.ParentId == item.Id).Include(p => p.Children).ToList();
+
+                        foreach (var child in childList)
+                        {
+                            item2.Children.Add(child);
+                        }
+                    }
+                }
+            }
+            
+            return groups;
         }
     }
 }

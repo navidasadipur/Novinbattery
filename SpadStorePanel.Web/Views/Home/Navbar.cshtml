@@ -125,16 +125,22 @@
                                     <div class="mega-menu-columns">
                                         <h6 class="title border-bottom pb-2">مدل خودرو</h6>
                                         <ul class="menga-menu-page-links">
-                                            <li><a href="/shop/"> ایرانی</a></li>
+                                            @if (Model != null)
+                                            {
+                                                foreach (var group in Model)
+                                                {
+                                                    <li><a href="/Shop/ProductList/@group.Id"> @group.Title</a></li>
+                                                }
+                                            }
 
-                                            <li><a href="/shop/"> کره ای</a></li>
+                                                    @*<li><a href="/shop/"> کره ای</a></li>
 
-                                            <li><a href="/shop/"> چینی</a></li>
+                                                    <li><a href="/shop/"> چینی</a></li>
 
-                                            <li><a href="/shop/"> اروپایی</a></li>
+                                                    <li><a href="/shop/"> اروپایی</a></li>
 
-                                            <li><a href="/shop/"> ژاپنی</a></li>
-                                        </ul>
+                                                    <li><a href="/shop/"> ژاپنی</a></li>*@
+                                                </ul>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-sm-12">
@@ -191,7 +197,7 @@
         <div class="right-btn-wrapper">
             <ul>
 
-                <li class="right-menu"> <a class="fas fa-user usericon" href="Customer/Auth/login"></a> </li>
+                <li class="right-menu"> <a class="fas fa-user usericon" href="/Customer/Auth/login"></a> </li>
                 <li class="cart" id="cart">
                     <i class="fas fa-shopping-basket"></i>
                     <span class="badge" id="CartItemCount"></span>

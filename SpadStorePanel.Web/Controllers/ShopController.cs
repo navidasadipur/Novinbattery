@@ -534,7 +534,11 @@ namespace SpadStorePanel.Web.Controllers
             }
             #endregion
 
-            cartResponse.CartItemCount = cartModel.CartItems.Count;
+            //add cartIemCount if there is atleest one CartItems
+            if (cartModel.CartItems != null)
+            {
+                cartResponse.CartItemCount = cartModel.CartItems.Count;
+            }
 
             return Newtonsoft.Json.JsonConvert.SerializeObject(cartResponse);
         }
@@ -656,7 +660,12 @@ namespace SpadStorePanel.Web.Controllers
 
             CartResponse cartResponse = new CartResponse();
             cartResponse.Message = "success";
-            cartResponse.CartItemCount = cartModel.CartItems.Count;
+
+            //add cartIemCount if there is atleest one CartItems
+            if (cartModel.CartItems != null)
+            {
+                cartResponse.CartItemCount = cartModel.CartItems.Count;
+            }
 
             return Newtonsoft.Json.JsonConvert.SerializeObject(cartResponse);
         }
