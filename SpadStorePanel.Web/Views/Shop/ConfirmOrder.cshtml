@@ -7,174 +7,174 @@
 }
 
 @*<div class="contant">
-    <div id="banner-part" class="banner inner-banner">
-        <div class="container">
-            <div class="bread-crumb-main">
-                <h1 class="banner-title">تایید نهایی و پرداخت</h1>
-                <div class="breadcrumb">
-                    <ul class="inline">
-                        <li><a href="/">خانه</a></li>
-                        <li>تایید نهایی و پرداخت</li>
-                    </ul>
+        <div id="banner-part" class="banner inner-banner">
+            <div class="container">
+                <div class="bread-crumb-main">
+                    <h1 class="banner-title">تایید نهایی و پرداخت</h1>
+                    <div class="breadcrumb">
+                        <ul class="inline">
+                            <li><a href="/">خانه</a></li>
+                            <li>تایید نهایی و پرداخت</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="checkout-part ptb-100">
-        <div class="container">
-            <div>
-                <div class="row">
+        <div class="checkout-part ptb-100">
+            <div class="container">
+                <div>
+                    <div class="row">
 
-                    <div class="col-12 col-lg-8">
+                        <div class="col-12 col-lg-8">
 
-                        <div class="mb-md-30">
-                            <div class="mb-60">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="heading-part mb-30 mb-sm-20 flex">
-                                            <a href="/Shop/Checkout/?invoiceNumber=@ViewBag.InvoiceNumber" class="btn-recheckout"><i class="fa fa-arrow-right"></i></a>
-                                            <h3>مشخصات مشتری</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="">نام:</label>
-                                            <div class="user-info">
-                                                @ViewBag.CustomerInfoView.Name
+                            <div class="mb-md-30">
+                                <div class="mb-60">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="heading-part mb-30 mb-sm-20 flex">
+                                                <a href="/Shop/Checkout/?invoiceNumber=@ViewBag.InvoiceNumber" class="btn-recheckout"><i class="fa fa-arrow-right"></i></a>
+                                                <h3>مشخصات مشتری</h3>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <label for="">آدرس ایمیل:</label>
-                                            <div class="user-info">
-                                                @ViewBag.CustomerInfoView.Email
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group">
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <label for="">شماره موبایل:</label>
-                                            <div class="user-info">
-                                                @ViewBag.CustomerInfoView.Phone
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <label for="">آدرس:</label>
-                                            <div class="user-info">
-                                                @ViewBag.CustomerInfoView.Address
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="">کد پستی:</label>
-                                            <div class="user-info">
-                                                @ViewBag.CustomerInfoView.PostalCode
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <form action="/Payment/InitPay" method="post">
-                                <input type="hidden" name="invoiceNumber" value="@ViewBag.InvoiceNumber" readonly="readonly" required />
-                                <button class="btn full btn-color">تایید نهایی و پرداخت</button>
-                            </form>
-                        </div>
-
-                    </div>
-
-
-
-
-
-
-
-
-
-                    <div class="col-12 col-lg-4">
-                        <div class="heading-part mb-30 mb-sm-20">
-                            <h3>اقلام سفارش شما</h3>
-                        </div>
-                        <div class="checkout-products sidebar-product mb-60">
-                            <ul>
-                                @foreach (var item in Model.CartItems)
-                                {
-                                    <li>
-                                        <div class="pro-media">
-                                            <a href="/Product/@item.Id/@item.ProductName.Replace(' ', '-')">
-                                                <img alt="@item.ProductName"
-                                                     src="/Files/ProductImages/Thumb/@item.Image">
-                                            </a>
-                                        </div>
-                                        <div class="pro-detail-info">
-                                            <a href="/Product/@item.Id/@item.ProductName.Replace(' ', '-')" class="product-title">
-                                                @item.ProductName
-                                            </a>
-                                            <div class="price-box">
-                                                <span class="price">@item.Price.ToString("##,###") تومان</span>
-                                            </div>
-                                            <div class="checkout-qty">
-                                                <div>
-                                                    <label>تعداد </label>
-                                                    <span class="info-deta">@item.Quantity</span>
+                                            <div class="form-group">
+                                                <label for="">نام:</label>
+                                                <div class="user-info">
+                                                    @ViewBag.CustomerInfoView.Name
                                                 </div>
                                             </div>
                                         </div>
-                                    </li>
-                                }
-                            </ul>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="">آدرس ایمیل:</label>
+                                                <div class="user-info">
+                                                    @ViewBag.CustomerInfoView.Email
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="">شماره موبایل:</label>
+                                                <div class="user-info">
+                                                    @ViewBag.CustomerInfoView.Phone
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="">آدرس:</label>
+                                                <div class="user-info">
+                                                    @ViewBag.CustomerInfoView.Address
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label for="">کد پستی:</label>
+                                                <div class="user-info">
+                                                    @ViewBag.CustomerInfoView.PostalCode
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <form action="/Payment/InitPay" method="post">
+                                    <input type="hidden" name="invoiceNumber" value="@ViewBag.InvoiceNumber" readonly="readonly" required />
+                                    <button class="btn full btn-color">تایید نهایی و پرداخت</button>
+                                </form>
+                            </div>
+
                         </div>
 
-                        <div class="complete-order-detail commun-table gray-bg mb-30">
-                            <div class="table-responsive">
-                                <table class="table m-0">
-                                    <tbody>
-                                        <tr>
-                                            <td><b>تاریخ</b></td>
-                                            <td>@ViewBag.Today</td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>شماره سفارش</b></td>
-                                            <td>#@ViewBag.InvoiceNumber</td>
-                                        </tr>
-                                        <tr>
-                                            @{
-                                                var overallPrice = ViewBag.DiscountAmount + Model.TotalPrice;
-                                            }
-                                            <td><b>مبلغ سفارش</b></td>
-                                            <td>@overallPrice.ToString("##,###") تومان</td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>تخفیف</b></td>
-                                            <td id="tdDiscountAmount">@ViewBag.DiscountAmount.ToString("##,###") تومان</td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>مبلغ کل</b></td>
-                                            <td>
-                                                <div class="price-box"><span class="price finalPrice">@Model.TotalPrice.ToString("##,###") تومان</span></div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+
+
+
+
+
+
+
+
+                        <div class="col-12 col-lg-4">
+                            <div class="heading-part mb-30 mb-sm-20">
+                                <h3>اقلام سفارش شما</h3>
+                            </div>
+                            <div class="checkout-products sidebar-product mb-60">
+                                <ul>
+                                    @foreach (var item in Model.CartItems)
+                                    {
+                                        <li>
+                                            <div class="pro-media">
+                                                <a href="/Product/@item.Id/@item.ProductName.Replace(' ', '-')">
+                                                    <img alt="@item.ProductName"
+                                                         src="/Files/ProductImages/Thumb/@item.Image">
+                                                </a>
+                                            </div>
+                                            <div class="pro-detail-info">
+                                                <a href="/Product/@item.Id/@item.ProductName.Replace(' ', '-')" class="product-title">
+                                                    @item.ProductName
+                                                </a>
+                                                <div class="price-box">
+                                                    <span class="price">@item.Price.ToString("##,###") تومان</span>
+                                                </div>
+                                                <div class="checkout-qty">
+                                                    <div>
+                                                        <label>تعداد </label>
+                                                        <span class="info-deta">@item.Quantity</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+
+                            <div class="complete-order-detail commun-table gray-bg mb-30">
+                                <div class="table-responsive">
+                                    <table class="table m-0">
+                                        <tbody>
+                                            <tr>
+                                                <td><b>تاریخ</b></td>
+                                                <td>@ViewBag.Today</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>شماره سفارش</b></td>
+                                                <td>#@ViewBag.InvoiceNumber</td>
+                                            </tr>
+                                            <tr>
+                                                @{
+                                                    var overallPrice = ViewBag.DiscountAmount + Model.TotalPrice;
+                                                }
+                                                <td><b>مبلغ سفارش</b></td>
+                                                <td>@overallPrice.ToString("##,###") تومان</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>تخفیف</b></td>
+                                                <td id="tdDiscountAmount">@ViewBag.DiscountAmount.ToString("##,###") تومان</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>مبلغ کل</b></td>
+                                                <td>
+                                                    <div class="price-box"><span class="price finalPrice">@Model.TotalPrice.ToString("##,###") تومان</span></div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>*@
+    </div>*@
 
 
 
-<main class="main">
+@*<main class="main">
     <div class="page-header text-center" style="background-image: url('/Files/StaticContentImages/Image/@ViewBag.BanerImage')">
         <div class="container">
             <h1 class="page-title">@ViewBag.Title<span>فروشگاه</span></h1>
@@ -278,10 +278,6 @@
                                             </tr>
                                         }
 
-                                        @*<tr>
-                                    <td><a href="#">سارافون آبی بلند</a></td>
-                                    <td class="text-left">152,000 تومان</td>
-                                </tr>*@
                                         @{
                                             var overallPrice = ViewBag.DiscountAmount + Model.TotalPrice;
                                             var strDiscount = ViewBag.DiscountAmount == 0 ? "0 تومان" : ViewBag.DiscountAmount.ToString("##,###") + " تومان";
@@ -296,28 +292,22 @@
                                             <td></td>
                                             <td class="text-left">@strDiscount</td>
                                         </tr><!-- End .summary-subtotal -->
-                                        @*@if (overallPrice > 200000)
-                                        {
-                                            <tr>
-                                                <td>شیوه ارسال : </td>
-                                                <td class="text-left">ارسال رایگان</td>
-                                            </tr>
-                                        }*@
-                                    <tr>
-                                        <td>تاریخ </td>
-                                        <td></td>
-                                        <td class="text-left">@ViewBag.Today</td>
-                                    </tr>
-                                    <tr>
-                                        <td><b>شماره سفارش</b></td>
-                                        <td></td>
-                                        <td class="text-left">#@ViewBag.InvoiceNumber</td>
-                                    </tr>
-                                    <tr class="summary-total">
-                                        <td>مبلغ قابل پرداخت :</td>
-                                        <td></td>
-                                        <td class="text-left">@Model.TotalPrice.ToString("##,###") تومان</td>
-                                    </tr><!-- End .summary-total -->
+
+                                        <tr>
+                                            <td>تاریخ </td>
+                                            <td></td>
+                                            <td class="text-left">@ViewBag.Today</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>شماره سفارش</b></td>
+                                            <td></td>
+                                            <td class="text-left">#@ViewBag.InvoiceNumber</td>
+                                        </tr>
+                                        <tr class="summary-total">
+                                            <td>مبلغ قابل پرداخت :</td>
+                                            <td></td>
+                                            <td class="text-left">@Model.TotalPrice.ToString("##,###") تومان</td>
+                                        </tr><!-- End .summary-total -->
                                     </tbody>
                                 </table><!-- End .table table-summary -->
 
@@ -337,7 +327,136 @@
             </div><!-- End .container -->
         </div><!-- End .checkout -->
     </div><!-- End .page-content -->
-</main><!-- End .main -->
+</main><!-- End .main -->*@
+
+
+
+
+
+
+
+<!-- breadcrumb area start -->
+<section class="breadcrumb-area breadcrumb-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-inner">
+                    <!-- breadcrumb inner -->
+                    <div class="left-content-area">
+                        <!-- left content area -->
+                        <h1 class="title">@ViewBag.Title</h1>
+                    </div><!-- //. left content area -->
+                    <div class="right-content-area">
+                        <ul>
+                            <li><a href="/">خانه</a></li>
+                            <li>@ViewBag.Title</li>
+                        </ul>
+                    </div>
+                </div><!-- //. breadcrumb inner -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- breadcrumb area end -->
+<!-- checkout page content area start -->
+<div class="checkout-page-content-area">
+    <div class="container">
+        <div action="/Shop/Checkout" method="post" class="checkout-form">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="left-content-area">
+                        <h3 class="title">جزئیات صورت حساب</h3>
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-element">
+                                    <label>نام شما <span class="base-color">::</span></label>
+                                    @ViewBag.CustomerInfoView.Name
+                                </div>
+                                <div class="form-element">
+                                    <label>تلفن <span class="base-color">::</span></label>
+                                    @ViewBag.CustomerInfoView.Phone
+                                </div>
+                                <div class="form-element">
+                                    <label>کد پستی <span class="base-color">::</span></label>
+                                    @ViewBag.CustomerInfoView.PostalCode
+                                </div>
+                                <div class="form-element">
+                                    <label>آدرس ایمیل<span class="base-color">::</span></label>
+                                    @ViewBag.CustomerInfoView.Email
+                                </div>
+                                <div class="form-element">
+                                    <label>آدرس خیابان <span class="base-color">::</span></label>
+                                    @ViewBag.CustomerInfoView.Address
+                                </div>
+                                <div class="coupon-code-wrapper">
+                                    <a href="/Shop/Checkout/?invoiceNumber=@ViewBag.InvoiceNumber" class="submit-btn" style="color: white;">بازگشت به صفحه قبل</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="right-content-area">
+                        <h3 class="title">سفارش شما</h3>
+                        <ul class="order-list">
+                            <li>
+                                <div class="single-order-list heading">
+                                    محصول <span class="right">جمع</span>
+                                </div>
+                            </li>
+                            <li class="name">
+                                @foreach (var item in Model.CartItems)
+                                {
+                                    <a href="Shop/ProductDetails/@item.Id/">
+                                        <div class="single-order-list">
+                                            @item.ProductName @item.Price.ToString("##,###") × @item.Quantity <span class="right">@{ var totalSingleProduct = item.Quantity * item.Price;} @totalSingleProduct.ToString("##,###") تومان</span>
+                                        </div>
+                                    </a>
+                                }
+                            </li>
+                            <li>
+                                @{
+                                    var overallPrice = ViewBag.DiscountAmount + Model.TotalPrice;
+                                    var strDiscount = ViewBag.DiscountAmount == 0 ? "0 تومان" : ViewBag.DiscountAmount.ToString("##,###") + " تومان";
+                                }
+                                <div class="single-order-list title-bold">
+                                    جمع سبد خرید <span class="right normal">@overallPrice.ToString("##,###") تومان</span>
+                                </div>
+                            </li>
+                            <li class="shipping">
+                                <div class="single-order-list title-bold">
+                                    تاریخ
+                                    <span class="right normal">
+                                        @ViewBag.Today
+                                    </span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="single-order-list title-bold">
+                                    شماره سفارش <span class="right normal">#@ViewBag.InvoiceNumber</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="single-order-list title-bold">
+                                    مبلغ پراختی <span class="right normal">@Model.TotalPrice.ToString("##,###") تومان</span>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="btn-wrapper">
+                            <button type="submit" class="submit-btn">
+                                انتقال به درگاه پرداخت
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- checkout page content area end -->
 
 
 
