@@ -141,10 +141,17 @@ namespace SpadStorePanel.Web.ViewModels
         public string AddedDate { get; set; }
     }
 
+    public class SpecificationViewModel
+    {
+        public string Key { get; set; }
+        public string Value { get; set; }
+    }
+
     public class ProductDetailsViewModel
     {
         public ProductDetailsViewModel()
         {
+            Specifications = new List<SpecificationViewModel>();
             ProductGalleries = new List<ProductGallery>();
             ProductMainFeatures = new List<ProductMainFeature>();
             ProductFeatureValues = new List<ProductFeatureValue>();
@@ -157,6 +164,7 @@ namespace SpadStorePanel.Web.ViewModels
         public CommentFormViewModel CommentForm { get; set; }
         public ProductGroup Group { get; set; }
 
+        public List<SpecificationViewModel> Specifications { get; set; }
         public List<ProductGallery> ProductGalleries { get; set; }
         public List<ProductMainFeature> ProductMainFeatures { get; set; }
         public List<ProductFeatureValue> ProductFeatureValues { get; set; }
