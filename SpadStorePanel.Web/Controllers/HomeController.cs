@@ -19,6 +19,7 @@ namespace SpadStorePanel.Web.Controllers
         private readonly StaticContentDetailsRepository _contentRepo;
         private readonly StaticContentDetailsRepository _staticContentDetailsRepository;
         private readonly DiscountsRepository _discountsRepository;
+        private readonly BrandsRepository _brandsRepository;
         private readonly FaqRepository _faqRepository;
         private readonly UsersRepository _repo;
         private readonly MyDbContext _context;
@@ -28,6 +29,7 @@ namespace SpadStorePanel.Web.Controllers
         private readonly ArticlesRepository _articlesRepo;
         private readonly ProductService _productService;
         private readonly ProductsRepository _productsRepository;
+
 
         public HomeController
             (
@@ -42,11 +44,13 @@ namespace SpadStorePanel.Web.Controllers
             , FaqRepository faqRepository
             , StaticContentDetailsRepository staticContentDetailsRepository
             , DiscountsRepository discountsRepository
+            , BrandsRepository brandsRepository
             )
         {
             _contentRepo = contentRepo;
             _staticContentDetailsRepository = staticContentDetailsRepository;
             _discountsRepository = discountsRepository;
+            _brandsRepository = brandsRepository;
             _faqRepository = faqRepository;
             _repo = repo;
             _context = context;
@@ -100,6 +104,13 @@ namespace SpadStorePanel.Web.Controllers
             //}
 
             return PartialView(allGroups);
+        }
+
+        public ActionResult BrandFilterSection()
+        {
+            var allBrands = _brandsRepository.GetAllBrands();
+
+            return PartialView(allBrands);
         }
 
         public ActionResult BuyingStepsSection()

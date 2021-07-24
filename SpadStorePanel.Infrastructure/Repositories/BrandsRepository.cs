@@ -35,6 +35,14 @@ namespace SpadStorePanel.Infrastructure.Repositories
             return brandsname;
         }
 
+        public List<Brand> GetAllBrands()
+        {
+
+            var allBrands = _context.Brands.Where(a => a.IsDeleted == false).ToList();
+
+            return allBrands;
+        }
+
         public List<Brand> GetAllGroupBrands(int groupId)
         {
             var pgBrands = _context.ProductGroupBrands.Where(f => f.ProductGroupId == groupId).ToList();
