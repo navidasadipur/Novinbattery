@@ -478,13 +478,16 @@
     <script>
         $(".search-form").submit(function (e) {
             e.preventDefault();
-            var searchString = $(this).children(".searchString").val();
+            //var searchString = $(this).children(".searchString").val();
+            var searchString = $("#searchString").val();
             location.href = '/Shop/ProductList/Search/' + searchString;
         });
 
         function search(e) {
             e.preventDefault();
             var searchString = $("#searchString").val();
+            console.log(searchString);
+            console.log("2");
             location.href = '/Shop/ProductList/Search/' + searchString;
         }
 

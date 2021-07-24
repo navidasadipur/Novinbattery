@@ -72,6 +72,7 @@ namespace SpadStorePanel.Web.Controllers
             //_smsLogRepo = smsLogRepository;
             _discountsRepo = discountsRepo;
         }
+
         // GET: Products
         [Route("Shop/")]
         [Route("Shop/ProductList/{id}/{title}")]
