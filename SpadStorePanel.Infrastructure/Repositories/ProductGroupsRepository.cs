@@ -20,11 +20,11 @@ namespace SpadStorePanel.Infrastructure.Repositories
 
         public List<ProductGroup> GetProductGroupTable()
         {
-            return _context.ProductGroups.Where(p => p.ParentId == null && p.IsDeleted == false).Include(p=>p.Children).ToList();
+            return _context.ProductGroups.Where(p => p.ParentId == null && p.IsDeleted == false).Include(p => p.Children).ToList();
         }
         public List<ProductGroup> GetProductGroupTable(int id)
         {
-            return _context.ProductGroups.Where(p => p.ParentId == id && p.IsDeleted == false).Include(p=>p.Children).ToList();
+            return _context.ProductGroups.Where(p => p.ParentId == id && p.IsDeleted == false).Include(p => p.Children).ToList();
         }
         public ProductGroup GetProductGroup(int id)
         {
@@ -39,25 +39,29 @@ namespace SpadStorePanel.Infrastructure.Repositories
         {
             return _context.Features.Where(f => f.IsDeleted == false).ToList();
         }
+
         public List<Feature> GetProductGroupFeatures(int id)
         {
             var pgFeatures = _context.ProductGroupFeatures.Where(f => f.IsDeleted == false && f.ProductGroupId == id)
                 .ToList();
             return pgFeatures.Select(item => _context.Features.Find(item.FeatureId)).ToList();
         }
+
         public List<Brand> GetProductGroupBrands(int id)
         {
             var pgBrands = _context.ProductGroupBrands.Where(f => f.IsDeleted == false && f.ProductGroupId == id)
                 .ToList();
             return pgBrands.Select(item => _context.Brands.Find(item.BrandId)).ToList();
         }
+
         public List<Brand> GetBrands()
         {
             return _context.Brands.Where(f => f.IsDeleted == false).ToList();
         }
+
         public List<ProductGroup> GetProductGroups()
         {
-            return _context.ProductGroups.Where(f => f.IsDeleted == false).Include(p => p.Children).OrderByDescending(p=>p.InsertDate).ToList();
+            return _context.ProductGroups.Where(f => f.IsDeleted == false).Include(p => p.Children).OrderByDescending(p => p.InsertDate).ToList();
         }
 
         public ProductGroup AddNewProductGroup(int parentId, string title, List<int> brandIds, List<int> featureIds)
@@ -103,7 +107,7 @@ namespace SpadStorePanel.Infrastructure.Repositories
             return productGroup;
         }
 
-        public ProductGroup UpdateProductGroup(int parentId,int productGroupId, string title, List<int> brandIds, List<int> featureIds)
+        public ProductGroup UpdateProductGroup(int parentId, int productGroupId, string title, List<int> brandIds, List<int> featureIds)
         {
             var productGroup = Get(productGroupId);
             var user = GetCurrentUser();
@@ -124,7 +128,7 @@ namespace SpadStorePanel.Infrastructure.Repositories
 
             // Removing Previous Group Brands
             var productGroupBrands = _context.ProductGroupBrands
-                .Where(b => b.IsDeleted == false & b.ProductGroupId == productGroup.Id).ToList(); 
+                .Where(b => b.IsDeleted == false & b.ProductGroupId == productGroup.Id).ToList();
             foreach (var item in productGroupBrands)
             {
                 item.IsDeleted = true;
@@ -190,5 +194,26 @@ namespace SpadStorePanel.Infrastructure.Repositories
 
             return GetProductGroup(ProductGroupId.Value);
         }
+
+        public List<ProductGroup> GetAllChildrensOfOneGroup(int parentId)
+        {
+
+            var allGroups = GetProductGroups();
+
+            var allChilds = GetChildren(allGroups, parentId);
+
+            return allChilds;
+        }
+
+        #region helper
+        private List<ProductGroup> GetChildren(List<ProductGroup> allGroups, int id)
+        {
+            return allGroups
+                .Where(x => x.ParentId == id)
+                .Union(allGroups.Where(x => x.ParentId == id)
+                    .SelectMany(y => GetChildren(allGroups, y.Id))
+                ).ToList();
+        }
+        #endregion
     }
 }

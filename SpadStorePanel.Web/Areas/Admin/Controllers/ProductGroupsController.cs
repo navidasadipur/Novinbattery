@@ -154,6 +154,19 @@ namespace SpadStorePanel.Web.Areas.Admin.Controllers
             //}
             //#endregion
 
+            //delete children of group
+            var childs = new List<ProductGroup>();
+
+            productGroup.Children = _repo.GetAllChildrensOfOneGroup(id);
+
+            if (productGroup.Children != null)
+            {
+                foreach (var item in productGroup.Children)
+                {
+                    _repo.Delete(item.Id);
+                }
+            }
+            
             _repo.Delete(id);
             return RedirectToAction("Index",new {parentId});
         }
