@@ -247,8 +247,6 @@
                     error: function () {
                         alert('error');
                     }
-
-
                 });
                 //}
                 return false;
@@ -268,7 +266,10 @@
             $("#txtProductCount").html(addCount);
         }
 
-        function AddToCart(id, mainFeature) {
+        function AddToCart(id, mainFeature, addCount) {
+
+            console.log(addCount);
+            console.log(mainFeature);
 
             addCount = addCount <= 0 ? 1 : addCount
 

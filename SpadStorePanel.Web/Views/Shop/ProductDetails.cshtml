@@ -183,7 +183,7 @@
                             <input type="hidden" name="mainFeatureId" id="mainFeatureId" value="@Model.ProductMainFeatures.FirstOrDefault().Id" />
 
                             <div class="btn-wrapper">
-                                <a href="javascript:void(0)" onclick="AddToCart(@Model.Product.Id,$('#mainFeatureId').val(), $('#txtProductCount').val())" class="boxed-btn">
+                                <a href="javascript:void(0)" onclick="AddToCart(@Model.Product.Id, $('#mainFeatureId').val(), $('#txtProductCount').text())" class="boxed-btn">
                                     افزودن به
                                     سبد
                                 </a>
@@ -201,7 +201,7 @@
                             <li class="nav-item">
                                 <a class="nav-link active" id="item-review-tab" data-toggle="tab"
                                    href="#item_review" role="tab" aria-controls="item_review"
-                                   aria-selected="true">بررسی</a>
+                                   aria-selected="true">مشخصات</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="descr-tab" data-toggle="tab" href="#descr" role="tab"
@@ -220,69 +220,16 @@
                                 <h4 class="title">مشخصات فنی</h4>
                                 <ul class="product-specification">
                                     <!-- product specification -->
-                                    <li>
-                                        <div class="single-spec">
-                                            <!-- single specification -->
-                                            <span class="heading">برند</span>
-                                            <span class="details">صبا باتری</span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="single-spec">
-                                            <!-- single specification -->
-                                            <span class="heading">ارتفاع مورد</span>
-                                            <span class="details">30 سانتی متر</span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="single-spec">
-                                            <!-- single specification -->
-                                            <span class="heading">عرض مورد</span>
-                                            <span class="details">30 سانتی متر</span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="single-spec">
-                                            <!-- single specification -->
-                                            <span class="heading">وزن مورد</span>
-                                            <span class="details">20 کیلوگرم</span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="single-spec">
-                                            <!-- single specification -->
-                                            <span class="heading">کد مدل مورد</span>
-                                            <span class="details">MF841HN/A</span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="single-spec">
-                                            <!-- single specification -->
-                                            <span class="heading">کشور سازنده</span>
-                                            <span class="details">ایران</span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="single-spec">
-                                            <!-- single specification -->
-                                            <span class="heading">مناسب برای خودرو های</span>
-                                            <span class="details">ایرانی ، کره ای</span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="single-spec">
-                                            <!-- single specification -->
-                                            <span class="heading">ولتاژ</span>
-                                            <span class="details">120 ولت</span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="single-spec">
-                                            <!-- single specification -->
-                                            <span class="heading">طول عمر</span>
-                                            <span class="details">9 ماه</span>
-                                        </div>
-                                    </li>
+                                    @foreach (var item in Model.Specifications)
+                                    {
+                                        <li>
+                                            <div class="single-spec">
+                                                <!-- single specification -->
+                                                <span class="heading">@item.Key</span>
+                                                <span class="details">@item.Value</span>
+                                            </div>
+                                        </li>
+                                    }
                                 </ul><!-- //.product specification -->
                             </div>
                         </div>
@@ -293,63 +240,87 @@
                                     @Model.Product.ShortDescription
                                 </p>
                                 <p>
-                                    @Model.Product.Description
+                                    @Html.Raw(Model.Product.Description)
                                 </p>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="method" role="tabpanel" aria-labelledby="method-tab">
-                            <div class="more-feature-content">
+                            <div class="item_review_content">
                                 <h4 class="title">دیگر ویژگی ها</h4>
-                                <div class="feature-list-wrapper">
-                                    <div class="row">
-                                        <div class="col-lg-3 col-md-6">
-                                            <ul class="features-list">
-                                                <li><i class="fas fa-check"></i> 24/7 پشتیبانی آنلاین</li>
-                                                <li><i class="fas fa-check"></i> 24/7 پشتیبانی آنلاین</li>
-                                                <li><i class="fas fa-check"></i> 24/7 پشتیبانی آنلاین</li>
-                                                <li><i class="fas fa-check"></i> 24/7 پشتیبانی آنلاین</li>
-                                            </ul>
+                                <ul class="product-specification">
+                                    <!-- product specification -->
+                                    <li>
+                                        <div class="single-spec">
+                                            <!-- single specification -->
+                                            <span class="heading">مدل خودرو</span>
+                                            <span class="details">@Model.Group.Title</span>
                                         </div>
-                                        <div class="col-lg-3 col-md-6">
-                                            <ul class="features-list">
-                                                <li><i class="fas fa-check"></i> ارسال رایگان</li>
-                                                <li><i class="fas fa-check"></i> ارسال رایگان</li>
-                                                <li><i class="fas fa-check"></i> ارسال رایگان</li>
-                                                <li><i class="fas fa-check"></i> ارسال رایگان</li>
-                                            </ul>
+                                    </li>
+                                    <li>
+                                        <div class="single-spec">
+                                            <!-- single specification -->
+                                            <span class="heading">برند</span>
+                                            <span class="details">@Model.Product.Brand.Name</span>
                                         </div>
-                                        <div class="col-lg-3 col-md-6">
-                                            <ul class="features-list">
-                                                <li><i class="fas fa-check"></i> کیفیت عالی</li>
-                                                <li><i class="fas fa-check"></i> کیفیت عالی</li>
-                                                <li><i class="fas fa-check"></i> کیفیت عالی</li>
-                                                <li><i class="fas fa-check"></i> کیفیت عالی</li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-lg-3 col-md-6">
-                                            <ul class="features-list">
-                                                <li><i class="fas fa-check"></i> نصب ساده و آسان</li>
-                                                <li><i class="fas fa-check"></i> نصب ساده و آسان</li>
-                                                <li><i class="fas fa-check"></i> نصب ساده و آسان</li>
-                                                <li><i class="fas fa-check"></i> نصب ساده و آسان</li>
-                                            </ul>
+                                    </li>
+                                    @foreach (var item in Model.ProductMainFeatures)
+                                    {
+                                        <li>
+                                            <div class="single-spec">
+                                                <!-- single specification -->
+                                                <span class="heading">@item.Feature.Title</span>
+                                                <span class="details">@(item.SubFeature != null ? item.SubFeature.Value : item.Value)</span>
+                                            </div>
+                                        </li>
+                                    }
+                                    @if (Model.ProductFeatureValues.Count() > 0)
+                                    {
+                                        var allSubFeatureIds = new List<Int32>();
+
+                                        foreach (var item in Model.ProductFeatureValues)
+                                        {
+                                            if (!allSubFeatureIds.Contains(item.Feature.Id))
+                                            {
+                                                allSubFeatureIds.Add(item.Feature.Id);
+
+                                                string allSubFeatures = "";
+
+                                                <li>
+                                                    <div class="single-spec">
+                                                        <!-- single specification -->
+
+                                                        <span class="heading">@item.Feature.Title</span>
+
+                                                        @foreach (var subFeature in item.Feature.SubFeatures)
+                                                        {
+                                                            allSubFeatures = string.Join("، ", subFeature.Value);
+                                                        }
+                                                        
+                                                        <span class="details">@allSubFeatures</span>
+                                                    </div>
+                                                </li>
+                                            }
+                                        }
+                                    }
+
+                                </ul>
+                                    @*<div class="feature-list-wrapper">
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-6">
+                                                <ul class="features-list">
+                                                    <li><i class="fas fa-check"></i> 24/7 پشتیبانی آنلاین</li>
+                                                    <li><i class="fas fa-check"></i> 24/7 پشتیبانی آنلاین</li>
+                                                    <li><i class="fas fa-check"></i> 24/7 پشتیبانی آنلاین</li>
+                                                    <li><i class="fas fa-check"></i> 24/7 پشتیبانی آنلاین</li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <p>
-                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                                    گرافیک است.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                                    استفاده از طراحان گرافیک است.
-                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                                    گرافیک است.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                                    استفاده از طراحان گرافیک است.
-                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                                    گرافیک است.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                                    استفاده از طراحان گرافیک است.
-                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                                    گرافیک است.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                                    استفاده از طراحان گرافیک است...
-                                </p>
+                                    <p>
+                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                        گرافیک است.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+                                        استفاده از طراحان گرافیک است...
+                                    </p>*@
                             </div>
                         </div>
                     </div>
