@@ -270,6 +270,9 @@ namespace SpadStorePanel.Web.ViewModels
         public StaticContentDetail GooglePlus { get; set; }
         public StaticContentDetail Pintrest { get; set; }
         public StaticContentDetail Logo { get; set; }
+
+        public StaticContentDetail Map { get; set; }
+
         //public StaticContentDetail ImplementationShortDescription { get; set; }
         //public StaticContentDetail CompanyServices { get; set; }
     }

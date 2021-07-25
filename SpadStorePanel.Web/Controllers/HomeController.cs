@@ -103,6 +103,10 @@ namespace SpadStorePanel.Web.Controllers
             //    ViewBag.WishListCount = wishListModel.WishListItems.Count();
             //}
 
+            ViewBag.Phone = _staticContentDetailsRepository.Get(9).ShortDescription;
+
+            ViewBag.Email = _staticContentDetailsRepository.Get(8).ShortDescription;
+
             return PartialView(allGroups);
         }
 
@@ -221,37 +225,6 @@ namespace SpadStorePanel.Web.Controllers
             return View();
 
         }
-
-        //public ActionResult HeaderSection()
-        //{
-            //{
-            //    var wishListModel = new WishListModel();
-
-            //    try
-            //    {
-            //        HttpCookie cartCookie = Request.Cookies["wishList"] ?? new HttpCookie("wishList");
-
-            //        if (!string.IsNullOrEmpty(cartCookie.Values["wishList"]))
-            //        {
-            //            string cartJsonStr = cartCookie.Values["wishList"];
-            //            wishListModel = new WishListModel(cartJsonStr);
-
-            //        }
-
-            //    }
-            //    catch (Exception e)
-            //    {
-            //        HttpCookie cartCookie = Request.Cookies["cart"] ?? new HttpCookie("cart");
-
-            //        cartCookie.Values.Set("wishList", "");
-
-            //        cartCookie.Expires = DateTime.Now.AddHours(12);
-            //        cartCookie.SameSite = SameSiteMode.Lax;
-            //        Response.Cookies.Add(cartCookie);
-            //    }
-            //    return View(wishListModel);
-        //    return View();
-        //}
 
         public ActionResult Gallery()
         {
@@ -422,7 +395,7 @@ namespace SpadStorePanel.Web.Controllers
 
             return PartialView(vm);
         }
-        
+
 
         public ActionResult NewProductsSection(int take)
         {
@@ -516,6 +489,7 @@ namespace SpadStorePanel.Web.Controllers
             return View();
         }
 
+        [Route("ContactUs")]
         public ActionResult Contact()
         {
             return View();

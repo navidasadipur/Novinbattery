@@ -435,7 +435,7 @@
         -------------------------*/
         var st = $(this).scrollTop();
         var mainMenuTop = $('.navbar-area');
-        if ($(window).scrollTop() > 600) {
+        if ($(window).scrollTop() > 115) {
             if (st > lastScrollTop) {
                 // hide sticky menu on scrolldown 
                 mainMenuTop.removeClass('nav-fixed');

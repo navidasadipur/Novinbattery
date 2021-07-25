@@ -223,7 +223,6 @@
     <Compile Include="Controllers\AboutUsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
-    <Compile Include="Controllers\CantactFormController.cs" />
     <Compile Include="Controllers\CookieController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -5095,8 +5094,6 @@
     <Content Include="Views\Shop\PriceSection.cshtml" />
     <Content Include="Views\Shop\BrandSection.cshtml" />
     <Content Include="Views\Home\Appreciation.cshtml" />
-    <Content Include="Views\CantactForm\Index.cshtml" />
-    <Content Include="Views\CantactForm\FormCantact.cshtml" />
     <Content Include="Views\Home\Gallery.cshtml" />
     <Content Include="Views\Home\Faq.cshtml" />
     <Content Include="Views\Shop\ProductDetails.cshtml" />
