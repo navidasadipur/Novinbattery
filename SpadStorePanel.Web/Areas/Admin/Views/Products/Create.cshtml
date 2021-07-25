@@ -27,113 +27,123 @@
         @using (Html.BeginForm("Create", "Products", FormMethod.Post, new { id = "form", enctype = "multipart/form-data" }))
         {
 
-    <div class="card-body">
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    @Html.LabelFor(model => model.ShortTitle, new { })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.ShortTitle, new { htmlAttributes = new { @class = "form-control " } })
-                        @Html.ValidationMessageFor(model => model.ShortTitle, "", new { @class = "form-text text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Title, new { })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control " } })
-                        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "form-text text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.ShortDescription, new { })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.ShortDescription, new { htmlAttributes = new { @class = "form-control " } })
-                        @Html.ValidationMessageFor(model => model.ShortDescription, "", new { @class = "form-text text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-label">تصویر</label>
-                    <div class="col-lg-6 col-md-12 col-sm-12">
-                        <div class="image-input image-input-outline" id="product-image">
-                            <div class="image-input-wrapper" style="background-image: url(assets/media/users/100_1.jpg)"></div>
+            <div class="card-body">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ShortTitle, new { })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.ShortTitle, new { htmlAttributes = new { @class = "form-control " } })
+                                @Html.ValidationMessageFor(model => model.ShortTitle, "", new { @class = "form-text text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Title, new { })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control " } })
+                                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "form-text text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ShortDescription, new { })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.ShortDescription, new { htmlAttributes = new { @class = "form-control " } })
+                                @Html.ValidationMessageFor(model => model.ShortDescription, "", new { @class = "form-text text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-label">تصویر</label>
+                            <div class="col-lg-6 col-md-12 col-sm-12">
+                                <div class="image-input image-input-outline" id="product-image">
+                                    <div class="image-input-wrapper" style="background-image: url(assets/media/users/100_1.jpg)"></div>
 
-                            <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="آپلود تصویر">
-                                <i class="fa fa-pen icon-sm text-muted"></i>
-                                <input type="file" name="ProductImage" id="ProductImage" accept=".png, .jpg, .jpeg" />
-                                <input type="hidden" name="product_image_remove" />
-                            </label>
+                                    <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="آپلود تصویر">
+                                        <i class="fa fa-pen icon-sm text-muted"></i>
+                                        <input type="file" name="ProductImage" id="ProductImage" accept=".png, .jpg, .jpeg" />
+                                        <input type="hidden" name="product_image_remove" />
+                                    </label>
 
-                            <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="حذف تصویر">
-                                <i class="ki ki-bold-close icon-xs text-muted"></i>
-                            </span>
+                                    <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="حذف تصویر">
+                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Rate, new { })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Rate, new { htmlAttributes = new { @class = "form-control " } })
+                                @Html.ValidationMessageFor(model => model.Rate, "", new { @class = "form-text text-danger" })
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Rate, new { })
+                    @Html.LabelFor(model => model.Description, new { })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.Rate, new { htmlAttributes = new { @class = "form-control " } })
-                        @Html.ValidationMessageFor(model => model.Rate, "", new { @class = "form-text text-danger" })
+                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control " } })
+                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "form-text text-danger" })
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Description, new { })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control " } })
-                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "form-text text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.TechnicalSpecifications, new { })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TechnicalSpecifications, new { htmlAttributes = new { @class = "form-control " } })
-                @Html.ValidationMessageFor(model => model.TechnicalSpecifications, "", new { @class = "form-text text-danger" })
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
                 <div class="form-group">
-                    <label class="">انتخاب گروه</label>
-                    <div class="col-lg-4 col-md-9 col-sm-12">
-                        <div id="ParentGroupId" class="tree-demo">
-                            <ul>
-                                @foreach (var group in ProductGroups.Where(p => p.ParentId == null))
-                                {
-                                    var result = HierarchyLoop.GetProductGroupHierarchy(group);
-                                    @Html.Raw(result)
-                                }
-                            </ul>
+                    <p class="alert alert-dark">
+                        مشخصات فنی را با خط فاصله (-) از هم جدا کنید و نام و مقدار مشخصات فنی را با علامت دو نقطه (:) از هم جدا کنید.
+                    </p>
+                    <p class="alert alert-dark">
+                        مثال:
+                    </p>
+                    <p class="alert alert-dark">
+
+                        طول : 1 متر - عرض : 1 متر - ارتفاع : 1 متر
+                    </p>
+                    @Html.LabelFor(model => model.TechnicalSpecifications, new { })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.TechnicalSpecifications, new { htmlAttributes = new { @class = "form-control " } })
+                        @Html.ValidationMessageFor(model => model.TechnicalSpecifications, "", new { @class = "form-text text-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="">انتخاب گروه</label>
+                            <div class="col-lg-4 col-md-9 col-sm-12">
+                                <div id="ParentGroupId" class="tree-demo">
+                                    <ul>
+                                        @foreach (var group in ProductGroups.Where(p => p.ParentId == null))
+                                        {
+                                            var result = HierarchyLoop.GetProductGroupHierarchy(group);
+                                            @Html.Raw(result)
+                                        }
+                                    </ul>
+                                </div>
+                                <span class="text-danger" style="display: none;color:darkred" id="validate_product_group">لطفا یک گروه را انتخاب کنید</span>
+                            </div>
                         </div>
-                        <span class="text-danger" style="display: none;color:darkred" id="validate_product_group">لطفا یک گروه را انتخاب کنید</span>
+                        <div class="form-group">
+                            <label class="">انتخاب برند</label>
+                            <div class="col-md-10">
+                                <select class="form-control" id="Brands" name="Brands">
+                                    <option value="">لطفا یک گروه را انتخاب کنید</option>
+                                </select>
+                            </div>
+                            <span class="text-danger" style="display: none" id="validate_brand">لطفا یک برند را انتخاب کنید</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="">ویژگی های محصول</label>
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <span style="color:red">محصول باید یک ویژگی اصلی داشته باشد</span>
+                                <div id="productGroupFeatures">لطفا گروه محصول را انتخاب کنید</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="">انتخاب برند</label>
-                    <div class="col-md-10">
-                        <select class="form-control" id="Brands" name="Brands">
-                            <option value="">لطفا یک گروه را انتخاب کنید</option>
-                        </select>
-                    </div>
-                    <span class="text-danger" style="display: none" id="validate_brand">لطفا یک برند را انتخاب کنید</span>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label class="">ویژگی های محصول</label>
-                    <div class="col-lg-12 col-md-12 col-sm-12">
-                        <span style="color:red">محصول باید یک ویژگی اصلی داشته باشد</span>
-                        <div id="productGroupFeatures">لطفا گروه محصول را انتخاب کنید</div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
 
-    </div>
+            </div>
             <div class="card-footer">
                 <a href="@Url.Action("Index")" class="btn btn-secondary">انصراف</a>
                 <input type="submit" value="ثبت" class="btn btn-primary mr-2" />
@@ -175,13 +185,13 @@
                     type: 'GET',
                     url: '/Admin/Products/GetFeatureSubFeatures/' + featureId,
                     async: false,
-                    success: function(data) {
-                        data.map(function(item) {
+                    success: function (data) {
+                        data.map(function (item) {
                             var option = "<option value='" + item.Id + "'>" + item.Value + "</option>";
                             optionsStr = optionsStr + option;
                         });
                     },
-                    error: function(data) {
+                    error: function (data) {
                         console.log("error");
                         console.log(data);
                     }
@@ -202,7 +212,7 @@
             }
         }
 
-        $(function() {
+        $(function () {
             $('#Description').ckeditor();
 
         });
@@ -220,7 +230,7 @@
             "plugins": ["types"]
         });
         $('#ParentGroupId').on('select_node.jstree',
-            function(e, data) {
+            function (e, data) {
                 var selectedGroupArr = data.node.id.split('_'); // ["pg","id"]
                 var productGroupId = parseInt(selectedGroupArr[1]); // id
                 getProductGroupFeatures(productGroupId);
@@ -235,24 +245,24 @@
                 type: 'GET',
                 url: '/Admin/Products/GetProductGroupBrands/' + productGroupId,
                 async: false,
-                success: function(data) {
-                    data.map(function(item) {
+                success: function (data) {
+                    data.map(function (item) {
                         var option = "<option value='" + item.Id + "'>" + item.Name + "</option>";
                         optionsStr = optionsStr + option;
                     });
                 },
-                error: function(data) {
+                error: function (data) {
                     console.log("error");
                     console.log(data);
                 }
             });
-            $('#Brands').html(optionsStr); 
+            $('#Brands').html(optionsStr);
         }
         function getProductGroupFeatures(productGroupId) {
             $.post("/Admin/Products/GetProductGroupFeatures/" + productGroupId,
                 function (data) {
                     $("#productGroupFeatures").empty();
-                 
+
                     data.map(function (item, index) {
                         var mainFeature = "";
                         if (index === 0) {
@@ -267,7 +277,7 @@
                             '<label class="col-lg-4 col-form-label text-left"><a href="javascript:;" class="btn btn-icon btn-circle btn-sm btn-success mr-2" data-repeater-create=""><i class="la la-plus"></i></a>' +
                             item.Title +
                             '</label>' +
-                            '<label class="radio radio-lg"><input type="radio" onchange="setMainFeatureFields(this) " id="isMain_'+item.Id+'" ' + mainFeature + ' name="MainFeature"/><span style="margin-left:10px"></span>ویژگی اصلی</label>'+
+                            '<label class="radio radio-lg"><input type="radio" onchange="setMainFeatureFields(this) " id="isMain_' + item.Id + '" ' + mainFeature + ' name="MainFeature"/><span style="margin-left:10px"></span>ویژگی اصلی</label>' +
                             '<div data-repeater-list="feature_' +
                             item.Id +
                             '" class="col-lg-10">' +
@@ -299,7 +309,7 @@
                             '<label class="col-md-2 col-form-label text-left">تعداد :</label>' +
                             '<div class="col-lg-8">' +
                             '<input type="number" name="Quantity" class="form-control" placeholder="تعداد را وارد کنید">' +
-                            '<span name="QuantityValidate" class="text-danger" style="display:none">لطفا تعداد را وارد کنید</span>'+
+                            '<span name="QuantityValidate" class="text-danger" style="display:none">لطفا تعداد را وارد کنید</span>' +
                             '</div>' +
                             '</div>' +
                             '<div class="form-group row">' +
@@ -349,8 +359,8 @@
                 var ShortDescription = $("#ShortDescription").val();
                 var Brand = $("#Brands option:selected").val();
                 var Description = $("#Description").val();
-                 var TechnicalSpecifications = $("#TechnicalSpecifications").val();
-           
+                var TechnicalSpecifications = $("#TechnicalSpecifications").val();
+
                 var desc2 = escape(Description);
                 var Rate = $("#Rate").val();
 
@@ -360,7 +370,7 @@
                 } else {
                     $("#validate_product_group").hide();
                     var selectedGroupArr = selectedGroup.split('_'); // ["pg","id"]
-                    var ProductGroup = parseInt(selectedGroupArr[1]); // id   
+                    var ProductGroup = parseInt(selectedGroupArr[1]); // id
                 }
 
                 var ProductFeatures = [];
@@ -435,7 +445,7 @@
                         ShortDescription: ShortDescription,
                         Brand: Brand,
                         Description: desc2,
-                        TechnicalSpecifications:TechnicalSpecifications,
+                        TechnicalSpecifications: TechnicalSpecifications,
                         Rate: Rate,
                         ProductGroup: ProductGroup,
                         ProductFeatures: ProductFeatures
