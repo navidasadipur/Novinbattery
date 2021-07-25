@@ -223,6 +223,68 @@ namespace SpadStorePanel.Web.Areas.Customer.Controllers
             base.Dispose(disposing);
         }
 
+        [AllowAnonymous]
+        public ActionResult ResetMyPasswordByEmail()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult ResetMyPasswordByEmail(ForgotPasswordViewModel model)
+        {
+            ViewBag.Message = null;
+
+            if (!UserRepo.EmailExists(model.Email.Trim()))
+            {
+                ViewBag.RegisterError = "کاربری با ایمیل وارد شده قبلا ثبت نام نکرده است";
+
+                return View();
+            }
+
+            var user = UserRepo.FindByEmail(model.Email);
+
+            ViewBag.UserId = user.Id;
+
+            return RedirectToAction("ResetMyPassword", new { id = user.Id });
+        }
+
+        [AllowAnonymous]
+        public ActionResult ResetMyPassword(string id)
+        {
+            ViewBag.Message = null;
+            ViewBag.UserId = id;
+
+            var model = new ResetMyPasswordViewModel()
+            {
+                UserId = id
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ResetMyPassword(ResetMyPasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var validatePassword = await UserRepo.ValidatePassword(model.OldPassword);
+                if (validatePassword.Succeeded)
+                {
+                    var result = await UserRepo.SetNewPassword(model.UserId, model.OldPassword, model.Password);
+                    if (result.Succeeded)
+                        return RedirectToAction("Login");
+                }
+
+                ViewBag.Message = "رمز عبور وارد شده صحیح نیست";
+                ViewBag.UserId = model.UserId;
+            }
+            return View(model);
+        }
+
         #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
