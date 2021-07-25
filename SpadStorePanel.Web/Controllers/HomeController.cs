@@ -167,12 +167,6 @@ namespace SpadStorePanel.Web.Controllers
             return PartialView(cartModel);
         }
 
-
-        public ActionResult ContactUsSummary()
-        {
-            return View();
-        }
-
         public ActionResult FooterSection()
         {
             SocialViewModel socialViewModel = new SocialViewModel();
@@ -496,16 +490,23 @@ namespace SpadStorePanel.Web.Controllers
         }
 
         [HttpPost]
+        [Route("ContactUs")]
         public ActionResult Contact(ContactForm contactForm)
         {
             if (ModelState.IsValid)
             {
                 _contactFormRepo.Add(contactForm);
-                return RedirectToAction("Contact");
+                return RedirectToAction("ContactUsSummary");
             }
-            return View(contactForm);
+            return RedirectToAction("Contact");
         }
-        public ActionResult ContactUsStaticDetail()
+
+public ActionResult ContactUsSummary()
+{
+    return View();
+}
+
+public ActionResult ContactUsStaticDetail()
         {
             var take = 3;
             var data = _contentRepo.GetContentByTypeIdTake(8, take);

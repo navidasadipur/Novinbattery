@@ -39,7 +39,7 @@
             </div>
             <div class="col-lg-7 col-md-6">
                 <div class="map-wrapper">
-                    @Html.Action("map","home")
+                    @Html.Action("map", "home")
                 </div>
             </div>
         </div>
@@ -103,9 +103,15 @@
             <div class="btn-wrapper">
                 <button type="submit" class="submit-btn">الان ارسال کن</button>
             </div>
-            
+
         }
 
     </div>
 </section>
 <!-- contact form area end -->
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+}
