@@ -51,7 +51,7 @@
                                 <td class="pl-0 pt-7">@item.InvoiceItem.Product.Title (@item.MainFeature)</td>
                                 <td class="text-right pt-7">@item.InvoiceItem.Price تومان</td>
                                 <td class="text-right pt-7">@item.InvoiceItem.Quantity</td>
-                                <td class="text-danger pr-0 pt-7 text-right">@item.InvoiceItem.TotalPrice تومان</td>
+                                <td class="text-danger pr-0 pt-7 text-right">@{var total = item.InvoiceItem.Price * item.InvoiceItem.Quantity;} @total تومان</td>
                             </tr>
                         }
                         </tbody>
