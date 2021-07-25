@@ -204,7 +204,7 @@ namespace SpadStorePanel.Infrastructure.Services
                     var discountAmount = (discount.Amount * productPrice / 100);
                     priceAfterDiscount -= discountAmount;
                     discountInfo.DiscountAmount = discount.Amount;
-                    discountInfo.DiscountValue = discount.Amount;
+                    discountInfo.DiscountValue = priceAfterDiscount;
                     discountInfo.DiscountType = DiscountType.Percentage;
                 }
             }
