@@ -270,6 +270,7 @@
                                                 <!-- single specification -->
                                                 <span class="heading">@item.Feature.Title</span>
                                                 <span class="details">@(item.SubFeature != null ? item.SubFeature.Value : item.Value)</span>
+                                                <span class="heading">(@item.Price.ToString("##,###") تومان)</span>
                                             </div>
                                         </li>
                                     }
@@ -284,18 +285,22 @@
                                                 allSubFeatureIds.Add(item.Feature.Id);
 
                                                 string allSubFeatures = "";
-
+                                                var subFearueValues = new List<string>();
                                                 <li>
                                                     <div class="single-spec">
                                                         <!-- single specification -->
 
                                                         <span class="heading">@item.Feature.Title</span>
 
-                                                        @foreach (var subFeature in item.Feature.SubFeatures)
-                                                        {
-                                                            allSubFeatures = string.Join("، ", subFeature.Value);
+                                                        @{ 
+                                                            foreach (var subFeature in item.Feature.SubFeatures)
+                                                            {
+                                                                subFearueValues.Add(subFeature.Value);
+                                                            }
+
+                                                            allSubFeatures = string.Join("، ", subFearueValues);
                                                         }
-                                                        
+
                                                         <span class="details">@allSubFeatures</span>
                                                     </div>
                                                 </li>
