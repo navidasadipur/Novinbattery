@@ -5147,9 +5147,8 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_LayoutPage1.cshtml" />
     <Content Include="Views\Home\Navbar.cshtml" />
-    <Content Include="Views\Home\Footer.cshtml" />
+    <Content Include="Views\Home\FooterSection.cshtml" />
     <Content Include="Views\Home\Navbar2.cshtml" />
-    <Content Include="Views\Home\Footer2.cshtml" />
     <Content Include="Views\Shared\_LayoutD.cshtml" />
     <Content Include="Views\Home\ContactUsStaticDetail.cshtml" />
     <Content Include="Views\Home\Map.cshtml" />

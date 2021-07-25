@@ -175,21 +175,13 @@ namespace SpadStorePanel.Web.Controllers
 
             FooterViewModel model = new FooterViewModel();
 
-            model.Facebook = _staticContentDetailsRepository.Get(5);
-
-            model.Linkdin = _staticContentDetailsRepository.Get(6);
-
-            model.GooglePlus = _staticContentDetailsRepository.Get(41);
-
-            model.Pintrest = _staticContentDetailsRepository.Get(42);
-
-            model.Twitter = _staticContentDetailsRepository.Get(12);
-
             model.Phone = _staticContentDetailsRepository.Get(9);
 
             model.Email = _staticContentDetailsRepository.Get(8);
 
             model.Address = _staticContentDetailsRepository.Get(7);
+
+
 
             return View(model);
         }
@@ -576,59 +568,60 @@ namespace SpadStorePanel.Web.Controllers
             return Content(vOutput);
         }
 
-        public ActionResult Footer()
-        {
-            SocialViewModel socialViewModel = new SocialViewModel();
+        //public ActionResult Footer()
+        //{
+        //    SocialViewModel socialViewModel = new SocialViewModel();
 
-            FooterViewModel model = new FooterViewModel();
+        //    FooterViewModel model = new FooterViewModel();
 
-            model.Facebook = _staticContentDetailsRepository.Get(5);
+        //    model.Facebook = _staticContentDetailsRepository.Get(5);
 
-            model.Linkdin = _staticContentDetailsRepository.Get(6);
+        //    model.Linkdin = _staticContentDetailsRepository.Get(6);
 
-            model.GooglePlus = _staticContentDetailsRepository.Get(41);
+        //    model.GooglePlus = _staticContentDetailsRepository.Get(41);
 
-            model.Pintrest = _staticContentDetailsRepository.Get(42);
+        //    model.Pintrest = _staticContentDetailsRepository.Get(42);
 
-            model.Twitter = _staticContentDetailsRepository.Get(12);
+        //    model.Twitter = _staticContentDetailsRepository.Get(12);
 
-            model.Phone = _staticContentDetailsRepository.Get(9);
+        //    model.Phone = _staticContentDetailsRepository.Get(9);
 
-            model.Email = _staticContentDetailsRepository.Get(8);
+        //    model.Email = _staticContentDetailsRepository.Get(8);
 
-            model.Address = _staticContentDetailsRepository.Get(7);
+        //    model.Address = _staticContentDetailsRepository.Get(7);
 
-            ViewBag.AboutUs = _staticContentDetailsRepository.GetStaticContentDetail(16).ShortDescription;
+        //    ViewBag.AboutUs = _staticContentDetailsRepository.GetStaticContentDetail(16).ShortDescription;
 
-            return PartialView(model);
-        }
+        //    return PartialView(model);
+        //}
 
-        public ActionResult Footer2()
-        {
-            SocialViewModel socialViewModel = new SocialViewModel();
+        //public ActionResult Footer2()
+        //{
+        //    SocialViewModel socialViewModel = new SocialViewModel();
 
-            FooterViewModel model = new FooterViewModel();
+        //    FooterViewModel model = new FooterViewModel();
 
-            model.Facebook = _staticContentDetailsRepository.Get(5);
+        //    model.Facebook = _staticContentDetailsRepository.Get(5);
 
-            model.Linkdin = _staticContentDetailsRepository.Get(6);
+        //    model.Linkdin = _staticContentDetailsRepository.Get(6);
 
-            model.GooglePlus = _staticContentDetailsRepository.Get(41);
+        //    model.GooglePlus = _staticContentDetailsRepository.Get(41);
 
-            model.Pintrest = _staticContentDetailsRepository.Get(42);
+        //    model.Pintrest = _staticContentDetailsRepository.Get(42);
 
-            model.Twitter = _staticContentDetailsRepository.Get(12);
+        //    model.Twitter = _staticContentDetailsRepository.Get(12);
 
-            model.Phone = _staticContentDetailsRepository.Get(9);
+        //    model.Phone = _staticContentDetailsRepository.Get(9);
 
-            model.Email = _staticContentDetailsRepository.Get(8);
+        //    model.Email = _staticContentDetailsRepository.Get(8);
 
-            model.Address = _staticContentDetailsRepository.Get(7);
+        //    model.Address = _staticContentDetailsRepository.Get(7);
 
-            ViewBag.AboutUs = _staticContentDetailsRepository.GetStaticContentDetail(16).ShortDescription;
+        //    ViewBag.AboutUs = _staticContentDetailsRepository.GetStaticContentDetail(16).ShortDescription;
 
-            return PartialView(model);
-        }
+        //    return PartialView(model);
+        //}
+
         public ActionResult Map()
         {
 

@@ -6,7 +6,7 @@
         <!-- footer top one-->
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6">
+                <div class="col-lg-4 col-md-6">
                     <div class="footer-widget about">
                         <div class="widget-body">
                             <a href="/" class="footer-logo">
@@ -20,7 +20,7 @@
                                         </div>
                                         <div class="content">
                                             <span class="details">
-                                                ایران ، تهران
+                                                @Model.Address.ShortDescription
                                             </span>
                                         </div>
                                     </div>
@@ -31,7 +31,9 @@
                                             <i class="fas fa-envelope"></i>
                                         </div>
                                         <div class="content">
-                                            <span class="details">mrbattry@gmail.com</span>
+                                            <span class="details">
+                                                @Model.Email.ShortDescription
+                                            </span>
 
                                         </div>
                                     </div>
@@ -42,7 +44,9 @@
                                             <i class="fas fa-phone"></i>
                                         </div>
                                         <div class="content">
-                                            <span class="details">021 66 64 666</span>
+                                            <span class="details">
+                                                @Model.Phone.ShortDescription
+                                            </span>
 
                                         </div>
                                     </div>
@@ -51,41 +55,37 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
+                <div class="col-lg-4 col-md-6">
                     <div class="footer-widget">
                         <div class="widget-title">
                             <h4 class="title">راهنمای خرید</h4>
                         </div>
                         <div class="widget-body">
                             <ul class="page-list">
-                                <li><a href="/blog/">-- بلاگ</a></li>
-                                <li><a href="/home/faq">-- گفت و گو</a></li>
-                                <li><a href="/home/faq">-- پرداخت</a></li>
-                                <li><a href="/home/faq">-- حمل و نقل</a></li>
-                                <li><a href="/home/faq">-- سفارش من کجاست</a></li>
-                                <li><a href="/home/faq">-- سیاست بازگشت</a></li>
+                                <li><a href="/shop/">-- فروشگاه</a></li>
+                                <li><a href="/Shop/Cart">-- سبد خرید</a></li>
+                                <li><a href="/AboutUs/">-- درباره ما</a></li>
+                                <li><a href="/Customer/Auth/Login/">-- ورود</a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
+                <div class="col-lg-4 col-md-6">
                     <div class="footer-widget">
                         <div class="widget-title">
                             <h4 class="title">مشاوره خرید</h4>
                         </div>
                         <div class="widget-body">
                             <ul class="page-list">
-                                <li><a href="/account/register">-- اکانت شما</a></li>
-                                <li><a href="/home/faq">-- اطلاعات</a></li>
-                                <li><a href="/home/faq">-- آدرس</a></li>
-                                <li><a href="/home/faq">-- تخفیفات</a></li>
-                                <li><a href="/home/faq">-- تاریخچه سفارش ها</a></li>
-                                <li><a href="/home/faq">-- رهگیری سفارش</a></li>
+                                <li><a href="/Blog/">-- بلاگ</a></li>
+                                <li><a href="/CantactForm/">-- تماس با ما</a></li>
+                                <li><a href="/home/faq">-- سوالات متداول</a></li>
+                                <li><a href="/Customer/Auth/Register/">-- ثبت نام</a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
+                @*<div class="col-lg-3 col-md-6">
                     <div class="footer-widget">
                         <div class="widget-title">
                             <h4 class="title">اطلاعات</h4>
@@ -101,7 +101,7 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div>*@
             </div>
         </div>
     </div><!-- //.footer top one -->
