@@ -19,26 +19,26 @@
                 <div class="team-carousel" id="team-carousel">
                     <!-- team member carusel -->
 
-                  @foreach(var item in Model)
-                  {
+                    @foreach (var item in Model)
+                    {
                         <div class="sinlge-team-member">
-                        <!-- single team member -->
-                        <div class="thumb">
-                            <img style="height:500px !important;" src="~/Files/OurTeamImages/@item.Image" alt="@item.Title">
-                            <div class="hover">
-                                <ul class="social-share">
-                                    <li><a href="@item.FaceBook"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="@item.Twiter"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="@item.Instagram"><i class="fab fa-instagram"></i></a></li>
-                                </ul>
+                            <!-- single team member -->
+                            <div class="thumb">
+                                <img src="~/Files/OurTeamImages/@item.Image" alt="@item.Title">
+                                <div class="hover">
+                                    <ul class="social-share">
+                                        <li><a href="@item.FaceBook"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="@item.Twiter"><i class="fab fa-twitter"></i></a></li>
+                                        <li><a href="@item.Instagram"><i class="fab fa-instagram"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <h4 class="title">@item.Title </h4>
+                                <span class="post">@item.Role</span>
                             </div>
                         </div>
-                        <div class="content">
-                            <h4 class="title">@item.Title </h4>
-                            <span class="post">@item.Role</span>
-                        </div>
-                    </div>
-                  }
+                    }
 
                 </div><!-- //.team member carusel -->
             </div>
