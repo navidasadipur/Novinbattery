@@ -31,8 +31,9 @@ namespace SpadStorePanel.Core.Utility
         BlogImage = 1013,
         ContactInfo = 1014,
 
-        
-
+        AboutUsImageAndHistory = 16,
+        AboutUsSecondRight = 1061,
+        AboutusSecondLeft = 1059,
 
         HeaderBackGroundImage = 13,
     }
@@ -40,7 +41,7 @@ namespace SpadStorePanel.Core.Utility
     public enum StaticContentTypes
     {
         HeaderFooter = 9,
-        About = 13,
+        About = 1,
         AboutProperties,
 
         HomeTopSlider = 17,

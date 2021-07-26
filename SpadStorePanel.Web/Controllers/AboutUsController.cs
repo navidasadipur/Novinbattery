@@ -1,4 +1,5 @@
-﻿using SpadStorePanel.Infrastructure.Repositories;
+﻿using SpadStorePanel.Core.Utility;
+using SpadStorePanel.Infrastructure.Repositories;
 using SpadStorePanel.Web.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -31,7 +32,8 @@ namespace SpadStorePanel.Web.Controllers
 
         public ActionResult History()
         {
-           var Histoty= _staticContentDetailsRepository.GetAll().Where(a => a.Id == 16 && a.IsDeleted==false).FirstOrDefault();
+            var Histoty= _staticContentDetailsRepository.GetStaticContentDetail((int)StaticContents.AboutUsImageAndHistory);
+
             return View(Histoty);
         }
         public ActionResult Image()
@@ -72,7 +74,12 @@ namespace SpadStorePanel.Web.Controllers
         }
         public ActionResult StaticDetailsInAboutPage()
         {
-            var model = _staticContentDetailsRepository.GetContentByTypeId(18);
+            var model = _staticContentDetailsRepository.GetStaticContentDetail((int)StaticContents.AboutUsSecondRight);
+
+            ViewBag.LeftImage = _staticContentDetailsRepository.GetStaticContentDetail((int)StaticContents.AboutusSecondLeft).Image;
+            ViewBag.LeftTitle = _staticContentDetailsRepository.GetStaticContentDetail((int)StaticContents.AboutusSecondLeft).Title;
+            ViewBag.LeftShortDescription = _staticContentDetailsRepository.GetStaticContentDetail((int)StaticContents.AboutusSecondLeft).ShortDescription;
+
             return PartialView(model);
         }
     }

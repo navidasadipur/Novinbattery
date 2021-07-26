@@ -62,10 +62,12 @@ namespace SpadStorePanel.Web.Areas.Admin.Controllers
                     //    image = new ImageResizer(1450, 600, true);
                     //if (staticContentDetail.StaticContentTypeId == (int)StaticContentTypes.HeaderFooter)
                     //    image = new ImageResizer(1400, 1400, true);
-                    if (staticContentDetail.Id == (int)StaticContentTypes.HomeMidleBaner || staticContentDetail.Id == (int)StaticContentTypes.HomeTopBaner)
+                    if (staticContentDetail.StaticContentTypeId == (int)StaticContentTypes.HomeMidleBaner || staticContentDetail.StaticContentTypeId == (int)StaticContentTypes.HomeTopBaner)
                         image = new ImageResizer(2000, 1000, true);
                     if (staticContentDetail.Id == (int)StaticContents.HeaderBackGroundImage)
                         image = new ImageResizer(1700, 310, true);
+                    if (staticContentDetail.StaticContentTypeId == (int)StaticContentTypes.About || staticContentDetail.Id == (int)StaticContents.AboutUsSecondRight || staticContentDetail.Id == (int)StaticContents.AboutusSecondLeft)
+                        image = new ImageResizer(1000, 700, true);
 
                     image.Resize(Server.MapPath("/Files/StaticContentImages/Temp/" + newFileName),
                     Server.MapPath("/Files/StaticContentImages/Image/" + newFileName));
@@ -139,10 +141,12 @@ namespace SpadStorePanel.Web.Areas.Admin.Controllers
                     //    image = new ImageResizer(1450, 600, true);
                     //if (staticContentDetail.StaticContentTypeId == (int)StaticContentTypes.HeaderFooter)
                     //    image = new ImageResizer(1000, 1000, true);
-                    if (staticContentDetail.Id == (int)StaticContentTypes.HomeMidleBaner || staticContentDetail.Id == (int)StaticContentTypes.HomeTopBaner)
+                    if (staticContentDetail.StaticContentTypeId == (int)StaticContentTypes.HomeMidleBaner || staticContentDetail.StaticContentTypeId == (int)StaticContentTypes.HomeTopBaner)
                         image = new ImageResizer(2000, 1000, true);
                     if (staticContentDetail.Id == (int)StaticContents.HeaderBackGroundImage)
                         image = new ImageResizer(1700, 310, true);
+                    if (staticContentDetail.Id == (int)StaticContents.AboutUsImageAndHistory || staticContentDetail.Id == (int)StaticContents.AboutUsSecondRight || staticContentDetail.Id == (int)StaticContents.AboutusSecondLeft)
+                        image = new ImageResizer(1000, 700, true);
 
                     image.Resize(Server.MapPath("/Files/StaticContentImages/Temp/" + newFileName),
                     Server.MapPath("/Files/StaticContentImages/Image/" + newFileName));
