@@ -2,7 +2,7 @@
 
 
 @{
-    ViewBag.Title = "Detail";
+    ViewBag.Title = "جزئیات بلاگ";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -16,13 +16,13 @@
                     <!-- breadcrumb inner -->
                     <div class="left-content-area">
                         <!-- left content area -->
-                        <h1 class="title">جزئیات بلاگ</h1>
+                        <h1 class="title">@ViewBag.Title</h1>
                     </div><!-- //. left content area -->
                     <div class="right-content-area">
                         <ul>
                             <li><a href="/">خانه</a></li>
                             <li><a href="/Blog">وبلاگ</a></li>
-                            <li>جزئیات بلاگ</li>
+                            <li>@ViewBag.Title</li>
                         </ul>
                     </div>
                 </div><!-- //. breadcrumb inner -->

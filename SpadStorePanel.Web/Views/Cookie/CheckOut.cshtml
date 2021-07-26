@@ -1,4 +1,4 @@
-﻿@using Microsoft.AspNet.Identity
+﻿@*@using Microsoft.AspNet.Identity
 @using SpadStorePanel.Infrastructure.Helpers
 @model SpadStorePanel.Web.ViewModels.AddCustomerInvoceViewModel
 @{
@@ -29,15 +29,6 @@
         <div class="checkout">
             <div class="container">
                 <div class="checkout-discount">
-                    @*<form action="#">
-                            <input type="text" class="form-control" required id="checkout-discount-input">
-                            <label for="checkout-discount-input" class="text-truncate">
-                                کد تخفیف دارید؟ <span>
-                                    برای
-                                    وارد کردن کد تخفیف خود اینجا کلیک کنید
-                                </span>
-                            </label>
-                        </form>*@
                 </div><!-- End .checkout-discount -->
                 @using (Html.BeginForm("Payment", "Cookie", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
@@ -124,4 +115,4 @@
             </div><!-- End .container -->
         </div><!-- End .checkout -->
     </div><!-- End .page-content -->
-</main><!-- End .main -->
+</main><!-- End .main -->*@
