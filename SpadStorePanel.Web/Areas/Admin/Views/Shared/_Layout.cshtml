@@ -10,7 +10,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/Content/logo.png">
-    <title>@ViewBag.Title - Spad Store Panel</title>
+    <title>@ViewBag.Title - NovinBattery</title>
     @*@Styles.Render("~/Content/css")*@
     @*@Scripts.Render("~/bundles/modernizr")
         @Scripts.Render("~/bundles/jquery")*@
@@ -46,6 +46,11 @@
           rel="stylesheet"
           type="text/css" />
     <!--end::Layout Themes-->
+
+    <link href="~/Content/admin/Vendors/Clockpicker/clockPicker.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/admin/Vendors/kamaDatepicker/kamadatepicker.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/admin/css/Style.css" rel="stylesheet" type="text/css" />
+
     <script src="~/Content/admin/plugins/global/plugins.bundle.js"></script>
     <script src="~/Content/admin/plugins/custom/prismjs/prismjs.bundle.js"></script>
     <script src="~/Content/admin/js/scripts.bundle.js"></script>
@@ -612,7 +617,7 @@ else
                                     </ul>
                                 </div>
                             </li>
-                           @*<li class="menu-item menu-item-submenu"
+                           <li class="menu-item menu-item-submenu"
                                 id="nav_offers_and_discounts"
                                 aria-haspopup="true"
                                 data-menu-toggle="hover">
@@ -627,7 +632,7 @@ else
                                                 <path d="M14.8641422,16.6221564 C13.9162233,16.6221564 13.1456569,15.8535438 13.1456569,14.9036711 C13.1456569,13.9520555 13.9162233,13.1851857 14.8641422,13.1851857 C15.8138085,13.1851857 16.5826276,13.9520555 16.5826276,14.9036711 C16.5826276,15.8535438 15.8138085,16.6221564 14.8641422,16.6221564 Z" fill="#000000" opacity="0.3" />
                                             </g>
                                         </svg>
-                                    </span><span class="menu-text">پیشنهادات و تخفیف ها</span><i class="menu-arrow"></i>
+                                    </span><span class="menu-text">@*پیشنهادات و*@ تخفیف ها</span><i class="menu-arrow"></i>
                                 </a>
                                 <div class="menu-submenu" id="subnav_auth_control">
                                     <i class="menu-arrow"></i>
@@ -645,7 +650,7 @@ else
                                         </li>
                                     </ul>
                                 </div>
-                            </li>*@
+                            </li>
                             <li class="menu-item menu-item-submenu"
                                 id="nav_invoices"
                                 aria-haspopup="true"

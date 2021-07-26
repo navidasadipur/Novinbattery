@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -55,6 +56,7 @@ namespace SpadStorePanel.Web.Areas.Admin.Controllers
                         {
                             DiscountType = newDiscount.DiscountType,
                             Amount = newDiscount.Amount,
+                            DeadLine = ConvertPersianDateStrToDatetime(newDiscount.DeadLine),
                             OfferId = newDiscount.OfferId,
                             Title = newDiscount.Title,
                             BrandId = item,
@@ -73,6 +75,7 @@ namespace SpadStorePanel.Web.Areas.Admin.Controllers
                         {
                             DiscountType = newDiscount.DiscountType,
                             Amount = newDiscount.Amount,
+                            DeadLine = ConvertPersianDateStrToDatetime(newDiscount.DeadLine),
                             OfferId = newDiscount.OfferId,
                             Title = newDiscount.Title,
                             ProductGroupId = item,
@@ -92,6 +95,7 @@ namespace SpadStorePanel.Web.Areas.Admin.Controllers
                         {
                             DiscountType = newDiscount.DiscountType,
                             Amount = newDiscount.Amount,
+                            DeadLine = ConvertPersianDateStrToDatetime(newDiscount.DeadLine),
                             OfferId = newDiscount.OfferId,
                             Title = newDiscount.Title,
                             ProductId = item,
@@ -123,6 +127,7 @@ namespace SpadStorePanel.Web.Areas.Admin.Controllers
             vm.OfferId = discountGroup.FirstOrDefault().OfferId;
             vm.DiscountType = discountGroup.FirstOrDefault().DiscountType;
             vm.Amount = discountGroup.FirstOrDefault().Amount;
+            vm.DeadLine = GetPersianDate(discountGroup.FirstOrDefault().DeadLine);//discountGroup.FirstOrDefault().DeadLine.ToString();
 
             #endregion
 
@@ -155,6 +160,7 @@ namespace SpadStorePanel.Web.Areas.Admin.Controllers
                         {
                             DiscountType = newDiscount.DiscountType,
                             Amount = newDiscount.Amount,
+                            DeadLine = ConvertPersianDateStrToDatetime(newDiscount.DeadLine),
                             OfferId = newDiscount.OfferId,
                             Title = newDiscount.Title,
                             BrandId = item,
@@ -173,6 +179,7 @@ namespace SpadStorePanel.Web.Areas.Admin.Controllers
                         {
                             DiscountType = newDiscount.DiscountType,
                             Amount = newDiscount.Amount,
+                            DeadLine = ConvertPersianDateStrToDatetime(newDiscount.DeadLine),
                             OfferId = newDiscount.OfferId,
                             Title = newDiscount.Title,
                             ProductGroupId = item,
@@ -192,6 +199,7 @@ namespace SpadStorePanel.Web.Areas.Admin.Controllers
                         {
                             DiscountType = newDiscount.DiscountType,
                             Amount = newDiscount.Amount,
+                            DeadLine = ConvertPersianDateStrToDatetime(newDiscount.DeadLine),
                             OfferId = newDiscount.OfferId,
                             Title = newDiscount.Title,
                             ProductId = item,
@@ -316,5 +324,68 @@ namespace SpadStorePanel.Web.Areas.Admin.Controllers
 
             return RedirectToAction("Index");
         }
+
+        private DateTime ConvertPersianDateStrToDatetime(string strDatetime)
+        {
+            DateTime dt;
+
+            PersianCalendar pc = new PersianCalendar();
+            var strDate = strDatetime.Split(' ')[0];
+            var strTime = strDatetime.Split(' ')[1];
+
+            int year = int.Parse(strDate.Split('/')[0]);
+            int month = int.Parse(strDate.Split('/')[1]);
+            int day = int.Parse(strDate.Split('/')[2]);
+            int hour = int.Parse(strTime.Split(':')[0]);
+            int minute = int.Parse(strTime.Split(':')[1]);
+            int second = 0;
+            int millisecond = 0;
+            dt = pc.ToDateTime(year, month, day, hour, minute, second, millisecond);
+
+
+            return dt;
+        }
+
+        private static string GetTodayDate()
+        {
+            DateTime dtime = DateTime.Now;
+            System.Globalization.PersianCalendar pc = new System.Globalization.PersianCalendar();
+
+            string date = pc.GetYear(dtime).ToString();
+            date += "/";
+            date += pc.GetMonth(dtime) < 10 ? "0" + pc.GetMonth(dtime) : pc.GetMonth(dtime).ToString();
+            date += "/";
+            date += pc.GetDayOfMonth(dtime) < 10 ? "0" + pc.GetDayOfMonth(dtime) : pc.GetDayOfMonth(dtime).ToString();
+
+            date += " ";
+            date += pc.GetHour(dtime) < 10 ? "0" + pc.GetHour(dtime) : pc.GetHour(dtime).ToString();
+            date += ":";
+            date += pc.GetMinute(dtime) < 10 ? "0" + pc.GetMinute(dtime) : pc.GetMinute(dtime).ToString();
+            date += ":";
+            date += pc.GetSecond(dtime) < 10 ? "0" + pc.GetSecond(dtime) : pc.GetSecond(dtime).ToString();
+
+            return date;
+        }
+
+        private string GetPersianDate(DateTime dtime)
+        {
+            System.Globalization.PersianCalendar pc = new System.Globalization.PersianCalendar();
+
+            string date = pc.GetYear(dtime).ToString();
+            date += "/";
+            date += pc.GetMonth(dtime) < 10 ? "0" + pc.GetMonth(dtime) : pc.GetMonth(dtime).ToString();
+            date += "/";
+            date += pc.GetDayOfMonth(dtime) < 10 ? "0" + pc.GetDayOfMonth(dtime) : pc.GetDayOfMonth(dtime).ToString();
+
+            date += " ";
+            date += pc.GetHour(dtime) < 10 ? "0" + pc.GetHour(dtime) : pc.GetHour(dtime).ToString();
+            date += ":";
+            date += pc.GetMinute(dtime) < 10 ? "0" + pc.GetMinute(dtime) : pc.GetMinute(dtime).ToString();
+            date += ":";
+            date += pc.GetSecond(dtime) < 10 ? "0" + pc.GetSecond(dtime) : pc.GetSecond(dtime).ToString();
+
+            return date;
+        }
+
     }
 }

@@ -1414,6 +1414,7 @@
     <Content Include="Content\admin\css\pages\wizard\wizard-6.rtl.css" />
     <Content Include="Content\admin\css\style.bundle.css" />
     <Content Include="Content\admin\css\style.bundle.rtl.css" />
+    <Content Include="Content\admin\css\Style.css" />
     <Content Include="Content\admin\css\themes\layout\aside\dark.css" />
     <Content Include="Content\admin\css\themes\layout\aside\dark.rtl.css" />
     <Content Include="Content\admin\css\themes\layout\aside\light.css" />
@@ -1818,6 +1819,10 @@
     <Content Include="Content\admin\plugins\global\plugins.bundle.css" />
     <Content Include="Content\admin\plugins\global\plugins.bundle.js" />
     <Content Include="Content\admin\plugins\global\plugins.bundle.rtl.css" />
+    <Content Include="Content\admin\Vendors\Clockpicker\bootstrap-clockPicker.min.js" />
+    <Content Include="Content\admin\Vendors\Clockpicker\clockPicker.css" />
+    <Content Include="Content\admin\Vendors\kamaDatepicker\kamadatepicker.min.css" />
+    <Content Include="Content\admin\Vendors\kamaDatepicker\kamadatepicker.min.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
