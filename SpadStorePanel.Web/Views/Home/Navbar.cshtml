@@ -1,6 +1,12 @@
 ﻿@model List<SpadStorePanel.Core.Models.ProductGroup>
 @using SpadStorePanel.Core.Models
 
+    <style>
+        .breadcrumb-area.breadcrumb-bg {
+            background-image: url(/Files/StaticContentImages/Image/@ViewBag.HeaderBackGroundImage);
+        }
+    </style>
+
 <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <div class="text-center">
@@ -126,30 +132,30 @@
                                     </div>
                                 </div>
                                 @*<div class="col-lg-3 col-sm-12">
-                                    <div class="mega-menu-columns">
-                                        <h6 class="title border-bottom pb-2">ظرفیت باتری</h6>
-                                        <ul class="menga-menu-page-links">
+                                        <div class="mega-menu-columns">
+                                            <h6 class="title border-bottom pb-2">ظرفیت باتری</h6>
+                                            <ul class="menga-menu-page-links">
 
-                                            <li><a href="/shop/"> 100 آمپر به پایین</a></li>
+                                                <li><a href="/shop/"> 100 آمپر به پایین</a></li>
 
-                                            <li><a href="/shop/"> 150 آمپر</a></li>
+                                                <li><a href="/shop/"> 150 آمپر</a></li>
 
-                                            <li><a href="/shop/"> 200 آمپر</a></li>
+                                                <li><a href="/shop/"> 200 آمپر</a></li>
 
-                                            <li><a href="/shop/"> 230 آمپر</a></li>
-                                        </ul>
+                                                <li><a href="/shop/"> 230 آمپر</a></li>
+                                            </ul>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-3 col-sm-12">
-                                    <div class="mega-menu-columns">
-                                        <h6 class="title border-bottom pb-2">باتری صنعتی</h6>
-                                        <ul class="menga-menu-page-links">
-                                            <li><a href="/shop/"> باتری مخابراتی</a></li>
-                                            <li><a href="/shop/"> کابینت باتری </a></li>
-                                            <li><a href="/shop/"> باتری یو پی اس</a></li>
-                                        </ul>
-                                    </div>
-                                </div>*@
+                                    <div class="col-lg-3 col-sm-12">
+                                        <div class="mega-menu-columns">
+                                            <h6 class="title border-bottom pb-2">باتری صنعتی</h6>
+                                            <ul class="menga-menu-page-links">
+                                                <li><a href="/shop/"> باتری مخابراتی</a></li>
+                                                <li><a href="/shop/"> کابینت باتری </a></li>
+                                                <li><a href="/shop/"> باتری یو پی اس</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>*@
 
                             </div>
                         </div>
@@ -219,5 +225,3 @@
     </div><!-- //. bottom content -->
 </div>
 <!-- cart sidebar area end -->
-
-

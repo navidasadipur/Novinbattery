@@ -33,6 +33,8 @@ namespace SpadStorePanel.Core.Utility
 
         HomeTopBaner = 1060,
         HomeMidleBaner = 47,
+
+        HeaderBackGroundImage = 13,
     }
 
     public enum StaticContentTypes

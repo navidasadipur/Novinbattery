@@ -107,6 +107,8 @@ namespace SpadStorePanel.Web.Controllers
 
             ViewBag.Email = _staticContentDetailsRepository.Get(8).ShortDescription;
 
+            ViewBag.HeaderBackGroundImage = _staticContentDetailsRepository.Get((int)StaticContents.HeaderBackGroundImage).Image;
+
             return PartialView(allGroups);
         }
 

@@ -1000,7 +1000,7 @@ input:checked + .slider:before {
     }
 
     .breadcrumb-area.breadcrumb-bg {
-        background-image: url(../../pic/bgmainpage4.jpg);
+        /*background-image: url(../../pic/bgmainpage4.jpg);*/
         background-position: center;
         background-size: cover;
     }
