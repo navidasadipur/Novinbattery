@@ -21,7 +21,7 @@
                     <div class="right-content-area">
                         <ul>
                             <li><a href="/">خانه</a></li>
-                            <li><a href="/Blog">وبلاگ</a></li>
+                            <li><a href="/Blog/">وبلاگ</a></li>
                             <li>@ViewBag.Title</li>
                         </ul>
                     </div>
@@ -36,7 +36,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <div class="single-blog-post text-center">
+                <div class="single-blog-post">
                     <img src="~/Files/ArticleImages/Image/@Model.Image" />
                     <!-- single blog post -->
                     <div class="meta-time">
@@ -104,7 +104,7 @@
                                     </div><!-- //.left content -->
                                     <div class="right-content">
                                         <!-- right content -->
-                                        <h4 class="title">اشتراک اجتماعی</h4>
+                                        <h4 class="title">شبکه های اجتماعی</h4>
                                         <ul>
                                             <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
                                             <li><a href="#"><i class="fab fa-twitter"></i></a></li>
@@ -129,7 +129,6 @@
                                 {
                                     <input type="hidden" id="ArticleId" name="ArticleId" value="@Model.Id">
                                     <input type="hidden" id="ParentId" name="ParentId" value="">
-
 
                                     <div class="form-element margin-bottom-15">
                                         <div class="has-icon textarea">
@@ -158,13 +157,9 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="form-element margin-top-40 d-flex justify-content-center">
                                         <input type="submit" value="ارسال نظر" class="submit-btn btn-rounded">
                                     </div>
-
-
-
                                 }
 
                             </div>
