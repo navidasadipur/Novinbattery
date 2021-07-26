@@ -26,8 +26,6 @@ namespace SpadStorePanel.Web.Controllers
         }
 
         // GET: Blog
-        [Route("Blog")]
-        [Route("Blog/{id}/{title}")]
         public ActionResult Index(int? id = null, string searchString = null, int page = 1)
         {
             //ViewBag.BlogImage = _contentRepo.GetStaticContentDetail((int)StaticContents.BlogImage).Image;
@@ -135,6 +133,7 @@ namespace SpadStorePanel.Web.Controllers
             var CategoryBlog = _articleCategoriesRepository.GetAll().Where(a => a.IsDeleted == false);
             return View(CategoryBlog);
         }
+
         public ActionResult BlogDetail(int id)
         {
             ViewBag.Tags = _articlesRepo.GetArticleTags(id);
