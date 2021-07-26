@@ -37,7 +37,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="single-blog-post text-center">
-                    <img src="~/Files/ArticleImages/Image/@Model.Image"/>
+                    <img src="~/Files/ArticleImages/Image/@Model.Image" />
                     <!-- single blog post -->
                     <div class="meta-time">
                         <!-- meta time -->
@@ -117,7 +117,7 @@
                             </div><!-- //.post bottom content -->
                         </div><!-- //.post body -->
                         <div class="single-post-separator"></div>
-                        @Html.Action("ShowComment","blog")
+                        @Html.Action("ShowComment", "blog")
                         <div class="single-blog-page-separator"></div>
                         <div class="comments-form-area">
                             <!-- comments form area -->
@@ -130,7 +130,7 @@
                                     <input type="hidden" id="ArticleId" name="ArticleId" value="@Model.Id">
                                     <input type="hidden" id="ParentId" name="ParentId" value="">
 
-                                    
+
                                     <div class="form-element margin-bottom-15">
                                         <div class="has-icon textarea">
                                             <textarea name="Message" rows="20" cols="8" placeholder="نظرات خود را تایپ کنید...."
@@ -176,3 +176,35 @@
     </div><!-- //.container -->
 </section>
 <!-- blog details page content area end -->
+
+
+
+<style>
+    .my-error-class {
+        color: darkred !important; /* red */
+    }
+</style>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $("#commentform").validate({
+            errorClass: "my-error-class",
+            rules: {
+                Name: "required",
+                Message: "required",
+                Email: {
+                    required: true,
+                    email: true
+                }
+            },
+            messages: {
+                Name: "نام خود را وارد کنید",
+                Message: "پیام خود را وارد کنید",
+                Email: {
+                    required: "ایمیل خود را وارد کنید",
+                    email: "ایمیل وارد شده معتبر نیست"
+                },
+            }
+        });
+    </script>
+    }

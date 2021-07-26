@@ -37,20 +37,23 @@
             @foreach (var item in Model)
             {
                 <div class="col-lg-4 col-md-6">
-                    <div onclick=" window.location = '/Blog/BlogDetail/@item.Id' " style="cursor: pointer;"
+                    <div  style="cursor: pointer;"
                          class="single-our-story-item">
                         <!-- single our story item -->
                         <div class="thumb">
-                            <img src="~/Files/ArticleImages/Thumb/@item.Image" alt="our story">
+                            <a href="/Blog/BlogDetail/@item.Id">
+                                <img src="~/Files/ArticleImages/Thumb/@item.Image" alt="our story">
+                            </a>
                         </div>
                         <div class="conent">
-                            <span class="time">@item.PersianDate</span>
                             <a href="/Blog/BlogDetail/@item.Id">
+                                <span class="time">@item.PersianDate</span>
+
                                 <h4 class="title">@item.Title</h4>
-                            </a>
                             <p>
                                 @item.ShortDescription
                             </p>
+                            </a>
                         </div>
                     </div><!-- //.single our story item -->
                 </div>
