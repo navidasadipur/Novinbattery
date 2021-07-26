@@ -5093,12 +5093,10 @@
     <Content Include="Views\Home\Service.cshtml" />
     <Content Include="Views\Home\TwoImage.cshtml" />
     <Content Include="Views\Home\PopularProductsSection.cshtml" />
-    <Content Include="Views\Home\bannerad.cshtml" />
     <Content Include="Views\Home\NewArticle.cshtml" />
     <Content Include="Views\Shop\SizeSection.cshtml" />
     <Content Include="Views\Shop\PriceSection.cshtml" />
     <Content Include="Views\Shop\BrandSection.cshtml" />
-    <Content Include="Views\Home\Appreciation.cshtml" />
     <Content Include="Views\Home\Gallery.cshtml" />
     <Content Include="Views\Home\Faq.cshtml" />
     <Content Include="Views\Shop\ProductDetails.cshtml" />
@@ -5135,7 +5133,6 @@
     <Content Include="Views\Shop\RelatedProduct.cshtml" />
     <Content Include="Views\Blog\NewBlog.cshtml" />
     <Content Include="Views\Blog\PopularBlog.cshtml" />
-    <Content Include="Views\Home\HomeNewProducts.cshtml" />
     <Content Include="Views\Shop\NotFoundSearch.cshtml" />
     <Content Include="Views\Shop\GetTags.cshtml" />
     <Content Include="Views\Shop\ProductGroupSection.cshtml" />
@@ -5161,10 +5158,7 @@
     <Content Include="Views\Home\BestSellerProductsSection.cshtml" />
     <Content Include="Views\Shop\ShowAllProduct.cshtml" />
     <Content Include="Views\Home\OurHonorInFooter.cshtml" />
-    <Content Include="Views\Home\BannerSectionBig.cshtml" />
     <Content Include="Views\Home\HomeTopBannerSection.cshtml" />
-    <Content Include="Views\Home\BannerSectionSm1.cshtml" />
-    <Content Include="Views\Home\BannerSectionSm2.cshtml" />
     <Content Include="Views\AboutUs\ShowTopComments.cshtml" />
     <Content Include="Views\AboutUs\StaticDetailsInAboutPage.cshtml" />
     <Content Include="Views\Shop\ProductsGrid.cshtml" />
