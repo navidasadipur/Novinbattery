@@ -100,7 +100,7 @@
                                         <ul>
                                             @foreach (var item in ViewBag.Tags)
                                             {
-                                                <li><a href="#">@item.Title</a></li>
+                                                <li><a href="/Blog?searchString=@item.Title.Replace(" ", "+")">@item.Title</a></li>
                                             }
 
                                         </ul>

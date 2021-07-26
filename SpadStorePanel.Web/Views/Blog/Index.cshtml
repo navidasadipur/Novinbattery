@@ -1,9 +1,8 @@
-﻿@model IEnumerable<SpadStorePanel.Web.ViewModels.ArticleListViewModel>
+﻿@model List<SpadStorePanel.Web.ViewModels.LatestArticlesViewModel>
 @{
     ViewBag.Title = "وبلاگ";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var productgroupid = ViewBag.ProductGroupId;
-
 }
 
 
@@ -58,7 +57,7 @@
                     </div><!-- //.single our story item -->
                 </div>
             }
-            <nav style="
+            @*<nav style="
     margin: auto;
     padding: 58px 0 0px 0;" aria-label="Page navigation">
                 <div class="d-flex justify-content-center">
@@ -71,7 +70,6 @@
                             {
                                 if (ViewBag.searchVal != null)
                                 {
-                                    @* Previous *@
 
 
                                     <li class="page-item ">
@@ -82,14 +80,9 @@
                                             </span>قبلی
                                         </a>
                                     </li>
-
                                 }
-
                                 else if (ViewBag.min != null && ViewBag.max != null)
                                 {
-                                    @* Previous *@
-
-
                                     <li class="page-item ">
                                         <a class="page-link page-link-prev" href="?ProductGroupId=@productgroupid&max=@ViewBag.max&min=@ViewBag.min&page=@((int)ViewBag.PageID-1)" aria-label="Previous"
                                            tabindex="-1" aria-disabled="true">
@@ -102,7 +95,6 @@
 
                                 else if (ViewBag.BrandId != null)
                                 {
-                                    @* Previous *@
 
 
                                     <li class="page-item ">
@@ -116,7 +108,6 @@
                                 }
                                 else if (ViewBag.SizeId != null)
                                 {
-                                    @* Previous *@
 
                                     <li class="page-item ">
                                         <a class="page-link page-link-prev" href="?SizeId=@ViewBag.SizeId&ProductGroupId=@productgroupid&page=@((int)ViewBag.PageID-1)" aria-label="Previous"
@@ -129,10 +120,7 @@
 
                                 }
                                 else if (ViewBag.ProductGroupId != null)
-                                { @* Previous *@
-
-
-
+                                { 
 
                                 <li class="page-item ">
                                     <a class="page-link page-link-prev" href="?ProductGroupId=@productgroupid&page=@((int)ViewBag.PageID-1)" aria-label="Previous"
@@ -147,9 +135,6 @@
                             }
                             else
                             {
-                                @* Previous *@
-
-
 
                                 <li class="page-item ">
                                     <a class="page-link page-link-prev" href="?page=@((int)ViewBag.PageID-1)" aria-label="Previous"
@@ -160,14 +145,10 @@
                                     </a>
                                 </li>
                             }
-
-
                         }
 
                         for (int i = 1; i <= (ViewBag.PageCount); i++)
                         {
-
-                            @*<span class="@(((int)ViewBag.PageID==i)?" current":"") page-numbers " aria-current="page">@i</span>*@
                             if (ViewBag.searchVal != null)
                             {
 
@@ -223,7 +204,6 @@
                                         @i
                                     </a>
                                 </li>
-
                             }
                             else
                             {
@@ -236,8 +216,6 @@
                                 </li>
                             }
 
-
-
                         }
 
 
@@ -246,9 +224,6 @@
                         {
                             if (ViewBag.searchVal != null)
                             {
-                                @* Next *@
-
-
                                 <li class="page-item">
                                     <a class="page-link page-link-next" href="?txtsearch=@ViewBag.searchVal&page=@((int)ViewBag.PageID+1)" aria-label="Next">
                                         بعدی <span aria-hidden="true">
@@ -260,10 +235,6 @@
                             }
 
                             else if (ViewBag.min != null && ViewBag.max != null)
-                            {@* Next *@
-
-
-
                             <li class="page-item">
                                 <a class="page-link page-link-next" href="?ProductGroupId=@productgroupid&max=@ViewBag.max&min=@ViewBag.min&page=@((int)ViewBag.PageID+1)" aria-label="Next">
                                     بعدی <span aria-hidden="true">
@@ -275,10 +246,6 @@
                         }
                         else if (ViewBag.BrandId != null)
                         {
-
-                            @* Next *@
-
-
                             <li class="page-item">
                                 <a class="page-link page-link-next" href="?BrandId=@ViewBag.BrandId&ProductGroupId=@productgroupid&page=@((int)ViewBag.PageID+1)" aria-label="Next">
                                     بعدی <span aria-hidden="true">
@@ -291,10 +258,6 @@
 
                         else if (ViewBag.SizeId != null)
                         {
-
-                            @* Next *@
-
-
                             <li class="page-item">
                                 <a class="page-link page-link-next" href="?SizeId=@ViewBag.SizeId&ProductGroupId=@productgroupid&page=@((int)ViewBag.PageID+1)" aria-label="Next">
                                     بعدی <span aria-hidden="true">
@@ -306,10 +269,6 @@
                         }
                         else if (ViewBag.ProductGroupId != null)
                         {
-                            @* Next *@
-
-
-
 
                             <li class="page-item">
                                 <a class="page-link page-link-next" href="?ProductGroupId=@productgroupid&page=@((int)ViewBag.PageID+1)" aria-label="Next">
@@ -318,14 +277,9 @@
                                     </span>
                                 </a>
                             </li>
-
                         }
                         else
                         {
-                            @* Next *@
-
-
-
                             <li class="page-item">
                                 <a class="page-link page-link-next" href="?page=@((int)ViewBag.PageID+1)" aria-label="Next">
                                     بعدی <span aria-hidden="true">
@@ -337,11 +291,7 @@
 
 
                     }
-
-
                 }
-
-
                     </ul>
                 </div>
             </nav>
@@ -351,4 +301,4 @@
         </div>
     </div>
 </section>
-<!-- blog page content area end -->
+ blog page content area end*@ 

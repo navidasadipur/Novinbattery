@@ -122,4 +122,32 @@ namespace SpadStorePanel.Web.ViewModels
         [MaxLength(800, ErrorMessage = "{0} باید کمتر از 800 کارکتر باشد")]
         public string Message { get; set; }
     }
+
+    public class LatestArticlesViewModel
+    {
+        public LatestArticlesViewModel()
+        {
+        }
+
+        public LatestArticlesViewModel(Article article)
+        {
+            this.Id = article.Id;
+            this.Title = article.Title;
+            this.Image = article.Image;
+            this.ShortDescription = article.ShortDescription;
+            this.Author = $"{article.User.FirstName} {article.User.LastName}";
+            this.PersianDate = article.AddedDate != null ? new PersianDateTime(article.AddedDate.Value).ToString("dddd d MMMM yyyy") : "-";
+            if (article.ArticleCategory != null)
+            {
+                this.Category = article.ArticleCategory;
+            }
+        }
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string Image { get; set; }
+        public string ShortDescription { get; set; }
+        public string Author { get; set; }
+        public string PersianDate { get; set; }
+        public ArticleCategory Category { get; set; }
+    }
 }

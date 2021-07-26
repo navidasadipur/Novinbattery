@@ -12,89 +12,121 @@ namespace SpadStorePanel.Web.Controllers
 {
     public class BlogController : Controller
     {
-        private readonly ArticlesRepository _articlesRepo;
+        private readonly ArticlesRepository _articlesRepository;
         private readonly ArticleCategoriesRepository _articleCategoriesRepository;
         private readonly StaticContentDetailsRepository _contentRepo;
         private readonly ArticleCommentsRepository _articleCommentsRepository;
 
         public BlogController(ArticleCommentsRepository articleCommentsRepository, ArticleCategoriesRepository articleCategoriesRepository, ArticlesRepository articlesRepo, StaticContentDetailsRepository contentRepo)
         {
-            _articlesRepo = articlesRepo;
+            _articlesRepository = articlesRepo;
             _contentRepo = contentRepo;
             _articleCategoriesRepository = articleCategoriesRepository;
             _articleCommentsRepository = articleCommentsRepository;
         }
 
         // GET: Blog
-        public ActionResult Index(int? id = null, string searchString = null, int page = 1)
+        public ActionResult Index(int pageNumber = 1, string searchString = null, int? category = null)
         {
-            //ViewBag.BlogImage = _contentRepo.GetStaticContentDetail((int)StaticContents.BlogImage).Image;
+            ////ViewBag.BlogImage = _contentRepo.GetStaticContentDetail((int)StaticContents.BlogImage).Image;
+            //var articles = new List<Article>();
+            //if (id == null)
+            //{
+            //    articles = _articlesRepository.GetArticles();
+            //    if (!string.IsNullOrEmpty(searchString))
+            //    {
+            //        ViewBag.BreadCrumb = $"جستجو {searchString}";
+            //        articles = articles.Where(a =>
+            //            a.Title.ToLower().Trim().Contains(searchString.ToLower().Trim()) || a.ShortDescription.ToLower()
+            //                .Trim().Contains(searchString.ToLower().Trim()) || a.Description.ToLower()
+            //                .Trim().Contains(searchString.ToLower().Trim()) || a.ArticleTags.Any(t => t.Title.ToLower().Trim().Contains(searchString.ToLower().Trim()))).ToList();
+            //    }
+            //}
+            //else
+            //{
+            //    var category = _articlesRepository.GetCategory(id.Value);
+            //    if (category != null)
+            //    {
+            //        ViewBag.BreadCrumb = category.Title;
+            //        articles = _articlesRepository.GetArticlesByCategory(id.Value);
+            //    }
+            //}
+
+            //var articlelistVm = new List<ArticleListViewModel>();
+            //foreach (var item in articles)
+            //{
+            //    var vm = new ArticleListViewModel(item);
+            //    vm.Role = _articlesRepository.GetAuthorRole(item.UserId);
+            //    vm.GroupArticleName = _articlesRepository.GetCategory(item.ArticleCategoryId.Value).Id.ToString();
+            //    vm.CountVoute = item.ArticleComments.Count();
+            //    articlelistVm.Add(vm);
+            //}
+
+            //int paresh = (page - 1) * 9;
+            ////تعداد کل ردیف ها
+            //int totalCount = articlelistVm.Count();
+            //ViewBag.PageID = page;
+            //double remain = totalCount % 9;
+
+            //if (remain == 0)
+            //{
+            //    ViewBag.PageCount = totalCount / 9;
+            //}
+            //else
+            //{
+            //    ViewBag.PageCount = (totalCount / 9) + 1;
+            //}
+            //ViewBag.TotalCount = totalCount;
+            //ViewBag.allCategory = _articlesRepository.GetArticleCategories();
+            //var model = articlelistVm.OrderByDescending(x => x.Id).Skip(paresh).Take(9).ToList();
+            //return View(model);
+
             var articles = new List<Article>();
-            if (id == null)
+            var take = 4;
+            var skip = pageNumber * take - take;
+            var count = 0;
+            if (category != null)
             {
-                articles = _articlesRepo.GetArticles();
-                if (!string.IsNullOrEmpty(searchString))
-                {
-                    ViewBag.BreadCrumb = $"جستجو {searchString}";
-                    articles = articles.Where(a =>
-                        a.Title.ToLower().Trim().Contains(searchString.ToLower().Trim()) || a.ShortDescription.ToLower()
-                            .Trim().Contains(searchString.ToLower().Trim()) || a.Description.ToLower()
-                            .Trim().Contains(searchString.ToLower().Trim()) || a.ArticleTags.Any(t => t.Title.ToLower().Trim().Contains(searchString.ToLower().Trim()))).ToList();
-                }
+                articles = _articlesRepository.GetArticlesList(skip, take, category.Value);
+                count = _articlesRepository.GetArticlesCount(category.Value);
+                var cat = _articleCategoriesRepository.Get(category.Value);
+                ViewBag.CategoryId = category;
+                ViewBag.Title = $"دسته {cat.Title}";
+            }
+            else if (!string.IsNullOrEmpty(searchString))
+            {
+                articles = _articlesRepository.GetArticlesList(skip, take, searchString);
+                count = _articlesRepository.GetArticlesCount(searchString);
+                ViewBag.SearchString = searchString;
+                ViewBag.Title = $"جستجو: {searchString}";
             }
             else
             {
-                var category = _articlesRepo.GetCategory(id.Value);
-                if (category != null)
-                {
-                    ViewBag.BreadCrumb = category.Title;
-                    articles = _articlesRepo.GetArticlesByCategory(id.Value);
-                }
+                articles = _articlesRepository.GetArticlesList(skip, take);
+                count = _articlesRepository.GetArticlesCount();
+                ViewBag.Title = "بلاگ";
             }
 
-            var articlelistVm = new List<ArticleListViewModel>();
+            var pageCount = (int)Math.Ceiling((double)count / take);
+            ViewBag.PageCount = pageCount;
+            ViewBag.CurrentPage = pageNumber;
+
+            var vm = new List<LatestArticlesViewModel>();
             foreach (var item in articles)
-            {
-                var vm = new ArticleListViewModel(item);
-                vm.Role = _articlesRepo.GetAuthorRole(item.UserId);
-                vm.GroupArticleName = _articlesRepo.GetCategory(item.ArticleCategoryId.Value).Id.ToString();
-                vm.CountVoute = item.ArticleComments.Count();
-                articlelistVm.Add(vm);
-            }
+                vm.Add(new LatestArticlesViewModel(item));
 
-            int paresh = (page - 1) * 9;
-            //تعداد کل ردیف ها
-            int totalCount = articlelistVm.Count();
-            ViewBag.PageID = page;
-            double remain = totalCount % 9;
-
-            if (remain == 0)
-            {
-                ViewBag.PageCount = totalCount / 9;
-            }
-            else
-            {
-                ViewBag.PageCount = (totalCount / 9) + 1;
-            }
-            ViewBag.TotalCount = totalCount;
-            ViewBag.allCategory = _articlesRepo.GetArticleCategories();
-            var model = articlelistVm.OrderByDescending(x => x.Id).Skip(paresh).Take(9).ToList();
-            return View(model);
-
-
-            //ViewBag.ArticleTags = _articlesRepo.GetArticleTags(articles.Id);
-            //return View(articlelistVm);
+            return View(vm);
         }
 
         public ActionResult CategoryBlogs(int BlogCategoryId, int page = 1)
         {
-            var Articles = _articlesRepo.GetArticles().Where(a => a.ArticleCategoryId == BlogCategoryId).ToList();
+            var Articles = _articlesRepository.GetArticles().Where(a => a.ArticleCategoryId == BlogCategoryId).ToList();
             var articlelistVm = new List<ArticleListViewModel>();
             foreach (var item in Articles)
             {
                 var vm = new ArticleListViewModel(item);
-                vm.Role = _articlesRepo.GetAuthorRole(item.UserId);
-                vm.GroupArticleName = _articlesRepo.GetCategory(item.ArticleCategoryId.Value).Title;
+                vm.Role = _articlesRepository.GetAuthorRole(item.UserId);
+                vm.GroupArticleName = _articlesRepository.GetCategory(item.ArticleCategoryId.Value).Title;
                 vm.CountVoute = item.ArticleComments.Count();
                 articlelistVm.Add(vm);
             }
@@ -136,24 +168,24 @@ namespace SpadStorePanel.Web.Controllers
 
         public ActionResult BlogDetail(int id)
         {
-            ViewBag.Tags = _articlesRepo.GetArticleTags(id);
-            var Article = _articlesRepo.GetArticle(id);
+            ViewBag.Tags = _articlesRepository.GetArticleTags(id);
+            var Article = _articlesRepository.GetArticle(id);
             var vm = new ArticleListViewModel(Article);
-            vm.Role = _articlesRepo.GetAuthorRole(Article.UserId);
-            vm.GroupArticleName = _articlesRepo.GetCategory(Article.ArticleCategoryId.Value).Title;
+            vm.Role = _articlesRepository.GetAuthorRole(Article.UserId);
+            vm.GroupArticleName = _articlesRepository.GetCategory(Article.ArticleCategoryId.Value).Title;
             vm.CountVoute = Article.ArticleComments.Count();
-            ViewBag.ArticleTags = _articlesRepo.GetArticleTags(id);
+            ViewBag.ArticleTags = _articlesRepository.GetArticleTags(id);
             return View(vm);
         }
         public ActionResult RelatedPosts(String GroupArticleName, int id)
         {
-            var RelatedPosts = _articlesRepo.GetRelatedArticlesByCategoryName(GroupArticleName, id);
+            var RelatedPosts = _articlesRepository.GetRelatedArticlesByCategoryName(GroupArticleName, id);
             var articlelistVm = new List<ArticleListViewModel>();
             foreach (var item in RelatedPosts)
             {
                 var vm = new ArticleListViewModel(item);
-                vm.Role = _articlesRepo.GetAuthorRole(item.UserId);
-                vm.GroupArticleName = _articlesRepo.GetCategory(item.ArticleCategoryId.Value).Title;
+                vm.Role = _articlesRepository.GetAuthorRole(item.UserId);
+                vm.GroupArticleName = _articlesRepository.GetCategory(item.ArticleCategoryId.Value).Title;
                 vm.CountVoute = item.ArticleComments.Count();
                 articlelistVm.Add(vm);
             }
@@ -179,7 +211,7 @@ namespace SpadStorePanel.Web.Controllers
                     Message = form.Message,
                     AddedDate = DateTime.Now,
                 };
-                _articlesRepo.AddComment(comment);
+                _articlesRepository.AddComment(comment);
                 return RedirectToAction("BlogDetail", new { id = form.ArticleId });
             }
             return RedirectToAction("BlogDetail", new { id = form.ArticleId });
@@ -203,13 +235,13 @@ namespace SpadStorePanel.Web.Controllers
         {
 
 
-            var Articles = _articlesRepo.GetArticles();
+            var Articles = _articlesRepository.GetArticles();
             var articlelistVm = new List<ArticleListViewModel>();
             foreach (var item in Articles)
             {
                 var vm = new ArticleListViewModel(item);
-                vm.Role = _articlesRepo.GetAuthorRole(item.UserId);
-                vm.GroupArticleName = _articlesRepo.GetCategory(item.ArticleCategoryId.Value).Title;
+                vm.Role = _articlesRepository.GetAuthorRole(item.UserId);
+                vm.GroupArticleName = _articlesRepository.GetCategory(item.ArticleCategoryId.Value).Title;
                 vm.CountVoute = item.ArticleComments.Count();
                 articlelistVm.Add(vm);
             }
@@ -236,13 +268,13 @@ namespace SpadStorePanel.Web.Controllers
         [HttpGet]
         public ActionResult PreviousBlog(int id)
         {
-            var Articles = _articlesRepo.GetArticles();
+            var Articles = _articlesRepository.GetArticles();
             var articlelistVm = new List<ArticleListViewModel>();
             foreach (var item in Articles)
             {
                 var vm = new ArticleListViewModel(item);
-                vm.Role = _articlesRepo.GetAuthorRole(item.UserId);
-                vm.GroupArticleName = _articlesRepo.GetCategory(item.ArticleCategoryId.Value).Title;
+                vm.Role = _articlesRepository.GetAuthorRole(item.UserId);
+                vm.GroupArticleName = _articlesRepository.GetCategory(item.ArticleCategoryId.Value).Title;
                 vm.CountVoute = item.ArticleComments.Count();
                 articlelistVm.Add(vm);
             }
@@ -273,7 +305,7 @@ namespace SpadStorePanel.Web.Controllers
             {
                 int paresh = (page - 1) * 3;
                 //تعداد کل ردیف ها
-                int totalCount = _articlesRepo.GetSearchArticle(txtsearch).Count();
+                int totalCount = _articlesRepository.GetSearchArticle(txtsearch).Count();
 
                 ViewBag.PageID = page;
                 double remain = totalCount % 3;
@@ -289,13 +321,13 @@ namespace SpadStorePanel.Web.Controllers
                 ViewBag.searchVal = txtsearch;
                 ViewBag.TotalCount = totalCount;
 
-                var Articles = _articlesRepo.GetSearchArticle(txtsearch);
+                var Articles = _articlesRepository.GetSearchArticle(txtsearch);
                 var articlelistVm = new List<ArticleListViewModel>();
                 foreach (var item in Articles)
                 {
                     var vm = new ArticleListViewModel(item);
-                    vm.Role = _articlesRepo.GetAuthorRole(item.UserId);
-                    vm.GroupArticleName = _articlesRepo.GetCategory(item.ArticleCategoryId.Value).Title;
+                    vm.Role = _articlesRepository.GetAuthorRole(item.UserId);
+                    vm.GroupArticleName = _articlesRepository.GetCategory(item.ArticleCategoryId.Value).Title;
                     vm.CountVoute = item.ArticleComments.Count();
                     articlelistVm.Add(vm);
                 }
@@ -309,18 +341,18 @@ namespace SpadStorePanel.Web.Controllers
         {
             var articles = new List<Article>();
 
-            articles = _articlesRepo.GetArticles();
+            articles = _articlesRepository.GetArticles();
             var articlelistVm = new List<ArticleListViewModel>();
             foreach (var item in articles)
             {
                 var vm = new ArticleListViewModel(item);
-                vm.Role = _articlesRepo.GetAuthorRole(item.UserId);
-                vm.GroupArticleName = _articlesRepo.GetCategory(item.ArticleCategoryId.Value).Title;
+                vm.Role = _articlesRepository.GetAuthorRole(item.UserId);
+                vm.GroupArticleName = _articlesRepository.GetCategory(item.ArticleCategoryId.Value).Title;
                 vm.CountVoute = item.ArticleComments.Count();
                 articlelistVm.Add(vm);
             }
 
-            //ViewBag.ArticleTags = _articlesRepo.GetArticleTags(articles.Id);
+            //ViewBag.ArticleTags = _articlesRepository.GetArticleTags(articles.Id);
             return View(articlelistVm.Skip(0).Take(3));
         }
 
@@ -328,18 +360,18 @@ namespace SpadStorePanel.Web.Controllers
         {
             var articles = new List<Article>();
 
-            articles = _articlesRepo.GetArticles();
+            articles = _articlesRepository.GetArticles();
             var articlelistVm = new List<ArticleListViewModel>();
             foreach (var item in articles)
             {
                 var vm = new ArticleListViewModel(item);
-                vm.Role = _articlesRepo.GetAuthorRole(item.UserId);
-                vm.GroupArticleName = _articlesRepo.GetCategory(item.ArticleCategoryId.Value).Title;
+                vm.Role = _articlesRepository.GetAuthorRole(item.UserId);
+                vm.GroupArticleName = _articlesRepository.GetCategory(item.ArticleCategoryId.Value).Title;
                 vm.CountVoute = item.ArticleComments.Count();
                 articlelistVm.Add(vm);
             }
             var q = articlelistVm.OrderByDescending(a => a.CountVoute);
-            //ViewBag.ArticleTags = _articlesRepo.GetArticleTags(articles.Id);
+            //ViewBag.ArticleTags = _articlesRepository.GetArticleTags(articles.Id);
             return View(q);
         }
 
