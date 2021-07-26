@@ -81,7 +81,7 @@
         @foreach (var item in Model)
         {
             <div class="col-lg-4 col-md-6">
-                <a href="/shop/" class="title">
+                <a href="/Shop/ProductDetails/@item.Id" class="title">
                     <div style="cursor: pointer;"
                          class="single-rated-box-two">
                         <!-- single rated box two -->
@@ -116,8 +116,8 @@
                                 }
                                 else if (item.PriceAfterDiscount < item.Price)
                                 {
-                                    <span class="sprice">@item.Price.ToString("##,###") تومان</span>
-                                    <del class="dprice">@item.PriceAfterDiscount.ToString("##,###") تومان</del>
+                            <span class="sprice">@item.PriceAfterDiscount.ToString("##,###") تومان</span>
+                                    <del class="dprice">@item.Price.ToString("##,###") تومان</del>
                                 }
                                 else
                                 {

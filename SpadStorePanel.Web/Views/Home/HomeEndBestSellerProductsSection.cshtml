@@ -77,7 +77,7 @@
                 <div class="img-wrapper">
                     <img src="/Files/ProductImages/Thumb/@item.Image" alt="product image">
                     <div class="hover">
-                        <a href="product-details.html" class="addtocart">افزودن به سبد خرید</a>
+                        <a href="javascript:void(0)" onclick="AddToCart(@item.Id)" class="addtocart">افزودن به سبد خرید</a>
                     </div>
                 </div>
                 <a href="/Shop/ProductDetails/@item.Id">
@@ -90,8 +90,8 @@
                             }
                             else if (item.PriceAfterDiscount < item.Price)
                             {
-                                <span class="sprice">@item.Price.ToString("##,###") تومان</span>
-                                <del class="dprice">@item.PriceAfterDiscount.ToString("##,###") تومان</del>
+                        <span class="sprice">@item.PriceAfterDiscount.ToString("##,###") تومان</span>
+                        <del class="dprice">@item.Price.ToString("##,###") تومان</del>
                             }
                             else
                             {
