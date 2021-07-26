@@ -48,7 +48,7 @@ namespace SpadStorePanel.Infrastructure.Repositories
 
         public List<Discount> GetProductsWithDiscount(int take = 15)
         {
-            var result = _context.Discounts.Where(d => d.ProductId != null && d.IsDeleted == false).Include(d => d.Product).ToList();
+            var result = _context.Discounts.Where(d => (d.ProductId != null || d.ProductGroupId != null || d.BrandId != null) && d.IsDeleted == false).Include(d => d.Product).ToList();
 
             return result;
         }

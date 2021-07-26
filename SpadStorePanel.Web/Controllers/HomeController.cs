@@ -363,21 +363,66 @@ namespace SpadStorePanel.Web.Controllers
         public ActionResult DiscountProductsSection()
         {
             var discountItems = _discountsRepository.GetProductsWithDiscount();
+
             var products = new List<DiscountProductViewModel>();
+
             foreach (var item in discountItems)
             {
-                var product = new DiscountProductViewModel();
-                product.Price = _productService.GetProductPrice(item.Product);
-                product.PriceAfterDiscount = _productService.GetProductPriceAfterDiscount(item.Product);
-                product.ProductId = item.ProductId.Value;
-                product.Image = item.Product.Image;
-                product.DiscountType = item.DiscountType;
-                product.Amount = item.Amount;
-                product.Title = item.Title;
-                product.ShortTitle = item.Product.ShortTitle;
-                product.DeadLine = item.DeadLine;
+                if (item.ProductId != null)
+                {
+                    var product = new DiscountProductViewModel();
+                    product.Price = _productService.GetProductPrice(item.Product);
+                    product.PriceAfterDiscount = _productService.GetProductPriceAfterDiscount(item.Product);
+                    product.ProductId = item.ProductId.Value;
+                    product.Image = item.Product.Image;
+                    product.DiscountType = item.DiscountType;
+                    product.Amount = item.Amount;
+                    product.Title = item.Title;
+                    product.ShortTitle = item.Product.ShortTitle;
+                    product.DeadLine = item.DeadLine;
 
-                products.Add(product);
+                    products.Add(product);
+                }
+                else if (item.ProductGroupId != null)
+                {
+                    var allProducts = _productsRepository.getProductsByGroupId(item.ProductGroupId.Value);
+
+                    foreach (var product in allProducts)
+                    {
+                        var discountProductViewModel = new DiscountProductViewModel();
+                        discountProductViewModel.Price = _productService.GetProductPrice(product);
+                        discountProductViewModel.PriceAfterDiscount = _productService.GetProductPriceAfterDiscount(product);
+                        discountProductViewModel.ProductId = product.Id;
+                        discountProductViewModel.Image = product.Image;
+                        discountProductViewModel.DiscountType = item.DiscountType;
+                        discountProductViewModel.Amount = item.Amount;
+                        discountProductViewModel.Title = product.Title;
+                        discountProductViewModel.ShortTitle = product.ShortTitle;
+                        discountProductViewModel.DeadLine = item.DeadLine;
+
+                        products.Add(discountProductViewModel);
+                    }
+                }
+                else if (item.BrandId != null)
+                {
+                    var allProducts = _productsRepository.getProductsByBrandId(item.BrandId.Value);
+
+                    foreach (var product in allProducts)
+                    {
+                        var discountProductViewModel = new DiscountProductViewModel();
+                        discountProductViewModel.Price = _productService.GetProductPrice(product);
+                        discountProductViewModel.PriceAfterDiscount = _productService.GetProductPriceAfterDiscount(product);
+                        discountProductViewModel.ProductId = product.Id;
+                        discountProductViewModel.Image = product.Image;
+                        discountProductViewModel.DiscountType = item.DiscountType;
+                        discountProductViewModel.Amount = item.Amount;
+                        discountProductViewModel.Title = product.Title;
+                        discountProductViewModel.ShortTitle = product.ShortTitle;
+                        discountProductViewModel.DeadLine = item.DeadLine;
+
+                        products.Add(discountProductViewModel);
+                    }
+                }
             }
 
             return PartialView(products);

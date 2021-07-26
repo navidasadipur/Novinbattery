@@ -50,6 +50,45 @@
                                 <span style="color: red; display: none" id="AmountValidation"></span>
                             </div>
                         </div>
+
+                        <script src="~/Content/admin/Vendors/Clockpicker/bootstrap-clockPicker.min.js"></script>
+                        <script src="~/Content/admin/Vendors/kamaDatepicker/kamadatepicker.min.js"></script>
+                        @Html.EditorFor(Model => Model.DeadLine, new { htmlAttributes = new { @class = "form-control ", @required = "", type = "hidden" } })
+                        <div class="form-group">
+                            <label>تاریخ پایان</label>
+                            <div class="col-md-10">
+                                <div class="datetime-picker-wrapper">
+                                    <input type="text" id="txtEndDate" name="txtEndDate" value="" class="txtStartDate datepicker-input" onchange="HidePicker(event, 'txtEndTime')" placeholder="تاریخ" autocomplete="off" required />
+                                    <script type="text/javascript">
+                                        var customOptions = {
+                                            placeholder: "روز / ماه / سال"
+                                            , twodigit: false
+                                            , closeAfterSelect: false
+                                            , nextButtonIcon: "fa fa-arrow-circle-right"
+                                            , previousButtonIcon: "fa fa-arrow-circle-left"
+                                            , buttonsColor: "blue"
+                                            , forceFarsiDigits: true
+                                            , markToday: true
+                                            , markHolidays: true
+                                            , highlightSelectedDay: true
+                                            , sync: true
+                                            , gotoToday: true
+                                        }
+                                        kamaDatepicker('txtEndDate', customOptions);
+                                    </script>
+                                    <div class="input-group clockpicker1" data-placement="top" data-align="top" data-autoclose="true">
+                                        <input type="text" id="txtEndTime" name="txtEndTime" class="clock" value="" placeholder="ساعت" autocomplete="off" required onchange="PutTime()">
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-time"></span>
+                                        </span>
+                                    </div>
+                                    <script type="text/javascript">
+                                        $('.clockpicker1').clockpicker();
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                     <div class="col-md-6">
                         <div class="form-group row">
@@ -137,6 +176,21 @@
     <script src="/ckeditor/ckeditor.js"></script>
     <script src="/ckeditor/adapters/jquery.js"></script>
     <script>
+        function HidePicker(e, next) {
+            e.target.nextSibling.classList.add("bd-hide");
+
+            console.log($("#" + next));
+            $("#" + next).focus();
+            PutTime();
+        }
+
+        function PutTime() {
+            var date = $("#txtEndDate").val();
+            var time = $("#txtEndTime").val();
+            $("#DeadLine").val(date + " " + time);
+        }
+
+
         $('#Brands').select2({
             placeholder: "برند هایی که شامل تخفیف میشوند را انتخاب کنید"
         });
@@ -161,6 +215,7 @@
                 var Title = $("#Title").val();
                 var DiscountType = parseInt($("#DiscountType").val());
                 var Amount = parseInt($("#Amount").val());
+                var DeadLine = $("#DeadLine").val();
                 console.log(Amount);
                 if (DiscountType === 1 && Amount > 100) {
                     $('#AmountValidation').text("میزان وارد شده معتبر نیست");
@@ -189,6 +244,7 @@
                         Title: Title,
                         DiscountType: DiscountType,
                         Amount: Amount,
+                        DeadLine: DeadLine,
                         BrandIds: BrandIds,
                         ProductGroupIds: ProductGroupIds,
                         ProductIds: ProductIds,
