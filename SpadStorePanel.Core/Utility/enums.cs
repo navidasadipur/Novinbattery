@@ -31,8 +31,8 @@ namespace SpadStorePanel.Core.Utility
         BlogImage = 1013,
         ContactInfo = 1014,
 
-        HomeTopBaner = 1060,
-        HomeMidleBaner = 47,
+        
+
 
         HeaderBackGroundImage = 13,
     }
@@ -52,6 +52,10 @@ namespace SpadStorePanel.Core.Utility
         OurServices = 3,
 
         BuyingStepsSection = 6,
+
+        HomeTopBaner = 15,
+        HomeMidleBaner = 17,
+
     }
 
     public enum PaymentStatus

@@ -73,7 +73,7 @@ namespace SpadStorePanel.Web.Controllers
         {
             var staticContentsList = new List<StaticContentDetail>();
 
-            staticContentsList.Add(_staticContentDetailsRepository.GetStaticContentDetail((int)StaticContents.HomeTopBaner));
+            staticContentsList = _staticContentDetailsRepository.GetContentByTypeId((int)StaticContentTypes.HomeTopBaner);
 
             return PartialView(staticContentsList);
         }
@@ -130,7 +130,7 @@ namespace SpadStorePanel.Web.Controllers
         {
             var staticContentsList = new List<StaticContentDetail>();
 
-            staticContentsList.Add(_staticContentDetailsRepository.GetStaticContentDetail((int)StaticContents.HomeMidleBaner));
+            staticContentsList = _staticContentDetailsRepository.GetContentByTypeId((int)StaticContentTypes.HomeMidleBaner);
 
             return PartialView(staticContentsList);
         }

@@ -35,7 +35,7 @@ namespace SpadStorePanel.Web.Areas.Admin.Controllers
         public ActionResult Create()
         {
             // ViewBag.StaticContentTypeId = new SelectList(_repo.GetStaticContentTypes(), "Id", "Name");
-            ViewBag.StaticContentTypeId = new SelectList(_staticContentTypesRepository.GetAll().Where(a => a.Id == 15), "Id", "Name");
+            ViewBag.StaticContentTypeId = new SelectList(_staticContentTypesRepository.GetAll().Where(a => (a.Id == 15 || a.Id == 17) ), "Id", "Name");
             return View();
         }
 
@@ -62,7 +62,7 @@ namespace SpadStorePanel.Web.Areas.Admin.Controllers
                     //    image = new ImageResizer(1450, 600, true);
                     //if (staticContentDetail.StaticContentTypeId == (int)StaticContentTypes.HeaderFooter)
                     //    image = new ImageResizer(1400, 1400, true);
-                    if (staticContentDetail.Id == (int)StaticContents.HomeMidleBaner || staticContentDetail.Id == (int)StaticContents.HomeTopBaner)
+                    if (staticContentDetail.Id == (int)StaticContentTypes.HomeMidleBaner || staticContentDetail.Id == (int)StaticContentTypes.HomeTopBaner)
                         image = new ImageResizer(2000, 1000, true);
                     if (staticContentDetail.Id == (int)StaticContents.HeaderBackGroundImage)
                         image = new ImageResizer(1700, 310, true);
@@ -104,6 +104,8 @@ namespace SpadStorePanel.Web.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
+
+            ViewBag.StaticContentTypeId = new SelectList(_staticContentTypesRepository.GetAll().Where(a => (a.Id == 15 || a.Id == 17)), "Id", "Name");
             //ViewBag.StaticContentTypeId = new SelectList(_repo.GetStaticContentTypes(), "Id", "Name", staticContentDetail.StaticContentTypeId);
             return View(staticContentDetail);
         }
@@ -137,7 +139,7 @@ namespace SpadStorePanel.Web.Areas.Admin.Controllers
                     //    image = new ImageResizer(1450, 600, true);
                     //if (staticContentDetail.StaticContentTypeId == (int)StaticContentTypes.HeaderFooter)
                     //    image = new ImageResizer(1000, 1000, true);
-                    if (staticContentDetail.Id == (int)StaticContents.HomeMidleBaner || staticContentDetail.Id == (int)StaticContents.HomeTopBaner)
+                    if (staticContentDetail.Id == (int)StaticContentTypes.HomeMidleBaner || staticContentDetail.Id == (int)StaticContentTypes.HomeTopBaner)
                         image = new ImageResizer(2000, 1000, true);
                     if (staticContentDetail.Id == (int)StaticContents.HeaderBackGroundImage)
                         image = new ImageResizer(1700, 310, true);
